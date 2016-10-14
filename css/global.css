@@ -1,0 +1,42 @@
+.fixed-container {
+  min-height: 100%;
+  width: 777px;
+  position: relative;
+}
+
+.header {
+  background-color: rgb(74, 128, 83);
+}
+.header-photo {
+  background-image: url("../images/header.jpg");
+  height: 76px;
+}
+.header p {
+  text-align: right;
+  padding-right: 2%;
+  color: rgb(255, 255, 255);
+  font-size: 130%;
+  font-weight: 200;
+}
+
+.content {
+  padding-bottom: -58px;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 58px;
+}
+.footer-photoPole {
+  background-image: url("../images/footer-pole.gif");
+  background-repeat: no-repeat;
+  height: 33px;
+}
+.footer-photoBase {
+  background-image: url("../images/footer-base.gif");
+  background-repeat: no-repeat;
+  height: 25px;
+}
