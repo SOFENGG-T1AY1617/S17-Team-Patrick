@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Online Request of Documents</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/info_acad.css">
+</head>
+
+<body onload="window.resizeTo(777,600)">
+    <!-- Fixed container as application is not a full page application -->
+    <div class="fixed-container">
+        <div class="header">
+            <div class="header-photo"></div>
+            <p>Online Request of Documents</p>
+        </div>
+
+        <div class="container content">
+            <div class="row">
+                <div class="information">
+
+					<form name "frmAcad" method = "post" action="info_acad.html">
+					<h5>Academic Information</h5>
+
+					<p>This step allows you to enter your academic information.
+					<br>
+					<br>
+					It is possible that you may have earned more than one degree at DLSU.
+					If your request will cover more than one degree, please make sure you enter the details 
+					of these degrees. Otherwise, just enter the details of the degree for which you will be requesting
+					a document.</p>
+					
+					<p align = "center">
+					<input type = "button" name = "butAction" value = "Proceed" class="btn btn-primary">
+					</p>
+				   </form>
+					
+					
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="footer-photoPole"></div>
+        <div class="footer-photoBase"></div>
+    </div>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
