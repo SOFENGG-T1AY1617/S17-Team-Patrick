@@ -22,6 +22,33 @@
 .content {
   padding-bottom: -58px;
 }
+.content-header {
+  color: rgb(52, 111, 109);
+}
+.content-form {
+  width: 95%;
+  font-size: 13px;
+}
+.content-form tr:nth-child(even) td {
+  background-color: rgb(223, 232, 223);
+}
+.content-form_label {
+  width: 30%;
+  padding-left: 1%;
+}
+.content-form tr td > input {
+  width: 50%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.content-form tr td > textarea {
+  margin-top: 1%;
+}
+.content-form_next {
+  float: right;
+  margin-top: 2%;
+  margin-right: 5%;
+}
 
 .footer {
   position: absolute;
