@@ -9,7 +9,8 @@
     <title>Online Request of Documents</title>
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/info_acad.css">
+    <!-- Always change the css file name to html file name! -->   
+   <link rel="stylesheet" href="css/info_acad.css">
 </head>
 
 <body onload="window.resizeTo(777,600)">
@@ -22,10 +23,21 @@
 
         <div class="container content">
             <div class="row">
-                <div class="information">
+				<div class="col-xs-4">
+				  <h5>Request Flow</h5>
+				  <ul>
+					<li>Personal Information</li>
+					<li>Academic Information</li>
+					<li>Mailing Information</li>
+					<li>Document List</li>
+					<li>Delivery Rates</li>
+					<li>Checkout</li>
+				  </ul>
+				</div>
+				<div class="information">
 
 					<form name "frmAcad" method = "post" action="info_acad.html">
-					<h5>Academic Information</h5>
+					<h5 class="content-header">Academic Information</h5>
 
 					<p>This step allows you to enter your academic information.
 					<br>
