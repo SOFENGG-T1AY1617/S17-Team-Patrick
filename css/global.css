@@ -22,6 +22,13 @@
 .content {
   padding-bottom: -58px;
 }
+.content-divider {
+  background-image: url("../images/divider.gif");
+  height: 222px;
+  width: 1%;
+  float: right;
+  margin-top: -135%;
+}
 .content-header {
   color: rgb(52, 111, 109);
 }
