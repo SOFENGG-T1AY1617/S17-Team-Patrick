@@ -2,6 +2,7 @@
   min-height: 100%;
   width: 777px;
   position: relative;
+
 }
 
 .header {
@@ -58,7 +59,7 @@
 }
 
 .footer {
-  position: absolute;
+  position: relative;
   right: 0;
   bottom: 0;
   left: 0;
