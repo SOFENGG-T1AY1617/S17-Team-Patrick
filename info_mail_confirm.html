@@ -10,7 +10,7 @@
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/global.css">
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="css/info_acad.css">
+    <link rel="stylesheet" href="css/info_*_confirm.css">
 </head>
 
 <body onload="window.resizeTo(777,600)">
@@ -36,19 +36,32 @@
                     <div class="content-divider"></div>
                 </div>
                 <div class="col-xs-9">
-
-                    <form name "frmAcad" method="post" action="info_acad.html">
-                        <h5 class="content-header">Academic Information</h5>
-
-                        <p>This step allows you to enter your academic information.
-                            <br>
-                            <br> It is possible that you may have earned more than one degree at DLSU. If your request will cover more than one degree, please make sure you enter the details of these degrees. Otherwise, just enter the details of the degree
-                            for which you will be requesting a document.</p>
-
-                        <p align="center">
-                            <a href="info_acad_de.html"><input type="button" name="butAction" value="Proceed" class="btn btn-primary"></a>
-                        </p>
-                    </form>
+                    <h5>Academic Information</h5>
+                    <table class="table table-bordered table-striped">
+                      <tr>
+                        <td>Mailing Address</td>
+                        <td>78 Taft Street, Manila City</td>
+                      </tr>
+                      <tr>
+                        <td>Delivery Area</td>
+                        <td>Metro Manila</td>
+                      </tr>
+                      <tr>
+                        <td>Delivery Charge</td>
+                        <td>PHP 128.00</td>
+                      </tr>
+                      <tr>
+                        <td>Contact Number</td>
+                        <td>09178287277</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><button class="btn">Edit</button>&nbsp;<button class="btn">Delete</button></td>
+                      </tr>
+                    </table>
+                    <div>
+                      <a href="info_mail_de.html" class="btn btn-primary">Add Another Address</a>
+                      <a href="document_list.html" class="btn btn-primary">Next</a>
+                    </div>
                 </div>
             </div>
         </div>
