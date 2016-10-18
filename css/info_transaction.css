@@ -3,5 +3,5 @@ table tr td:nth-child(2) {
 }
 
 table tr:last-child {
-  padding-right: 5px;
+  margin-right: 50px;
 }
