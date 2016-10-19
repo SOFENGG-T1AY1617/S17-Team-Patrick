@@ -42,7 +42,7 @@
                   <td class="content-form_label">Mode of Retrieval</td>
                   <td>
                     <form action="">
-                      &nbsp;<input type="radio" name="rMode" id="delivery">&nbsp;Delivery
+                      &nbsp;<input type="radio" name="rMode" id="delivery" checked="checked">&nbsp;Delivery
                       &nbsp;<input type="radio" name="rMode" id="pickup">&nbsp;Pick-up
                     </form>
                   </td>
@@ -89,6 +89,14 @@
                   <td class="content-form_label">Mailing Contact Number</td>
                   <td>&nbsp;<input type="text"></td>
                 </tr>
+                <tr class="pickup-info" style="display: none">
+                  <td class="content-form_label">Pick Up Area</td>
+                  <td>
+                    <select name="" id="">
+                      <option value="">DLSU - Manila</option>
+                    </select>
+                  </td>
+                </tr>
               </table>
               <a href="info_mail_confirm.html"><button class="btn btn-primary content-form_next">Next</button></a>
             </div>
@@ -97,7 +105,7 @@
     </div>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/info_mail_de.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
