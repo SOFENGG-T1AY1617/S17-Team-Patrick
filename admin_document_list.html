@@ -24,8 +24,8 @@
           <h3>Menu</h3>
           <br>
           <ul>
-            <li>Maintain Delivery Charges</li>
-            <li>Maintain Document Charges</li>
+            <li><a href="admin_main.html">Home</a></li>
+            <li><b>Maintain Document List</b></li>
             <li>Update Operational Date</li>
           </ul>
           <br>
@@ -36,7 +36,7 @@
             <li>Previous Orders</li>
           </ul>
         </div>
-        <div class="col-xs-9 col-xs-offset-3 content-main">
+        <div class="col-xs-9 col-xs-offset-1 content-main">
           <h3>Document List</h3>
 
           <div class="content-scrolling">
@@ -44,7 +44,7 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <td><input type="checkbox" name="optDoc"></td>
+                    <td></td>
                     <td></td>
                     <td>Document</td>
                     <td>Category</td>
@@ -56,7 +56,7 @@
                 <tbody>
 				  <tr>
                     <td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Completion of Academic Units</td>
                     <td>Certification</td>
                     <td>Php 110.00</td>
@@ -65,7 +65,7 @@
                   </tr>
                   <tr>
                     <td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Course (Subject) Description</td>
                     <td>Certification</td>
                     <td>Php 110.00</td>
@@ -74,7 +74,7 @@
                   </tr>
                   <tr>
                     <td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Cumulative GPA</td>
                     <td>Certification</td>
                     <td>Php 110.00</td>
@@ -83,7 +83,7 @@
                   </tr>
                   <tr>
                     <td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Dean's List</td>
                     <td>Certification</td>
                     <td>Php 110.00</td>
@@ -92,7 +92,7 @@
                   </tr>
                   <tr>
                     <td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Enrollment</td>
                     <td>Certification</td>
                     <td>Php 110.00</td>
@@ -101,7 +101,7 @@
                   </tr>
                   <tr>
                     <td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Form 137</td>
                     <td>Certified True Copy</td>
                     <td>Php 50.00</td>
@@ -110,7 +110,7 @@
                   </tr>
                   <tr>
                     <td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Form 138</td>
                     <td>Certified True Copy</td>
                     <td>Php 50.00</td>
@@ -119,7 +119,7 @@
                   </tr>
                   <tr>
                     <td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Grading System</td>
                     <td>Certification</td>
                     <td>Php 110.00</td>
@@ -128,7 +128,7 @@
                   </tr>
                   <tr>
 					<td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Graduation / With Honors</td>
                     <td>Certification</td>
                     <td>Php 110.00</td>
@@ -137,7 +137,7 @@
                   </tr>
 				  <tr>
 					<td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Official Transcript of Records</td>
                     <td>Certification</td>
                     <td>Php 150.00</td>
@@ -146,7 +146,7 @@
                   </tr>
 				  <tr>
 					<td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Ranking By Degree Program</td>
                     <td>Certification</td>
                     <td>Php 150.00</td>
@@ -155,7 +155,7 @@
                   </tr>
 				  <tr>
 					<td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Ranking By College</td>
                     <td>Certification</td>
                     <td>Php 150.00</td>
@@ -164,7 +164,7 @@
                   </tr>
 				  <tr>
 					<td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Special Credentials</td>
                     <td>Others</td>
                     <td>Php 150.00</td>
@@ -173,26 +173,67 @@
                   </tr>
 				  <tr>
 					<td><input type="checkbox" name="optDoc"></td>
-                    <td>Edit</td>
+                    <td class="edit_button warning">Edit</td>
                     <td>Trimestral Calendar</td>
                     <td>Certification</td>
                     <td>Php 150.00</td>
                     <td>Unavailable</td>
-					<td>10gs</td>
+					          <td>10gs</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <div class="content-main_report">
-			<a href="info_acad_de.html" class="btn btn-primary">Delete Selected</a>			
-            <a href="info_mail_de.html" class="btn btn-primary">Add Document</a>
-		 </div>
+			      <button class="btn btn-danger" id="delete_button">Delete Selected</button>
+            <button class="btn btn-primary" id="add_button">Add Document</button>
+		      </div>
         </div>
       </div>
     </div>
 
+    <div class="popup edit">
+      <label for="">Document Name</label>
+      <input class="form-control" type="text" placeholder="Document Name">
+      <label for="">Regular Charge</label>
+      <input class="form-control"  type="text" placeholder="100">
+      <label for="">Express Charge</label>
+      <input class="form-control"  type="text" placeholder="200">
+      <label for="">Weight (gs.)</label>
+      <input class="form-control"  type="text" placeholder="10">
+      <br>
+      <div>
+        <button id="yes_edit" class="btn btn-success">Save</button>
+        <button id="no_edit" class="btn btn-warning">Cancel</button>
+      </div>
+    </div>
+
+    <div class="popup add">
+      <label for="">Document Name</label>
+      <input class="form-control" type="text" placeholder="Document Name">
+      <label for="">Regular Charge</label>
+      <input class="form-control"  type="text" placeholder="Price">
+      <label for="">Express Charge</label>
+      <input class="form-control"  type="text" placeholder="Price">
+      <label for="">Weight (gs.)</label>
+      <input class="form-control"  type="text" placeholder="Weight">
+      <br>
+      <div>
+        <button id="yes_add" class="btn btn-success">Add</button>
+        <button id="no_add" class="btn btn-warning">Cancel</button>
+      </div>
+    </div>
+
+    <div class="popup delete">
+      <p>Delete # item(s)?</p>
+      <div>
+        <button id="yes_delete" class="btn btn-danger">Yes</button>
+        <button id="no_delete" class="btn btn-primary">No</button>
+      </div>
+    </div>
+
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/admin_document_list.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
