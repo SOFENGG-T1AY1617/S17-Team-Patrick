@@ -41,21 +41,83 @@
                 <tr>
                   <td class="content-form_label">Mode of Retrieval</td>
                   <td>
+<<<<<<< HEAD
+                      &nbsp;
+                      <input type="radio" name="rMode" id="delivery">
+                      Delivery
+                      <input type="radio" name="rMode" id="pickup">
+                      Pick-up
+=======
                     <form action="">
                       &nbsp;<input type="radio" name="rMode" id="delivery" checked="checked">&nbsp;Delivery
                       &nbsp;<input type="radio" name="rMode" id="pickup">&nbsp;Pick-up
                     </form>
+>>>>>>> origin/master
                   </td>
                 </tr>
                 <tr class="delivery-info">
                   <td class="content-form_label">Mailing Address</td>
-                  <td>&nbsp;<textarea name="" id="" cols="30" rows="3"></textarea>&nbsp;</td>
+                  <td style = "padding-left:5px; padding-bottom:3px;">
+                  	<textarea name="" id="" cols="30" rows="3"></textarea>
+                  </td>
                 </tr>
                 <tr class="delivery-info">
+<<<<<<< Updated upstream
 					        <td class="content-form_label">Zip Code</td>
 					        <td>&nbsp;<input type="text" name="" maxlength="12" size="10" value></td>
 				        </tr>
                 <tr class="delivery-info">
+=======
+<<<<<<< HEAD
+					<td class="content-form_label">Zip Code</td>
+					<td>
+						&nbsp;<input type="text" name="" maxlength="8" size="6" value>
+					</td>
+				</tr>
+                <tr class="delivery-info">
+                  <td class="content-form_label"">Delivery Area</td>
+                  
+                  <td style="padding-left: 5px;">
+						<select name="cboDelivery" style="width: 250px" class="form">
+							<option value="46">Africa</option>
+							<option value="47">Australia</option>
+							<option value="48">Brunei</option>
+							<option value="49">Canada</option>
+							<option value="50">China</option>
+							<option value="51">Europe</option>
+							<option value="52">Fiji Island</option>
+							<option value="53">Guam</option>
+							<option value="54">Hongkong / Singapore</option>
+							<option value="55">Indonesia / Malaysia / Taiwan / Thailand</option>
+							<option value="56">Japan</option>
+							<option value="59">Mexico City</option>
+							<option value="60">Middle East</option>
+							<option value="62">New Zealand</option>
+							<option value="63">Papua New Guinea</option>
+							<option value="57">Philippines: Luzon</option>
+							<option value="58" selected="">Philippines: Metro Manila</option>
+							<option value="61">Philippines: Mindanao</option>
+							<option value="66">Philippines: Visayas</option>
+							<option value="64">South Korea</option>
+							<option value="65">USA</option>
+							<option value="67">South America</option>
+							<option value="377">Vietnam</option>
+						</select>
+
+						<!-- DELIVERY RATES (pop-up)
+						<a onclick="javascript:window.open ('popDelivery.asp','help','scrollbars=yes,
+															resizable=no,width=575,height=500,top=100,
+															left=100');return false;" href="#">
+						<img src="../images/xis_sm2.gif" alt="delivery rates" border="0"></a>
+						-->
+				</td>
+            	</tr>
+=======
+					        <td class="content-form_label">Zip Code</td>
+					        <td>&nbsp;<input type="text" name="" maxlength="12" size="10" value></td>
+				        </tr>
+                <tr class="delivery-info">
+>>>>>>> Stashed changes
                   <td class="content-form_label">Delivery Area</td>
                   <td>
 						        <select name="cboDelivery" style="width: 250px" class="form">
@@ -85,9 +147,10 @@
 						        </select>
                   </td>
                 </tr>
+>>>>>>> origin/master
                 <tr class="delivery-info">
                   <td class="content-form_label">Mailing Contact Number</td>
-                  <td>&nbsp;<input type="text"></td>
+                  <td>&nbsp;<input type="text" name="" value></td>
                 </tr>
                 <tr class="pickup-info" style="display: none">
                   <td class="content-form_label">Pick Up Area</td>
@@ -97,6 +160,17 @@
                     </select>
                   </td>
                 </tr>
+<<<<<<< Updated upstream
+                <tr class="pickup-info" style="display: none">
+                  <td class="content-form_label">Pick Up Area</td>
+                  <td>
+                    <select name="" id="">
+                      <option value="">DLSU - Manila</option>
+                    </select>
+                  </td>
+                </tr>
+=======
+>>>>>>> Stashed changes
               </table>
               <a href="info_mail_confirm.html"><button class="btn btn-primary content-form_next">Next</button></a>
             </div>
