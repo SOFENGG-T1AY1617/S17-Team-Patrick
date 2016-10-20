@@ -58,7 +58,7 @@ body {
   padding: 0;
 }
 
-.pending-popup {
+.popup {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -73,9 +73,9 @@ body {
   padding: 2% 2% 0 2%;
   display:none;
 }
-.pending-popup div {
+.popup div {
   text-align: center;
 }
-.pending-popup textarea {
+.popup textarea {
   resize: none;
 }
