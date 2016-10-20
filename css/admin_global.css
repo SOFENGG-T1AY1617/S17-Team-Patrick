@@ -33,6 +33,12 @@ body {
   margin-left: 70%;
   width: 30%;
 }
+.content-main table {
+  text-align: center;
+}
+.content-main td button {
+  width: 80px;
+}
 
 .content-scrolling {
   height: 500px;
@@ -119,25 +125,10 @@ body {
   resize: none;
 }
 
-.pending-popup {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  height: 375px;
-  width: 300px;
-  background-color: rgb(255, 255, 255);
-  z-index: 1000;
-  -webkit-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  padding: 2% 2% 0 3%;
-  display:none;
+.pending {
+  display: none;
 }
-.pending-popup div {
-  margin-top: 7%;
-  text-align: center;
-}
-.pending-popup textarea {
-  resize: none;
+
+.process {
+  display: none;
 }
