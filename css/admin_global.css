@@ -101,17 +101,18 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 40%;
-  width: 20%;
+  height: 375px;
+  width: 300px;
   background-color: rgb(255, 255, 255);
   z-index: 1000;
   -webkit-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  padding: 2% 2% 0 2%;
+  padding: 2% 2% 0 3%;
   display:none;
 }
 .popup div {
+  margin-top: 7%;
   text-align: center;
 }
 .popup textarea {
