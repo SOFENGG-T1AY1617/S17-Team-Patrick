@@ -13,3 +13,7 @@ $("#masters").click(function() {
 $("#doctorate").click(function() {
   $(".#cbGraduate").prop("checked", true);
 })
+
+$("#cbGraduate").click(function() {
+  $("#doctorate").prop("checked", true);
+})
