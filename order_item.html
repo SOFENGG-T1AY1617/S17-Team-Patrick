@@ -61,7 +61,7 @@
   												  <td>&nbsp;Php 300.00</td>
   											  </tr>
                           <tr>
-                            <td>&nbsp;<input type="radio" name="optProc" value="2">&nbsp;For Pick Up</td>
+                            <td>&nbsp;<input type="checkbox" id="for_pickup">&nbsp;For Pick Up</td>
                             <td>
                               <select name="" id="">
                                 <option value="">DLSU-Manila</option>
@@ -80,7 +80,7 @@
   									  <td class="content-form_label">No. of Copies</td>
   									  <td>&nbsp;<input type="text" name="txtNoCopy" size="2" maxlength="2"></td>
   								  </tr>
-  								  <tr>
+  								  <tr class="delivery_only">
   									  <td class="content-form_label">Send to</td>
   									  <td>&nbsp;385 Tapuac District Dagupan City <!--Dummy Data--></td>
   								  </tr>
@@ -107,6 +107,7 @@
     </div>
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/order_item.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 

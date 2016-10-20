@@ -81,3 +81,7 @@ textarea {
   background-repeat: no-repeat;
   height: 25px;
 }
+
+.hidden {
+  display: none;
+}
