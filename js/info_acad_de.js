@@ -1,4 +1,4 @@
-for(var i=1960; i<=2016; i++) {
+for(var i=2016; i>=1960; i--) {
     $('#year_admitted').append($('<option>', {value:i, text:i}));
 }
 
