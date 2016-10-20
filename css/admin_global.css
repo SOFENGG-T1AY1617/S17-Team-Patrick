@@ -98,13 +98,7 @@ body {
   text-align: center;
 }
 
-.pending-popup {
-=======
 .popup {
->>>>>>> origin/master
-=======
-.popup {
->>>>>>> origin/master
   position: fixed;
   left: 50%;
   top: 50%;
