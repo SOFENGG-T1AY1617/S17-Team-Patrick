@@ -1,11 +1,12 @@
-$(".info pending").on('click', function() {
+$(".can_pend").on('click', function() {
+  console.log("HELL");
   $(".popup").css("display", "block");
 })
 
 $(".details").on('click', function() {
   $(".details-popup").css("display", "block");
   $(".content-scrolling").css("overflow-y", "hidden");
-}
+})
 $("#cancel_popup").on('click', function() {
   $(".popup").css("display", "none");
 })
@@ -22,4 +23,4 @@ $("#back_popup").on('click', function() {
 $("#markasdone_popup").on('click', function() {
   $(".details-popup").css("display", "none");
   $(".content-scrolling").css("overflow-y", "scroll");
-}
+})
