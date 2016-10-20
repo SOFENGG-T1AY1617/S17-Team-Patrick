@@ -11,7 +11,7 @@ $("#masters").click(function() {
 })
 
 $("#doctorate").click(function() {
-  $(".#cbGraduate").prop("checked", true);
+  $("#cbGraduate").prop("checked", true);
 })
 
 $("#cbGraduate").click(function() {
