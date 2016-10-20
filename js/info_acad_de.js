@@ -1,4 +1,4 @@
-for(var i=1960; i<=2016; i++) {
+for(var i=2016; i>=1960; i--) {
     $('#year_admitted').append($('<option>', {value:i, text:i}));
 }
 
@@ -11,7 +11,7 @@ $("#masters").click(function() {
 })
 
 $("#doctorate").click(function() {
-  $(".#cbGraduate").prop("checked", true);
+  $("#cbGraduate").prop("checked", true);
 })
 
 $("#cbGraduate").click(function() {

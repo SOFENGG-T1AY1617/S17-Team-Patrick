@@ -21,3 +21,7 @@ $("#delete_button").on('click', function() {
 $("#yes_delete, #no_delete").on('click', function() {
   $(".delete").css("display", "none");
 });
+
+$(".available_express").on('click', function() {
+  $(".express_charge").toggleClass("hidden");
+})
