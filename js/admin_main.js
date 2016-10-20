@@ -1,6 +1,5 @@
 $(".can_pend").on('click', function() {
-  console.log("HELL");
-  $(".popup").css("display", "block");
+  $(".pending").css("display", "block");
 })
 
 $(".details").on('click', function() {
@@ -26,15 +25,11 @@ $("#markasdone_popup").on('click', function() {
   $(".content-scrolling").css("overflow-y", "scroll");
 })
 
-$(".info").on('click', function() {
-  $(".pending-popup").css("display", "block");
+$(".can_process").on('click', function() {
+  $(".process").css("display", "block");
   $(".content-scrolling").css("overflow-y", "hidden");
 })
 
-$("#mark_processing_popup").on('click', function() {
-  $(".pending-popup").css("display", "none");
-})
-
-$("#cancelprocess_popup").on('click', function() {
-  $(".pending-popup").css("display", "none");
-})
+$("#mark_processing_popup, #cancelprocess_popup").on('click', function() {
+  $(".process").css("display", "none");
+});
