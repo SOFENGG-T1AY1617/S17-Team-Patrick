@@ -134,11 +134,12 @@ body {
 }
 
 .process {
-  padding: 3% 0 0 0;
-  height: 125px;
+  padding: 10px 0 0 0;
+  height: 140px;
   width: 300px;
   display: none;
   text-align: center;
+  border-radius:10px;
 }
 
 .hidden {
