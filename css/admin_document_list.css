@@ -1,0 +1,24 @@
+.delete {
+  height: 125px;
+  width: 200px;
+  display: none;
+  text-align: center;
+}
+
+.edit {
+  height: 350px;
+  width:300px;
+  display: none;
+}
+
+.add {
+  height: 350px;
+  width:300px;
+  display: none;
+}
+
+.content-main_report {
+  margin-top: 2%;
+  margin-left: 65%;
+  width: 50%;
+}
