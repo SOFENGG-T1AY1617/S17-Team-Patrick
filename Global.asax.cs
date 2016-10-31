@@ -1,19 +1,16 @@
 ﻿using System;
-using Abp.Castle.Logging.Log4Net;
-using Abp.Web;
-using Castle.Facilities.Logging;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.SessionState;
 
-namespace RequestDocuments.Web
+namespace SOFENGG_Order_Request_Document
 {
-    public class MvcApplication : AbpWebApplication<RequestDocumentsWebModule>
+    public class Global : System.Web.HttpApplication
     {
-        protected override void Application_Start(object sender, EventArgs e)
+        protected void Application_Start(object sender, EventArgs e)
         {
-            AbpBootstrapper.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                f => f.UseAbpLog4Net().WithConfig("log4net.config")
-            );
-
-            base.Application_Start(sender, e);
         }
     }
 }
