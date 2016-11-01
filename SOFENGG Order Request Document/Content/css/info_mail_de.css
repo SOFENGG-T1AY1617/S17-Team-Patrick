@@ -1,9 +1,0 @@
-table tr td:nth-child(2) {
-  
-}
-
-.content-form tr td > input {
-	width: auto;
-	margin-top: 1%;
-	margin-bottom: 1%;
-}
