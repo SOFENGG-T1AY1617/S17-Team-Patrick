@@ -1,0 +1,11 @@
+.content-document {
+  width: 95%;
+  font-size: 13px;
+}
+.content-document tr td {
+  padding-left: 1%;
+}
+
+.content-document-header {
+  background-color: rgb(172, 208, 172);
+}
