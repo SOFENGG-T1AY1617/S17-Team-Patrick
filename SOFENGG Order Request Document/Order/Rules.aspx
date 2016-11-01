@@ -32,5 +32,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="script" ContentPlaceHolderID="script" runat="server">
-    <script src="Script/rules.js"></script>
+    <script src="/Script/rules.js"></script>
 </asp:Content>

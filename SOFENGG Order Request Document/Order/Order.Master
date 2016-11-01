@@ -31,8 +31,8 @@
         </div>
     </div>
 
-    <script src="/Scripts/jquery.min.js"></script>
-    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Script/jquery.min.js"></script>
+    <script src="/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>
 

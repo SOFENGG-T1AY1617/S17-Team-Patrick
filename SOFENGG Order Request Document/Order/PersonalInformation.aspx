@@ -97,5 +97,5 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 
-    <script src="Script/personal_information.js"></script>
+    <script src="/Script/personal_information.js"></script>
 </asp:Content>
