@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="SOFENGG_Order_Request_Document.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Request for Documents</title>
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/Content/css/admin_global.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+<!-- Fixed container as application is not a full page application -->
+<div class="header">
+    <p>Online Request for Documents</p>
+</div>
+
+<div class="container content">
+    <div class="row">
+        <asp:ContentPlaceHolder ID="body" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </div>
+</div>
+<asp:ContentPlaceHolder ID="other" runat="server">
+
+</asp:ContentPlaceHolder>
+
+<script src="/Script/jquery.min.js"></script>
+<script src="/Script/bootstrap.min.js"></script>
+<asp:ContentPlaceHolder ID="script" runat="server">
+
+</asp:ContentPlaceHolder>
+</body>
+</html>

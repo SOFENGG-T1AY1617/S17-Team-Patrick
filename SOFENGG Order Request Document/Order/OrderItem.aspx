@@ -104,7 +104,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 
-    <script src="Script/order_item.js"></script>
+    <script src="/Script/order_item.js"></script>
 
     <script>
         function stampAlert() {
