@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.Rules" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.Rules" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/rules.css">
 </asp:Content>
@@ -24,10 +24,10 @@
         </div>
         <br>
         <div class="card-images">
-            <span><img src="Content/images/logo_visa1.gif" alt=""></span>
-            <span><img src="Content/images/logo_master1.gif" alt=""></span>
-            <span><img src="Content/images/logo_jcb1.gif" alt=""></span>
-            <span><img src="Content/images/logo_amex1.gif" alt=""></span>
+            <span><img src="/Content/images/logo_visa1.gif" alt=""></span>
+            <span><img src="/Content/images/logo_master1.gif" alt=""></span>
+            <span><img src="/Content/images/logo_jcb1.gif" alt=""></span>
+            <span><img src="/Content/images/logo_amex1.gif" alt=""></span>
         </div>
     </div>
 </asp:Content>
