@@ -7,7 +7,8 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     public enum GenderEnum
     {
-        Female, Male
+        Female = 'f',
+        Male = 'm'    
     }
 
     public class StudentInfo

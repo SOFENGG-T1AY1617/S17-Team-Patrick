@@ -7,11 +7,14 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     public enum DegreeLevelEnum
     {
-        Bachelors, Masters, Doctorate
+        Bachelors = 0,
+        Masters = 1,
+        Doctorate = 2
     }
     public enum CampusEnum
     {
-        STC, Taft
+        Taft = 0,
+        STC = 1
     }
 
     public class Degree

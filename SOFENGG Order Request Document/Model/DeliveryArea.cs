@@ -7,7 +7,8 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     public enum DeliveryModeEnum
     {
-        Pickup, Delivery
+        Pickup = 0,
+        Delivery = 1
     }
 
 
