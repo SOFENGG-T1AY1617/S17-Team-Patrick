@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.Rules" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.Rules" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/rules.css">
 </asp:Content>

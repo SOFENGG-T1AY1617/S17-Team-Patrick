@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace SOFENGG_Order_Request_Document
+namespace SOFENGG_Order_Request_Document.View.Order
 {
     public partial class InfoMailDe : System.Web.UI.Page
     {

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-namespace SOFENGG_Order_Request_Document.Admin
+namespace SOFENGG_Order_Request_Document.View.Admin
 {
     public partial class DocumentList : System.Web.UI.Page
     {

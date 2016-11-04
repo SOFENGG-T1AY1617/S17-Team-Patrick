@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SOFENGG_Order_Request_Document.Admin {
+namespace SOFENGG_Order_Request_Document.View.Admin {
     
     
     public partial class Admin {
