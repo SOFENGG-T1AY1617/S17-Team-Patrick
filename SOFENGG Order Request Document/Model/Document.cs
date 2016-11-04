@@ -16,6 +16,7 @@ namespace SOFENGG_Order_Request_Document.Model
     public class Document
     {
         public const string Table = "document";
+        public const string ColId = "documentId";
         public const string ColName = "name";
         public const string ColCategory = "categoryId";
         public const string ColWeight = "weight";

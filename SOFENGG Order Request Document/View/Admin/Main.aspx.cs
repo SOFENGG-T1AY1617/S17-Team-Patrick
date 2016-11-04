@@ -19,17 +19,16 @@ namespace SOFENGG_Order_Request_Document.View.Admin
 //                IsForUndergraduate = true,
 //                IsForGraduate = false,
 //                MaxCopy = 0,
-//                Name = "sample poh",
+//                Name = "sample poh2",
 //                Weight = 123.123f
 //            };
 //
 //            var db = new DBMySqlAddDocument(d);
 //            db.ExecuteQuery();
-//            db.Close();
 
-            var d2 = new DBMySqlGetDocumentList();
-            d2.ExecuteQuery();
-            var d1 = false;
+//            var d2 = new DBMySqlGetDocumentList();
+//            d2.ExecuteQuery();
+//            var d1 = false;
         }
     }
 }

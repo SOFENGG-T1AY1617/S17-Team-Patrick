@@ -136,14 +136,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\Database\AdminModel.cs" />
+    <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\Database\DBMySqlAddDocument.cs" />
     <Compile Include="Model\Database\DBMySqlGetDocumentList.cs" />
-    <Compile Include="Model\Database\DBMySqlSelectConnection.cs" />
-    <Compile Include="Model\Database\IAdminModel.cs" />
-    <Compile Include="Model\Database\IDBConnection.cs" />
-    <Compile Include="Model\Database\IDBSelectConnection.cs" />
-    <Compile Include="Model\Database\DBMySqlConnection.cs" />
+    <Compile Include="Model\Database\Interface\DBMySqlSelectConnection.cs" />
+    <Compile Include="Model\IAdminModel.cs" />
+    <Compile Include="Model\Database\Interface\IDBConnection.cs" />
+    <Compile Include="Model\Database\Interface\IDBSelectConnection.cs" />
+    <Compile Include="Model\Database\Interface\DBMySqlConnection.cs" />
     <Compile Include="Model\Degree.cs" />
     <Compile Include="Model\DeliveryArea.cs" />
     <Compile Include="Model\Document.cs" />
