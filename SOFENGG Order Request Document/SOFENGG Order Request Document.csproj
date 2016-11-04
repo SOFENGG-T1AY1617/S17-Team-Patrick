@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,7 +40,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,32 +130,15 @@
     <Content Include="Script\order_item.js" />
     <Content Include="Script\personal_information.js" />
     <Content Include="Script\rules.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\Database\AdminModel.cs" />
-    <Compile Include="Model\Database\DBMySqlAddDocument.cs" />
-    <Compile Include="Model\Database\DBMySqlGetDocumentList.cs" />
-    <Compile Include="Model\Database\DBMySqlSelectConnection.cs" />
-    <Compile Include="Model\Database\IAdminModel.cs" />
-    <Compile Include="Model\Database\IDBConnection.cs" />
-    <Compile Include="Model\Database\IDBSelectConnection.cs" />
-    <Compile Include="Model\Database\DBMySqlConnection.cs" />
     <Compile Include="Model\Degree.cs" />
     <Compile Include="Model\DeliveryArea.cs" />
-    <Compile Include="Model\Document.cs" />
     <Compile Include="Model\MailingInfo.cs" />
-    <Compile Include="Model\Order.cs" />
-    <Compile Include="Model\OrderItem.cs" />
-    <Compile Include="Model\CourseDescription.cs" />
-    <Compile Include="Model\OrderItemWithTerm.cs" />
-    <Compile Include="Model\OrderStatus.cs" />
-    <Compile Include="Model\Personel.cs" />
     <Compile Include="Model\StudentDegree.cs" />
     <Compile Include="Model\StudentInfo.cs" />
+    <Compile Include="Model\Document.cs" />
     <Compile Include="View\Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
