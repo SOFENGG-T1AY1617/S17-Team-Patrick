@@ -28,7 +28,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
 //            db.Close();
 
             var d2 = new DBMySqlGetDocumentList();
-            d2.ExecuteQuery();
+            d2.parse();
             var d1 = false;
         }
     }
