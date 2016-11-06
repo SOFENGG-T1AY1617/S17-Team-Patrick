@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoTransaction.aspx.cs" Inherits="SOFENGG_Order_Request_Document.InfoTransaction" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoTransaction.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoTransaction" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!-- Always change the css file name to html file name! -->

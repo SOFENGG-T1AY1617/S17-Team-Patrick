@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SOFENGG_Order_Request_Document
+namespace SOFENGG_Order_Request_Document.View.Order
 {
 
 
