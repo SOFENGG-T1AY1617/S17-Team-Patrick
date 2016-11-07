@@ -12,5 +12,6 @@ namespace SOFENGG_Order_Request_Document.Model
         StudentDegree[] GetStudentDegree(int studentId);
         MailingInfo[] GetMailingInfo(int studentId);
 
+
     }
 }

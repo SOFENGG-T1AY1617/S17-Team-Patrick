@@ -134,6 +134,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Database\DBMySqlAddMailingInfo.cs" />
+    <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
     <Compile Include="Model\Database\DBMySqlGetStudentDegreeList.cs" />

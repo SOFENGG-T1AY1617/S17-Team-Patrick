@@ -11,15 +11,17 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 
         public StudentInfo GetStudentInfo()
         {
-            throw new NotImplementedException();
             var db = new DBMySqlGetStudentInfo();
             db.ExecuteQuery();
+
+            db.studentInfo.StudentDegreeList = GetStudentDegree(db.studentInfo.IdNumber);
+            db.studentInfo.MailingInfoList = GetMailingInfo(db.studentInfo.IdNumber);
+
             return db.studentInfo;
         }
 
         public StudentDegree[] GetStudentDegree(int studentId)
         {
-            throw new NotImplementedException();
             var db = new DBMySqlGetStudentDegreeList();
             db.ExecuteQuery();
             return db.studentDegreeList;
@@ -27,11 +29,11 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 
         public MailingInfo[] GetMailingInfo(int studentId)
         {
-            throw new NotImplementedException();
             var db = new DBMySqlGetMailingInfo();
             db.ExecuteQuery();
             return db.mailingInfoList;
         }
+
 
         public bool AddMailingInfo(MailingInfo mailingInfo, int studentId)
         {

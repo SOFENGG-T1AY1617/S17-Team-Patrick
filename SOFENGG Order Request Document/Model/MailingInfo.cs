@@ -20,5 +20,8 @@ namespace SOFENGG_Order_Request_Document.Model
         public int ZipCode { get; set; }
         public DeliveryArea DeliveryArea { get; set; }
         public string ContactNo { get; set; }
+        public StudentDegree[] studentDegreeList { get; set; }
+        public MailingInfo[] mailingInfoList { get; set; }
+
     }
 }
