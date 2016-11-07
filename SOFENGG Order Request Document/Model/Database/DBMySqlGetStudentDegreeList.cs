@@ -26,10 +26,10 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             {
                 studentDegreeList[i] = new StudentDegree()
                 {
-                    Id = int.Parse(ObjectList[i][StudentDegree.ColDegreeId].ToString()),
-                    YearAdmittedAs = int.Parse(ObjectList[i][StudentDegree.ColYearAdmitted].ToString()),
-                    AdmittedAs = (AdmissionEnum) (ObjectList[i][StudentDegree.ColAdmittedAs]),
+                    Id = int.Parse(ObjectList[i][StudentDegree.ColStudentDegreeId].ToString()),
                     Degree = getDegree(int.Parse(ObjectList[i][StudentDegree.ColDegreeId].ToString())),
+                    YearAdmitted = int.Parse(ObjectList[i][StudentDegree.ColYearAdmitted].ToString()),
+                    AdmittedAs = (AdmissionEnum) (ObjectList[i][StudentDegree.ColAdmittedAs]),
 
                 };
             }

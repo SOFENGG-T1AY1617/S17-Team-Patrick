@@ -32,5 +32,19 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             db.ExecuteQuery();
             return db.mailingInfoList;
         }
+
+        public bool AddMailingInfo(MailingInfo mailingInfo, int studentId)
+        {
+            var db = new DBMySqlAddMailingInfo(mailingInfo);
+            db.StudentId = studentId;
+            return db.ExecuteQuery();
+        }
+
+        public bool AddStudentDegree(StudentDegree studentDegree, int studentId)
+        {
+            var db = new DBMySqlAddStudentDegree(studentDegree);
+            db.StudentId = studentId;
+            return db.ExecuteQuery();
+        }
     }
 }
