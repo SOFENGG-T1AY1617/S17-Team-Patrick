@@ -13,8 +13,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
         protected override void SetQuery()
         {
             Cmd.CommandText = string.Format("SELECT * FROM {0} WHERE idStudent = '" + studentInfo.IdNumber, MailingInfo.Table);
-
-            //            Cmd.Parameters.AddWithValue("@name", "banana");
             Cmd.Prepare();
             throw new NotImplementedException();
         }
@@ -29,18 +27,28 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
                     Id = int.Parse(ObjectList[i][MailingInfo.ColMailingId].ToString()),
                     MailingAddress = int.Parse(ObjectList[i][MailingInfo.ColMailingAddress].ToString()),
                     ZipCode = int.Parse(ObjectList[i][MailingInfo.ColZipCode].ToString()),
-                    DeliveryArea = new DeliveryArea(), //<--- will fix that later - Dyan
+                    DeliveryArea = getDeliveryArea(int.Parse(ObjectList[i][MailingInfo.ColDeliveryAreaId].ToString())),
                     ContactNo = ObjectList[i][MailingInfo.ColContactNo].ToString(),
 
 
                 };
             }
-
-
-
             throw new NotImplementedException();
         }
 
-        
+        public DeliveryArea getDeliveryArea(int mailingInfoDeliveryId)
+        {
+            var deliveryAreaDB = new DBMySqlGetDeliveryArea();
+            deliveryAreaDB.ExecuteQuery();
+
+            for (int i = 0; i < deliveryAreaDB.deliveryAreaList.Length; i++)
+            {
+                if (deliveryAreaDB.deliveryAreaList[i].Id == mailingInfoDeliveryId)
+                {
+                    return deliveryAreaDB.deliveryAreaList[i];
+                }
+            }
+            return null;
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
                 Email = ObjectList[0][StudentInfo.ColEmail].ToString(),
                 BirthDate = (DateTime)ObjectList[0][StudentInfo.ColBirthDate],
                 Citizenship = ObjectList[0][StudentInfo.ColCitizenship].ToString(),
-                CurrentAddress = "",
+                CurrentAddress = ObjectList[0][StudentInfo.ColAddress].ToString(),
                 PhoneNumber = ObjectList[0][StudentInfo.ColPhoneNumber].ToString(),
                 HighSchoolAttended = ObjectList[0][StudentInfo.ColHighSchoolAttended].ToString(),
                 PlaceOfBirth = ObjectList[0][StudentInfo.ColPlaceOfBirth].ToString(),
