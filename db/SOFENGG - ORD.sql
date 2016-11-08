@@ -103,7 +103,7 @@ CREATE TABLE `document` (
   `forGraduate` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`documentId`),
   UNIQUE KEY `id_UNIQUE` (`documentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,6 +190,7 @@ CREATE TABLE `orderlist` (
   `mailingId` int(11) NOT NULL,
   `noOfCopies` int(11) NOT NULL,
   `packaging` tinyint(1) NOT NULL,
+  `orderType` tinyint(1) NOT NULL,
   `specificationTerm` tinyint(1) DEFAULT NULL,
   `specificationYear` year(4) DEFAULT NULL,
   PRIMARY KEY (`dtsNo`),
@@ -240,11 +241,12 @@ DROP TABLE IF EXISTS `studentdegree`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `studentdegree` (
   `studentDegreeId` int(11) NOT NULL AUTO_INCREMENT,
+  `studentInfoId` int(11) NOT NULL,
   `idNumber` int(8) NOT NULL,
   `degreeId` int(11) NOT NULL,
   `yearAdmitted` year(4) NOT NULL,
   `admittedAs` char(1) NOT NULL,
-  PRIMARY KEY (`studentDegreeId`),
+  PRIMARY KEY (`studentDegreeId`,`studentInfoId`,`idNumber`),
   UNIQUE KEY `studentDegreeId_UNIQUE` (`studentDegreeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -257,7 +259,7 @@ DROP TABLE IF EXISTS `studentinfo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `studentinfo` (
-  `idNumber` int(8) NOT NULL,
+  `studentInfoId` int(8) NOT NULL AUTO_INCREMENT,
   `lastName` varchar(100) NOT NULL,
   `firstName` varchar(100) NOT NULL,
   `middleName` varchar(100) NOT NULL,
@@ -269,7 +271,8 @@ CREATE TABLE `studentinfo` (
   `phoneNumber` varchar(20) NOT NULL,
   `highSchoolAttended` varchar(200) NOT NULL,
   `placeOfBirth` varchar(100) NOT NULL,
-  PRIMARY KEY (`idNumber`)
+  PRIMARY KEY (`studentInfoId`),
+  UNIQUE KEY `studentInfoId_UNIQUE` (`studentInfoId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -282,4 +285,4 @@ CREATE TABLE `studentinfo` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-04 22:09:30
+-- Dump completed on 2016-11-08 23:49:46
