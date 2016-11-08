@@ -1,30 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using SOFENGG_Order_Request_Document.Model.Database;
 
-namespace SOFENGG_Order_Request_Document.Model.Database
+namespace SOFENGG_Order_Request_Document.Model
 {
     public class AdminModel: IAdminModel
     {
         public bool AddDocument(Document document)
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlAddDocument(document);
+            return db.ExecuteQuery();
         }
 
         public bool EditDocument(Document document)
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlEditDocument(document);
+            return db.ExecuteQuery();
         }
 
         public bool DeleteDocument(Document document)
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlDeleteDocument(document);
+            return db.ExecuteQuery();
         }
 
         public Document[] GetDocumentList()
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlGetDocumentList();
+            db.ExecuteQuery();
+            return db.DocumentList;
         }
 
         public Document[] GetPendingDocumentList()

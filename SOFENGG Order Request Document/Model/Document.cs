@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -7,10 +8,17 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     public enum DocumentCategoryEnum
     {
+        [Description("Transcript of Records")]
         TranscriptOfRecords = 1,
+        [Description("Certification")]
         Certification = 2,
+        [Description("Certified True Copy")]
         CertifiedTrueCopy = 3,
-        Others = 0
+        [Description("Others")]
+        Others = 4,
+        [Description("Special")]
+        Special = 0
+
     }
 
     public class Document

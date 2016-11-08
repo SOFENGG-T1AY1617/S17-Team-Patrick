@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="DocumentList.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Admin.DocumentList" %>
+<%@ Import Namespace="System.ComponentModel" %>
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model.Helper" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/admin_document_list.css">
+    <style type="text/css">
+        .auto-style1 {
+            height: 24px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 <div class="col-xs-2 content-sidebar">
@@ -28,254 +36,48 @@
 
 <div class="content-scrolling">
     <div>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>Document</td>
-                <td>Category</td>
-                <td>Regular Charge</td>
-                <td>Express Charge</td>
-                <td>Weight</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Completion of Academic Units</td>
-                <td>Certification</td>
-                <td>Php 110.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Course (Subject) Description</td>
-                <td>Certification</td>
-                <td>Php 110.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Cumulative GPA</td>
-                <td>Certification</td>
-                <td>Php 110.00</td>
-                <td>Php 220.00</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Dean's List</td>
-                <td>Certification</td>
-                <td>Php 110.00</td>
-                <td>Php 220.00</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Enrollment</td>
-                <td>Certification</td>
-                <td>Php 110.00</td>
-                <td>Php 220.00</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Form 137</td>
-                <td>Certified True Copy</td>
-                <td>Php 50.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Form 138</td>
-                <td>Certified True Copy</td>
-                <td>Php 50.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Grading System</td>
-                <td>Certification</td>
-                <td>Php 110.00</td>
-                <td>Php 220.00</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Graduation / With Honors</td>
-                <td>Certification</td>
-                <td>Php 110.00</td>
-                <td>Php 220.00</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Official Transcript of Records</td>
-                <td>Certification</td>
-                <td>Php 150.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Ranking By Degree Program</td>
-                <td>Certification</td>
-                <td>Php 150.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Ranking By College</td>
-                <td>Certification</td>
-                <td>Php 150.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Special Credentials</td>
-                <td>Others</td>
-                <td>Php 150.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="optDoc">
-                </td>
-                <td class="warning">
-                    <button class="btn btn-xs btn-warning edit_button">Edit</button>
-                </td>
-                <td>Trimestral Calendar</td>
-                <td>Certification</td>
-                <td>Php 150.00</td>
-                <td>Unavailable</td>
-                <td>10gs</td>
-            </tr>
-            </tbody>
-        </table>
+        <asp:GridView ID="gvDocuments" AutoGenerateColumns="False" runat="server" OnRowEditing="gvDocuments_OnRowEditing" CssClass="table table-hover" GridLines="Vertical" OnRowDeleting="gvDocuments_OnRowDeleting" OnRowUpdating="gvDocuments_OnRowUpdating" OnRowCancelingEdit="gvDocuments_OnRowCancelingEdit">
+            <Columns>
+                <asp:BoundField DataField="Id" ReadOnly="True" ItemStyle-CssClass="hide" HeaderStyle-CssClass="hide"/>
+                <asp:BoundField DataField="Name" HeaderText="Document Name"/>
+                <asp:TemplateField HeaderText="Category">
+                    <ItemTemplate>
+                        <%#((DocumentCategoryEnum)Eval("Category")).GetDescription() %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="RegularPrice" HeaderText="Regular Price" />
+                <asp:BoundField DataField="ExpressPrice" HeaderText="Express Price"/>
+                <asp:BoundField DataField="Weight" HeaderText="Weight"/>
+                <asp:CommandField ShowEditButton="True"/>
+                <asp:CommandField ShowDeleteButton="True"/>
+            </Columns>
+        </asp:GridView>
     </div>
 </div>
 <div class="content-main_report">
-    <button class="btn btn-danger" id="delete_button">Delete Selected</button>
     <button class="btn btn-primary" id="add_button">Add Document</button>
 </div>
 </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="other" runat="server">
 
-    <div class="popup edit">
-        <p>Document Name</p>
-        <input class="form-control" type="text" placeholder="Document Name">
-        <p>Regular Charge</p>
-        <input class="form-control" type="text" placeholder="100">
-        <p>
-            <input class="available_express" type="checkbox" checked="checked">&nbsp;Express Charge
-        </p>
-        <input class="form-control express_charge" type="text" placeholder="200">
-        <p>Weight (gs.)</p>
-        <input class="form-control" type="text" placeholder="10">
-        <div>
-            <button id="yes_edit" class="btn btn-success">Save</button>
-            <button id="no_edit" class="btn btn-warning">Cancel</button>
-        </div>
-    </div>
-
     <div class="popup add">
-        <p>Document Name</p>
-        <input class="form-control" type="text" placeholder="Document Name">
-        <p>Regular Charge</p>
-        <input class="form-control" type="text" placeholder="Price">
-        <p>
-            <input class="available_express" type="checkbox" checked="checked">&nbsp;Express Charge
-        </p>
-        <input class="form-control express_charge" type="text" placeholder="Price">
-        <p>Weight (gs.)</p>
-        <input class="form-control" type="text" placeholder="Weight">
-        <div>
-            <button id="yes_add" class="btn btn-success">Add</button>
-            <button id="no_add" class="btn btn-warning">Cancel</button>
-        </div>
+            <p>Document Name</p>
+            <asp:TextBox id="txtName" class="form-control" type="text" placeholder="Document Name"  runat="server"/>
+            <p>Regular Charge</p>
+            <asp:TextBox id="txtRegularPrice" class="form-control" type="text" placeholder="Price"  runat="server"/>
+            <p>
+                <asp:TextBox id="cbExpressPrice" class="available_express" type="checkbox" checked="checked" Text="Express Charge"  runat="server"/>
+            </p>
+            <asp:TextBox id="txtExpressPrice" class="form-control express_charge" type="text" placeholder="Price" runat="server"/>
+            <p>Weight (gs.)</p>
+            <asp:TextBox id="txtWeight" class="form-control" type="text" placeholder="Weight"  runat="server"/>
+            <div>
+                <asp:Button id="btnAdd" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
+                <button id="btnAddCancel" class="btn btn-warning">Cancel</button>
+            </div>
     </div>
 
-    <div class="popup delete">
-        <p>Delete # item(s)?</p>
-        <div>
-            <button id="yes_delete" class="btn btn-danger">Yes</button>
-            <button id="no_delete" class="btn btn-primary">No</button>
-        </div>
-    </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/admin_document_list.js"></script>

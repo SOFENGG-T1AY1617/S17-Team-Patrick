@@ -135,27 +135,26 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Course.cs" />
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\Database\DBMySqlAddDocument.cs" />
+    <Compile Include="Model\Database\DBMySqlDeleteDocument.cs" />
+    <Compile Include="Model\Database\DBMySqlEditDocument.cs" />
     <Compile Include="Model\Database\DBMySqlGetDocumentList.cs" />
     <Compile Include="Model\Database\Interface\DBMySqlSelectConnection.cs" />
+    <Compile Include="Model\DeliveryArea.cs" />
+    <Compile Include="Model\MailingInfo.cs" />
+    <Compile Include="Model\Helper\EnumHelper.cs" />
     <Compile Include="Model\IAdminModel.cs" />
     <Compile Include="Model\Database\Interface\IDBConnection.cs" />
     <Compile Include="Model\Database\Interface\IDBSelectConnection.cs" />
     <Compile Include="Model\Database\Interface\DBMySqlConnection.cs" />
-    <Compile Include="Model\Degree.cs" />
-    <Compile Include="Model\DeliveryArea.cs" />
     <Compile Include="Model\Document.cs" />
-    <Compile Include="Model\MailingInfo.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderItem.cs" />
-    <Compile Include="Model\CourseDescription.cs" />
     <Compile Include="Model\OrderItemWithTerm.cs" />
     <Compile Include="Model\OrderStatus.cs" />
     <Compile Include="Model\Personel.cs" />
-    <Compile Include="Model\StudentDegree.cs" />
-    <Compile Include="Model\StudentInfo.cs" />
+    <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
     <Compile Include="View\Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -170,6 +169,7 @@
     <Compile Include="View\Admin\DocumentList.aspx.designer.cs">
       <DependentUpon>DocumentList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\Interface\IDocumentListView.cs" />
     <Compile Include="View\Admin\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -261,7 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Presenter\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
