@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.Rules" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.Rules" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/rules.css">
 </asp:Content>
@@ -17,17 +17,19 @@
     </div>
     <div class="agreement">
         <div class="col-xs-9">
-            <input id="checkbox" type="checkbox"><span>&nbsp;&nbsp;I have read and understood the policies regarding this facility</span>.
+            <asp:CheckBox ID="checkbox" runat="server" 
+                Text="I have read and understood the policies regarding this facility." 
+                    OnCheckedChanged="cb_CheckChanged">
         </div>
         <div class="col-xs-3">
             <a id="continue" href="/personal_information.html" class="btn btn-primary disabled">Continue</a>
         </div>
         <br>
         <div class="card-images">
-            <span><img src="/Content/images/logo_visa1.gif" alt=""></span>
-            <span><img src="/Content/images/logo_master1.gif" alt=""></span>
-            <span><img src="/Content/images/logo_jcb1.gif" alt=""></span>
-            <span><img src="/Content/images/logo_amex1.gif" alt=""></span>
+            <span><img src="Content/images/logo_visa1.gif" alt=""></span>
+            <span><img src="Content/images/logo_master1.gif" alt=""></span>
+            <span><img src="Content/images/logo_jcb1.gif" alt=""></span>
+            <span><img src="Content/images/logo_amex1.gif" alt=""></span>
         </div>
     </div>
 </asp:Content>
