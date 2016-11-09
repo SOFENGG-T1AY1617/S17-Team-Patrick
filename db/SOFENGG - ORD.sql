@@ -103,7 +103,7 @@ CREATE TABLE `document` (
   `forGraduate` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`documentId`),
   UNIQUE KEY `id_UNIQUE` (`documentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ DROP TABLE IF EXISTS `mailinginfo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mailinginfo` (
   `mailingId` int(11) NOT NULL AUTO_INCREMENT,
-  `idStudent` int(11) NOT NULL,
+  `studentInfoId` int(11) NOT NULL,
   `mailingAddress` varchar(200) NOT NULL,
   `zipCode` int(11) NOT NULL,
   `deliveryAreaId` int(11) NOT NULL,
@@ -285,4 +285,4 @@ CREATE TABLE `studentinfo` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-08 23:49:46
+-- Dump completed on 2016-11-09 21:07:17
