@@ -1,28 +1,15 @@
-.delete {
-    height: 125px;
-    width: 200px;
-    display: none;
-    text-align: center;
-}
-
-.edit {
-    height: 350px;
-    width: 300px;
-    display: none;
-    text-align: center;
-}
-
 .add {
-    height: 350px;
-    width: 300px;
-    display: none;
     text-align: center;
 }
 
-.content-main_report {
-    margin-top: 2%;
-    margin-left: 65%;
-    width: 50%;
+.content-main_buttons {
+    margin-top: 3%;
+    float: right;
+}
+
+.content-scrolling div {
+    
+  background-color: rgb(250, 250, 250);
 }
 
 .hide { display: none; }
