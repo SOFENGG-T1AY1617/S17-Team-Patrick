@@ -31,6 +31,15 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
+        /// rfvName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvName;
+        
+        /// <summary>
         /// txtRegularPrice control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,24 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRegularPrice;
+        
+        /// <summary>
+        /// rfvRegularPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRegularPrice;
+        
+        /// <summary>
+        /// rvRegularPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvRegularPrice;
         
         /// <summary>
         /// cbExpressPrice control.
@@ -58,6 +85,24 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtExpressPrice;
         
         /// <summary>
+        /// rfvExpressPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvExpressPrice;
+        
+        /// <summary>
+        /// rvExpressPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvExpressPrice;
+        
+        /// <summary>
         /// txtWeight control.
         /// </summary>
         /// <remarks>
@@ -65,6 +110,24 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWeight;
+        
+        /// <summary>
+        /// rfvWeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvWeight;
+        
+        /// <summary>
+        /// rvWeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvWeight;
         
         /// <summary>
         /// btnAdd control.

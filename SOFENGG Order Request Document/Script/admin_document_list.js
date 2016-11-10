@@ -21,15 +21,3 @@ $("#btnAdd, #btnAddCancel").on('click', function () {
     event.preventDefault();
     return false;
 });
-
-$("#delete_button").on('click', function () {
-    $(".delete").css("display", "block");
-    event.preventDefault();
-    return false;
-});
-
-$("#yes_delete, #no_delete").on('click', function () {
-    $(".delete").css("display", "none");
-    event.preventDefault();
-    return false;
-});

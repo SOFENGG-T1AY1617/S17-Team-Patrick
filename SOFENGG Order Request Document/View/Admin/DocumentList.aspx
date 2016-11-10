@@ -39,15 +39,52 @@
         <asp:GridView ID="gvDocuments" AutoGenerateColumns="False" runat="server" OnRowEditing="gvDocuments_OnRowEditing" CssClass="table table-hover" GridLines="Vertical" OnRowDeleting="gvDocuments_OnRowDeleting" OnRowUpdating="gvDocuments_OnRowUpdating" OnRowCancelingEdit="gvDocuments_OnRowCancelingEdit">
             <Columns>
                 <asp:BoundField DataField="Id" ReadOnly="True" ItemStyle-CssClass="hide" HeaderStyle-CssClass="hide"/>
-                <asp:BoundField DataField="Name" HeaderText="Document Name"/>
+                <asp:TemplateField HeaderText="Document Name">
+                    <EditItemTemplate>
+                        <asp:TextBox runat="server" Text='<%# Bind("Name") %>' ID="txtEditName"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtEditName" ErrorMessage="Cannot be empty."></asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
                 <asp:TemplateField HeaderText="Category">
                     <ItemTemplate>
                         <%#((DocumentCategoryEnum)Eval("Category")).GetDescription() %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="RegularPrice" HeaderText="Regular Price" />
-                <asp:BoundField DataField="ExpressPrice" HeaderText="Express Price"/>
-                <asp:BoundField DataField="Weight" HeaderText="Weight"/>
+                <asp:TemplateField HeaderText="Regular Price">
+                    <EditItemTemplate>
+                        <asp:TextBox runat="server" Text='<%# Bind("RegularPrice") %>' ID="txtEditRegularPrice"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvRegularPrice" runat="server" ControlToValidate="txtEditRegularPrice" ErrorMessage="Regular price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RangeValidator ID="rvRegularPrice" runat="server" ControlToValidate="txtEditRegularPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Express Price">
+                    <EditItemTemplate>
+                        <asp:TextBox runat="server" Text='<%# Bind("ExpressPrice") %>' ID="txtEditExpressPrice"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvExpressPrice" runat="server" ControlToValidate="txtEditExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RangeValidator ID="rvExpressPrice" runat="server" ControlToValidate="txtEditExpressPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Express price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Weight">
+                    <EditItemTemplate>
+                        <asp:TextBox runat="server" Text='<%# Bind("Weight") %>' ID="txtEditWeight"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvWeight" runat="server" ControlToValidate="txtEditWeight" ErrorMessage="Weight cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RangeValidator ID="rvWeight" runat="server" ControlToValidate="txtEditWeight" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Weight cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label runat="server" Text='<%# Bind("Weight") %>' ID="lbWeight"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
                 <asp:CommandField ShowEditButton="True"/>
                 <asp:CommandField ShowDeleteButton="True"/>
             </Columns>
@@ -64,14 +101,22 @@
     <div class="popup add">
             <p>Document Name</p>
             <asp:TextBox id="txtName" class="form-control" type="text" placeholder="Document Name"  runat="server"/>
+            <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name cannot be empty."></asp:RequiredFieldValidator>
             <p>Regular Charge</p>
             <asp:TextBox id="txtRegularPrice" class="form-control" type="text" placeholder="Price"  runat="server"/>
+            <asp:RequiredFieldValidator ID="rfvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" ErrorMessage="Regular price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ID="rvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
             <p>
                 <asp:TextBox id="cbExpressPrice" class="available_express" type="checkbox" checked="checked" Text="Express Charge"  runat="server"/>
             </p>
+            <p>Express Price</p>
             <asp:TextBox id="txtExpressPrice" class="form-control express_charge" type="text" placeholder="Price" runat="server"/>
+            <asp:RequiredFieldValidator ID="rfvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ID="rvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Express price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
             <p>Weight (gs.)</p>
             <asp:TextBox id="txtWeight" class="form-control" type="text" placeholder="Weight"  runat="server"/>
+            <asp:RequiredFieldValidator ID="rfvWeight" runat="server" ControlToValidate="txtWeight" ErrorMessage="Weight cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ID="rvWeight" runat="server" ControlToValidate="txtWeight" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Weight cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
             <div>
                 <asp:Button id="btnAdd" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
                 <button id="btnAddCancel" class="btn btn-warning">Cancel</button>
