@@ -33,7 +33,7 @@
     </div>
     <div class="col-xs-9">
         <h5 class="content-header">Document List</h5>
-        <table border=1 class="content-document">
+        <table border="1" class="content-document">
             <tr>
                 <td colspan="4" class="content-document-header">Below is a list of documents that you can request from the OUR. Press the order link to the document you want to order.</td>
             </tr>

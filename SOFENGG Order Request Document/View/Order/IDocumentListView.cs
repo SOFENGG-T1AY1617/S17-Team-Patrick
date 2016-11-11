@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOFENGG_Order_Request_Document.View.Order
 {
-    interface IDocumentList
+    public interface IDocumentListView
     {
         string Document { get; set; }
         string Category { get; set; }

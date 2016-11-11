@@ -24,7 +24,7 @@ namespace SOFENGG_Order_Request_Document.Model
 
         public int DtsNo { get; set; }
         public Document Document { get; set; }
-        public MailingAddress MailingAddress { get; set; }
+        public MailingInfo MailingAddress { get; set; }
         public int NoOfCopies { get; set; }
         public PackagingEnum Packaging { get; set; }
         public Course[] CourseList { get; set; }

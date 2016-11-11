@@ -2,8 +2,10 @@
 
 namespace SOFENGG_Order_Request_Document.View.Order
 {
-    public partial class DocumentList : System.Web.UI.Page, IDocumentList
+    public partial class DocumentList : System.Web.UI.Page, IDocumentListView
     {
+
+       
         public string Category
         {
             get
