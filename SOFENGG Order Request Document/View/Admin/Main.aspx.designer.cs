@@ -7,29 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SOFENGG_Order_Request_Document.Admin
-{
-
-
-    public partial class Main
-    {
-
-        /// <summary>
-        /// orderIDForm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm orderIDForm;
-
-        /// <summary>
-        /// OrderListTable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView OrderListTable;
+namespace SOFENGG_Order_Request_Document.Admin {
+    
+    
+    public partial class Main {
     }
 }
