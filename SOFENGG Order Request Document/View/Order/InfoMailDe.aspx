@@ -38,44 +38,45 @@
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Address</td>
                 <td style="padding-left: 5px; padding-bottom: 3px;">
-                    <textarea name="" id="" cols="30" rows="3"></textarea>
+                    <asp:TextBox ID="txtMailAddress" runat="server" TextMode="MultiLine"></asp:TextBox>
                 </td>
             </tr>
             <tr class="delivery-info">
                 <td class="content-form_label">Zip Code</td>
                 <td>
-                    &nbsp;<input type="text" name="" maxlength="8" size="6" value>
+                    &nbsp;<asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr class="delivery-info">
                 <td class="content-form_label">Delivery Area</td>
 
                 <td style="padding-left: 5px;">
-                    <select name="cboDelivery" style="width: 250px" class="form">
-                        <option value="46">Africa</option>
-                        <option value="47">Australia</option>
-                        <option value="48">Brunei</option>
-                        <option value="49">Canada</option>
-                        <option value="50">China</option>
-                        <option value="51">Europe</option>
-                        <option value="52">Fiji Island</option>
-                        <option value="53">Guam</option>
-                        <option value="54">Hongkong / Singapore</option>
-                        <option value="55">Indonesia / Malaysia / Taiwan / Thailand</option>
-                        <option value="56">Japan</option>
-                        <option value="59">Mexico City</option>
-                        <option value="60">Middle East</option>
-                        <option value="62">New Zealand</option>
-                        <option value="63">Papua New Guinea</option>
-                        <option value="57">Philippines: Luzon</option>
-                        <option value="58" selected="">Philippines: Metro Manila</option>
-                        <option value="61">Philippines: Mindanao</option>
-                        <option value="66">Philippines: Visayas</option>
-                        <option value="64">South Korea</option>
-                        <option value="65">USA</option>
-                        <option value="67">South America</option>
-                        <option value="377">Vietnam</option>
-                    </select>
+                    <asp:DropDownList ID="ddlDelivery" runat="server" Width="200px">
+                        <asp:ListItem Text="Select Area" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Africa" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="Australia" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Brunei" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Canada" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="China" Value="5"></asp:ListItem>
+                        <asp:ListItem Text="Europe" Value="6"></asp:ListItem>
+                        <asp:ListItem Text="Fiji" Value="7"></asp:ListItem>
+                        <asp:ListItem Text="Guam" Value="8"></asp:ListItem>
+                        <asp:ListItem Text="Hong Kong / Singapore" Value="9"></asp:ListItem>
+                        <asp:ListItem Text="Indonesia / Malaysia / Taiwan / Thailand" Value="10"></asp:ListItem>
+                        <asp:ListItem Text="Japan" Value="11"></asp:ListItem>
+                        <asp:ListItem Text="Mexico City" Value="12"></asp:ListItem>
+                        <asp:ListItem Text="Middle East" Value="13"></asp:ListItem>
+                        <asp:ListItem Text="New Zealand" Value="14"></asp:ListItem>
+                        <asp:ListItem Text="Papua New Guinea" Value="15"></asp:ListItem>
+                        <asp:ListItem Text="Philippines: Luzon" Value="16"></asp:ListItem>
+                        <asp:ListItem Text="Philippines: Metro Manila" Value="17"></asp:ListItem>
+                        <asp:ListItem Text="Philippines: Visayas" Value="18"></asp:ListItem>
+                        <asp:ListItem Text="Philippines: Mindanao" Value="19"></asp:ListItem>
+                        <asp:ListItem Text="South Korea" Value="20"></asp:ListItem>
+                        <asp:ListItem Text="USA" Value="21"></asp:ListItem>
+                        <asp:ListItem Text="South America" Value="22"></asp:ListItem>
+                        <asp:ListItem Text="Vietname" Value="23"></asp:ListItem>
+                    </asp:DropDownList>
 
                     <!-- DELIVERY RATES (pop-up)
                     <a onclick="javascript:window.open ('popDelivery.asp','help','scrollbars=yes,
@@ -88,13 +89,13 @@
             </tr>
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Contact Number</td>
-                <td>&nbsp;<input type="text" name="" value></td>
+                <td>&nbsp;<asp:TextBox ID="txtMailingNum" runat="server"></asp:TextBox></td>
             </tr>
 
 
         </table>
         <a href="info_mail_confirm.html">
-            <button class="btn btn-primary content-form_next">Next</button>
+            <asp:Button class="btn btn-primary content-form_next" runat="server">Next</asp:button>
         </a>
     </div>
 </asp:Content>
