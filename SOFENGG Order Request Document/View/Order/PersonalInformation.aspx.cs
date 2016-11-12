@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Web;
 using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Model;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
@@ -134,6 +135,10 @@ namespace SOFENGG_Order_Request_Document.View.Order
             PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
             if (presenter.AddStudentInfo())
             {
+                HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
+                studentInfoCookie["Id"] = presenter.GetMyStudentInfoId() + "";
+                studentInfoCookie.Expires = DateTime.Now.AddMinutes(60.0);
+                Response.Cookies.Add(studentInfoCookie);
                 Response.Redirect("~/View/Order/InfoAcadDe.aspx");
             }
             
