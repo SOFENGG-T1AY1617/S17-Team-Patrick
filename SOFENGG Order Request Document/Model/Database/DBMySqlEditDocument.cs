@@ -33,7 +33,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                     cmd.Parameters.AddWithValue("@" + Document.ColMaxCopy, Document.MaxCopy);
                     cmd.Parameters.AddWithValue("@" + Document.ColIsAvailable, Document.IsAvailable ? 1 : 0);
                     cmd.Parameters.AddWithValue("@" + Document.ColForUndergraduate, Document.IsForUndergraduate ? 1 : 0);
-                    cmd.Parameters.AddWithValue("@" + Document.ColForGraduate, Document.IsForUndergraduate ? 1 : 0);
+                    cmd.Parameters.AddWithValue("@" + Document.ColForGraduate, Document.IsForGraduate ? 1 : 0);
                     cmd.Prepare();
 
                     return cmd.ExecuteNonQuery() > 0;
