@@ -12,7 +12,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
 
         protected override void SetQuery()
         {
-            Cmd.CommandText = string.Format("SELECT * FROM {0} WHERE idStudent = '" + studentInfo.IdNumber, MailingInfo.Table);
+            Cmd.CommandText = string.Format("SELECT * FROM {0} WHERE idStudent = '" + studentInfo.StudentInfoId, MailingInfo.Table);
             Cmd.Prepare();
             throw new NotImplementedException();
         }

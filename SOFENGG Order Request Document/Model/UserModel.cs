@@ -8,17 +8,35 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 {
     public class UserModel : IUserModel
     {
+        public bool AddStudentInfo(StudentInfo studentInfo)
+        {
+            var db = new DBMySqlAddPersonalInformation(studentInfo);
+            return db.ExecuteQuery();
+        }
 
-        public StudentInfo GetStudentInfo()
+        public bool AddStudentDegree(StudentDegree studentDegree)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AddMailingInfo(MailingInfo mailingInfo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public StudentInfo GetMyStudentInfo()
         {
             var db = new DBMySqlGetStudentInfo();
             db.ExecuteQuery();
 
-            db.studentInfo.StudentDegreeList = GetStudentDegree(db.studentInfo.IdNumber);
-            db.studentInfo.MailingInfoList = GetMailingInfo(db.studentInfo.IdNumber);
+            db.studentInfo[db.studentInfo.Length - 1].StudentDegreeList = null;
+            db.studentInfo[db.studentInfo.Length - 1].MailingInfoList = null;
 
-            return db.studentInfo;
+            return db.studentInfo[db.studentInfo.Length-1];
         }
+
+
+
 
         public StudentDegree[] GetStudentDegree(int studentId)
         {

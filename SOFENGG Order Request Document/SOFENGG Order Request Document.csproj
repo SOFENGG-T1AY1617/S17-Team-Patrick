@@ -70,6 +70,7 @@
     <Content Include="Content\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap.min.css.map" />
+    <Content Include="Script\Day.js" />
     <Content Include="Script\jquery.min.map" />
     <Content Include="Script\jquery.slim.min.map" />
     <Content Include="View\Order\Order.Master" />
@@ -135,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Database\DBMySqlAddMailingInfo.cs" />
+    <Compile Include="Model\Database\DBMySqlAddPersonalInformation.cs" />
     <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Model\Database\Interface\DBMySqlSelectConnection.cs" />
     <Compile Include="Model\Database\Interface\IDBConnection.cs" />
     <Compile Include="Model\Database\Interface\IDBSelectConnection.cs" />
+    <Compile Include="Model\Day.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\Degree.cs" />
     <Compile Include="Model\DeliveryArea.cs" />
@@ -156,6 +159,7 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Presenter\PersonalInformationPresenter.cs" />
     <Compile Include="View\Order\DocumentList.aspx.cs">
       <DependentUpon>DocumentList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,7 +237,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Presenter\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

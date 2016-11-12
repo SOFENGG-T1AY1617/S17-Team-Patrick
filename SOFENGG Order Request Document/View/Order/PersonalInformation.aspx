@@ -19,6 +19,7 @@
     </div>
     <div class="col-xs-9">
         <h5 class="content-header">Personal Information</h5>
+        <form runat="server">
         <table border=1 class="content-form">
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>
@@ -39,9 +40,9 @@
                 <td class="content-form_label">Gender</td>
                 <td>
                     <asp:RadioButtonList ID="optGender" runat="server" 
-                            RepeatDirection="Vertical" RepeatLayout="Table">
-                            <asp:ListItem Text="Male" Value="M"></asp:ListItem>
-                            <asp:ListItem Text="Female" Value="F"></asp:ListItem>
+                            RepeatDirection="Vertical" RepeatLayout="Flow">
+                            <asp:ListItem Text="Male" Value="M"  style="padding: 7px;"></asp:ListItem>
+                            <asp:ListItem Text="Female" Value="F"  style="padding: 7px;"></asp:ListItem>
                     </asp:RadioButtonList>
                 </td>
             </tr>
@@ -50,7 +51,12 @@
                 <td class="content-form_label">Birth date</td>
                 <td>
                     &nbsp;
-                    <asp:DropDownList ID="ddlBirthMonth" runat="server" Width="200px">
+                    <asp:DropDownList ID="ddlBirthYear" runat="server" Width="80px" onchange = "PopulateDays()" />
+                    <asp:DropDownList ID="ddlBirthMonth" runat="server" Width="100px" onchange = "PopulateDays()" />
+                    <asp:DropDownList ID="ddlBirthDay" runat="server" Width="50px" />
+                    
+                    <!--
+                    <asp:DropDownList ID="ddlBirthMonth1" runat="server" Width="200px">
                         <asp:ListItem Text="Select Month" Value="0"></asp:ListItem>
                         <asp:ListItem Text="January" Value="1"></asp:ListItem>
                         <asp:ListItem Text="February" Value="2"></asp:ListItem>
@@ -65,10 +71,10 @@
                         <asp:ListItem Text="November" Value="11"></asp:ListItem>
                         <asp:ListItem Text="December" Value="12"></asp:ListItem>
                     </asp:DropDownList>
-                    <asp:DropDownList ID="ddlBirthDay" runat="server" Width="200px">
+                    <asp:DropDownList ID="ddlBirthDay1" runat="server" Width="200px">
                     </asp:dropdownlist>
-                    <asp:DropDownList ID="ddlBirthYear" runat="server" Width="200px">
-                    </asp:dropdownlist>
+                    <asp:DropDownList ID="ddlBirthYear1" runat="server" Width="200px">
+                    </asp:dropdownlist> -->
                 </td>
             </tr>
             <tr>
@@ -77,7 +83,7 @@
             </tr>
             <tr>
                 <td class="content-form_label">Current Address</td>
-                <td>&nbsp;<asp:TextBox ID="txtCurrentAddress" runat="server" TextMode="MultiLine"></asp:TextBox></td>
+                <td>&nbsp;<asp:TextBox ID="txtCurrentAddress" runat="server" TextMode="MultiLine"  Columns="40" Rows="5"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">Phone Number</td>
@@ -96,10 +102,12 @@
                 <td>&nbsp;<asp:TextBox ID="txtBirthplace" runat="server"></asp:TextBox></td>
             </tr>
         </table>
-        <a class="btn btn-primary content-form_next" runat="server" href="/info_acad_de.html">Next</a>
+            
+            <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitPersonalInformation_Click"/>
+        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-
     <script src="/Script/personal_information.js"></script>
+    <script src="/Script/Day.js"></script>
 </asp:Content>

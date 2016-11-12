@@ -14,7 +14,7 @@ namespace SOFENGG_Order_Request_Document.Model
     public class StudentInfo
     {
         public const string Table = "studentinfo";
-        public const string ColId = "idnumber";
+        public const string ColStudentInfoId = "studentInfoId";
         public const string ColLastName = "lastName";
         public const string ColFirstName = "firstName";
         public const string ColMiddleName = "middleName";
@@ -28,7 +28,7 @@ namespace SOFENGG_Order_Request_Document.Model
         public const string ColPlaceOfBirth = "placeOfBirth";
 
 
-        public int IdNumber { get; set; }
+        public int StudentInfoId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -42,6 +42,7 @@ namespace SOFENGG_Order_Request_Document.Model
         public string PlaceOfBirth { get; set; }
         public StudentDegree[] StudentDegreeList { get; set; }
         public MailingInfo[] MailingInfoList { get; set; }
+
 
     }
 }

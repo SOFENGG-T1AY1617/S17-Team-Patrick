@@ -8,7 +8,10 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     interface IUserModel
     {
-        StudentInfo GetStudentInfo();
+        bool AddStudentInfo(StudentInfo studentInfo);
+        bool AddStudentDegree(StudentDegree studentDegree);
+        bool AddMailingInfo(MailingInfo mailingInfo);
+        StudentInfo GetMyStudentInfo();
         StudentDegree[] GetStudentDegree(int studentId);
         MailingInfo[] GetMailingInfo(int studentId);
 
