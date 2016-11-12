@@ -190,7 +190,7 @@ DROP TABLE IF EXISTS `mailinginfo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mailinginfo` (
   `mailingId` int(11) NOT NULL AUTO_INCREMENT,
-  `idStudent` int(11) NOT NULL,
+  `studentInfoID` int(11) NOT NULL,
   `mailingAddress` varchar(200) NOT NULL,
   `zipCode` int(11) NOT NULL,
   `deliveryAreaId` int(11) NOT NULL,
@@ -425,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-12 21:51:15
+-- Dump completed on 2016-11-12 22:00:58
