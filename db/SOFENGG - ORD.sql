@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `ord` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `ord`;
--- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: localhost    Database: ord
+-- Host: 127.0.0.1    Database: ord
 -- ------------------------------------------------------
--- Server version	5.7.16-log
+-- Server version	5.7.14-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,8 +29,18 @@ CREATE TABLE `campus` (
   `campusName` varchar(45) NOT NULL,
   PRIMARY KEY (`campusId`),
   UNIQUE KEY `campusId_UNIQUE` (`campusId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `campus`
+--
+
+LOCK TABLES `campus` WRITE;
+/*!40000 ALTER TABLE `campus` DISABLE KEYS */;
+INSERT INTO `campus` VALUES (1,'DLSU Manila'),(2,'DLSU STC');
+/*!40000 ALTER TABLE `campus` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `course`
@@ -49,6 +59,15 @@ CREATE TABLE `course` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `course`
+--
+
+LOCK TABLES `course` WRITE;
+/*!40000 ALTER TABLE `course` DISABLE KEYS */;
+/*!40000 ALTER TABLE `course` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `degree`
 --
 
@@ -63,8 +82,18 @@ CREATE TABLE `degree` (
   `level` char(1) NOT NULL,
   PRIMARY KEY (`degreeid`,`degreeAbbrv`,`campusOfferedId`),
   UNIQUE KEY `degreeid_UNIQUE` (`degreeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `degree`
+--
+
+LOCK TABLES `degree` WRITE;
+/*!40000 ALTER TABLE `degree` DISABLE KEYS */;
+INSERT INTO `degree` VALUES (1,'BSCS-ST',1,'Bachelor of Science in Computer Science with specialization in Software Technology','U'),(2,'BSCS-NE',1,'Bachelor of Science in Computer Science with specialization in Network Engineering','U'),(3,'BSCS-CSE',1,'Bachelor of Science in Computer Science, Major in Computer Systems Engineering','U'),(4,'BSCS-IST',1,'Bachelor of Science in Computer Science with specialization in Instructional Systems Technology','U'),(5,'BSIS',1,'Bachelor of Science in Information System','U'),(6,'BSIT',1,'Bachelor of Science in Information Technology','U'),(7,'BEED-ECED',1,'Bachelor of Elementary Education Major in Early Childhood Eduction ','U'),(8,'BSED-ENGL',1,'Bachelor of Secondary Education Major in English','U'),(9,'BSED-BIO',1,'Bachelor of Secondary Education Major in Biology ','U'),(10,'BSED-CHY',1,'Bachelor of Secondary Education Major in Chemistry ','U'),(11,'BSED-MTH',1,'Bachelor of Secondary Education Major in Mathematics','U'),(12,'BSED-MTH-C',1,'Bachelor of Secondary Education Major in Mathematics with specialization in Computer Applications','U'),(13,'BSED-PHY',1,'Bachelor of Secondary Education Major in Physics','U'),(14,'BSED-PHYSC',1,'Bachelor of Secondary Education Major in Physical Sciences','U'),(15,'ABBHS-OSSD',1,'Bachelor of Arts in Behavioral Sciences major in Organizational and Social Systems Development','U'),(16,'AB-DVS',1,'Bachelor of Arts in Development Studies','U'),(17,'AB-HIS',1,'Bachelor of Arts in History','U'),(18,'ABIS-AMS',1,'Bachelor of Arts in International Studies Major in American Studies','U'),(19,'ABIS-EUS',1,'Bachelor of Arts in International Studies Major in European Studies','U'),(20,'ABIS-JPS',1,'Bachelor of Arts in International Studies Major in Japanese Studies','U'),(21,'AB-ISC',1,'Bachelor of Arts in International Studies Major in Chinese Studies','U'),(22,'AB-LIT',1,'Bachelor of Arts in Literature','U'),(23,'AB-PHS',1,'Bachelor of Arts in Philippine Studies Major in Filipino in Mass Media','U'),(24,'AB-PLS',1,'Bachelor of Arts in Political Science','U'),(25,'AB-CA',1,'Bachelor of Arts in Communication Arts','U'),(26,'AB-OC',1,'Bachelor of Arts in Organizational Communication','U'),(27,'AB-PHL',1,'Bachelor of Arts Major in Philosophy','U'),(28,'AB-PSY',1,'Bachelor of Arts in Psychology','U'),(29,'BSPSY',1,'Bachelor of Science in Psychology','U'),(30,'AB-SA',1,'Bachelor of Arts in Southeast Asian Studies','U'),(31,'BSADV ',1,'Bachelor of Science in Advertising Management','U'),(32,'BSAPC',1,'Bachelor of Science in Applied Corporate Management','U'),(33,'BSA',1,'Bachelor of Science in Accountancy','U'),(34,'BSFIN',1,'Bachelor of Science in Management of Financial Institutions','U'),(35,'BSLGL',1,'Bachelor of Science in Legal Management','U'),(36,'BSMGT',1,'Bachelor of Science in Business Management','U'),(37,'BSMKT',1,'Bachelor of Science in Marketing Management','U'),(38,'BSBCH',1,'Bachelor of Science in Biochemistry','U'),(39,'BSBIO',1,'Bachelor of Science in Biology','U'),(40,'BSCHY',1,'Bachelor of Science in Human Biology','U'),(41,'BSMTH-BAP',1,'Bachelor of Science in Mathematics with specialization in Business Application','U'),(42,'BSSTT',1,'Bachelor of Science in Statistics Major in Actuarial Science','U'),(43,'BSPHY-MS',1,'Bachelor of Science in Physis with specialization in Materials Science','U'),(44,'BSPHY-MI',1,'Bachelor of Science in Physics with specialization in Medical Instrumentation','U'),(45,'BPMPH',1,'Bachelor of Science in Premed Physics','U'),(46,'BSMTH-CAP',1,'Bachelor of Science in Mathematics with specialization in Computer Application','U'),(47,'BSCHE',1,'Bachelor of Science in Chemical Engineering','U'),(48,'BSCE-CTM',1,'Bachelor of Science in Civil Engineering with specialization in Construction Technology','U'),(49,'BSCE-HWR',1,'Bachelor of Science in Civil Engineering with specialization in Hydraulics and Water Resources','U'),(50,'BSCE-STE',1,'Bachelor of Science in Civil Engineering with specialization in Structural Engineering','U'),(51,'BSCE-TRE',1,'Bachelor of Science in Civil Engineering with specialization in Transporation Engineering','U'),(52,'BSCPE',1,'Bachelor of Science in Computer Engineering','U'),(53,'BSECE',1,'Bachelor of Science in Electronics Engineering','U'),(54,'BSIE',1,'Bachelor of Science in Industrial Engineering','U'),(55,'BSIME-IT',1,'BS in Industrial Management Engineering Minor in Information Technology','U'),(56,'BSIME-SM',1,'BS in Industrial Management Engineering Minor in Service Management','U'),(57,'BSMEM-MRE',1,'BS in Manufacturing Engineering and Management with specialization in Mechatronics and Robotics','U'),(58,'BSMEM-BME',1,'BS in Manufacturing Engineering and Management with specialization in Biomedical Engineering','U'),(59,'BSME',1,'BS in Mechanical Engineering w/ concentration in Mechatronics Engineering ','U'),(60,'BSENT',1,'Bachelor of Science in Entrepreneurship','U'),(61,'BSIBS',1,'Bachelor of Science in Interdisciplinary Business Studies','U'),(62,'BSAEC-IE',1,'BS in Applied Economics Major in Industrial Economics','U'),(63,'BSAE-I/ACC',1,'BS in Applied Economics major in Industrial Economics and BS in Accountancy ','U'),(64,'BSAE-I/ADV',1,'BS in Applied Economics major in Industrial Economics and BS in Advertising Management','U'),(65,'BSAE-I/APC',1,'BS in Applied Economics major in Industrial Economics and BS in Applied Corporate Management','U'),(66,'BSAE-I/MGT',1,'BS in Applied Economics major in Industrial Economics and BS in Business Management','U'),(67,'BSAE-I/LGL',1,'BS in Applied Economics major in Industrial Economics and BS in Legal Management','U'),(68,'BSAE-I/FIN',1,'BS in Applied Economics major in Industrial Economics and BS in Management of Financial Institutions','U'),(69,'BSAE-I/MKT',1,'BS in Applied Economics major in Industrial Economics and BS in Market Management','U'),(70,'BSAE-FE',1,'BS in Applied Economics Major in Financial Economics','U'),(71,'BSAE-F/ACC',1,'BS in Applied Economics Major in Financial Economics and BS in Accountancy','U'),(72,'BSAE-F/ADV',1,'BS in Applied Economics Major in Financial Economics and BS in Advertising Management','U'),(73,'BSAE-F/APC',1,'BS in Applied Economics Major in Financial Economics and BS in Applied Corporate Management','U'),(74,'BSAE-F/MGT',1,'BS in Applied Economics Major in Financial Economics and BS in Business Management','U'),(75,'BSAE-F/LGL',1,'BS in Applied Economics Major in Financial Economics and BS in Legal Management','U'),(76,'BSAE-F/FIN',1,'BS in Applied Economics Major in Financial Economics and BS in Management of Financial Institutions','U'),(77,'BSAE-F/MKT',1,'BS in Applied Economics Major in Financial Economics and BS in Marketing Management','U'),(78,'ABECO',1,'Bachelor of Arts Major in Economics','U'),(79,'AB-ECO/BSA',1,'AB Major in Economics and BS in Accountancy','U'),(80,'AB-ECO/ADV',1,'AB Major in Economics and BS in Advertising Management','U'),(81,'AB-ECO/APC',1,'AB Major in Economics and BS in Applied Corporate Management','U'),(82,'AB-ECO/MGT',1,'AB Major in Economics and BS in Business Management','U'),(83,'AB-ECO/LGL',1,'AB Major in Economics and BS in Legal Management','U'),(84,'AB-ECO/FIN',1,'AB Major in Economics and BS in Management of Financial Institutions','U'),(85,'AB-ECO/MKT',1,'AB Major in Economics and BS in Marketing Management','U'),(86,'BSCS-ST-GD',2,'BS in Computer Science with specialization in Software Technology minor in Game Development','U'),(87,'BSCS-NE',2,'BS in Computer Science with specialiaztion in Network Engineering','U'),(88,'BSCS-CSE',2,'BS in Computer Science Major in Computer Systems Engineering','U'),(89,'BSIS',2,'BS in Information System','U'),(90,'BSIT',2,'BS in Information Technology','U'),(91,'BEED-ECED',2,'Bachelor of Elementary Education Major in Early Childhood Eduction ','U'),(92,'BSED-ENGL',2,'Bachelor of Secondary Education Major in English','U'),(93,'BSED-BIO',2,'Bachelor of Secondary Education Major in Biology ','U'),(94,'BSED-CHY',2,'Bachelor of Secondary Education Major in Chemistry ','U'),(95,'BSED-MTH',2,'Bachelor of Secondary Education Major in Mathematics','U'),(96,'BSED-MTH-C',2,'Bachelor of Secondary Education Major in Mathematics with specialization in Computer Applications','U'),(97,'BSED-PHY',2,'Bachelor of Secondary Education Major in Physics','U'),(98,'BSED-PHYSC',2,'Bachelor of Secondary Education Major in Physical Sciences','U'),(99,'ABBHS-OSSD',2,'Bachelor of Arts in Behavioral Sciences major in Organizational and Social Systems Development','U'),(100,'AB-DVS',2,'Bachelor of Arts in Development Studies','U'),(101,'AB-HIS',2,'Bachelor of Arts in History','U'),(102,'ABIS-AMS',2,'Bachelor of Arts in International Studies Major in American Studies','U'),(103,'ABIS-EUS',2,'Bachelor of Arts in International Studies Major in European Studies','U'),(104,'ABIS-JPS',2,'Bachelor of Arts in International Studies Major in Japanese Studies','U'),(105,'AB-ISC',2,'Bachelor of Arts in International Studies Major in Chinese Studies','U'),(106,'AB-LIT',2,'Bachelor of Arts in Literature','U'),(107,'AB-PHS',2,'Bachelor of Arts in Philippine Studies Major in Filipino in Mass Media','U'),(108,'AB-PLS',2,'Bachelor of Arts in Political Science','U'),(109,'AB-CA',2,'Bachelor of Arts in Communication Arts','U'),(110,'AB-OC',2,'Bachelor of Arts in Organizational Communication','U'),(111,'AB-PHL',2,'Bachelor of Arts Major in Philosophy','U'),(112,'AB-PSY',2,'Bachelor of Arts in Psychology','U'),(113,'BSPSY',2,'Bachelor of Science in Psychology','U'),(114,'AB-SA',2,'Bachelor of Arts in Southeast Asian Studies','U'),(115,'BSADV ',2,'Bachelor of Science in Advertising Management','U'),(116,'BSAPC',2,'Bachelor of Science in Applied Corporate Management','U'),(117,'BSA',2,'Bachelor of Science in Accountancy','U'),(118,'BSFIN',2,'Bachelor of Science in Management of Financial Institutions','U'),(119,'BSLGL',2,'Bachelor of Science in Legal Management','U'),(120,'BSMGT',2,'Bachelor of Science in Business Management','U'),(121,'BSMKT',2,'Bachelor of Science in Marketing Management','U'),(122,'BSBCH',2,'Bachelor of Science in Biochemistry','U'),(123,'BSBIO',2,'Bachelor of Science in Biology','U'),(124,'BSCHY',2,'Bachelor of Science in Human Biology','U'),(125,'BSMTH-BAP',2,'Bachelor of Science in Mathematics with specialization in Business Application','U'),(126,'BSSTT',2,'Bachelor of Science in Statistics Major in Actuarial Science','U'),(127,'BSPHY-MS',2,'Bachelor of Science in Physis with specialization in Materials Science','U'),(128,'BSPHY-MI',2,'Bachelor of Science in Physics with specialization in Medical Instrumentation','U'),(129,'BPMPH',2,'Bachelor of Science in Premed Physics','U'),(130,'BSMTH-CAP',2,'Bachelor of Science in Mathematics with specialization in Computer Application','U'),(131,'BSCHE',2,'Bachelor of Science in Chemical Engineering','U'),(132,'BSCE-CTM',2,'Bachelor of Science in Civil Engineering with specialization in Construction Technology','U'),(133,'BSCE-HWR',2,'Bachelor of Science in Civil Engineering with specialization in Hydraulics and Water Resources','U'),(134,'BSCE-STE',2,'Bachelor of Science in Civil Engineering with specialization in Structural Engineering','U'),(135,'BSCE-TRE',2,'Bachelor of Science in Civil Engineering with specialization in Transporation Engineering','U'),(136,'BSCPE',2,'Bachelor of Science in Computer Engineering','U'),(137,'BSECE',2,'Bachelor of Science in Electronics Engineering','U'),(138,'BSIE',2,'Bachelor of Science in Industrial Engineering','U'),(139,'BSIME-IT',2,'BS in Industrial Management Engineering Minor in Information Technology','U'),(140,'BSIME-SM',2,'BS in Industrial Management Engineering Minor in Service Management','U'),(141,'BSMEM-MRE',2,'BS in Manufacturing Engineering and Management with specialization in Mechatronics and Robotics','U'),(142,'BSMEM-BME',2,'BS in Manufacturing Engineering and Management with specialization in Biomedical Engineering','U'),(143,'BSME',2,'BS in Mechanical Engineering w/ concentration in Mechatronics Engineering ','U'),(144,'BSENT',2,'Bachelor of Science in Entrepreneurship','U'),(145,'BSIBS',2,'Bachelor of Science in Interdisciplinary Business Studies','U'),(146,'BSAEC-IE',2,'BS in Applied Economics Major in Industrial Economics','U'),(147,'BSAE-I/ACC',2,'BS in Applied Economics major in Industrial Economics and BS in Accountancy ','U'),(148,'BSAE-I/ADV',2,'BS in Applied Economics major in Industrial Economics and BS in Advertising Management','U'),(149,'BSAE-I/APC',2,'BS in Applied Economics major in Industrial Economics and BS in Applied Corporate Management','U'),(150,'BSAE-I/MGT',2,'BS in Applied Economics major in Industrial Economics and BS in Business Management','U'),(151,'BSAE-I/LGL',2,'BS in Applied Economics major in Industrial Economics and BS in Legal Management','U'),(152,'BSAE-I/FIN',2,'BS in Applied Economics major in Industrial Economics and BS in Management of Financial Institutions','U'),(153,'BSAE-I/MKT',2,'BS in Applied Economics major in Industrial Economics and BS in Market Management','U'),(154,'BSAE-FE',2,'BS in Applied Economics Major in Financial Economics','U'),(155,'BSAE-F/ACC',2,'BS in Applied Economics Major in Financial Economics and BS in Accountancy','U'),(156,'BSAE-F/ADV',2,'BS in Applied Economics Major in Financial Economics and BS in Advertising Management','U'),(157,'BSAE-F/APC',2,'BS in Applied Economics Major in Financial Economics and BS in Applied Corporate Management','U'),(158,'BSAE-F/MGT',2,'BS in Applied Economics Major in Financial Economics and BS in Business Management','U'),(159,'BSAE-F/LGL',2,'BS in Applied Economics Major in Financial Economics and BS in Legal Management','U'),(160,'BSAE-F/FIN',2,'BS in Applied Economics Major in Financial Economics and BS in Management of Financial Institutions','U'),(161,'BSAE-F/MKT',2,'BS in Applied Economics Major in Financial Economics and BS in Marketing Management','U'),(162,'ABECO',2,'Bachelor of Arts Major in Economics','U'),(163,'AB-ECO/BSA',2,'AB Major in Economics and BS in Accountancy','U'),(164,'AB-ECO/ADV',2,'AB Major in Economics and BS in Advertising Management','U'),(165,'AB-ECO/APC',2,'AB Major in Economics and BS in Applied Corporate Management','U'),(166,'AB-ECO/MGT',2,'AB Major in Economics and BS in Business Management','U'),(167,'AB-ECO/LGL',2,'AB Major in Economics and BS in Legal Management','U'),(168,'AB-ECO/FIN',2,'AB Major in Economics and BS in Management of Financial Institutions','U'),(169,'AB-ECO/MKT',2,'AB Major in Economics and BS in Marketing Management','U');
+/*!40000 ALTER TABLE `degree` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `deliveryarea`
@@ -82,6 +111,15 @@ CREATE TABLE `deliveryarea` (
   UNIQUE KEY `deliveryAreaId_UNIQUE` (`deliveryAreaId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `deliveryarea`
+--
+
+LOCK TABLES `deliveryarea` WRITE;
+/*!40000 ALTER TABLE `deliveryarea` DISABLE KEYS */;
+/*!40000 ALTER TABLE `deliveryarea` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `document`
@@ -107,6 +145,15 @@ CREATE TABLE `document` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `document`
+--
+
+LOCK TABLES `document` WRITE;
+/*!40000 ALTER TABLE `document` DISABLE KEYS */;
+/*!40000 ALTER TABLE `document` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `documentcategory`
 --
 
@@ -120,6 +167,15 @@ CREATE TABLE `documentcategory` (
   UNIQUE KEY `documentCategoryId_UNIQUE` (`categoryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `documentcategory`
+--
+
+LOCK TABLES `documentcategory` WRITE;
+/*!40000 ALTER TABLE `documentcategory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `documentcategory` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `mailinginfo`
@@ -139,6 +195,15 @@ CREATE TABLE `mailinginfo` (
   UNIQUE KEY `mailingId_UNIQUE` (`mailingId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mailinginfo`
+--
+
+LOCK TABLES `mailinginfo` WRITE;
+/*!40000 ALTER TABLE `mailinginfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mailinginfo` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `order`
@@ -161,6 +226,15 @@ CREATE TABLE `order` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ordercoursedesc`
 --
 
@@ -175,6 +249,15 @@ CREATE TABLE `ordercoursedesc` (
   UNIQUE KEY `orderCourseDescId_UNIQUE` (`orderCourseDescId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ordercoursedesc`
+--
+
+LOCK TABLES `ordercoursedesc` WRITE;
+/*!40000 ALTER TABLE `ordercoursedesc` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ordercoursedesc` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `orderlist`
@@ -199,6 +282,15 @@ CREATE TABLE `orderlist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `orderlist`
+--
+
+LOCK TABLES `orderlist` WRITE;
+/*!40000 ALTER TABLE `orderlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderlist` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `orderstatus`
 --
 
@@ -217,6 +309,15 @@ CREATE TABLE `orderstatus` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `orderstatus`
+--
+
+LOCK TABLES `orderstatus` WRITE;
+/*!40000 ALTER TABLE `orderstatus` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderstatus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `personel`
 --
 
@@ -231,6 +332,15 @@ CREATE TABLE `personel` (
   UNIQUE KEY `personelId_UNIQUE` (`personelId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `personel`
+--
+
+LOCK TABLES `personel` WRITE;
+/*!40000 ALTER TABLE `personel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `personel` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `studentdegree`
@@ -250,6 +360,15 @@ CREATE TABLE `studentdegree` (
   UNIQUE KEY `studentDegreeId_UNIQUE` (`studentDegreeId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `studentdegree`
+--
+
+LOCK TABLES `studentdegree` WRITE;
+/*!40000 ALTER TABLE `studentdegree` DISABLE KEYS */;
+/*!40000 ALTER TABLE `studentdegree` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `studentinfo`
@@ -275,6 +394,15 @@ CREATE TABLE `studentinfo` (
   UNIQUE KEY `studentInfoId_UNIQUE` (`studentInfoId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `studentinfo`
+--
+
+LOCK TABLES `studentinfo` WRITE;
+/*!40000 ALTER TABLE `studentinfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `studentinfo` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -285,4 +413,4 @@ CREATE TABLE `studentinfo` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-09 21:07:17
+-- Dump completed on 2016-11-12 17:55:14
