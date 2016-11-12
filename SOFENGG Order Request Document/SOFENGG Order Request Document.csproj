@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,6 +71,7 @@
     <Content Include="Content\css\bootstrap.min.css.map" />
     <Content Include="Script\jquery.min.map" />
     <Content Include="Script\jquery.slim.min.map" />
+    <Content Include="View\Admin\ViewOrderInformation.aspx" />
     <Content Include="View\Order\Order.Master" />
     <Content Include="View\Admin\Admin.Master" />
     <None Include="Web.Debug.config">
@@ -159,6 +161,13 @@
     </Compile>
     <Compile Include="View\Admin\Pending.aspx.designer.cs">
       <DependentUpon>Pending.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ViewOrderInformation.aspx.cs">
+      <DependentUpon>ViewOrderInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\ViewOrderInformation.aspx.designer.cs">
+      <DependentUpon>ViewOrderInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Order\DocumentList.aspx.cs">
       <DependentUpon>DocumentList.aspx</DependentUpon>
