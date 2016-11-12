@@ -205,6 +205,7 @@
     <Compile Include="View\Order\InfoTransaction.aspx.designer.cs">
       <DependentUpon>InfoTransaction.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Order\Interface\IInfoAcadDeView.cs" />
     <Compile Include="View\Order\Order.Master.cs">
       <DependentUpon>Order.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

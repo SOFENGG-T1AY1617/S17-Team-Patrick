@@ -7,9 +7,9 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     public enum AdmissionEnum
     {
-        Regular,
-        Transferee,
-        Graduate
+        Regular = 0,
+        Transferee = 1,
+        Graduate = 2
     }
 
     public class StudentDegree
