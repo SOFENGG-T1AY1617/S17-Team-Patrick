@@ -1,4 +1,5 @@
 $("#add_button").on('click', function () {
+    $('.popup-background').height($(document).height());
     $(".popup-background").css("display", "block");
     event.preventDefault();
     return false;
