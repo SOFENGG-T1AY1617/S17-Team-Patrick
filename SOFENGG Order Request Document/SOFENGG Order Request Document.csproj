@@ -165,6 +165,7 @@
     <Compile Include="Model\Database\Interface\IDBSelectConnection.cs" />
     <Compile Include="Model\Database\Interface\DBMySqlConnection.cs" />
     <Compile Include="Model\Document.cs" />
+    <Compile Include="Model\IDocumentList.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderItem.cs" />
     <Compile Include="Model\OrderItemWithTerm.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Model\IUserModel.cs" />
     <Compile Include="Presenter\PersonalInformationPresenter.cs" />
     <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
+    <Compile Include="Presenter\DocumentListPresenter.cs" />
     <Compile Include="View\Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -224,6 +226,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="View\Order\IDocumentListView.cs" />
     <Compile Include="View\Order\InfoAcadConfirm.aspx.cs">
       <DependentUpon>InfoAcadConfirm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
