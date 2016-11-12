@@ -211,36 +211,6 @@ INSERT INTO `mailinginfo` VALUES (1,11302968,'Blk 22 Lot 22 Corndog',1747,1,'092
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
---
-
-DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order` (
-  `referenceNo` int(11) NOT NULL AUTO_INCREMENT,
-  `transactionDate` datetime NOT NULL,
-  `dateDue` date NOT NULL,
-  `courierBillNumber` int(11) DEFAULT NULL,
-  `dateReleased` date DEFAULT NULL,
-  `newDateDue` date DEFAULT NULL,
-  `reason` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`referenceNo`),
-  UNIQUE KEY `referenceNo_UNIQUE` (`referenceNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order`
---
-
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (1,'2016-11-12 00:00:00','2016-11-15',91111,NULL,NULL,NULL),(2,'2016-11-10 00:00:00','2016-11-13',91111,NULL,NULL,NULL),(3,'2016-11-11 00:00:00','2016-11-12',91111,'2016-11-13','2016-11-13','Typo'),(4,'2016-11-09 00:00:00','2016-11-15',91111,'2016-11-16','2016-11-20',NULL),(5,'2016-11-12 00:00:00','2016-11-12',8700,'2016-11-12',NULL,NULL);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `ordercoursedesc`
 --
 
@@ -267,13 +237,13 @@ INSERT INTO `ordercoursedesc` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,5,5),(6,
 UNLOCK TABLES;
 
 --
--- Table structure for table `orderlist`
+-- Table structure for table `orderitem`
 --
 
-DROP TABLE IF EXISTS `orderlist`;
+DROP TABLE IF EXISTS `orderitem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orderlist` (
+CREATE TABLE `orderitem` (
   `dtsNo` int(11) NOT NULL AUTO_INCREMENT,
   `referenceNo` int(11) NOT NULL,
   `documentId` int(11) NOT NULL,
@@ -289,12 +259,42 @@ CREATE TABLE `orderlist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `orderitem`
+--
+
+LOCK TABLES `orderitem` WRITE;
+/*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
+INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016),(2,4,2,2,1,1,1,2,2015),(3,5,3,3,2,2,0,3,2014),(4,2,5,4,10,0,0,1,2017),(5,3,4,1,999,2,1,1,2014);
+/*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderlist`
+--
+
+DROP TABLE IF EXISTS `orderlist`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orderlist` (
+  `referenceNo` int(11) NOT NULL AUTO_INCREMENT,
+  `transactionDate` datetime NOT NULL,
+  `dateDue` date NOT NULL,
+  `courierBillNumber` int(11) DEFAULT NULL,
+  `dateReleased` date DEFAULT NULL,
+  `newDateDue` date DEFAULT NULL,
+  `reason` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`referenceNo`),
+  UNIQUE KEY `referenceNo_UNIQUE` (`referenceNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `orderlist`
 --
 
 LOCK TABLES `orderlist` WRITE;
 /*!40000 ALTER TABLE `orderlist` DISABLE KEYS */;
-INSERT INTO `orderlist` VALUES (1,1,1,1,1,0,1,1,2016),(2,4,2,2,1,1,1,2,2015),(3,5,3,3,2,2,0,3,2014),(4,2,5,4,10,0,0,1,2017),(5,3,4,1,999,2,1,1,2014);
+INSERT INTO `orderlist` VALUES (1,'2016-11-12 00:00:00','2016-11-15',91111,NULL,NULL,NULL),(2,'2016-11-10 00:00:00','2016-11-13',91111,NULL,NULL,NULL),(3,'2016-11-11 00:00:00','2016-11-12',91111,'2016-11-13','2016-11-13','Typo'),(4,'2016-11-09 00:00:00','2016-11-15',91111,'2016-11-16','2016-11-20',NULL),(5,'2016-11-12 00:00:00','2016-11-12',8700,'2016-11-12',NULL,NULL);
 /*!40000 ALTER TABLE `orderlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-12 21:35:51
+-- Dump completed on 2016-11-12 21:51:15
