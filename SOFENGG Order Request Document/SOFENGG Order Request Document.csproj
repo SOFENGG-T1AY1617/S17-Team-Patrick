@@ -163,7 +163,6 @@
     <Compile Include="Model\IAdminModel.cs" />
     <Compile Include="Model\Database\Interface\IDBConnection.cs" />
     <Compile Include="Model\Database\Interface\IDBSelectConnection.cs" />
-    <Compile Include="Model\Database\Interface\DBMySqlConnection.cs" />
     <Compile Include="Model\Document.cs" />
     <Compile Include="Model\IDocumentList.cs" />
     <Compile Include="Model\Order.cs" />
