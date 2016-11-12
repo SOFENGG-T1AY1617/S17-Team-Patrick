@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/Content/css/document_list.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <form id="form1" runat="server">
     <div class="col-xs-3">
         <h5>Request Flow</h5>
         <ul>
@@ -147,6 +148,37 @@
             </tr>
         </table>
     </div>
+
+    <div class="col-xs-10">
+        <asp:ListView ID="lvDocumentList" runat="server" >
+            <LayoutTemplate>
+                <table border="1" class="content-document">
+                    <tr>
+                        <th colspan="4" class="content-document-header">Below is a list of documents that you can request from the OUR. Press the order link to the document you want to order.</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="">Document</td>
+                        <td>Regular Process</td>
+                        <td>Express Process</td>
+                    </tr>
+                    <tr>
+                        <th colspan="4" class="content-document-header">Transcript of Records</th>
+                    </tr>
+                    <asp:Placeholder ID ="itemPlaceholder" runat="server"></asp:Placeholder>
+                </table>
+            </LayoutTemplate>
+            <ItemTemplate>
+                <tr>
+                    
+                    <td colspan="2"><%#Eval("Document") %></td>
+                    <td><%#Eval("Regular Process") %></td>
+                    <td><%#Eval("Express Process") %></td>
+                </tr>
+            </ItemTemplate>
+        </asp:ListView>
+        
+    </div>
+    </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 </asp:Content>

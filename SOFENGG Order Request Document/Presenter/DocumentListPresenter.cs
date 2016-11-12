@@ -14,7 +14,12 @@ namespace SOFENGG_Order_Request_Document.Presenter
         {
             this.view = view;
         }
+        /*
+        public void GetDocumentList()
+        {
+            view.Available
+        }
 
-        
+        */
     }
 }
