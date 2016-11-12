@@ -29,10 +29,10 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             var db = new DBMySqlGetStudentInfo();
             db.ExecuteQuery();
 
-            db.studentInfo[db.studentInfo.Length - 1].StudentDegreeList = null;
-            db.studentInfo[db.studentInfo.Length - 1].MailingInfoList = null;
+            db.studentInfoList[db.studentInfoList.Length - 1].StudentDegreeList = null;
+            db.studentInfoList[db.studentInfoList.Length - 1].MailingInfoList = null;
 
-            return db.studentInfo[db.studentInfo.Length-1];
+            return db.studentInfoList[db.studentInfoList.Length-1];
         }
 
 
