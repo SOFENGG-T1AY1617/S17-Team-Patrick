@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `ord` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ord`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: localhost    Database: ord
@@ -150,7 +152,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
-INSERT INTO `document` VALUES (1,'Transcript of Records',3,1,150,250,1,1,1,1),(2,'Hotdawg',1,10,999,99999,1,1,1,1),(3,'Shawarma',2,10,10,12,10,1,1,0),(4,'Corndog',4,999,9999,999999,1,1,0,1),(5,'CheesKnorr',5,10,20,100,1,0,1,1);
+INSERT INTO `document` VALUES (1,'Transcript of Records',3,1,150,250,1,1,1,1),(2,'Hotdawg',1,10,999,99999,1,1,1,1),(3,'Shawarma',2,10,10,12,10,1,1,0),(4,'Corndog',4,999,9999,999999,1,1,0,1),(5,'CheesKnorr',3,10,20,100,1,0,1,1);
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,4 +425,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-12 23:16:12
+-- Dump completed on 2016-11-12 23:25:31
