@@ -40,18 +40,10 @@ namespace SOFENGG_Order_Request_Document.View.Order
         public void GetDocumentList()
         {
             _presenter.GetDocumentList();
-            FormatPrices();
+           
         }
 
-        private void FormatPrices()
-        {
-            foreach (GridViewRow oItem in gvDocumentList.Rows)
-            {
-                for (var i = 3; i <= 4; i++)
-                    if (oItem.Cells[i].Text == "0")
-                        oItem.Cells[i].Text = "Not available";
-            }
-        }
+      
 
         private Document GetDocumentFromCurrentRow(bool isIdOnly = false)
         {
