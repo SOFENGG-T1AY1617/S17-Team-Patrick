@@ -128,22 +128,22 @@
         <div class="popup add">
             <p>Document Name</p>
             <asp:TextBox ID="txtName" class="form-control" type="text" placeholder="Document Name" runat="server" />
-            <asp:RequiredFieldValidator ValidationGroup="grpEditDocumentRow" ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name cannot be empty."></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name cannot be empty."></asp:RequiredFieldValidator>
 
             <p>Regular Charge</p>
             <asp:TextBox ID="txtRegularPrice" class="form-control" type="text" placeholder="Price" runat="server" />
-            <asp:RequiredFieldValidator ValidationGroup="grpEditDocumentRow" ID="rfvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" ErrorMessage="Regular price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-            <asp:RangeValidator ValidationGroup="grpEditDocumentRow" ID="rvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
+            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" ErrorMessage="Regular price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
 
             <p>Express Price</p>
             <asp:TextBox ID="txtExpressPrice" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
-            <asp:RequiredFieldValidator ValidationGroup="grpEditDocumentRow" ID="rfvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-            <asp:RangeValidator ValidationGroup="grpEditDocumentRow" ID="rvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
+            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
 
             <p>Weight (gs.)</p>
             <asp:TextBox ID="txtWeight" class="form-control" type="text" placeholder="Weight" runat="server" />
-            <asp:RequiredFieldValidator ValidationGroup="grpEditDocumentRow" ID="rfvWeight" runat="server" ControlToValidate="txtWeight" ErrorMessage="Weight cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-            <asp:RangeValidator ValidationGroup="grpEditDocumentRow" ID="rvWeight" runat="server" ControlToValidate="txtWeight" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Weight cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
+            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvWeight" runat="server" ControlToValidate="txtWeight" ErrorMessage="Weight cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvWeight" runat="server" ControlToValidate="txtWeight" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Weight cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
 
             <div>
                 <asp:Button ID="btnAdd" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
