@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,7 +62,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\admin_main.css" />
+    <Content Include="Content\css\admin_order_information.css" />
+    <Content Include="Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
     <Content Include="View\Admin\Main.aspx" />
     <Content Include="View\Admin\Pending.aspx" />
@@ -72,8 +77,10 @@
     <Content Include="Content\css\bootstrap.min.css.map" />
     <Content Include="Script\jquery.min.map" />
     <Content Include="Script\jquery.slim.min.map" />
+    <Content Include="View\Admin\ViewOrderInformation.aspx" />
     <Content Include="View\Order\Order.Master" />
     <Content Include="View\Admin\Admin.Master" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -131,9 +138,31 @@
     <Content Include="Script\order_item.js" />
     <Content Include="Script\personal_information.js" />
     <Content Include="Script\rules.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\AdminModel.cs" />
+    <Compile Include="Model\Database\DBMySqlAddDocument.cs" />
+    <Compile Include="Model\Database\DBMySqlDeleteDocument.cs" />
+    <Compile Include="Model\Database\DBMySqlEditDocument.cs" />
+    <Compile Include="Model\Database\DBMySqlGetDocumentList.cs" />
+    <Compile Include="Model\Database\Interface\DBMySqlSelectConnection.cs" />
+    <Compile Include="Model\DeliveryArea.cs" />
+    <Compile Include="Model\MailingInfo.cs" />
+    <Compile Include="Model\Helper\EnumHelper.cs" />
+    <Compile Include="Model\IAdminModel.cs" />
+    <Compile Include="Model\Database\Interface\IDBConnection.cs" />
+    <Compile Include="Model\Database\Interface\IDBSelectConnection.cs" />
+    <Compile Include="Model\Database\Interface\DBMySqlConnection.cs" />
+    <Compile Include="Model\Document.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderItem.cs" />
+    <Compile Include="Model\OrderItemWithTerm.cs" />
+    <Compile Include="Model\OrderStatus.cs" />
+    <Compile Include="Model\Personel.cs" />
+    <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
     <Compile Include="View\Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -148,6 +177,7 @@
     <Compile Include="View\Admin\DocumentList.aspx.designer.cs">
       <DependentUpon>DocumentList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\Interface\IDocumentListView.cs" />
     <Compile Include="View\Admin\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,6 +191,13 @@
     </Compile>
     <Compile Include="View\Admin\Pending.aspx.designer.cs">
       <DependentUpon>Pending.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ViewOrderInformation.aspx.cs">
+      <DependentUpon>ViewOrderInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\ViewOrderInformation.aspx.designer.cs">
+      <DependentUpon>ViewOrderInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Order\DocumentList.aspx.cs">
       <DependentUpon>DocumentList.aspx</DependentUpon>
@@ -239,8 +276,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Model\" />
-    <Folder Include="Presenter\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
