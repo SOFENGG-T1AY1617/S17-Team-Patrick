@@ -27,7 +27,7 @@
 
                 <table class="table table-bordered">
                     <thead>
-                        <tr>
+                        <tr class="active">
                             <td colspan="2">Transaction Details</td>
                         </tr>
                     </thead>
@@ -58,7 +58,7 @@
                 <div class="delivery_details_table">
                     <table class="table table-bordered table_start">
                         <thead>
-                            <tr>
+                            <tr class="active">
                                 <td colspan="2">Delivery Details</td>
                             </tr>
                         </thead>
@@ -148,7 +148,7 @@
 
                     <table class="table table-bordered table_start">
                         <thead>
-                            <tr>
+                            <tr class="active">
                                 <td colspan="2">Delivery Details</td>
                             </tr>
                         </thead>
@@ -239,8 +239,8 @@
                 
                 <div>
                     <table class="table table-bordered">
-                        <tr>
-                            <td colspan="2" class="content-form_label" align="center">Amount Due</td>
+                        <tr class="active">
+                            <td colspan="2" class="content-form_label">Amount Due</td>
                         </tr>
                         <tr>
                             <td>Total Delivery Cost</td>
@@ -259,13 +259,33 @@
                 
 <%--            Only display "mark as pending" and "mark as done" when currentorder is processing and NOT pending already--%>
                 <div class="content_buttons">
-                    <button class="btn btn-primary">Back</button>
-                    <button class="btn btn-danger">Mark as Pending</button>
-                    <button class="btn btn-success">Mark as Done</button>
-                    <button class="btn btn-warning">Mark as Processing</button>
+                    <button id="btnBack" class="btn btn-primary">Back</button>
+                    <button id="btnMarkPending" class="btn btn-danger">Mark as Pending</button>
+                    <button id="btnMarkDone" class="btn btn-success">Mark as Done</button>
+                    <button id="btnMarkProcessing" class="btn btn-warning">Mark as Processing</button>
                 </div>
             </div>
         </div>
       </div>
     </div>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="other" runat="server">
+    <div class="popup-background">
+        <div class="popup pending">
+            <h4>Mark As Pending</h4>
+            <p>Reference Number 93829</p>
+               
+            <p>Reason</p>
+            <p></p>
+            <textarea rows="6" cols="30"></textarea>
+            
+            <div>
+                <button class="btn btn-warning">Mark</button>
+                <button id="btnPendingCancel" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
+    <script src="/Script/view_order_information.js"></script>
 </asp:Content>

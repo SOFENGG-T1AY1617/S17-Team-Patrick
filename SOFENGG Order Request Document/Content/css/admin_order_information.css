@@ -11,3 +11,10 @@
 .content_buttons {
     text-align: center;
 }
+
+.pending:first-child {
+    text-align:center;
+}
+.pending > textarea {
+    border: solid 3px;
+}
