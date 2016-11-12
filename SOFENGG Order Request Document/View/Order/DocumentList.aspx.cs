@@ -1,21 +1,32 @@
-﻿using SOFENGG_Order_Request_Document.Model;
-using System;
+﻿using System;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using SOFENGG_Order_Request_Document.Model;
+using SOFENGG_Order_Request_Document.Model.Helper;
+using SOFENGG_Order_Request_Document.Presenter.Order;
+using SOFENGG_Order_Request_Document.View.Order.Interface;
 
 namespace SOFENGG_Order_Request_Document.View.Order
 {
-    public partial class DocumentList : System.Web.UI.Page, IDocumentListView
+    public partial class DocumentList : System.Web.UI.Page, IOrderDocumentListView
     {
+        private readonly OrderDocumentListPresenter _presenter;
+ 
+
+        public DocumentList()
+        {
+            _presenter = new OrderDocumentListPresenter(this);
+        }
 
         public Document[] AvailableDocumentList
-         {
-             set
-             {
-                 lvDocumentList.DataSource = value;
-                 lvDocumentList.DataBind();
-             }
-         }
+        {
+            set
+            {
+                gvDocumentList.DataSource = value;
+                gvDocumentList.DataBind();
+            }
+        }
 
-        #region Initialization Functions
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,108 +36,12 @@ namespace SOFENGG_Order_Request_Document.View.Order
             GetDocumentList();
         }
 
-        #endregion
-
         public void GetDocumentList()
         {
-
+            _presenter.GetDocumentList();
+            
         }
 
-
-
-
-
-
-
-
-
-
-        /*   
-         #region Initialization Functions
-
-         public DocumentList()
-         {
-             _presenter = new DocumentListPresenter(this);
-         }
-
-         protected void listDoc_OnItemCreated(object sender, RepeaterItemEventArgs e)
-         {
-             var sm = ScriptManager.GetCurrent(this);
-             if (sm == null)
-                 return;
-
-             sm.RegisterAsyncPostBackControl(btnAdd);
-         }
-
-         protected void Page_Load(object sender, EventArgs e)
-         {
-             if (IsPostBack)
-                 return;
-
-             GetDocumentList();
-         }
-
-         #endregion
-
-       public void GetDocumentList()
-         {
-             _presenter.GetDocumentList();
-             FormatPrices();
-         }
-         */
-
-        public string Category
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string Document
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string ExpressPrice
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string RegularPrice
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        
+       
     }
 }

@@ -5,9 +5,8 @@ using System.Web;
 
 namespace SOFENGG_Order_Request_Document.Model
 {
-	public class Order
-	{
-
+    public class Order
+    {
         public int ReferenceNo { get; set; }
         public DateTime TransactionDate { get; set; }
         public DateTime DueDate { get; set; }
@@ -17,8 +16,5 @@ namespace SOFENGG_Order_Request_Document.Model
         public string Reason { get; set; }
         public OrderItem[] OrderItemList { get; set; }
         public OrderStatus[] StatusList { get; set; }
-
-
-
     }
 }

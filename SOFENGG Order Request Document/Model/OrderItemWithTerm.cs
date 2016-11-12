@@ -5,8 +5,9 @@ using System.Web;
 
 namespace SOFENGG_Order_Request_Document.Model
 {
-	public class OrderItemWithTerm
-	{
-
-	}
+    public class OrderItemWithTerm : OrderItem
+    {
+        public int SpecificationTerm { get; set; }
+        public int SpecificationYear { get; set; }
+    }
 }

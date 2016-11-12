@@ -1,10 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="DocumentList.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.DocumentList" %>
+<%@ Import Namespace="System.ComponentModel" %>
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model.Helper" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/document_list.css">
+    <link rel="stylesheet" href="/Content/css/document_list.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <form id="form1" runat="server">
     <div class="col-xs-3">
         <h5>Request Flow</h5>
         <ul>
@@ -34,155 +37,30 @@
     </div>
     <div class="col-xs-9">
         <h5 class="content-header">Document List</h5>
-        <table border="1" class="content-document">
-            <tr>
-                <td colspan="4" class="content-document-header">Below is a list of documents that you can request from the OUR. Press the order link to the document you want to order.</td>
-            </tr>
-            <tr>
-                <td colspan="2" class="">Document</td>
-                <td>Regular Process</td>
-                <td>Express Process</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="content-document-header">Transcript of Records</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Official TOR for Evaluation</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>PHP 300.00</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Official TOR for Employment</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>PHP 300.00</td>
-            </tr>
-            <tr class="forEarlyAlumniTOR" style="display: none">
-                <td colspan="2">
-                    <a href="order_item.html">Official TOR for Employment</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="content-document-header">Certification</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Course Subject Description</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Ranking By Degree Program</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Ranking By College</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Trimestral Calendar</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Completion of Academic Units</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Cumulative GPA</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Dean's List</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="content-document-header">Certified True Copy</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Form 137</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Official Transcript of Records</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="content-document-header">Others</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a href="order_item.html">Special Credentials</a>
-                </td>
-                <td>PHP 150.00</td>
-                <td>Unavailable</td>
-            </tr>
-        </table>
-    </div>
+        <div>
+            <asp:GridView ID="gvDocumentList" AutoGenerateColumns="False" runat="server">
+                <Columns>
+                    <asp:TemplateField HeaderText="Document">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Regular Price">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Express Price">
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField> 
+                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
+                </Columns>
+            </asp:GridView>
 
-    <SelectParameters>
-        <asp:Parameter Name="SelectedCategory" Type="String" DefaultValue="Certification" />
-    </SelectParameters>
-
-    <div class="col-xs-10">
-        <asp:ListView ID="lvDocumentList" runat="server" >
-            <LayoutTemplate>
-                <table border="1" class="content-document">
-                    <tr>
-                        <th colspan="4" class="content-document-header">Below is a list of documents that you can request from the OUR. Press the order link to the document you want to order.</th>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="">Document</td>
-                        <td>Regular Process</td>
-                        <td>Express Process</td>
-                    </tr>
-                    <tr>
-                        <th colspan="4" class="content-document-header">Transcript of Records</th>
-                    </tr>
-                    <asp:Placeholder ID ="itemPlaceholder" runat="server"></asp:Placeholder>
-                </table>
-            </LayoutTemplate>
-            <ItemTemplate>
-                <tr>
-                    
-                    <td colspan="2"><%#Eval("Name") %></td>
-                    <td><%#Eval("RegularPrice") %></td>
-                    <td><%#Eval("ExpressPrice") %></td>
-                </tr>
-            </ItemTemplate>
-        </asp:ListView>
-        
+        </div>
     </div>
-    </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 </asp:Content>
