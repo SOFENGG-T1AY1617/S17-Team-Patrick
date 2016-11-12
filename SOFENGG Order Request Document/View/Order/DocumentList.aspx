@@ -149,6 +149,10 @@
         </table>
     </div>
 
+    <SelectParameters>
+        <asp:Parameter Name="SelectedCategory" Type="String" DefaultValue="Certification" />
+    </SelectParameters>
+
     <div class="col-xs-10">
         <asp:ListView ID="lvDocumentList" runat="server" >
             <LayoutTemplate>

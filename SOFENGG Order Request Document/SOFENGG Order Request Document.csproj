@@ -149,11 +149,13 @@
     <Compile Include="Model\DeliveryArea.cs" />
     <Compile Include="Model\Document.cs" />
     <Compile Include="Model\IDocumentList.cs" />
+    <Compile Include="Model\IOrderModel.cs" />
     <Compile Include="Model\MailingInfo.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderItem.cs" />
     <Compile Include="Model\CourseDescription.cs" />
     <Compile Include="Model\OrderItemWithTerm.cs" />
+    <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\OrderStatus.cs" />
     <Compile Include="Model\Personel.cs" />
     <Compile Include="Model\StudentDegree.cs" />

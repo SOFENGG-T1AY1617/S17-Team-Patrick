@@ -1,4 +1,5 @@
-﻿using SOFENGG_Order_Request_Document.View.Order;
+﻿using SOFENGG_Order_Request_Document.Model;
+using SOFENGG_Order_Request_Document.View.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,22 @@ namespace SOFENGG_Order_Request_Document.Presenter
 {
     public class DocumentListPresenter
     {
-        IDocumentListView view;
+
+        private readonly IDocumentListView _view;
+        private readonly IOrderModel _model;
 
         public DocumentListPresenter(IDocumentListView view)
         {
-            this.view = view;
+            _view = view;
+            _model = new OrderModel();
         }
+
+        public void GetDocumentList()
+        {
+            _view.AvailableDocumentList = _model.GetDocumentList();
+        }
+
+
         /*
         public void GetDocumentList()
         {
