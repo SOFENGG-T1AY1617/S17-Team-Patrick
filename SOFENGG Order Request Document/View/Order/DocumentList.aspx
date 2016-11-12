@@ -170,9 +170,9 @@
             <ItemTemplate>
                 <tr>
                     
-                    <td colspan="2"><%#Eval("Document") %></td>
-                    <td><%#Eval("Regular Process") %></td>
-                    <td><%#Eval("Express Process") %></td>
+                    <td colspan="2"><%#Eval("Name") %></td>
+                    <td><%#Eval("RegularPrice") %></td>
+                    <td><%#Eval("ExpressPrice") %></td>
                 </tr>
             </ItemTemplate>
         </asp:ListView>
