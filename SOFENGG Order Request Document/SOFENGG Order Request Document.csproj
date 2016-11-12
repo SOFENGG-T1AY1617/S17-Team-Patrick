@@ -234,6 +234,7 @@
     <Compile Include="View\Order\Rules.aspx.designer.cs">
       <DependentUpon>Rules.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Order\Interface\IPersonalInformationView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
