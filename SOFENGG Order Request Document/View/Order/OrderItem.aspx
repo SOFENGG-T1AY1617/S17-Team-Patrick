@@ -27,7 +27,7 @@
         <div class="content-divider"></div>
     </div>
     <div class="col-xs-9">
-        <form name "frmOrderItem" method="post" action="info_acad_de.html">
+        <form name="frmOrderItem" method="post" action="info_acad_de.html">
             <h5 class="content-header" class="content-form">Order Item</h5>
 
             <table border="1" class="content-form" align="center">

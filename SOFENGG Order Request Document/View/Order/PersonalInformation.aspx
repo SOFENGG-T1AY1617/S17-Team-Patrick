@@ -19,29 +19,31 @@
     </div>
     <div class="col-xs-9">
         <h5 class="content-header">Personal Information</h5>
+        <form runat="server">
         <table border=1 class="content-form">
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>
             </tr>
             <tr>
                 <td class="content-form_label">Last Name</td>
-                <td>&nbsp;<input type="text"></td>
+                <td>&nbsp;<asp:TextBox ID="txtLName" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">First Name</td>
-                <td>&nbsp;<input type="text"></td>
+                <td>&nbsp;<asp:TextBox ID="txtFName" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">Middle Name</td>
-                <td>&nbsp;<input type="text"></td>
+                <td>&nbsp;<asp:TextBox ID="txtMName" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">Gender</td>
                 <td>
-                    <form action="">
-                        &nbsp;<input type="radio" name="gender">&nbsp;Male
-                        &nbsp;<input type="radio" name="gender">&nbsp;Female
-                    </form>
+                    <asp:RadioButtonList ID="optGender" runat="server" 
+                            RepeatDirection="Vertical" RepeatLayout="Flow">
+                            <asp:ListItem Text="Male" Value="M"  style="padding: 7px;"></asp:ListItem>
+                            <asp:ListItem Text="Female" Value="F"  style="padding: 7px;"></asp:ListItem>
+                    </asp:RadioButtonList>
                 </td>
             </tr>
             <!-- Add date using PHP/ASP here -->
@@ -49,53 +51,63 @@
                 <td class="content-form_label">Birth date</td>
                 <td>
                     &nbsp;
-                    <select name="" id="">
-                        <option value="">January</option>
-                        <option value="">February</option>
-                        <option value="">March</option>
-                        <option value="">April</option>
-                        <option value="">May</option>
-                        <option value="">June</option>
-                        <option value="">July</option>
-                        <option value="">August</option>
-                        <option value="">September</option>
-                        <option value="">October</option>
-                        <option value="">November</option>
-                        <option value="">December</option>
-                    </select>
-                    <select name="" id="day"></select>
-                    <select name="" id="year"></select>
+                    <asp:DropDownList ID="ddlBirthYear" runat="server" Width="80px" onchange = "PopulateDays()" />
+                    <asp:DropDownList ID="ddlBirthMonth" runat="server" Width="100px" onchange = "PopulateDays()" />
+                    <asp:DropDownList ID="ddlBirthDay" runat="server" Width="50px" />
+                    
+                    <!--
+                    <asp:DropDownList ID="ddlBirthMonth1" runat="server" Width="200px">
+                        <asp:ListItem Text="Select Month" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="January" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="February" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="March" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="April" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="May" Value="5"></asp:ListItem>
+                        <asp:ListItem Text="June" Value="6"></asp:ListItem>
+                        <asp:ListItem Text="July" Value="7"></asp:ListItem>
+                        <asp:ListItem Text="August" Value="8"></asp:ListItem>
+                        <asp:ListItem Text="September" Value="9"></asp:ListItem>
+                        <asp:ListItem Text="October" Value="10"></asp:ListItem>
+                        <asp:ListItem Text="November" Value="11"></asp:ListItem>
+                        <asp:ListItem Text="December" Value="12"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:DropDownList ID="ddlBirthDay1" runat="server" Width="200px">
+                    </asp:dropdownlist>
+                    <asp:DropDownList ID="ddlBirthYear1" runat="server" Width="200px">
+                    </asp:dropdownlist> -->
                 </td>
             </tr>
             <tr>
                 <td class="content-form_label">Citizenship</td>
-                <td>&nbsp;<input type="text"></td>
+                <td>&nbsp;<asp:TextBox ID="txtCitizen" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">Current Address</td>
-                <td>&nbsp;<textarea name="" id="" cols="30" rows="2"></textarea>&nbsp;</td>
+                <td>&nbsp;<asp:TextBox ID="txtCurrentAddress" runat="server" TextMode="MultiLine"  Columns="40" Rows="5"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">Phone Number</td>
-                <td>&nbsp;<input type="text"></td>
+                <td>&nbsp;<asp:TextBox ID="txtPhoneNum" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">Email Address</td>
-                <td>&nbsp;<input type="text"></td>
+                <td>&nbsp;<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">High School Attended</td>
-                <td>&nbsp;<input type="text"></td>
+                <td>&nbsp;<asp:TextBox ID="txtHSAttended" runat="server"></asp:TextBox></td>
             </tr>
             <tr>
                 <td class="content-form_label">Place of Birth</td>
-                <td>&nbsp;<input type="text"></td>
+                <td>&nbsp;<asp:TextBox ID="txtBirthplace" runat="server"></asp:TextBox></td>
             </tr>
         </table>
-        <a class="btn btn-primary content-form_next" href="/info_acad_de.html">Next</a>
+            
+            <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitPersonalInformation_Click"/>
+        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-
     <script src="/Script/personal_information.js"></script>
+    <script src="/Script/Day.js"></script>
 </asp:Content>
