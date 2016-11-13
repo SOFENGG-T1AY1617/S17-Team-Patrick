@@ -109,7 +109,7 @@ CREATE TABLE `deliveryarea` (
   `daysToDeliver` varchar(45) NOT NULL,
   PRIMARY KEY (`deliveryAreaId`),
   UNIQUE KEY `deliveryAreaId_UNIQUE` (`deliveryAreaId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,6 +118,7 @@ CREATE TABLE `deliveryarea` (
 
 LOCK TABLES `deliveryarea` WRITE;
 /*!40000 ALTER TABLE `deliveryarea` DISABLE KEYS */;
+INSERT INTO `deliveryarea` VALUES (1,'Africa',2544,'3 to 4 Days'),(2,'Australia',1400,'1 to 2 Days'),(3,'Brunei',1200,'1 to 2 Days'),(4,'Canada',1650,'1 to 2 Days'),(5,'China',1400,'2 to 3 Days'),(6,'Europe',2350,'3 to 4 Days'),(7,'Fiji Island',2544,'3 to 4 Days'),(8,'Guam',2500,'2 to 3 Days'),(9,'Hongkong',950,'1 to 2 Days'),(10,'Singapore',950,'1 to 2 Days'),(11,'Indonesia',1200,'1 to 2 Days'),(12,'Malaysia',1200,'1 to 2 Days'),(13,'Taiwan',1200,'1 to 2 Days'),(14,'Thailand',1200,'1 to 2 Days'),(15,'Japan',1200,'1 to 2 Days'),(16,'Luzon',128,'1 Day'),(17,'Metro Manila',128,'1 Day'),(18,'Mexico City',2500,'1 to 2 Days'),(19,'Middle East',2400,'2 to 3 Days'),(20,'Mindanao',158,'1 Day'),(21,'New Zealand',1400,'1 to 2 Days'),(22,'Papua New Guinea',2600,'2 to 3 Days'),(23,'Pickup - DLSU Manila',0,'1 Day'),(24,'South America',3178,'2 to 3 Days'),(25,'South Korea',1200,'2 to 3 Days'),(26,'USA',1650,'1 to 2 Days'),(27,'Vietnam',1400,'1 Day'),(28,'Visayas',142,'1 Day');
 /*!40000 ALTER TABLE `deliveryarea` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +393,7 @@ CREATE TABLE `studentinfo` (
   `placeOfBirth` varchar(100) NOT NULL,
   PRIMARY KEY (`studentInfoId`),
   UNIQUE KEY `studentInfoId_UNIQUE` (`studentInfoId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -401,6 +402,7 @@ CREATE TABLE `studentinfo` (
 
 LOCK TABLES `studentinfo` WRITE;
 /*!40000 ALTER TABLE `studentinfo` DISABLE KEYS */;
+INSERT INTO `studentinfo` VALUES (1,'Hi','Hi','Hi','M','Hi','1998-12-01','Chi','Hi','09','Hi','Hi'),(2,'Hi','Hi','Hi','M','Hi','1998-12-01','Chi','Hi','09','Hi','Hi');
 /*!40000 ALTER TABLE `studentinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -413,4 +415,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-12 17:55:14
+-- Dump completed on 2016-11-13 15:20:36
