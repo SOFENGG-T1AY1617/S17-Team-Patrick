@@ -206,7 +206,7 @@ CREATE TABLE `mailinginfo` (
 
 LOCK TABLES `mailinginfo` WRITE;
 /*!40000 ALTER TABLE `mailinginfo` DISABLE KEYS */;
-INSERT INTO `mailinginfo` VALUES (1,11302968,'Blk 22 Lot 22 Corndog',1747,1,'09272707318'),(2,11400000,'FIEOJ 22. 2oko',1747,2,'9111111'),(3,11555555,'Tapat ng Ate Rica\'s',1740,3,'8328'),(4,11666666,'Jollibee',8700,4,'8700');
+INSERT INTO `mailinginfo` VALUES (1,1,'Blk 22 Lot 22 Corndog',1747,1,'09272707318'),(2,2,'FIEOJ 22. 2oko',1747,2,'9111111'),(3,3,'Tapat ng Ate Rica\'s',1740,3,'8328'),(4,3,'Jollibee',8700,4,'8700');
 /*!40000 ALTER TABLE `mailinginfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -426,4 +426,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-13 23:19:12
+-- Dump completed on 2016-11-13 23:25:00
