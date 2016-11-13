@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `ord` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `ord`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: ord
+-- Host: localhost    Database: ord
 -- ------------------------------------------------------
 -- Server version	5.7.14-log
 
@@ -29,7 +29,7 @@ CREATE TABLE `campus` (
   `campusName` varchar(45) NOT NULL,
   PRIMARY KEY (`campusId`),
   UNIQUE KEY `campusId_UNIQUE` (`campusId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `campus` (
 
 LOCK TABLES `campus` WRITE;
 /*!40000 ALTER TABLE `campus` DISABLE KEYS */;
-INSERT INTO `campus` VALUES (1,'DLSU Manila'),(2,'DLSU STC');
+INSERT INTO `campus` VALUES (1,'De La Salle University - Manila'),(2,'De La Salle University - STC'),(3,'De La Salle University - Dasmariñas'),(4,'De La Salle - College of Saint Benilde');
 /*!40000 ALTER TABLE `campus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +55,7 @@ CREATE TABLE `course` (
   `courseName` varchar(100) NOT NULL,
   PRIMARY KEY (`courseId`),
   UNIQUE KEY `courseId_UNIQUE` (`courseId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +64,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
+INSERT INTO `course` VALUES (1,'WEBAPDE','Web App'),(2,'MACLERN','Machine Learning'),(3,'INTESYS','Intelligent System'),(4,'CCSCAL2','Calculus 2'),(5,'GRAPHIX','Graphics'),(6,'SOFENGG','Software Engineering');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +143,7 @@ CREATE TABLE `document` (
   `forGraduate` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`documentId`),
   UNIQUE KEY `id_UNIQUE` (`documentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,6 +152,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
+INSERT INTO `document` VALUES (1,'TOR for Evalutaion',1,10,150,300,2,1,1,1),(2,'TOR for Employment',1,10,150,300,2,1,1,1),(3,'Course Subject Desciption',2,10,110,NULL,2,1,1,1),(4,'Ranking by Degree Program',2,10,110,200,2,1,1,0),(5,'Transcript of Records',3,10,50,NULL,2,1,1,1),(6,'Form 137',3,10,50,NULL,2,1,1,1),(7,'Ranking by College',2,10,110,220,2,1,1,0),(8,'Trimestral Calendar',2,10,110,220,2,1,1,1),(9,'Completion of Academic Units',2,10,110,NULL,2,1,0,1),(10,'Cumulative GPA',2,10,110,220,2,1,1,1),(11,'Deans List',2,10,110,220,2,1,1,0),(12,'Special Credentials',4,10,0,NULL,2,1,1,1);
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +168,7 @@ CREATE TABLE `documentcategory` (
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`categoryId`),
   UNIQUE KEY `documentCategoryId_UNIQUE` (`categoryId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +177,7 @@ CREATE TABLE `documentcategory` (
 
 LOCK TABLES `documentcategory` WRITE;
 /*!40000 ALTER TABLE `documentcategory` DISABLE KEYS */;
+INSERT INTO `documentcategory` VALUES (1,'A'),(2,'B'),(3,'C'),(4,'D'),(5,'E');
 /*!40000 ALTER TABLE `documentcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,14 +190,14 @@ DROP TABLE IF EXISTS `mailinginfo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mailinginfo` (
   `mailingId` int(11) NOT NULL AUTO_INCREMENT,
-  `studentInfoId` int(11) NOT NULL,
+  `studentInfoID` int(11) NOT NULL,
   `mailingAddress` varchar(200) NOT NULL,
   `zipCode` int(11) NOT NULL,
   `deliveryAreaId` int(11) NOT NULL,
   `contactNo` varchar(20) NOT NULL,
   PRIMARY KEY (`mailingId`),
   UNIQUE KEY `mailingId_UNIQUE` (`mailingId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,36 +206,8 @@ CREATE TABLE `mailinginfo` (
 
 LOCK TABLES `mailinginfo` WRITE;
 /*!40000 ALTER TABLE `mailinginfo` DISABLE KEYS */;
+INSERT INTO `mailinginfo` VALUES (1,11302968,'Blk 22 Lot 22 Corndog',1747,1,'09272707318'),(2,11400000,'FIEOJ 22. 2oko',1747,2,'9111111'),(3,11555555,'Tapat ng Ate Rica\'s',1740,3,'8328'),(4,11666666,'Jollibee',8700,4,'8700');
 /*!40000 ALTER TABLE `mailinginfo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `order`
---
-
-DROP TABLE IF EXISTS `order`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `order` (
-  `referenceNo` int(11) NOT NULL AUTO_INCREMENT,
-  `transactionDate` datetime NOT NULL,
-  `dateDue` date NOT NULL,
-  `courierBillNumber` int(11) DEFAULT NULL,
-  `dateReleased` date DEFAULT NULL,
-  `newDateDue` date DEFAULT NULL,
-  `reason` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`referenceNo`),
-  UNIQUE KEY `referenceNo_UNIQUE` (`referenceNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `order`
---
-
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -248,7 +223,7 @@ CREATE TABLE `ordercoursedesc` (
   `courseId` int(11) NOT NULL,
   PRIMARY KEY (`orderCourseDescId`),
   UNIQUE KEY `orderCourseDescId_UNIQUE` (`orderCourseDescId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +232,41 @@ CREATE TABLE `ordercoursedesc` (
 
 LOCK TABLES `ordercoursedesc` WRITE;
 /*!40000 ALTER TABLE `ordercoursedesc` DISABLE KEYS */;
+INSERT INTO `ordercoursedesc` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,5,5),(6,6,6);
 /*!40000 ALTER TABLE `ordercoursedesc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderitem`
+--
+
+DROP TABLE IF EXISTS `orderitem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `orderitem` (
+  `dtsNo` int(11) NOT NULL AUTO_INCREMENT,
+  `referenceNo` int(11) NOT NULL,
+  `documentId` int(11) NOT NULL,
+  `mailingId` int(11) NOT NULL,
+  `noOfCopies` int(11) NOT NULL,
+  `packaging` tinyint(1) NOT NULL,
+  `orderType` tinyint(1) NOT NULL,
+  `specificationTerm` tinyint(1) DEFAULT NULL,
+  `specificationYear` year(4) DEFAULT NULL,
+  `studentDegreeId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`dtsNo`),
+  UNIQUE KEY `dtsNo_UNIQUE` (`dtsNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `orderitem`
+--
+
+LOCK TABLES `orderitem` WRITE;
+/*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
+INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016,NULL),(2,4,2,2,1,1,1,2,2015,NULL),(3,5,3,3,2,2,0,3,2014,NULL),(4,2,5,4,10,0,0,1,2017,NULL),(5,3,4,1,999,2,1,1,2014,NULL);
+/*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -268,18 +277,16 @@ DROP TABLE IF EXISTS `orderlist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orderlist` (
-  `dtsNo` int(11) NOT NULL AUTO_INCREMENT,
-  `referenceNo` int(11) NOT NULL,
-  `documentId` int(11) NOT NULL,
-  `mailingId` int(11) NOT NULL,
-  `noOfCopies` int(11) NOT NULL,
-  `packaging` tinyint(1) NOT NULL,
-  `orderType` tinyint(1) NOT NULL,
-  `specificationTerm` tinyint(1) DEFAULT NULL,
-  `specificationYear` year(4) DEFAULT NULL,
-  PRIMARY KEY (`dtsNo`),
-  UNIQUE KEY `dtsNo_UNIQUE` (`dtsNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `referenceNo` int(11) NOT NULL AUTO_INCREMENT,
+  `transactionDate` datetime NOT NULL,
+  `dateDue` date NOT NULL,
+  `courierBillNumber` int(11) DEFAULT NULL,
+  `dateReleased` date DEFAULT NULL,
+  `newDateDue` date DEFAULT NULL,
+  `reason` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`referenceNo`),
+  UNIQUE KEY `referenceNo_UNIQUE` (`referenceNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,6 +295,7 @@ CREATE TABLE `orderlist` (
 
 LOCK TABLES `orderlist` WRITE;
 /*!40000 ALTER TABLE `orderlist` DISABLE KEYS */;
+INSERT INTO `orderlist` VALUES (1,'2016-11-12 00:00:00','2016-11-15',91111,NULL,NULL,NULL),(2,'2016-11-10 00:00:00','2016-11-13',91111,NULL,NULL,NULL),(3,'2016-11-11 00:00:00','2016-11-12',91111,'2016-11-13','2016-11-13','Typo'),(4,'2016-11-09 00:00:00','2016-11-15',91111,'2016-11-16','2016-11-20',NULL),(5,'2016-11-12 00:00:00','2016-11-12',8700,'2016-11-12',NULL,NULL);
 /*!40000 ALTER TABLE `orderlist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -306,7 +314,7 @@ CREATE TABLE `orderstatus` (
   `remarks` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`orderStatusId`),
   UNIQUE KEY `orderStatusId_UNIQUE` (`orderStatusId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,6 +323,7 @@ CREATE TABLE `orderstatus` (
 
 LOCK TABLES `orderstatus` WRITE;
 /*!40000 ALTER TABLE `orderstatus` DISABLE KEYS */;
+INSERT INTO `orderstatus` VALUES (1,2,'2016-11-12 00:00:00',1,'SIR BRIANE IS LOVE, SIR BRIANE IS TAKING A WHILE.');
 /*!40000 ALTER TABLE `orderstatus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,7 +340,7 @@ CREATE TABLE `personel` (
   `firstName` varchar(100) NOT NULL,
   PRIMARY KEY (`personelId`),
   UNIQUE KEY `personelId_UNIQUE` (`personelId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -340,6 +349,7 @@ CREATE TABLE `personel` (
 
 LOCK TABLES `personel` WRITE;
 /*!40000 ALTER TABLE `personel` DISABLE KEYS */;
+INSERT INTO `personel` VALUES (1,'Samson','Briane'),(2,'Penaranda','Brandon'),(3,'Gan','Patrick'),(4,'Reamon','Gelo'),(5,'Nieva','Dyan'),(6,'Ang','Nikolai'),(7,'Abedejos','Jason'),(8,'Venzon','Tyler'),(9,'Abutog','JJ');
 /*!40000 ALTER TABLE `personel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -359,7 +369,7 @@ CREATE TABLE `studentdegree` (
   `admittedAs` char(1) NOT NULL,
   PRIMARY KEY (`studentDegreeId`,`studentInfoId`,`idNumber`),
   UNIQUE KEY `studentDegreeId_UNIQUE` (`studentDegreeId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -368,6 +378,7 @@ CREATE TABLE `studentdegree` (
 
 LOCK TABLES `studentdegree` WRITE;
 /*!40000 ALTER TABLE `studentdegree` DISABLE KEYS */;
+INSERT INTO `studentdegree` VALUES (1,1,11302968,1,2013,'1'),(2,2,11555555,4,2015,'1'),(3,3,11666666,5,2016,'1');
 /*!40000 ALTER TABLE `studentdegree` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -382,7 +393,7 @@ CREATE TABLE `studentinfo` (
   `studentInfoId` int(8) NOT NULL AUTO_INCREMENT,
   `lastName` varchar(100) NOT NULL,
   `firstName` varchar(100) NOT NULL,
-  `middleName` varchar(100) NOT NULL,
+  `middleName` varchar(10) DEFAULT NULL,
   `gender` char(1) NOT NULL,
   `email` varchar(30) NOT NULL,
   `birthDate` date NOT NULL,
@@ -393,7 +404,7 @@ CREATE TABLE `studentinfo` (
   `placeOfBirth` varchar(100) NOT NULL,
   PRIMARY KEY (`studentInfoId`),
   UNIQUE KEY `studentInfoId_UNIQUE` (`studentInfoId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -402,7 +413,7 @@ CREATE TABLE `studentinfo` (
 
 LOCK TABLES `studentinfo` WRITE;
 /*!40000 ALTER TABLE `studentinfo` DISABLE KEYS */;
-INSERT INTO `studentinfo` VALUES (1,'Hi','Hi','Hi','M','Hi','1998-12-01','Chi','Hi','09','Hi','Hi'),(2,'Hi','Hi','Hi','M','Hi','1998-12-01','Chi','Hi','09','Hi','Hi');
+INSERT INTO `studentinfo` VALUES (1,'Mouse','Mickey','D','M','mickey@gmail.com','1996-10-02','Filipino','Clubhouse','8700','DIDNEY','Disney'),(2,'Duck','Donald','D','M','ddquackers@gmail.com','1996-12-10','Filipino','Clubhouse','8700','DIDNEY','Disney'),(3,'Bee','Jolli','B','M','jbforevs@gmail.com','1990-01-12','Filipino','CantoPls','8700','Mascot Ph','Quezon ');
 /*!40000 ALTER TABLE `studentinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -415,4 +426,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-13 15:20:36
+-- Dump completed on 2016-11-13 23:19:12
