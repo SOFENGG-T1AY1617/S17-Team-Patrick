@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Main.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Admin.Main" %>
 
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model.Helper" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/admin_main.css">
 </asp:Content>
@@ -35,26 +38,31 @@
                 <table class="table table-bordered">
                     <tr>
                         <td>
-                            <h4>Processing: <b>5</b></h4>
+                            <h4>Processing: <b>
+                                <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
                         </td>
                         <td class="warning">
-                            <h4>Pending: <b>5</b></h4>
+                            <h4>Pending: <b>
+                                <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
                         </td>
                         <td class="success">
-                            <h4>On Time: <b>5</b></h4>
+                            <h4>On Time: <b>
+                                <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
                         </td>
                         <td class="danger">
-                            <h4>Late: <b>5</b></h4>
+                            <h4>Late: <b>
+                                <asp:Label ID="lblLateCount" runat="server" /></b></h4>
                         </td>
                         <td>
-                            <h4>Total Quantity: <b>30</b></h4>
+                            <h4>Total Quantity: <b>
+                                <asp:Label ID="lblTotalCount" runat="server" /></b></h4>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
 
-        <asp:Repeater ID="rptCustomers" runat="server">
+        <asp:Repeater ID="repOrders" runat="server">
             <HeaderTemplate>
                 <table class="table table-hover table-bordered">
                     <thead>
@@ -70,24 +78,24 @@
                     <tbody>
             </HeaderTemplate>
             <ItemTemplate>
-                <tr>
+                <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>'>
                     <td>
-                        <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("CustomerId") %>' />
+                        <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("ContactName") %>' />
+                        <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="lblDueDate" runat="server" Text='<%# Eval("Country") %>' />
+                        <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Country") %>' />
+                        <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
                     </td>
                     <td>
-                        <asp:Label ID="lblName" runat="server" Text='<%# Eval("Country") %>' />
+                        <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
                     </td>
                     <td>
-                        <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Country") %>' />
+                        <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
                     </td>
                 </tr>
             </ItemTemplate>
@@ -101,7 +109,7 @@
                     <td>3</td>
                     <td>11/10/2016</td>
                     <td>11/11/2016</td>
-                    <td>Done</td>
+                    <td>OnTime</td>
                     <td>Watch Shock</td>
                     <td>300.00</td>
                 </tr>--%>

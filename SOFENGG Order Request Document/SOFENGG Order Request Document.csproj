@@ -143,11 +143,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\AdminModel.cs" />
+    <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\CourseDescription.cs" />
     <Compile Include="Model\Database\DBMySqlAddMailingInfo.cs" />
     <Compile Include="Model\Database\DBMySqlAddPersonalInformation.cs" />
     <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
+    <Compile Include="Model\Database\OrderList\DBMySqlGetDeliveryFee.cs" />
+    <Compile Include="Model\Database\OrderList\DBMySqlGetOrderStatusCount.cs" />
+    <Compile Include="Model\Database\OrderList\DBMySqlGetOrderListPreview.cs" />
     <Compile Include="Model\Database\DBMySqlGetStudentDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetMailingInfo.cs" />
     <Compile Include="Model\Database\Interface\DBMySqlConnection.cs" />
@@ -176,6 +181,7 @@
     <Compile Include="Model\StudentDegree.cs" />
     <Compile Include="Model\StudentInfo.cs" />
     <Compile Include="Model\IUserModel.cs" />
+    <Compile Include="Presenter\Admin\ViewOrderListPresenter.cs" />
     <Compile Include="Presenter\PersonalInformationPresenter.cs" />
     <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
     <Compile Include="Presenter\DocumentListPresenter.cs" />
@@ -193,6 +199,7 @@
     <Compile Include="View\Admin\DocumentList.aspx.designer.cs">
       <DependentUpon>DocumentList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\Interface\IOrderListView.cs" />
     <Compile Include="View\Admin\Interface\IDocumentListView.cs" />
     <Compile Include="View\Admin\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>

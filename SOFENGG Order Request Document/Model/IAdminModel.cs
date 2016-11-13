@@ -8,7 +8,8 @@ namespace SOFENGG_Order_Request_Document.Model
         bool EditDocument(Document document);
         bool DeleteDocument(Document document);
         Document[] GetDocumentList();
-        Document[] GetPendingDocumentList();
+        Order[] GetOrderList();
+        Order[] GetOrderList(OrderStatusEnum orderStatus);
         bool MarkAsDone(Order order);
         bool MarkAsPending(DateTime newDueDate, string reason);
         bool MarkAsProcessing(Order order);
