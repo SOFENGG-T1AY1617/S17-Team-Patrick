@@ -57,12 +57,12 @@
                 <tr>
                     <td valign="top" class="content-form_label">Level <span style="color: red">*</span></td>
                     <td style="padding-left: 3px;">
-                        <asp:RadioButtonList ID="optLevel" runat="server" 
-                            RepeatDirection="Vertical" RepeatLayout="Flow">
+                        <asp:DropDownList ID="ddlLevel" runat="server" Width="200px">
+                            <asp:ListItem Text="Select Level" Value="0"></asp:ListItem>
                             <asp:ListItem Text="Bachelor" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Masters" Value="2"></asp:ListItem>
                             <asp:ListItem Text="Doctorate" Value="3"></asp:ListItem>
-                         </asp:RadioButtonList>
+                         </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
