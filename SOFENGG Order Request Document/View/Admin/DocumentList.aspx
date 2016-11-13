@@ -145,6 +145,19 @@
             <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvWeight" runat="server" ControlToValidate="txtWeight" ErrorMessage="Weight cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
             <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvWeight" runat="server" ControlToValidate="txtWeight" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Weight cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
 
+            <p>Maximum Copies</p>
+            <asp:TextBox ID="txtMaxCopies" class="form-control" Type="text" placeholder="Number of Copies" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvMaxCopies" runat="server" ControlToValidate="txtMaxCopies" ErrorMessage="Maximum copies cannot be empty." Dispaly="Dynamic"></asp:RequiredFieldValidator>
+            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvMaxCopies" runat="server" ControlToValidate="txtMaxCopies" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Maximum copies cannot be less than 1." Display="dynamic"></asp:RangeValidator>
+
+            <div class="checkbox">
+                <asp:CheckBox ID="cbForUndergraduate" runat="server" CcsClass="checkbox"/>
+                <asp:Label runat="server" Text="For Undergraduate"></asp:Label>
+                <br />
+                <asp:CheckBox ID="cbForGraduate" runat="server" CcsClass="checkbox"/>
+                <asp:Label runat="server" Text="For Graduate"></asp:Label>
+            </div>
+
             <div>
                 <asp:Button ID="btnAdd" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
                 <button id="btnAddCancel" class="btn btn-warning">Cancel</button>

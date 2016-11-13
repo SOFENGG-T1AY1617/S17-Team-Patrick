@@ -121,6 +121,51 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.RangeValidator rvWeight;
         
         /// <summary>
+        /// txtMaxCopies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMaxCopies;
+        
+        /// <summary>
+        /// rfvMaxCopies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMaxCopies;
+        
+        /// <summary>
+        /// rvMaxCopies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rvMaxCopies;
+        
+        /// <summary>
+        /// cbForUndergraduate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbForUndergraduate;
+        
+        /// <summary>
+        /// cbForGraduate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbForGraduate;
+        
+        /// <summary>
         /// btnAdd control.
         /// </summary>
         /// <remarks>

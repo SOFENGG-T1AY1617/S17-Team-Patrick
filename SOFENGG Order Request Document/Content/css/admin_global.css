@@ -96,15 +96,9 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 375px;
-  width: 300px;
   background-color: rgb(255, 255, 255);
   z-index: 1000;
-  padding: 2% 2% 0 2%;
-}
-.popup div {
-  margin-top: 7%;
-  text-align: center;
+  padding: 2% 2% 2% 2%;
 }
 .popup textarea {
   resize: none;

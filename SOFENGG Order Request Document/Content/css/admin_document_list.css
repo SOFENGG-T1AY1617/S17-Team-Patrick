@@ -1,15 +1,8 @@
-.add {
-    text-align: center;
-}
-
 .content-main_buttons {
     margin-top: 3%;
     float: right;
 }
 
 .content-scrolling div {
-    
   background-color: rgb(250, 250, 250);
 }
-
-.hide { display: none; }

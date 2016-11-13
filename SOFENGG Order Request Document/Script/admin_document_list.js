@@ -1,12 +1,12 @@
 $("#add_button").on('click', function () {
-    $('.popup-background').height($(document).height());
-    $(".popup-background").css("display", "block");
+    $('.popup-background').height($(document).height(), function() {
+        $(".popup-background").css("display", "block");
+    });
     event.preventDefault();
     return false;
 });
 
 $("#btnAdd, #btnAddCancel").on('click', function () {
     $(".popup-background").css("display", "none");
-    event.preventDefault();
     return false;
 });
