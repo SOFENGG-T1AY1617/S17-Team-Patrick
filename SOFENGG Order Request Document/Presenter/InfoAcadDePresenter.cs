@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using SOFENGG_Order_Request_Document.Model;
@@ -20,18 +21,26 @@ namespace SOFENGG_Order_Request_Document.Presenter
         }
 
         public bool AddStudentDegree()
-        {
-            if (true)
+        {   
+            StudentDegree studentDegree = new StudentDegree()
             {
-                return true;
-            }
-            return false;
+                StudentInfoId = view.StudentInfoId,
+                AdmittedAs = (AdmissionEnum)view.AdmittedAs,
+                Degree = model.GetDegree(view.StudentInfoId, view.Degree, view.CampusAttended, view.Level),
+                IdStudent = view.IdNumber,
+                YearAdmitted = view.YearAdmitted,
+            };
+
+            return model.AddStudentDegree(studentDegree);
 
         }
 
         public StudentDegree[] GetStudentDegree()
         {
-            return new StudentDegree[100];    
+            var db = new DBMySqlGetStudentDegreeList();
+            db.StudentInfoId = view.StudentInfoId;
+            db.ExecuteQuery();
+            return db.StudentDegreeList;
         }
 
     }

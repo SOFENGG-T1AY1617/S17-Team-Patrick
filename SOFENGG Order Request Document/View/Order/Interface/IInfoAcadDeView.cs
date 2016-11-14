@@ -8,6 +8,7 @@ namespace SOFENGG_Order_Request_Document.View.Order.Interface
 {
     public interface IInfoAcadDeView
     {
+        int StudentInfoId { get; set; }
         int IdNumber{get; set; }
         int CampusAttended { get; set; }
         char Level { get; set; }

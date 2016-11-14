@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -7,31 +8,50 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 {
     public class DBMySqlGetDegreeList:DBMySqlSelectConnection
     {
-        public Degree[] degreeList;
+        public Degree Degree;
+        public Degree[] DegreeList;
+        public string Query;
+
+        public void SetCustomQuery(String query)
+        {
+            Query = query;
+
+        }
 
         protected override void SetQuery()
         {
-            Cmd.CommandText = string.Format("SELECT * FROM {0}", Degree.Table);
+            Cmd.CommandText = Query;
+            /*
+            Cmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = '"+ Degree.Name + "' and " +
+                                            "{2} = "+ (int)Degree.CampusOffered + " and " +
+                                            "{3} = '" + (char)Degree.Level  + "';",
+                                            Degree.Table,
+                                            Degree.ColDegreeName, Degree.ColCampusOfferedId, Degree.ColLevel);*/
+            
             Cmd.Prepare();
-            throw new NotImplementedException();
         }
 
         public override void Parse()
         {
-            degreeList = new Degree[ObjectList.Length];
-            for (int i = 0; i < degreeList.Length; i++)
+            DegreeList = new Degree[ObjectList.Length];
+            for (int i = 0; i < DegreeList.Length; i++)
             {
-                degreeList[i] = new Degree()
+
+                DegreeList[i] = new Degree()
                 {
-                    CampusOffered = (CampusEnum) (int.Parse(ObjectList[i][Degree.ColCampusOfferedId].ToString())),
+                    CampusOffered = (CampusEnum)(int.Parse(ObjectList[i][Degree.ColCampusOfferedId].ToString())),
                     Code = ObjectList[i][Degree.ColDegreeAbbrv].ToString(),
                     Id = int.Parse(ObjectList[i][Degree.ColDegreeId].ToString()),
-                    Level = (DegreeLevelEnum) (int.Parse(ObjectList[i][Degree.ColLevel].ToString())),
+                    Level = (DegreeLevelEnum) (ObjectList[i][Degree.ColLevel].ToString()[0]),
                     Name = ObjectList[i][Degree.ColDegreeName].ToString(),
 
                 };
             }
-            throw new NotImplementedException();
+        }
+
+        public void setDegree(Degree degree)
+        {
+            Degree = degree;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Web;
 using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Presenter;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
@@ -14,15 +15,18 @@ namespace SOFENGG_Order_Request_Document.View.Order
             {
                 this.PopulateYear();
             }
-            
+            Request.Cookies["StudentInfo"]["Id"] = "2";
+
         }
 
         protected void SubmitStudentDegree_Click(object sender, EventArgs e)
         {
+            if (Request.Cookies["StudentInfo"] == null) return;
+            StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
             IdNumber = int.Parse(txtStudNo.Text);
-            CampusAttended = int.Parse(ddlCampus.SelectedItem.Value) - 1;
+            CampusAttended = int.Parse(ddlCampus.SelectedItem.Value);
             YearAdmitted = int.Parse(ddlYearAdmitted.SelectedItem.Text);
-            Level = (int.Parse(optLevel.SelectedItem.Value) - 1).ToString()[0];
+            Level = optLevel.SelectedItem.Value[0];
             IsGraduate = isGraduate.Checked;
             Degree = txtDegree.Text;
             AdmittedAs = (int.Parse(optAdmittedAs.SelectedItem.Value) - 1).ToString()[0];
@@ -30,7 +34,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
             if (presenter.AddStudentDegree())
             {
-                Response.Redirect("~/View/Order/InfoMailDe.aspx");
+                Response.Redirect("~/View/Order/InfoAcadConfirm.aspx");
             }
         }
 
@@ -52,6 +56,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
         }
 
 
+        public int StudentInfoId { get; set; }
         public int IdNumber { get; set; }
         public int CampusAttended { get; set; }
         public char Level { get; set; }

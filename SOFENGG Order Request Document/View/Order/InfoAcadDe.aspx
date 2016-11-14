@@ -59,9 +59,9 @@
                     <td style="padding-left: 3px;">
                         <asp:RadioButtonList ID="optLevel" runat="server" 
                             RepeatDirection="Vertical" RepeatLayout="Flow">
-                            <asp:ListItem Text="Bachelor" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Masters" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Doctorate" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="Bachelor" Value="U"></asp:ListItem>
+                            <asp:ListItem Text="Masters" Value="M"></asp:ListItem>
+                            <asp:ListItem Text="Doctorate" Value="D"></asp:ListItem>
                          </asp:RadioButtonList>
                     </td>
                 </tr>
