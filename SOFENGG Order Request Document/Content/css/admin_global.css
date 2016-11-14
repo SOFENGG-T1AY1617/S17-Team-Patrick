@@ -1,13 +1,12 @@
 body {
-  background-color: rgb(231, 223, 202);
+  background-color: #61788e;
 }
 
 .header {
-  height: 100px;
-  width: 100%;
-  background-color: rgb(16, 68, 0);
+  height: 80px;
+  background-color: #569686;
   position: relative;
-  padding-left: 10%;
+  margin-left: 250px;
 }
 .header p {
   position: absolute;
@@ -15,33 +14,69 @@ body {
   font-weight: bolder;
   bottom: 0;
   font-size: 200%;
+  margin-left: 1%;
+}
+.header p, .header img {
+    display: inline;
+}
+
+.sidebar {  
+  position: fixed;
+  top: 250;
+  left: 0;
+  min-height: 100%;
+  width: 250px;
+  background-color: #2F444D;
+  padding-top: 1%;
+}
+.sidebar ul li a {
+    color: white !important;
+}
+.sidebar ul li a:hover {
+    background-color: #6FBEDE;
+}
+.sidebar_logo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  background-color: #364F59;
+  width: 250px;
+  text-align: center;
+}
+.sidebar_logo img {
+    width: 50px;
+    height: auto;
+    margin: 5% auto;
 }
 
 .content {
-  position: relative;
-  height: auto;
-  min-height: 100% !important;
-  margin-top: 2%;
+    margin-left: 250px;
+    background-color: #61788e;
+    height: 100%;
+    min-height: 100%;
+    padding-top: 2%;
 }
 .content-main {
-  background-color: rgb(250, 250, 250);
-  border-radius: 5px;
-  padding: 1% 3% 1% 3%;
+   
+}
+.content-main div {
+    background-color: #F0F0F0;
+}
+.content-main table {
+  text-align: center;
 }
 .content-main_report {
   margin-top: 2%;
   margin-left: 70%;
   width: 30%;
 }
-.content-main table {
-  text-align: center;
-}
 .content-main td button {
   width: 80px;
 }
 
-.content-scrolling {
-  height: 500px;
+/*.content-scrolling {
+  height: 60%;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -50,19 +85,7 @@ body {
   border-radius: 5px;
   padding: 1% 1% 1% 1%;
   margin-top: 1%;
-}
-.content-sidebar {
-  background-color: rgb(255, 255, 255);
-  border-radius: 5px;
-  height: 400px;
-  line-height: 30px;
-  padding-top: 1%;
-}
-
-.content-sidebar ul {
-  list-style: none;
-  padding: 0;
-}
+}*/
 
 .content-form {
   width: 95%;
@@ -92,22 +115,17 @@ body {
     display: none;
 }
 .popup {
+  z-index: 10;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(255, 255, 255);
-  z-index: 1000;
-  padding: 2% 2% 2% 2%;
+  padding: 0 1% 1% 1%;
+}
+.popup_center_align {
+    text-align: center;
 }
 .popup textarea {
   resize: none;
-}
-
-.process {
-  padding: 3% 0 0 0;
-  height: 125px;
-  width: 300px;
-  display: none;
-  text-align: center;
 }

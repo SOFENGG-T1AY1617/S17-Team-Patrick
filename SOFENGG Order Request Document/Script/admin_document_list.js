@@ -1,11 +1,11 @@
 $("#add_button").on('click', function () {
     $(".popup-background").height($(document).height);
-    $(".popup-background").css("display", "block");
+    $(".popup-background").toggle();
 
     return false;
 });
 
 $("#btnAdd, #btnAddCancel").on('click', function () {
-    $(".popup-background").css("display", "none");
+    $(".popup-background").toggle();
     return false;
 });
