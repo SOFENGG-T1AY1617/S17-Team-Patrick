@@ -130,6 +130,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 RegularPrice = regularPrice,
                 ExpressPrice = expressPrice,
                 Weight = weight
+                //
             };
         }
     }
