@@ -75,17 +75,12 @@
                     <td>
                         &nbsp;
                         <asp:CheckBox ID="isGraduate" runat="server"/>&nbsp;
-                        <asp:RequiredFieldValidator id="rfvGraduate" runat="server"
-                            ControlToValidate="isGraduate"
-                            ErrorMessage="Please check if you have already graduated from the inputted level."
-                            ForeColor="Red">
-                        </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Degree <span style="color: red">*</span></td>
                     <td>&nbsp;
-                        <asp:DropDownList ID="ddlDegree" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlDegree" runat="server" Width="200px"></asp:DropDownList>
                         <asp:RequiredFieldValidator id="rfvDegree" runat="server"
                             ControlToValidate="ddlDegree"
                             ErrorMessage="Degree is a required field."

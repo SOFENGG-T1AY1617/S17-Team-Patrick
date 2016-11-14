@@ -8,7 +8,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 {
     public class DBMySqlAddStudentDegree : DBMySqlConnection
     {
-        public int StudentId { get; set; }
         protected StudentDegree StudentDegree;
 
         public DBMySqlAddStudentDegree(StudentDegree studentDegree)

@@ -1,32 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
+using MySql.Data.MySqlClient;
 
 namespace SOFENGG_Order_Request_Document.Model.Database
 {
     public class DBMySqlGetDegreeList:DBMySqlSelectConnection
     {
-        public Degree Degree;
         public Degree[] DegreeList;
-        public string Query;
+        private MySqlCommand tempCmd;
 
-        public void SetCustomQuery(String query)
+        public void SetQueryForAllDegree()
         {
-            Query = query;
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0};", Degree.Table);
+        }
 
+        public void SetQueryGivenDegreeId(int degreeId)
+        {
+            tempCmd = new MySqlCommand();
+            Degree degree = new Degree()
+            {Id = degreeId,};
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {2}", Degree.Table, Degree.ColDegreeId, degree.Id);
+        }
+
+        public void SetQueryGivenInput(CampusEnum campus, string name, DegreeLevelEnum level)
+        {
+            tempCmd = new MySqlCommand();
+            Degree degree = new Degree()
+            {
+                CampusOffered = campus, Name = name, Level = level,
+            };
+
+            Debug.Write("\n\n\n " + name + "\n\n\n");
+
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {4} and {2} = '{5}' and {3} = '{6}';",
+                Degree.Table, Degree.ColCampusOfferedId, Degree.ColDegreeName, Degree.ColLevel,
+                (int)degree.CampusOffered, degree.Name, (char)degree.Level);
         }
 
         protected override void SetQuery()
         {
-            Cmd.CommandText = Query;
-            /*
-            Cmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = '"+ Degree.Name + "' and " +
-                                            "{2} = "+ (int)Degree.CampusOffered + " and " +
-                                            "{3} = '" + (char)Degree.Level  + "';",
-                                            Degree.Table,
-                                            Degree.ColDegreeName, Degree.ColCampusOfferedId, Degree.ColLevel);*/
+            string commandText = tempCmd.CommandText;
+            Cmd.CommandText = commandText;
             
             Cmd.Prepare();
         }
@@ -47,11 +66,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 
                 };
             }
-        }
-
-        public void setDegree(Degree degree)
-        {
-            Degree = degree;
         }
     }
 }

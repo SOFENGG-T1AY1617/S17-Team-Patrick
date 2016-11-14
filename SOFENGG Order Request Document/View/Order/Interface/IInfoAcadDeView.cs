@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SOFENGG_Order_Request_Document.Model;
 
 namespace SOFENGG_Order_Request_Document.View.Order.Interface
 {
@@ -16,5 +17,6 @@ namespace SOFENGG_Order_Request_Document.View.Order.Interface
         String Degree { get; set; }
         char AdmittedAs { get; set; }
         int YearAdmitted { get; set; }
+        StudentDegree[] StudentDegreeList { get; set; }
     }
 }

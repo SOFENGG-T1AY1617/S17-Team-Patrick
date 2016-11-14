@@ -6,13 +6,27 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 {
     public class DBMySqlGetStudentDegreeList: DBMySqlSelectConnection
     {
-        public int StudentInfoId;
         public StudentDegree[] StudentDegreeList;
+
+        private MySqlCommand tempCmd;
+
+        public void SetQueryGivenStudentInfoId(int studentInfoId)
+        {
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = " + studentInfoId, StudentDegree.Table, StudentDegree.ColStudentInfoId);
+
+        }
+
+        public void SetQueryGivenStudentDegreeId(int degreeId)
+        {
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = " + degreeId, StudentDegree.Table, StudentDegree.ColDegreeId);
+
+        }
 
         protected override void SetQuery()
         {
-            Cmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = " + StudentInfoId, StudentDegree.Table, StudentDegree.ColStudentInfoId);
-            
+            Cmd.CommandText = tempCmd.CommandText;
             Cmd.Prepare();
         }
 
@@ -28,7 +42,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                     Id = int.Parse(ObjectList[i][StudentDegree.ColStudentDegreeId].ToString()),
                     Degree = model.GetDegree(int.Parse(ObjectList[i][StudentDegree.ColDegreeId].ToString())),
                     YearAdmitted = int.Parse(ObjectList[i][StudentDegree.ColYearAdmitted].ToString()),
-                    AdmittedAs = (AdmissionEnum) (ObjectList[i][StudentDegree.ColAdmittedAs]),
+                    AdmittedAs = (AdmissionEnum) int.Parse(ObjectList[i][StudentDegree.ColAdmittedAs].ToString()),
 
                 };
             }

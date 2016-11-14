@@ -92,6 +92,32 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
         }
 
+        private void PopulatePreviousInput()
+        {
+            PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
+            //get StudentInfo from presenter.GetStudentInfo();
+            //populate all txtBox etc etc
+            //change all StudentInfo 
+            var studentInfo = presenter.GetMyStudentInfo(int.Parse(Request.Cookies["StudentInfo"]["Id"]));
+            txtBirthplace.Text = studentInfo.PlaceOfBirth;
+            txtCitizen.Text = studentInfo.Citizenship;
+            txtCurrentAddress.Text = studentInfo.CurrentAddress;
+            txtEmail.Text = studentInfo.Email;
+            txtFName.Text = studentInfo.FirstName;
+            txtLName.Text = studentInfo.LastName;
+            txtMName.Text = studentInfo.MiddleName;
+            txtHSAttended.Text = studentInfo.HighSchoolAttended;
+            txtPhoneNum.Text = studentInfo.PhoneNumber;
+            optGender.SelectedValue = (char)studentInfo.Gender + "";
+            ddlBirthMonth.Items.FindByValue(DateTime.Now.Month.ToString()).Selected = false;
+            ddlBirthMonth.Items.FindByValue(studentInfo.BirthDate.Month.ToString()).Selected = true;
+            ddlBirthDay.Items.FindByValue(DateTime.Now.Day.ToString()).Selected = false;
+            ddlBirthDay.Items.FindByValue(studentInfo.BirthDate.Day.ToString()).Selected = true;
+            ddlBirthYear.Items.FindByValue(DateTime.Now.Year.ToString()).Selected = false;
+            ddlBirthYear.Items.FindByValue(studentInfo.BirthDate.Year.ToString()).Selected = true;
+            
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -112,6 +138,29 @@ namespace SOFENGG_Order_Request_Document.View.Order
                     ddlBirthDay.Items.FindByValue(Request.Form[ddlBirthDay.UniqueID]).Selected = true;
                 }
             }
+
+
+            ////// DEBUGGING. PLEASE DELETE AFTER //////
+            try
+            {
+                Request.Cookies["StudentInfo"]["Id"] = "19";
+            }
+            catch (Exception)
+            {
+                HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
+                studentInfoCookie["Id"] = "2";
+                studentInfoCookie["PersonalInformationPage"] = "true";
+                studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
+                Response.Cookies.Add(studentInfoCookie);
+            }
+            finally
+            {
+                if (Request.Cookies["StudentInfo"] != null)
+                {
+                    PopulatePreviousInput();
+                }
+            }
+            ////// END-OF-DEBUGGING. PLEASE DELETE AFTER //////
         }
 
         protected void SubmitPersonalInformation_Click(object sender, EventArgs e)
@@ -131,16 +180,31 @@ namespace SOFENGG_Order_Request_Document.View.Order
             HighSchoolAttended = txtHSAttended.Text;
             PlaceOfBirth = txtBirthplace.Text;
 
-            
-            PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
-            if (presenter.AddStudentInfo())
+            try
             {
-                HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
-                studentInfoCookie["Id"] = presenter.GetMyStudentInfoId() + "";
-                studentInfoCookie.Expires = DateTime.Now.AddMinutes(60.0);
-                Response.Cookies.Add(studentInfoCookie);
+                if (Request.Cookies["StudentInfo"] != null)
+                {
+                    Request.Cookies["StudentInfo"]["PersonalInformationPage"] = "true";
+                }
+            }
+            catch (Exception)
+            {
+                PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
+                if (presenter.AddStudentInfo())
+                {
+                    HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
+                    studentInfoCookie["Id"] = presenter.GetMyStudentInfo().StudentInfoId + "";
+                    studentInfoCookie["PersonalInformationPage"] = "true";
+                    studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
+                    Response.Cookies.Add(studentInfoCookie);
+                }
+            }
+            finally
+            {
                 Response.Redirect("~/View/Order/InfoAcadDe.aspx");
             }
+
+            
             
     }   
 

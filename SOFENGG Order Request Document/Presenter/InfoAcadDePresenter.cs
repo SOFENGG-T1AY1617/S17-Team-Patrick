@@ -34,14 +34,21 @@ namespace SOFENGG_Order_Request_Document.Presenter
             return model.AddStudentDegree(studentDegree);
 
         }
+        
 
-        public StudentDegree[] GetStudentDegree()
+        public StudentDegree[] GetStudentDegreeList()
         {
-            var db = new DBMySqlGetStudentDegreeList();
-            db.StudentInfoId = view.StudentInfoId;
-            db.ExecuteQuery();
-            return db.StudentDegreeList;
+            return model.GetStudentDegree(view.StudentInfoId);
         }
 
+        public StudentDegree GetOneStudentDegree(int studentDegreeId)
+        {
+            return model.GetOneStudentDegree(studentDegreeId);
+        }
+
+        public Degree[] GetAllDegrees()
+        {
+            return model.GetDegree();
+        }
     }
 }

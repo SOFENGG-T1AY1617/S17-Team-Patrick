@@ -49,6 +49,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.RadioButtonList optLevel;
         
         /// <summary>
+        /// rfvLevel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLevel;
+        
+        /// <summary>
         /// isGraduate control.
         /// </summary>
         /// <remarks>
@@ -58,13 +67,22 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.CheckBox isGraduate;
         
         /// <summary>
-        /// txtDegree control.
+        /// ddlDegree control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDegree;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDegree;
+        
+        /// <summary>
+        /// rfvDegree control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDegree;
         
         /// <summary>
         /// txtStudNo control.
