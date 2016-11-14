@@ -63,17 +63,35 @@
                             <asp:ListItem Text="Masters" Value="M"></asp:ListItem>
                             <asp:ListItem Text="Doctorate" Value="D"></asp:ListItem>
                          </asp:RadioButtonList>
+                         <asp:RequiredFieldValidator id="rfvLevel" runat="server"
+                            ControlToValidate="optLevel"
+                            ErrorMessage="Level is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Is Graduate? <span style="color: red">*</span></td>
                     <td>
-                        &nbsp;<asp:CheckBox ID="isGraduate" runat="server"/>&nbsp;
+                        &nbsp;
+                        <asp:CheckBox ID="isGraduate" runat="server"/>&nbsp;
+                        <asp:RequiredFieldValidator id="rfvGraduate" runat="server"
+                            ControlToValidate="isGraduate"
+                            ErrorMessage="Please check if you have already graduated from the inputted level."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Degree <span style="color: red">*</span></td>
-                    <td>&nbsp;<asp:TextBox ID="txtDegree" runat="server" style="maxlength:100px; size:40px;"></asp:TextBox>
+                    <td>&nbsp;
+                        <asp:DropDownList ID="ddlDegree" runat="server"></asp:DropDownList>
+                        <asp:RequiredFieldValidator id="rfvDegree" runat="server"
+                            ControlToValidate="ddlDegree"
+                            ErrorMessage="Degree is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Student No</td>
