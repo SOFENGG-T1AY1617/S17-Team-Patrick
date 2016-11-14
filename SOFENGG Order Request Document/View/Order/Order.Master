@@ -21,7 +21,7 @@
             <div class="header-photo"></div>
             <p>Online Request of Documents</p>
         </div>
-
+<form runat="server">
         <div class="container content">
             <div class="row">
                 <asp:ContentPlaceHolder ID="body" runat="server">
@@ -29,6 +29,7 @@
                 </asp:ContentPlaceHolder>
             </div>
         </div>
+</form>
     </div>
 
     <script src="/Script/jquery.min.js"></script>

@@ -43,7 +43,7 @@ body {
 .content-scrolling {
   height: 500px;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
 }
 .content-scrolling div {
   background-color: white;
@@ -82,24 +82,14 @@ body {
   margin-right: 5%;
 }
 
-.details-popup {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  height: 650px;
-  width: 700px;
-  background-color: rgb(255, 255, 255);
-  z-index: 1000;
-  -webkit-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  padding: 2% 2% 0 2%;
-  display:none;
-  overflow-y:scroll;
-}
-.details-popup div {
-  text-align: center;
+.popup-background {
+    height: 100%;
+    width: 100%;
+    background:rgba(210,210,210,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
 }
 
 .popup {
@@ -107,15 +97,12 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 375px;
-  width: 300px;
   background-color: rgb(255, 255, 255);
   z-index: 1000;
-  -webkit-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
+  /*-webkit-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);
-  padding: 2% 2% 0 2%;
-  display:none;
+  box-shadow: 0px 0px 300px 37px rgba(0,0,0,0.75);*/
+  padding: 2% 2% 2% 2%;
 }
 .popup div {
   margin-top: 7%;

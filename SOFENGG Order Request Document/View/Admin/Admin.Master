@@ -19,6 +19,7 @@
     <p>Online Request for Documents</p>
 </div>
 
+<form runat="server">
 <div class="container content">
     <div class="row">
         <asp:ContentPlaceHolder ID="body" runat="server">
@@ -26,9 +27,8 @@
         </asp:ContentPlaceHolder>
     </div>
 </div>
-<asp:ContentPlaceHolder ID="other" runat="server">
-
-</asp:ContentPlaceHolder>
+<asp:ContentPlaceHolder ID="other" runat="server"></asp:ContentPlaceHolder>
+</form>
 
 <script src="/Script/jquery.min.js"></script>
 <script src="/Script/bootstrap.min.js"></script>
