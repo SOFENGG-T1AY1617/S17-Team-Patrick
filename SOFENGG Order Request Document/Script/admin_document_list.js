@@ -1,8 +1,7 @@
 $("#add_button").on('click', function () {
-    $('.popup-background').height($(document).height(), function() {
-        $(".popup-background").css("display", "block");
-    });
-    event.preventDefault();
+    $(".popup-background").height($(document).height);
+    $(".popup-background").css("display", "block");
+
     return false;
 });
 
