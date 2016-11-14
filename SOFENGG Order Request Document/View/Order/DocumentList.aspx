@@ -5,13 +5,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Always change the css file name to html file name! -->
-
-    <!-- Test Commit - Tyler -->
     <link rel="stylesheet" href="/Content/css/document_list.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="col-xs-3">
-        <h5>Request Flow</h5>
+        <h5> Request Flow</h5>
         <ul>
             <li>
                 <a href="personal_information.html">Personal Information</a>
@@ -40,10 +38,17 @@
     <div class="col-xs-9">
         <h5 class="content-header">Document List</h5>
         <div>
-            <asp:GridView ID="gvDocumentList" AutoGenerateColumns="False" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <table border="1" class="content-document">
+                <tr>
+                    <td colspan="1" class="content-document-header" >Below is a list of documents that you can request from the OUR. Press the order link to the document you want to order.</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="content-document-header">Transcript of Records</td>
+                </tr>
+            </table>
+            <asp:GridView ID="gvDocumentList" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
-                <Columns>
-                    
+                <Columns >
                     <asp:TemplateField HeaderText="Document">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
@@ -72,6 +77,122 @@
                 <SortedDescendingCellStyle BackColor="#D4DFE1" />
                 <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
+
+
+            <table>
+                <tr>
+                    <td colspan="4" class="content-document-header">Certification</td>
+                </tr>
+            </table>
+            <asp:GridView ID="GridView2" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns >
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField> 
+                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
+                </Columns>
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
+            </asp:GridView>
+
+            <table>
+                <tr>
+                    <td colspan="4" class="content-document-header">Certified True Copy</td>
+                </tr>
+            </table>
+
+            <asp:GridView ID="GridView3" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns >
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField> 
+                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
+                </Columns>
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
+            </asp:GridView>
+
+            <table>
+                <tr>
+                    <td colspan="4" class="content-document-header">Others</td>
+                </tr>
+            </table>
+
+            <asp:GridView ID="GridView4" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns >
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField> 
+                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
+                </Columns>
+                <EditRowStyle BackColor="#7C6F57" />
+                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#E3EAEB" />
+                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                <SortedDescendingHeaderStyle BackColor="#15524A" />
+            </asp:GridView>
+
+            
 
         </div>
     </div>

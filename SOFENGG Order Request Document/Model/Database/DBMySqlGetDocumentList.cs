@@ -8,6 +8,14 @@ namespace SOFENGG_Order_Request_Document.Model.Database
     public class DBMySqlGetDocumentList : DBMySqlSelectConnection
     {
         public Document[] DocumentList;
+        /* private readonly bool _isGraduate;
+         private readonly bool _isUndergraduate;
+
+         public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
+         {
+             _isGraduate = isGraduate;
+             _isUndergraduate = isUndergraduate;
+         } */
 
         protected override void SetQuery()
         {
