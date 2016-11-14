@@ -5,11 +5,6 @@ using System.Web;
 
 namespace SOFENGG_Order_Request_Document.Model
 {
-    public enum DeliveryModeEnum
-    {
-        Pickup = 0,
-        Delivery = 1
-    }
 
     public class DeliveryArea
     {
@@ -17,13 +12,14 @@ namespace SOFENGG_Order_Request_Document.Model
         public const string ColDeliveryAreaId = "deliveryAreaId";
         public const string ColAreaName = "areaName";
         public const string ColPrice = "price";
-        public const string ColDaysToDeliver = "daysToDeliver";
+        public const string ColMinDaysToDeliver = "minDaysToDeliver";
+        public const string ColMaxDaysToDeliver = "maxDaysToDeliver";
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public DeliveryModeEnum Mode { get; set; }
-        public string Price { get; set; }
-        public string DaysToDeliver { get; set; }
+        public float Price { get; set; }
+        public int MinDaysToDeliver { get; set; }
+        public int MaxDaysToDeliver { get; set; }
 
     }
 }

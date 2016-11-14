@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/Content/css/admin_main.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
     <div class="col-xs-2 content-sidebar">
         <h3>Menu</h3>
         <br>
@@ -61,7 +62,6 @@
                 </table>
             </div>
         </div>
-
         <asp:Repeater ID="repOrders" runat="server">
             <HeaderTemplate>
                 <table class="table table-hover table-bordered">
@@ -78,7 +78,7 @@
                     <tbody>
             </HeaderTemplate>
             <ItemTemplate>
-                <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>'>
+                <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
                     <td>
                         <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
                     </td>
@@ -113,6 +113,162 @@
                     <td>Watch Shock</td>
                     <td>300.00</td>
                 </tr>--%>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="other" runat="server">
+
+    <div class="modal fade" id="dlgOrderInformation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <asp:UpdatePanel ID="upOrderInformation" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <input type="hidden" id="cmdUpdateOrderInformation" />
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4>Reference Number
+                                <asp:Label ID="lblActiveReferenceNo" runat="server"></asp:Label></h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <div>
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="active">
+                                            <td colspan="2">Transaction Details</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderName" runat="server" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderAddress" runat="server" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone Number</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderPhoneNumber" runat="server" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderEmail" runat="server" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Place of Birth</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderPlaceOfBirth" runat="server" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <asp:Repeater ID="repOrderMailingInfo" runat="server">
+                                    <ItemTemplate>
+                                        <div class="delivery_details_table">
+                                            <table class="table table-bordered table_start">
+                                                <thead>
+                                                    <tr class="active">
+                                                        <td colspan="2">Delivery Details</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="col-md-5">Mailing Address</td>
+                                                        <td>
+                                                            <asp:Label ID="lblMailingAddress" runat="server" Text='<%# Eval("MailingAddress.MailingAddress") %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Zip Code</td>
+                                                        <td>
+                                                            <asp:Label ID="lblZipCode" runat="server" Text='<%# Eval("MailingAddress.ZipCode") %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Delivery Area</td>
+                                                        <td>
+                                                            <asp:Label ID="lblDeliveryArea" runat="server" Text='<%# Eval("MailingAddress.DeliveryArea.Name") %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Delivery Charge</td>
+                                                        <td>PHP
+                                                            <asp:Label ID="lblDeliveryCharge" runat="server" Text='<%# float.Parse(Eval("MailingAddress.DeliveryArea.Price").ToString()).ToString("n2") %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Processing Type</td>
+                                                        <td>
+                                                            <asp:Label ID="lblOrderType" runat="server" Text='<%# ((OrderType)Eval("OrderType")).GetDescription() %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Date Due To Courier</td>
+                                                        <td>WAT?</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estimated Delivery Date</td>
+                                                        <td>
+                                                            <asp:Label ID="lblEstimatedDeliveryDate" runat="server" Text='<%# Convert.ToDateTime(Eval("EstimatedDeliveryDate")).ToString("d") %>' /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <asp:Repeater ID="repOrderItem" runat="server">
+                                                <ItemTemplate>
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td class="col-md-5">Document</td>
+                                                            <td>
+                                                                <asp:Label ID="lblDocumentName" runat="server" Text='<%# Eval("Document.Name") %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Degree</td>
+                                                            <td>
+                                                                <asp:Label ID="lblDegree" runat="server" Text='<%# Eval("StudentDegree.Degree.Name") %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Cost</td>
+                                                            <td>
+                                                                <asp:Label ID="lblCost" runat="server" Text='<%# (OrderType) int.Parse(Eval("OrderType").ToString()) == OrderType.Regular ? Eval("Document.RegularPrice") : Eval("Document.ExpressPrice") %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>No. of Copies</td>
+                                                            <td>
+                                                                <asp:Label ID="lblNoOfCopes" runat="server" Text='<%# Eval("NoOfCopies") %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Envelope</td>
+                                                            <td>
+                                                                <asp:Label ID="lblEnvelope" runat="server" Text='<%# Eval("Packaging") %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Sub Total</td>
+                                                            <td>PHP
+                                                                <asp:Label ID="lblSubTotal" runat="server" Text='<%# int.Parse(Eval("NoOfCopies").ToString()) * ((OrderType) int.Parse(Eval("OrderType").ToString()) == OrderType.Regular ? float.Parse(Eval("Document.RegularPrice").ToString()) : float.Parse(Eval("Document.ExpressPrice").ToString())) %>' /></td>
+                                                        </tr>
+                                                    </table>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <%--            Only display "mark as pending" and "mark as done" when currentorder is processing and NOT pending already--%>
+                            <div class="content_buttons">
+                                <button id="btnBack" class="btn btn-primary">Back</button>
+                                <button id="btnMarkPending" class="btn btn-danger">Mark as Pending</button>
+                                <button id="btnMarkDone" class="btn btn-success">Mark as OnTime</button>
+                                <button id="btnMarkProcessing" class="btn btn-warning">Mark as Processing</button>
+                            </div>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">

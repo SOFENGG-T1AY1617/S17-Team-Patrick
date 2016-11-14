@@ -16,7 +16,7 @@ namespace SOFENGG_Order_Request_Document.Model
         public const string ColContactNo = "contactNo";
 
         public int Id { get; set; }
-        public int MailingAddress { get; set; }
+        public string MailingAddress { get; set; }
         public int ZipCode { get; set; }
         public DeliveryArea DeliveryArea { get; set; }
         public string ContactNo { get; set; }

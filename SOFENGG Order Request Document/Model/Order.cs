@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using SOFENGG_Order_Request_Document.Model.Helper;
 
 namespace SOFENGG_Order_Request_Document.Model
 {
@@ -139,6 +140,19 @@ namespace SOFENGG_Order_Request_Document.Model
         public float TotalAmount
         {
             get { return TotalAmountNoDeliveryFee + TotalDeliveryFee; }
+        }
+
+        public DateTime EstimatedDeliveryDate
+        {
+            get
+            {
+                var maxDate = default(DateTime);
+                for (var i = 0; i < OrderItemList.Length; i++)
+                    maxDate.Max(
+                        TransactionDate.Date.AddDays(OrderItemList[i].MailingAddress.DeliveryArea.MaxDaysToDeliver));
+
+                return maxDate;
+            }
         }
     }
 }

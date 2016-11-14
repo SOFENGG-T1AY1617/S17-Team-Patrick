@@ -39,5 +39,38 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
             _view.LateCount = GetOrderCount(OrderStatusEnum.Late, orderList);
             _view.TotalCount = orderList.Length;
         }
+
+        public void GetOrderInformation(int referenceNo)
+        {
+            var orderInfo = _model.GetOrderInformation(referenceNo);
+
+            _view.ActiveOrder = orderInfo;
+
+            var orderItemByMailingAndOrderType = new List<OrderItem[]>();
+            List<OrderItem> orderItem = null;
+
+            var mailingId = -1;
+            var orderType = default(OrderType);
+            for (var i = 0; i < orderInfo.OrderItemList.Length; i++)
+            {
+                var o = orderInfo.OrderItemList[i];
+
+                if (o.MailingAddress.Id != mailingId || o.OrderType != orderType)
+                {
+                    if (orderItem != null)
+                        orderItemByMailingAndOrderType.Add(orderItem.ToArray());
+
+                    orderItem = new List<OrderItem> {o};
+                    mailingId = o.MailingAddress.Id;
+                    orderType = o.OrderType;
+                }
+
+                if (orderItem != null)
+                    orderItem.Add(o);
+            }
+
+            _view.OrderItemList = orderItemByMailingAndOrderType.ToArray();
+
+        }
     }
 }
