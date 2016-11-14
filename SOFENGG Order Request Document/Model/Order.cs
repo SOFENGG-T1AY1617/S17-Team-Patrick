@@ -148,7 +148,7 @@ namespace SOFENGG_Order_Request_Document.Model
             {
                 var maxDate = default(DateTime);
                 for (var i = 0; i < OrderItemList.Length; i++)
-                    maxDate.Max(
+                    maxDate = maxDate.Max(
                         TransactionDate.Date.AddDays(OrderItemList[i].MailingAddress.DeliveryArea.MaxDaysToDeliver));
 
                 return maxDate;

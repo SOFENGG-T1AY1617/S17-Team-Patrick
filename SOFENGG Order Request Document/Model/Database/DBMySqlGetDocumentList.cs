@@ -21,8 +21,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         {
             DocumentList = new Document[ObjectList.Length];
 
-            var 
-
             for (var i = 0; i < DocumentList.Length; i++)
             {
                 DocumentList[i] = new Document()

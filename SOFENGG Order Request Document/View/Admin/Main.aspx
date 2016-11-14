@@ -202,7 +202,7 @@
                                                     <tr>
                                                         <td>Processing Type</td>
                                                         <td>
-                                                            <asp:Label ID="lblOrderType" runat="server" Text='<%# ((OrderType)Eval("OrderType")).GetDescription() %>' /></td>
+                                                            <asp:Label ID="lblOrderType" runat="server" Text='<%# ((OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true)).GetDescription() %>' /></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Date Due To Courier</td>
@@ -216,7 +216,7 @@
                                                 </tbody>
                                             </table>
 
-                                            <asp:Repeater ID="repOrderItem" runat="server">
+                                            <asp:Repeater ID="repOrderItem" DataSource='<%# Eval("OrderItemList") %>' runat="server">
                                                 <ItemTemplate>
                                                     <table class="table table-bordered">
                                                         <tr>
@@ -225,14 +225,9 @@
                                                                 <asp:Label ID="lblDocumentName" runat="server" Text='<%# Eval("Document.Name") %>' /></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Degree</td>
-                                                            <td>
-                                                                <asp:Label ID="lblDegree" runat="server" Text='<%# Eval("StudentDegree.Degree.Name") %>' /></td>
-                                                        </tr>
-                                                        <tr>
                                                             <td>Cost</td>
                                                             <td>
-                                                                <asp:Label ID="lblCost" runat="server" Text='<%# (OrderType) int.Parse(Eval("OrderType").ToString()) == OrderType.Regular ? Eval("Document.RegularPrice") : Eval("Document.ExpressPrice") %>' /></td>
+                                                                <asp:Label ID="lblCost" runat="server" Text='<%# (OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true) == OrderType.Regular ? Eval("Document.RegularPrice") : Eval("Document.ExpressPrice") %>' /></td>
                                                         </tr>
                                                         <tr>
                                                             <td>No. of Copies</td>
@@ -242,12 +237,12 @@
                                                         <tr>
                                                             <td>Envelope</td>
                                                             <td>
-                                                                <asp:Label ID="lblEnvelope" runat="server" Text='<%# Eval("Packaging") %>' /></td>
+                                                                <asp:Label ID="lblEnvelope" runat="server" Text='<%# ((PackagingEnum)Enum.Parse(typeof(PackagingEnum), Eval("Packaging").ToString(), true)).GetDescription() %>' /></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Sub Total</td>
                                                             <td>PHP
-                                                                <asp:Label ID="lblSubTotal" runat="server" Text='<%# int.Parse(Eval("NoOfCopies").ToString()) * ((OrderType) int.Parse(Eval("OrderType").ToString()) == OrderType.Regular ? float.Parse(Eval("Document.RegularPrice").ToString()) : float.Parse(Eval("Document.ExpressPrice").ToString())) %>' /></td>
+                                                                <asp:Label ID="lblSubTotal" runat="server" Text='<%# int.Parse(Eval("NoOfCopies").ToString()) * ((OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true) == OrderType.Regular ? float.Parse(Eval("Document.RegularPrice").ToString()) : float.Parse(Eval("Document.ExpressPrice").ToString())) %>' /></td>
                                                         </tr>
                                                     </table>
                                                 </ItemTemplate>
@@ -259,10 +254,11 @@
                         <div class="modal-footer">
                             <%--            Only display "mark as pending" and "mark as done" when currentorder is processing and NOT pending already--%>
                             <div class="content_buttons">
-                                <button id="btnBack" class="btn btn-primary">Back</button>
-                                <button id="btnMarkPending" class="btn btn-danger">Mark as Pending</button>
-                                <button id="btnMarkDone" class="btn btn-success">Mark as OnTime</button>
-                                <button id="btnMarkProcessing" class="btn btn-warning">Mark as Processing</button>
+                                <%--<button id="btnBack" class="btn btn-primary">Back</button>--%>
+                                
+                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" Text="Mark as Pending" runat="server" />
+                                <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" />
+                                <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" />
                             </div>
                         </div>
                     </div>

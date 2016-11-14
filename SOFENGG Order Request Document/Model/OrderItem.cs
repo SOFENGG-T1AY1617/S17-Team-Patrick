@@ -10,9 +10,9 @@ namespace SOFENGG_Order_Request_Document.Model
     {
         [Description("None")]
         None = 0,
-        [Description("Brown Envelope")]
+        [Description("Brown")]
         BrownEnvelope = 1,
-        [Description("White Envelope")]
+        [Description("White")]
         WhiteEnvelope = 2
     }
 

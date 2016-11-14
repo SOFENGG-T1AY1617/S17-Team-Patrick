@@ -17,6 +17,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
 
         public Model.Order[] OrderList
         {
+            get { return (Model.Order[])repOrders.DataSource; }
             set
             {
                 repOrders.DataSource = value;
@@ -30,7 +31,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
         public int LateCount { get; set; }
         public int TotalCount { get; set; }
         public Model.Order ActiveOrder { get; set; }
-        public OrderItem[][] OrderItemList { get; set; }
+        public OrderItemGroup[] OrderItemGroup { get; set; }
 
         #region Initialization Functions
 
@@ -125,8 +126,15 @@ namespace SOFENGG_Order_Request_Document.View.Admin
                 lblActiveOrderPlaceOfBirth.Text = ActiveOrder.Receiver.PlaceOfBirth;
                 lblActiveOrderEmail.Text = ActiveOrder.Receiver.Email;
 
-                repOrderMailingInfo.DataSource = OrderItemList;
+                repOrderMailingInfo.DataSource = OrderItemGroup;
                 repOrderMailingInfo.DataBind();
+
+                var referenceNo = int.Parse(sParameter);
+                var status = _presenter.GetOrderStatus(referenceNo);
+
+                btnMarkProcessing.Visible = status != OrderStatusEnum.Processing;
+                btnMarkDone.Visible = status != OrderStatusEnum.OnTime && status != OrderStatusEnum.Late;
+                btnMarkPending.Visible = status != OrderStatusEnum.Pending;
             }
         }
 
