@@ -15,7 +15,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             {
                 this.PopulateYear();
             }
-            Request.Cookies["StudentInfo"]["Id"] = "2";
+            //Request.Cookies["StudentInfo"]["Id"] = "2";
 
         }
 
