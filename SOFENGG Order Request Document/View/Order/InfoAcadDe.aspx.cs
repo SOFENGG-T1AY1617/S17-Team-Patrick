@@ -17,7 +17,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 this.PopulateYear();
                 this.PopulateDegreeDropdown();
             }
-            //Request.Cookies["StudentInfo"]["Id"] = "2";
+
+
             try
             {
                 if (Request.Cookies["StudentInfo"]["StudentDegreeId"] != null ||
@@ -36,7 +37,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             //can only be accessed when pressed EDIT
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
-            var studentDegreeId = int.Parse(Request.QueryString["StudentDegreeId"]);
+            var studentDegreeId = int.Parse(Request.QueryString["StudentDegreeId"]); //<-- GET METHOD
             var studentDegree = presenter.GetOneStudentDegree(studentDegreeId);
 
             txtStudNo.Text = studentDegree.IdStudent + "";

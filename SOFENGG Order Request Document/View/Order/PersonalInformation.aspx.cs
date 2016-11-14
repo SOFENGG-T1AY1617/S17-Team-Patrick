@@ -140,25 +140,24 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
 
 
-            ////// DEBUGGING. PLEASE DELETE AFTER //////
+            
             try
             {
-                Request.Cookies["StudentInfo"]["Id"] = "19";
-            }
-            catch (Exception)
-            {
-                HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
-                studentInfoCookie["Id"] = "2";
-                studentInfoCookie["PersonalInformationPage"] = "true";
-                studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
-                Response.Cookies.Add(studentInfoCookie);
-            }
-            finally
-            {
+                //Request.Cookies["StudentInfo"]["Id"] = "19";
                 if (Request.Cookies["StudentInfo"] != null)
                 {
                     PopulatePreviousInput();
                 }
+            }
+            catch (Exception)
+            {
+                ////// DEBUGGING. PLEASE DELETE AFTER //////
+                /*
+                HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
+                studentInfoCookie["Id"] = "2";
+                studentInfoCookie["PersonalInformationPage"] = "true";
+                studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
+                Response.Cookies.Add(studentInfoCookie);*/
             }
             ////// END-OF-DEBUGGING. PLEASE DELETE AFTER //////
         }
@@ -180,33 +179,25 @@ namespace SOFENGG_Order_Request_Document.View.Order
             HighSchoolAttended = txtHSAttended.Text;
             PlaceOfBirth = txtBirthplace.Text;
 
-            try
-            {
                 if (Request.Cookies["StudentInfo"] != null)
                 {
                     Request.Cookies["StudentInfo"]["PersonalInformationPage"] = "true";
                 }
-            }
-            catch (Exception)
-            {
-                PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
-                if (presenter.AddStudentInfo())
+                else
                 {
-                    HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
-                    studentInfoCookie["Id"] = presenter.GetMyStudentInfo().StudentInfoId + "";
-                    studentInfoCookie["PersonalInformationPage"] = "true";
-                    studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
-                    Response.Cookies.Add(studentInfoCookie);
+                    PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
+                    if (presenter.AddStudentInfo())
+                    {
+                        HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
+                        studentInfoCookie["Id"] = presenter.GetMyStudentInfo().StudentInfoId + "";
+                        studentInfoCookie["PersonalInformationPage"] = "true";
+                        studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
+                        Response.Cookies.Add(studentInfoCookie);
+                    }
                 }
-            }
-            finally
-            {
                 Response.Redirect("~/View/Order/InfoAcadDe.aspx");
-            }
-
-            
-            
-    }   
+ 
+        }   
 
         public void Submit()
         {
