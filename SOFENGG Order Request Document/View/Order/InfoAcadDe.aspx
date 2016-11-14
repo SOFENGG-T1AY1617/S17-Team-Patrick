@@ -63,21 +63,39 @@
                             <asp:ListItem Text="Masters" Value="2"></asp:ListItem>
                             <asp:ListItem Text="Doctorate" Value="3"></asp:ListItem>
                          </asp:DropDownList>
+                         <asp:RequiredFieldValidator id="rfvLevel" runat="server"
+                            ControlToValidate="ddlLevel"
+                            ErrorMessage="Level is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Is Graduate? <span style="color: red">*</span></td>
                     <td>
                         &nbsp;<asp:CheckBox ID="isGraduate" runat="server"/>&nbsp;
+                        <asp:RequiredFieldValidator id="rfvGraduate" runat="server"
+                        ControlToValidate="isGraduate"
+                        ErrorMessage="Please check if you have graduated in the inputted level."
+                            ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Degree <span style="color: red">*</span></td>
-                    <td>&nbsp;<asp:TextBox ID="txtDegree" runat="server" style="maxlength:100px; size:40px;"></asp:TextBox>
+                    <td>&nbsp;
+                        <asp:TextBox ID="txtDegree" runat="server" style="maxlength:100px; size:40px;"></asp:TextBox>
+                        <asp:RequiredFieldValidator id="rfvDegree" runat="server"
+                        ControlToValidate="txtDegree"
+                        ErrorMessage="Degree is a required field."
+                            ForeColor="Red">
+                    </asp:RequiredFieldValidator>
                 </tr>
                 <tr>
                     <td class="content-form_label">Student No</td>
-                    <td>&nbsp;<asp:TextBox ID="txtStudNo" runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
+                    <td>&nbsp;
+                        <asp:TextBox ID="txtStudNo" runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
+                    </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Admitted as</td>
