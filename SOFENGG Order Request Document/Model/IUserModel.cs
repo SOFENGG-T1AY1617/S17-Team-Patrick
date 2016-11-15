@@ -11,7 +11,7 @@ namespace SOFENGG_Order_Request_Document.Model
         bool AddStudentInfo(StudentInfo studentInfo);
         bool AddStudentDegree(StudentDegree studentDegree);
         bool AddMailingInfo(MailingInfo mailingInfo);
-        StudentInfo GetMyStudentInfo();
+        StudentInfo GetMyStudentInfo(int studentInfoId);
         StudentDegree[] GetStudentDegree(int studentId);
         MailingInfo[] GetMailingInfo(int studentId);
 

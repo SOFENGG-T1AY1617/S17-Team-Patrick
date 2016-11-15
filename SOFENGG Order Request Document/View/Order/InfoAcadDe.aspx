@@ -20,7 +20,7 @@
         <div class="content-divider"></div>
     </div>
     <div class="col-xs-9">
-        <form id="frmAcadInfo" runat="server" method="post" action="info_acad_de.html">
+        <form id="frmAcadInfo" runat="server">
             <h5 class="content-header" class="content-form">Academic Information</h5>
 
             <p>This step allows you to enter your academic information.<br><br/>
@@ -58,22 +58,35 @@
                     <td valign="top" class="content-form_label">Level <span style="color: red">*</span></td>
                     <td style="padding-left: 3px;">
                         <asp:RadioButtonList ID="optLevel" runat="server" 
-                            RepeatDirection="Vertical" RepeatLayout="Table">
-                            <asp:ListItem Text="Bachelor" Value="bachelor"></asp:ListItem><br>
-                            <asp:ListItem Text="Masters" Value="masters"></asp:ListItem><br>
-                            <asp:ListItem Text="Doctorate" Value="doctorate"></asp:ListItem><br>
+                            RepeatDirection="Vertical" RepeatLayout="Flow">
+                            <asp:ListItem Text="Bachelor" Value="U"></asp:ListItem>
+                            <asp:ListItem Text="Masters" Value="M"></asp:ListItem>
+                            <asp:ListItem Text="Doctorate" Value="D"></asp:ListItem>
                          </asp:RadioButtonList>
+                         <asp:RequiredFieldValidator id="rfvLevel" runat="server"
+                            ControlToValidate="optLevel"
+                            ErrorMessage="Level is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Is Graduate? <span style="color: red">*</span></td>
                     <td>
-                        &nbsp;<asp:CheckBox ID="isGraduate" runat="server">&nbsp;
+                        &nbsp;
+                        <asp:CheckBox ID="isGraduate" runat="server"/>&nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Degree <span style="color: red">*</span></td>
-                    <td>&nbsp;<asp:TextBox ID="txtDegree" runat="server" style="maxlength:100px; size:40px;"></asp:TextBox>
+                    <td>&nbsp;
+                        <asp:DropDownList ID="ddlDegree" runat="server" Width="200px"></asp:DropDownList>
+                        <asp:RequiredFieldValidator id="rfvDegree" runat="server"
+                            ControlToValidate="ddlDegree"
+                            ErrorMessage="Degree is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Student No</td>
@@ -81,21 +94,20 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">Admitted as</td>
-                    <td>
+                    <td style="padding-left: 3px">
                         <asp:RadioButtonList ID="optAdmittedAs" runat="server" 
-                            RepeatDirection="Vertical" RepeatLayout="Table">
-                            <asp:ListItem Text="Regular Student" Value="R"></asp:ListItem>
-                            <asp:ListItem Text="Transferee" Value="T"></asp:ListItem>
-                            <asp:ListItem Text="Graduate" Value="G"></asp:ListItem>
+                            RepeatDirection="Vertical" RepeatLayout="Flow">
+                            <asp:ListItem Text="Regular Student" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Transferee" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Graduate" Value="3"></asp:ListItem>
                         </asp:RadioButtonList>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <asp:Button ID="butAction" runat="server" value="Cancel" class="btn btn-primary">
-                        <a href="info_acad_confirm.html">
-                            <asp:Button ID="butSubmit" runat="server" value="Submit" class="btn btn-primary">
-                        </a>
+                        <asp:Button ID="butAction" runat="server" value="Cancel" class="btn btn-primary" Text="Cancel"/>
+                        <asp:Button ID="butSubmit" runat="server" value="Submit" class="btn btn-primary" OnClick = "SubmitStudentDegree_Click" Text="Submit"/>
+
                     </td>
                 </tr>
                 </tbody>

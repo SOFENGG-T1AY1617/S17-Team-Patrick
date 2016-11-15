@@ -21,8 +21,51 @@
         <div class="content-divider"></div>
     </div>
     <div class="col-xs-9">
+        <form runat="server">
         <h5>Academic Information</h5>
-        <table class="table table-bordered table-striped">
+        
+        <asp:Repeater id="rptInfoAcadConfirm" runat="server">
+            <HeaderTemplate>
+                <table class="table table-bordered table-striped">
+            </HeaderTemplate>
+
+            <ItemTemplate>
+                <table id="sd1" class="table table-bordered table-striped" runat="server">
+                    <tr>
+                        <td>Level</td>
+                        <td><asp:Label runat="server" ID="lblLevel" Text=<%# Eval("Level")%>/></td>
+                    </tr>
+                    <tr>
+                        <td>Degree</td>
+                        <td><asp:Label runat="server" ID="lblDegree" Text=<%# Eval("Degree")%>/></td>
+                    </tr>
+                    <tr>
+                        <td>Graduate</td>
+                        <td><asp:Label runat="server" ID="lblGraduate" Text=<%# Eval("IsGraduate")%>/></td>
+                    </tr>
+                    <tr>
+                        <td>ID Number</td>
+                        <td><asp:Label runat="server" ID="lblIdNumber" Text=<%# Eval("IdNumber")%>/></td>
+                    </tr>
+                    <tr>
+                        <td>Admitted as</td>
+                        <td><asp:Label runat="server" ID="lblAdmittedAs" Text=<%# Eval("AdmittedAs")%>/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Button class="btn btn-default" ID=<%# Eval("DegreeId")%> Text="Edit"/>
+                            <asp:Button class="btn btn-default" ID=<%# Eval("DegreeId")%> Text="Delete"/>
+                        </td>
+                    </tr>
+                </table>
+            </ItemTemplate>
+
+            <FooterTemplate>
+            </FooterTemplate>
+
+       </asp:Repeater>
+        <!--
+        <table id="sd1" class="table table-bordered table-striped" runat="server">
             <tr>
                 <td>Level</td>
                 <td>Bachelor </td>
@@ -45,15 +88,17 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <a class="btn btn-default" href="/info_acad_de.html">Edit</a>
-                    <a class="btn btn-default" href="/info_acad_de.html">Delete</a>
+                    <asp:Button class="btn btn-default" Text="Edit" OnClick=""/>
+                    <asp:Button class="btn btn-default" Text="Delete" OnClick=""/>
                 </td>
             </tr>
         </table>
+            -->
         <div>
-            <a href="info_acad_de.html" class="btn btn-primary">Add Another Degree</a>
-            <a href="info_mail_de.html" class="btn btn-primary">Next</a>
+            <asp:Button class="btn btn-primary" Text="Add Another Degree" href="/View/Order/InfoAcadDe.aspx"/>
+            <asp:Button class="btn btn-primary" Text="Next" OnClick="GoToInfoMailDe"/>
         </div>
+        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

@@ -39,12 +39,22 @@
                 <td class="content-form_label">Mailing Address</td>
                 <td style="padding-left: 5px; padding-bottom: 3px;">
                     <asp:TextBox ID="txtMailAddress" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvMailAddress" runat="server"
+                            ControlToValidate="txtMailAddress"
+                            ErrorMessage="Please enter your mailing address."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr class="delivery-info">
                 <td class="content-form_label">Zip Code</td>
                 <td>
                     &nbsp;<asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvZipCode" runat="server"
+                            ControlToValidate="txtZipCode"
+                            ErrorMessage="Zip code is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr class="delivery-info">
@@ -85,11 +95,23 @@
                         <img src="../images/xis_sm2.gif" alt="delivery rates" border="0">
                     </a>
                     -->
+                    <asp:RequiredFieldValidator id="rfvDelivery" runat="server"
+                            ControlToValidate="ddlDelivery"
+                            ErrorMessage="Select the appropriate delivery area for the inputted mailing address."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Contact Number</td>
-                <td>&nbsp;<asp:TextBox ID="txtMailingNum" runat="server"></asp:TextBox></td>
+                <td>&nbsp;
+                    <asp:TextBox ID="txtMailingNum" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvMailingNum" runat="server"
+                            ControlToValidate="txtMailingNum"
+                            ErrorMessage="Mailing number is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
+                </td>
             </tr>
 
 

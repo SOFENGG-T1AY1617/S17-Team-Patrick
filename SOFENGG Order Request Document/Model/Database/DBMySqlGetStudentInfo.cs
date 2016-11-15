@@ -2,18 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MySql.Data.MySqlClient;
 
 namespace SOFENGG_Order_Request_Document.Model.Database.Interface
 {
     public class DBMySqlGetStudentInfo: DBMySqlSelectConnection
     {
+        private MySqlCommand tempCmd;
+
         public StudentInfo[] studentInfoList;
+
+        public void SetQueryForAllStudentInfo()
+        {
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0};", StudentInfo.Table);
+            
+        }
+
+        public void SetQueryForOneStudent(int studentInfoId)
+        {
+            tempCmd = new MySqlCommand();
+            var colVal1 = studentInfoId;
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {2};", StudentInfo.Table, StudentInfo.ColStudentInfoId, colVal1);
+        }
 
         protected override void SetQuery()
         {
-            Cmd.CommandText = string.Format("SELECT * FROM {0}", StudentInfo.Table);
-
-            //            Cmd.Parameters.AddWithValue("@name", "banana");
+            string commandText = tempCmd.CommandText;
+            Cmd.CommandText = commandText;
+            Cmd.CommandText = tempCmd.CommandText;
+            
             Cmd.Prepare();
         }
 

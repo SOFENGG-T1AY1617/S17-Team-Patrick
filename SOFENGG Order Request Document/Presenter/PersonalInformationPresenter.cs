@@ -38,9 +38,16 @@ namespace SOFENGG_Order_Request_Document.Presenter
             return model.AddStudentInfo(studentInfo); ;
         }
 
-        public int GetMyStudentInfoId()
+        public StudentInfo GetMyStudentInfo(int studentInfoId)
         {
-            return model.GetMyStudentInfo().StudentInfoId;
+            return model.GetMyStudentInfo(studentInfoId);
         }
+
+        public StudentInfo GetMyStudentInfo()
+        {
+            return model.GetMyStudentInfo();
+        }
+        
+
     }
 }
