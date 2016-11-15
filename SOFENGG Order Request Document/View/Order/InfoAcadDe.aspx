@@ -20,7 +20,7 @@
         <div class="content-divider"></div>
     </div>
     <div class="col-xs-9">
-        <form id="frmAcadInfo" runat="server">
+        
             <h5 class="content-header" class="content-form">Academic Information</h5>
 
             <p>This step allows you to enter your academic information.<br><br/>
@@ -112,7 +112,7 @@
                 </tr>
                 </tbody>
             </table>
-        </form>
+        
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

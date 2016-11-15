@@ -19,7 +19,7 @@
     </div>
     <div class="col-xs-9">
         <h5 class="content-header">Personal Information</h5>
-        <form runat="server">
+        
         <table border=1 class="content-form">
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>
@@ -188,7 +188,6 @@
         </table>
             
             <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitPersonalInformation_Click"/>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
