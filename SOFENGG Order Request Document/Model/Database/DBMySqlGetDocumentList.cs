@@ -34,7 +34,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                 var regularPrice = ObjectList[i][Document.ColRegularPrice].ToString();
                 var expressPrice = ObjectList[i][Document.ColExpressPrice].ToString();
 
-                DocumentList[i] = new Document()
+                DocumentList[i] = new Document
                 {
                     Id = int.Parse(ObjectList[i][Document.ColId].ToString()),
                     Name = ObjectList[i][Document.ColName].ToString(),
@@ -43,9 +43,9 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                     RegularPrice = !string.IsNullOrEmpty(regularPrice) ? float.Parse(regularPrice) : 0,
                     ExpressPrice = !string.IsNullOrEmpty(expressPrice) ? float.Parse(expressPrice) : 0,
                     MaxCopy = int.Parse(ObjectList[i][Document.ColMaxCopy].ToString()),
-                    IsAvailable = bool.Parse(ObjectList[i][Document.ColIsAvailable].ToString()),
-                    IsForUndergraduate = bool.Parse(ObjectList[i][Document.ColForUndergraduate].ToString()),
-                    IsForGraduate = bool.Parse(ObjectList[i][Document.ColForGraduate].ToString())
+                    IsAvailable = int.Parse(ObjectList[i][Document.ColIsAvailable].ToString()) == 1,
+                    IsForUndergraduate = int.Parse(ObjectList[i][Document.ColForUndergraduate].ToString()) == 1,
+                    IsForGraduate = int.Parse(ObjectList[i][Document.ColForGraduate].ToString()) == 1
                 };
             }
         }
