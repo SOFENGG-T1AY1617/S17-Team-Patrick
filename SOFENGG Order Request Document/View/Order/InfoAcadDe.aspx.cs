@@ -65,13 +65,11 @@ namespace SOFENGG_Order_Request_Document.View.Order
             IsGraduate = isGraduate.Checked;
             Degree = ddlDegree.SelectedItem.Text;
             AdmittedAs = (int.Parse(optAdmittedAs.SelectedItem.Value) - 1).ToString()[0];
-
-            Debug.Write("\n\n\n[infoAcadDe.aspx] DEGREE: " + Degree);
+            
             
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
             if (presenter.AddStudentDegree())
             {
-                Request.Cookies["StudentInfo"]["InfoAcadDe"] = "true";
                 Response.Redirect("~/View/Order/InfoAcadConfirm.aspx");
             }
         }
