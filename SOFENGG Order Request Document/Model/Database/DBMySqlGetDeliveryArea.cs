@@ -29,7 +29,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                     Price = ObjectList[i][DeliveryArea.ColPrice].ToString(),
                 };
             }
-            throw new NotImplementedException();
         }
 
 

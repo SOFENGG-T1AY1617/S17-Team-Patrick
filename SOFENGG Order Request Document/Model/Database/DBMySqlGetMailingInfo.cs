@@ -31,33 +31,20 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
 
         public override void Parse()
         {
+            UserModel model = new UserModel();
+            
             mailingInfoList = new MailingInfo[ObjectList.Length];
             for (int i = 0; i < mailingInfoList.Length; i++)
             {
                 mailingInfoList[i] = new MailingInfo()
                 {
                     Id = int.Parse(ObjectList[i][MailingInfo.ColMailingId].ToString()),
-                    MailingAddress = int.Parse(ObjectList[i][MailingInfo.ColMailingAddress].ToString()),
+                    MailingAddress = (ObjectList[i][MailingInfo.ColMailingAddress].ToString()),
                     ZipCode = int.Parse(ObjectList[i][MailingInfo.ColZipCode].ToString()),
-                    DeliveryArea = getDeliveryArea(int.Parse(ObjectList[i][MailingInfo.ColDeliveryAreaId].ToString())),
+                    DeliveryArea = model.GetDeliveryArea(int.Parse(ObjectList[i][MailingInfo.ColDeliveryAreaId].ToString())),
                     ContactNo = ObjectList[i][MailingInfo.ColContactNo].ToString(),
                 };
             }
-        }
-
-        public DeliveryArea getDeliveryArea(int mailingInfoDeliveryId)
-        {
-            var deliveryAreaDB = new DBMySqlGetDeliveryArea();
-            deliveryAreaDB.ExecuteQuery();
-
-            for (int i = 0; i < deliveryAreaDB.deliveryAreaList.Length; i++)
-            {
-                if (deliveryAreaDB.deliveryAreaList[i].Id == mailingInfoDeliveryId)
-                {
-                    return deliveryAreaDB.deliveryAreaList[i];
-                }
-            }
-            return null;
         }
     }
 }

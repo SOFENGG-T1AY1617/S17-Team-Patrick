@@ -8,7 +8,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 {
     public class DBMySqlAddMailingInfo : DBMySqlConnection
     {
-        public int StudentId { get; set; } 
         protected MailingInfo MailingInfo;
 
         public DBMySqlAddMailingInfo(MailingInfo mailingInfo)
@@ -22,10 +21,10 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             {
                 var query =
                     string.Format("INSERT INTO {0} ({1}, {2}, {3}, {4}, {5}) VALUES (@{1}, @{2}, @{3}, @{4}, @{5});",
-                        MailingInfo.Table, MailingInfo.ColIdStudent, MailingInfo.ColMailingAddress, MailingInfo.ColZipCode, MailingInfo.ColDeliveryAreaId, MailingInfo.ColContactNo);
+                        MailingInfo.Table, MailingInfo.ColStudentInfoId, MailingInfo.ColMailingAddress, MailingInfo.ColZipCode, MailingInfo.ColDeliveryAreaId, MailingInfo.ColContactNo);
                 using (var cmd = new MySqlCommand(query, Conn))
                 {
-                    cmd.Parameters.AddWithValue("@" + MailingInfo.ColIdStudent, StudentId);
+                    cmd.Parameters.AddWithValue("@" + MailingInfo.ColStudentInfoId, MailingInfo.StudentInfoId);
                     cmd.Parameters.AddWithValue("@" + MailingInfo.ColMailingAddress, MailingInfo.MailingAddress);
                     cmd.Parameters.AddWithValue("@" + MailingInfo.ColZipCode, MailingInfo.ZipCode);
                     cmd.Parameters.AddWithValue("@" + MailingInfo.ColDeliveryAreaId, MailingInfo.DeliveryArea.Id);
