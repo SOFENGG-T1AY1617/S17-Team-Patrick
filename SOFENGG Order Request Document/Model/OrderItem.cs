@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -7,14 +8,19 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     public enum PackagingEnum
     {
+        [Description("None")]
         None = 0,
+        [Description("Brown")]
         BrownEnvelope = 1,
+        [Description("White")]
         WhiteEnvelope = 2
     }
 
     public enum OrderType
     {
+        [Description("Regular")]
         Regular = 0,
+        [Description("Express")]
         Express = 1
     }
 

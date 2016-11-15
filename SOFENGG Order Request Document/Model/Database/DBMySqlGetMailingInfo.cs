@@ -37,7 +37,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
                 mailingInfoList[i] = new MailingInfo()
                 {
                     Id = int.Parse(ObjectList[i][MailingInfo.ColMailingId].ToString()),
-                    MailingAddress = int.Parse(ObjectList[i][MailingInfo.ColMailingAddress].ToString()),
+                    MailingAddress = ObjectList[i][MailingInfo.ColMailingAddress].ToString(),
                     ZipCode = int.Parse(ObjectList[i][MailingInfo.ColZipCode].ToString()),
                     DeliveryArea = getDeliveryArea(int.Parse(ObjectList[i][MailingInfo.ColDeliveryAreaId].ToString())),
                     ContactNo = ObjectList[i][MailingInfo.ColContactNo].ToString(),

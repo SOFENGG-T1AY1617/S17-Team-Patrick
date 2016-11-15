@@ -13,5 +13,6 @@ namespace SOFENGG_Order_Request_Document.Model
         bool MarkAsDone(Order order);
         bool MarkAsPending(DateTime newDueDate, string reason);
         bool MarkAsProcessing(Order order);
+        Order GetOrderInformation(int referenceNo);
     }
 }

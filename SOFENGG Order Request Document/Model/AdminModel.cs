@@ -1,5 +1,6 @@
 ﻿using System;
 using SOFENGG_Order_Request_Document.Model.Database;
+using SOFENGG_Order_Request_Document.Model.Database.OrderInformation;
 using SOFENGG_Order_Request_Document.Model.Database.OrderList;
 
 namespace SOFENGG_Order_Request_Document.Model
@@ -56,6 +57,13 @@ namespace SOFENGG_Order_Request_Document.Model
         public bool MarkAsProcessing(Order order)
         {
             throw new NotImplementedException();
+        }
+
+        public Order GetOrderInformation(int referenceNo)
+        {
+            var db = new DBMySqlGetOrderInformation(referenceNo);
+            db.ExecuteQuery();
+            return db.OrderInformation;
         }
     }
 }

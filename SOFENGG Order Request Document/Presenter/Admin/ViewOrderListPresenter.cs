@@ -39,5 +39,62 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
             _view.LateCount = GetOrderCount(OrderStatusEnum.Late, orderList);
             _view.TotalCount = orderList.Length;
         }
+
+        public void GetOrderInformation(int referenceNo)
+        {
+            var orderInfo = _model.GetOrderInformation(referenceNo);
+
+            _view.ActiveOrder = orderInfo;
+
+            var orderItemByMailingAndOrderType = new List<OrderItemGroup>();
+            List<OrderItem> orderItem = null;
+
+            var mailingId = -1;
+            var orderType = default(OrderType);
+            OrderItem o = null;
+            for (var i = 0; i < orderInfo.OrderItemList.Length; i++)
+            {
+                o = orderInfo.OrderItemList[i];
+
+                if (o.MailingAddress.Id != mailingId || o.OrderType != orderType)
+                {
+                    if (orderItem != null)
+                        orderItemByMailingAndOrderType.Add(new OrderItemGroup
+                        {
+                            OrderItemList = orderItem.ToArray(),
+                            MailingAddress = o.MailingAddress,
+                            OrderType = o.OrderType,
+                            EstimatedDeliveryDate = orderInfo.EstimatedDeliveryDate
+                        });
+
+                    orderItem = new List<OrderItem>();
+                    mailingId = o.MailingAddress.Id;
+                    orderType = o.OrderType;
+                }
+
+                if (orderItem != null)
+                    orderItem.Add(o);
+            }
+
+            if (orderItem != null && o != null)
+                orderItemByMailingAndOrderType.Add(new OrderItemGroup
+                {
+                    OrderItemList = orderItem.ToArray(),
+                    MailingAddress = o.MailingAddress,
+                    OrderType = o.OrderType,
+                    EstimatedDeliveryDate = orderInfo.EstimatedDeliveryDate
+                });
+
+
+            _view.OrderItemGroup = orderItemByMailingAndOrderType.ToArray();
+
+        }
+
+        public OrderStatusEnum GetOrderStatus(int referenceNo)
+        {
+            var o = _model.GetOrderList().FirstOrDefault(i => i.ReferenceNo == referenceNo);
+
+            return o == null ? default(OrderStatusEnum) : o.OrderStatus;
+        }
     }
 }

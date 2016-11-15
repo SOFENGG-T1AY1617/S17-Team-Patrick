@@ -23,7 +23,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                     {
                         dt.Load(Cmd.ExecuteReader());
                         ObjectList = dt.AsEnumerable().ToArray();
-                        //                        var value = rows[0]["id"];
                     }
 
                     Parse();
