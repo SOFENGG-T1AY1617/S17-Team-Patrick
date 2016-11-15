@@ -261,7 +261,7 @@
                 <div class="content_buttons">
                     <button id="btnBack" class="btn btn-primary">Back</button>
                     <button id="btnMarkPending" class="btn btn-danger">Mark as Pending</button>
-                    <button id="btnMarkDone" class="btn btn-success">Mark as Done</button>
+                    <button id="btnMarkDone" class="btn btn-success">Mark as OnTime</button>
                     <button id="btnMarkProcessing" class="btn btn-warning">Mark as Processing</button>
                 </div>
             </div>

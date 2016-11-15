@@ -5,15 +5,14 @@ using System.Web;
 
 namespace SOFENGG_Order_Request_Document.Model
 {
+    public class Course
+    {
+        public const string Table = "course";
+        public const string ColId = "courseId";
+        public const string ColCode = "courseAbbrv";
+        public const string ColName = "courseName";
 
-	public class Course
-	{
-        public const string table = "course";
-        public const string ColCode = "Code";
-        public const string ColName = "Name";
-
-        public int Code { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
-
-	}
+    }
 }

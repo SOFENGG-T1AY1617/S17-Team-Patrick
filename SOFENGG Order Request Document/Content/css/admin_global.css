@@ -43,7 +43,7 @@ body {
 .content-scrolling {
   height: 500px;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
 }
 .content-scrolling div {
   background-color: white;
@@ -96,8 +96,6 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 375px;
-  width: 300px;
   background-color: rgb(255, 255, 255);
   z-index: 1000;
   padding: 2% 2% 0 2%;

@@ -2,19 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MySql.Data.MySqlClient;
 
 namespace SOFENGG_Order_Request_Document.Model.Database.Interface
 {
     public class DBMySqlGetMailingInfo: DBMySqlSelectConnection
     {
-        public StudentInfo studentInfo = new StudentInfo(); //<-- Still looking for a way to have student as a global variable
         public MailingInfo[] mailingInfoList;
+        private MySqlCommand tempCmd;
+
+        public void SetQueryForOneMailInfo(int mailingId)
+        {
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = '" + mailingId, MailingInfo.Table, MailingInfo.ColStudentInfoId);
+
+        }
+
+        public void SetQueryForAllMailInfo(int studentInfoId)
+        {
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = '" + studentInfoId, MailingInfo.Table, MailingInfo.ColStudentInfoId);
+
+        }
 
         protected override void SetQuery()
         {
-            Cmd.CommandText = string.Format("SELECT * FROM {0} WHERE idStudent = '" + studentInfo.StudentInfoId, MailingInfo.Table);
+            Cmd.CommandText = tempCmd.CommandText;
             Cmd.Prepare();
-            throw new NotImplementedException();
         }
 
         public override void Parse()
@@ -25,15 +37,12 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
                 mailingInfoList[i] = new MailingInfo()
                 {
                     Id = int.Parse(ObjectList[i][MailingInfo.ColMailingId].ToString()),
-                    MailingAddress = int.Parse(ObjectList[i][MailingInfo.ColMailingAddress].ToString()),
+                    MailingAddress = ObjectList[i][MailingInfo.ColMailingAddress].ToString(),
                     ZipCode = int.Parse(ObjectList[i][MailingInfo.ColZipCode].ToString()),
                     DeliveryArea = getDeliveryArea(int.Parse(ObjectList[i][MailingInfo.ColDeliveryAreaId].ToString())),
                     ContactNo = ObjectList[i][MailingInfo.ColContactNo].ToString(),
-
-
                 };
             }
-            throw new NotImplementedException();
         }
 
         public DeliveryArea getDeliveryArea(int mailingInfoDeliveryId)
