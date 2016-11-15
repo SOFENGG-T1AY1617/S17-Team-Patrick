@@ -22,6 +22,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.TextBox txtLName;
         
         /// <summary>
+        /// rfvLName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLName;
+        
+        /// <summary>
         /// txtFName control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFName;
+        
+        /// <summary>
+        /// rfvFName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFName;
         
         /// <summary>
         /// txtMName control.
@@ -40,6 +58,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.TextBox txtMName;
         
         /// <summary>
+        /// rfvMName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMName;
+        
+        /// <summary>
         /// optGender control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList optGender;
+        
+        /// <summary>
+        /// rfvGender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvGender;
         
         /// <summary>
         /// ddlBirthYear control.
@@ -103,6 +139,33 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.DropDownList ddlBirthYear1;
         
         /// <summary>
+        /// rfvBirthYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBirthYear;
+        
+        /// <summary>
+        /// rfvBirthMonth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBirthMonth;
+        
+        /// <summary>
+        /// rfvBirthDay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBirthDay;
+        
+        /// <summary>
         /// txtCitizen control.
         /// </summary>
         /// <remarks>
@@ -110,6 +173,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCitizen;
+        
+        /// <summary>
+        /// rfvCitizen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCitizen;
         
         /// <summary>
         /// txtCurrentAddress control.
@@ -121,6 +193,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.TextBox txtCurrentAddress;
         
         /// <summary>
+        /// rfvCurrentAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurrentAddress;
+        
+        /// <summary>
         /// txtPhoneNum control.
         /// </summary>
         /// <remarks>
@@ -128,6 +209,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhoneNum;
+        
+        /// <summary>
+        /// rfvPhoneNum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPhoneNum;
         
         /// <summary>
         /// txtEmail control.
@@ -139,6 +229,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
+        /// rfvEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
+        
+        /// <summary>
         /// txtHSAttended control.
         /// </summary>
         /// <remarks>
@@ -148,6 +247,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.TextBox txtHSAttended;
         
         /// <summary>
+        /// rfvHSAttended control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvHSAttended;
+        
+        /// <summary>
         /// txtBirthplace control.
         /// </summary>
         /// <remarks>
@@ -155,5 +263,14 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBirthplace;
+        
+        /// <summary>
+        /// rfvBirthplace control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBirthplace;
     }
 }

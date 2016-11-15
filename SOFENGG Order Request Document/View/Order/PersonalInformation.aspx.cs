@@ -191,7 +191,9 @@ namespace SOFENGG_Order_Request_Document.View.Order
                         HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
                         studentInfoCookie["Id"] = presenter.GetMyStudentInfo().StudentInfoId + "";
                         studentInfoCookie["PersonalInformationPage"] = "true";
-                        studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
+                        studentInfoCookie["StudentDegreeId"] = "";
+                        studentInfoCookie["MailInfoId"] = "";
+                        //studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
                         Response.Cookies.Add(studentInfoCookie);
                     }
                 }

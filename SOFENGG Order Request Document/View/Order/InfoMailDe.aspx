@@ -99,7 +99,7 @@
                             ControlToValidate="ddlDelivery"
                             ErrorMessage="Select the appropriate delivery area for the inputted mailing address."
                             ForeColor="Red">
-                        </asp:RequiredFieldValidator>
+                        </asp:RequiredFieldValidator>   
                 </td>
             </tr>
             <tr class="delivery-info">

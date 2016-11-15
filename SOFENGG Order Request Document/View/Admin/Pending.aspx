@@ -190,7 +190,7 @@
         <br>
         <div style="padding-bottom: 20px;">
             <button id="back_popup" class="btn btn-primary">Back</button>
-            <button id="markasdone_popup" class="btn btn-primary">Mark as Done</button>
+            <button id="markasdone_popup" class="btn btn-primary">Mark as OnTime</button>
         </div>
     </div>
 

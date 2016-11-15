@@ -1,422 +1,311 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Main.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Admin.Main" %>
+
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model.Helper" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="/Content/css/admin_main.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-<div class="col-xs-2 content-sidebar">
-    <h3>Menu</h3>
-    <br>
-    <ul>
-        <li>
-            <b>Home</b>
-        </li>
-        <li>
-            <a href="admin_document_list.html">Maintain Document List</a>
-        </li>
-        <li>Update Operational Date</li>
-    </ul>
-    <br>
-    <ul>
-        <li>Current Orders</li>
-        <li>
-            <a href="admin_pending.html">Pending Orders</a>
-        </li>
-        <li>Cancelled Orders</li>
-        <li>Previous Orders</li>
-    </ul>
-</div>
-<div class="col-xs-9 col-xs-offset-1 content-main">
-<h3>Current Orders</h3>
+    <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
+    <div class="col-xs-2 content-sidebar">
+        <h3>Menu</h3>
+        <br>
+        <ul>
+            <li>
+                <b>Home</b>
+            </li>
+            <li>
+                <a href="admin_document_list.html">Maintain Document List</a>
+            </li>
+            <li>Update Operational Date</li>
+        </ul>
+        <br>
+        <ul>
+            <li>Current Orders</li>
+            <li>
+                <a href="admin_pending.html">Pending Orders</a>
+            </li>
+            <li>Cancelled Orders</li>
+            <li>Previous Orders</li>
+        </ul>
+    </div>
+    <div class="col-xs-9 col-xs-offset-1 content-main">
+        <div class="main_report">
+            <div class="main_report-left">
+                <h3>Current Orders</h3>
+            </div>
+            <div class="main_report-right">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <h4>Processing: <b>
+                                <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
+                        </td>
+                        <td class="warning">
+                            <h4>Pending: <b>
+                                <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
+                        </td>
+                        <td class="success">
+                            <h4>On Time: <b>
+                                <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
+                        </td>
+                        <td class="danger">
+                            <h4>Late: <b>
+                                <asp:Label ID="lblLateCount" runat="server" /></b></h4>
+                        </td>
+                        <td>
+                            <h4>Total Quantity: <b>
+                                <asp:Label ID="lblTotalCount" runat="server" /></b></h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <asp:Repeater ID="repOrders" runat="server">
+            <HeaderTemplate>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Reference Number</td>
+                            <td>Transaction Date</td>
+                            <td>Date Due</td>
+                            <td>Status</td>
+                            <td>Name</td>
+                            <td>Amount</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
+                    <td>
+                        <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                </tbody>
+            </table>
+            </FooterTemplate>
+        </asp:Repeater>
 
-<div class="content-scrolling">
-<div>
-<table class="table table-hover">
-<thead>
-<tr>
-    <td>Reference Number</td>
-    <td>Transaction Date</td>
-    <td>Due Date</td>
-    <td>Status</td>
-    <td>Name</td>
-    <td>Amount</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-    <td class="details">1164824547</td>
-    <td>10-21-2016</td>
-    <td>10-28-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 278.00</td>
-</tr>
-<tr>
-    <td class="details">1164824507</td>
-    <td>10-11-2016</td>
-    <td>10-18-2016</td>
-    <td class="danger">Late</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 358.00</td>
-</tr>
-<tr>
-    <td class="details">1164824508</td>
-    <td>10-11-2016</td>
-    <td>10-18-2016</td>
-    <td class="danger">Late</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 552.00</td>
-</tr>
-<tr>
-    <td class="details">1164824509</td>
-    <td>10-12-2016</td>
-    <td>10-19-2016</td>
-    <td class="danger">Late</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 270.00</td>
-</tr>
-<tr>
-    <td class="details">1164824510</td>
-    <td>10-13-2016</td>
-    <td>10-20-2016</td>
-    <td class="danger">Late</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 150.00</td>
-</tr>
-<tr>
-    <td class="details">1164824511</td>
-    <td>10-13-2016</td>
-    <td>10-20-2016</td>
-    <td class="danger">Late</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 250.00</td>
-</tr>
-<tr>
-    <td class="details">1164824485</td>
-    <td>10-08-2016</td>
-    <td>10-22-2016</td>
-    <td>
-        <button class="btn btn-xs btn-warning can_process">Pending</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 300.00</td>
-</tr>
-<tr>
-    <td class="details">1164824487</td>
-    <td>10-15-2016</td>
-    <td>10-29-2016</td>
-    <td>
-        <button class="btn btn-xs btn-warning can_process">Pending</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 420.00</td>
-</tr>
-<tr>
-    <td class="details">1164824520</td>
-    <td>10-15-2016</td>
-    <td>10-22-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 150.00</td>
-</tr>
-<tr>
-    <td class="details">1164824521</td>
-    <td>10-15-2016</td>
-    <td>10-22-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 150.00</td>
-</tr>
-<tr>
-    <td class="details">1164824522</td>
-    <td>10-15-2016</td>
-    <td>10-22-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 150.00</td>
-</tr>
-<tr>
-    <td class="details">1164824523</td>
-    <td>10-15-2016</td>
-    <td>10-22-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 300.00</td>
-</tr>
-<tr>
-    <td class="details">1164824524</td>
-    <td>10-15-2016</td>
-    <td>10-22-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 150.00</td>
-</tr>
-<tr>
-    <td class="details">1164824525</td>
-    <td>10-15-2016</td>
-    <td>10-22-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 450.00</td>
-</tr>
-<tr>
-    <td class="details">1164824526</td>
-    <td>10-16-2016</td>
-    <td>10-23-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 150.00</td>
-</tr>
-<tr>
-    <td class="details">1164824527</td>
-    <td>10-16-2016</td>
-    <td>10-23-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 600.00</td>
-</tr>
-<tr>
-    <td class="details">1164824528</td>
-    <td>10-16-2016</td>
-    <td>10-23-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 250.00</td>
-</tr>
-<tr>
-    <td class="details">1164824529</td>
-    <td>10-17-2016</td>
-    <td>10-24-2016</td>
-    <td>
-        <button class="btn btn-xs btn-default can_pend">Processing</button>
-    </td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 150.00</td>
-</tr>
-<tr>
-    <td class="details">1164824514</td>
-    <td>10-13-2016</td>
-    <td>10-20-2016</td>
-    <td class="success">Done</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 120.00</td>
-</tr>
-<tr>
-    <td class="details">1164824515</td>
-    <td>10-13-2016</td>
-    <td>10-20-2016</td>
-    <td class="success">Done</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 370.00</td>
-</tr>
-<tr>
-    <td class="details">1164824516</td>
-    <td>10-13-2016</td>
-    <td>10-20-2016</td>
-    <td class="success">Done</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 480.00</td>
-</tr>
-<tr>
-    <td class="details">1164824517</td>
-    <td>10-14-2016</td>
-    <td>10-21-2016</td>
-    <td class="success">Done</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 150.00</td>
-</tr>
-<tr>
-    <td class="details">1164824518</td>
-    <td>10-14-2016</td>
-    <td>10-21-2016</td>
-    <td class="success">Done</td>
-    <td>DO, Kyu Min</td>
-    <td>PHP 120.00</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="content-main_report">
-    <p align="right">Total Quantity: <b>23</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Late: <b>5</b>
-    <p align="right">
-        On Time: <b>5</b>
-    </p>
-</div>
-</div>
+        <%--                <tr class="success">
+                    <td>3</td>
+                    <td>11/10/2016</td>
+                    <td>11/11/2016</td>
+                    <td>OnTime</td>
+                    <td>Watch Shock</td>
+                    <td>300.00</td>
+                </tr>--%>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="other" runat="server">
 
-    <div class="details-popup">
+    <div class="modal fade" id="dlgOrderInformation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <asp:UpdatePanel ID="upOrderInformation" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <input type="hidden" id="cmdUpdateOrderInformation" />
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4>Reference Number
+                                <asp:Label ID="lblActiveReferenceNo" runat="server"></asp:Label></h4>
+                        </div>
+                        <div class="modal-body">
 
-        <table border="1" class="content-form">
-            <tr>
-                <td colspan="2" class="content-form_label" align="center">Transaction Details</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Reference No.</td>
-                <td>1164824547</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Name</td>
-                <td>DO, Kyu Min</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Current Address</td>
-                <td>Unit 3232 Tower 2 Sun Residences, Quezon City</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Phone No.</td>
-                <td>87000</td>
-            </tr>
-            <tr class="delivery-info">
-                <td class="content-form_label">Email</td>
-                <td>kyu_min_do@dlsu.edu.ph</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Place of Birth</td>
-                <td>Quezon City</td>
-            </tr>
-        </table>
+                            <div>
 
-        <br>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr class="active">
+                                            <td colspan="2">Transaction Details</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderName" runat="server" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderAddress" runat="server" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone Number</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderPhoneNumber" runat="server" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderEmail" runat="server" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Place of Birth</td>
+                                            <td>
+                                                <asp:Label ID="lblActiveOrderPlaceOfBirth" runat="server" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-        <table border="1" class="content-form">
-            <tr>
-                <td colspan="2" class="content-form_label" align="center">Delivery Details</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Mailing Address</td>
-                <td>Unit 3232 Tower 2 Sun Residences, Quezon City</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Zip Code</td>
-                <td>2400</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Delivery Area</td>
-                <td>Quezon City</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Delivery Charge</td>
-                <td>Php 128.00</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Processing Type</td>
-                <td>Regular Processing</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Date Due to the Courier</td>
-                <td>Oct 27 2016</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Estimated Delivery Date</td>
-                <td>Oct 28 2016</td>
-            </tr>
-        </table>
+                                <asp:Repeater ID="repOrderMailingInfo" runat="server">
+                                    <ItemTemplate>
+                                        <div class="delivery_details_table">
+                                            <table class="table table-bordered table_start">
+                                                <thead>
+                                                    <tr class="active">
+                                                        <td colspan="2">Delivery Details</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="col-md-5">Mailing Address</td>
+                                                        <td>
+                                                            <asp:Label ID="lblMailingAddress" runat="server" Text='<%# Eval("MailingAddress.MailingAddress") %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Zip Code</td>
+                                                        <td>
+                                                            <asp:Label ID="lblZipCode" runat="server" Text='<%# Eval("MailingAddress.ZipCode") %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Delivery Area</td>
+                                                        <td>
+                                                            <asp:Label ID="lblDeliveryArea" runat="server" Text='<%# Eval("MailingAddress.DeliveryArea.Name") %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Delivery Charge</td>
+                                                        <td>PHP
+                                                            <asp:Label ID="lblDeliveryCharge" runat="server" Text='<%# float.Parse(Eval("MailingAddress.DeliveryArea.Price").ToString()).ToString("n2") %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Processing Type</td>
+                                                        <td>
+                                                            <asp:Label ID="lblOrderType" runat="server" Text='<%# ((OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true)).GetDescription() %>' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Date Due To Courier</td>
+                                                        <td>WAT?</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Estimated Delivery Date</td>
+                                                        <td>
+                                                            <asp:Label ID="lblEstimatedDeliveryDate" runat="server" Text='<%# Convert.ToDateTime(Eval("EstimatedDeliveryDate")).ToString("d") %>' /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
 
-        <table border="1" class="content-form">
-            <tr>
-                <td class="content-form_label">Document</td>
-                <td>Official TOR for Employment</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Degree</td>
-                <td>Bachelor - CS-ST</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Cost</td>
-                <td>Php 150.00</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">No. of Copies</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Sub Total</td>
-                <td>Php 150.00</td>
-            </tr>
-        </table>
+                                            <asp:Repeater ID="repOrderItem" DataSource='<%# Eval("OrderItemList") %>' runat="server">
+                                                <ItemTemplate>
+                                                    <table class="table table-bordered">
+                                                        <tr>
+                                                            <td class="col-md-5">Document</td>
+                                                            <td>
+                                                                <asp:Label ID="lblDocumentName" runat="server" Text='<%# Eval("Document.Name") %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Cost</td>
+                                                            <td>
+                                                                <asp:Label ID="lblCost" runat="server" Text='<%# (OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true) == OrderType.Regular ? Eval("Document.RegularPrice") : Eval("Document.ExpressPrice") %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>No. of Copies</td>
+                                                            <td>
+                                                                <asp:Label ID="lblNoOfCopes" runat="server" Text='<%# Eval("NoOfCopies") %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Envelope</td>
+                                                            <td>
+                                                                <asp:Label ID="lblEnvelope" runat="server" Text='<%# ((PackagingEnum)Enum.Parse(typeof(PackagingEnum), Eval("Packaging").ToString(), true)).GetDescription() %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Sub Total</td>
+                                                            <td>PHP
+                                                                <asp:Label ID="lblSubTotal" runat="server" Text='<%# int.Parse(Eval("NoOfCopies").ToString()) * ((OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true) == OrderType.Regular ? float.Parse(Eval("Document.RegularPrice").ToString()) : float.Parse(Eval("Document.ExpressPrice").ToString())) %>' /></td>
+                                                        </tr>
+                                                    </table>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <%--            Only display "mark as pending" and "mark as done" when currentorder is processing and NOT pending already--%>
+                            <div class="content_buttons">
+                                <%--<button id="btnBack" class="btn btn-primary">Back</button>--%>
 
-        <br>
-
-        <table border="1" class="content-form" style="width: 70%" align="center">
-            <tr>
-                <td colspan="2" class="content-form_label" align="center">
-                    Amount Due
-                </td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Total Delivery Cost</td>
-                <td>Php 128.00</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Total Document Cost</td>
-                <td style="padding-left: 5px;">Php 150.00</td>
-            </tr>
-            <tr>
-                <td class="content-form_label">Total Cost</td>
-                <td>Php 278.00</td>
-            </tr>
-        </table>
-
-        <br>
-        <div style="padding-bottom: 20px;">
-            <button id="back_popup" class="btn btn-primary">Back</button>
-            <button id="markasdone_popup" class="btn btn-primary">Mark as Done</button>
+                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" Text="Mark as Pending" OnClientClick="return false;" runat="server"  data-toggle="modal" data-target="#dlgPending" />
+                                <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" />
+                                <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 
-    <div class="popup pending">
-        <p>Reference No: 1164824508</p>
-        <p>Reason For Delay:</p>
-        <textarea name="" id="" cols="32" rows="10"></textarea>
-        <div>
-            <button id="cancel_popup" class="btn btn-primary">Cancel</button>
-            <button id="save_popup" class="btn btn-primary">Save</button>
-        </div>
-    </div>
+    <div class="modal fade" id="dlgPending" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4>Reference Number
+                                <asp:Label ID="lblPendingReferenceNo" runat="server"></asp:Label></h4>
+                </div>
+                <div class="modal-body">
+                    <p>Reason For Delay:</p>
+                    <textarea name="" id="" cols="32" rows="10"></textarea>
 
-    <div class="popup process">
-        <h4>New Due Date</h4>
-        <select name="" id="">
-            <option value="">January</option>
-            <option value="">February</option>
-            <option value="">March</option>
-            <option value="">April</option>
-            <option value="">May</option>
-            <option value="">June</option>
-            <option value="">July</option>
-            <option value="">August</option>
-            <option value="">September</option>
-            <option value="">October</option>
-            <option value="">November</option>
-            <option value="">December</option>
-        </select>
-        <select name="" id="day"></select>
-        <select name="" id="year"></select>
-        <br>
-        <br>
-        <button id="cancelprocess_popup" class="btn btn-primary">Mark As Processing</button>
-        <button id="mark_processing_popup" class="btn btn-primary">Cancel</button>
+                    <h4>New Due Date</h4>
+                    <select name="" id="">
+                        <option value="">January</option>
+                        <option value="">February</option>
+                        <option value="">March</option>
+                        <option value="">April</option>
+                        <option value="">May</option>
+                        <option value="">June</option>
+                        <option value="">July</option>
+                        <option value="">August</option>
+                        <option value="">September</option>
+                        <option value="">October</option>
+                        <option value="">November</option>
+                        <option value="">December</option>
+                    </select>
+                    <select name="" id="day"></select>
+                    <select name="" id="year"></select>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelprocess_popup" class="btn btn-primary">Mark As Processing</button>
+                    <button id="mark_processing_popup" class="btn btn-primary">Cancel</button>
+                </div>
+            </div>
+        </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">

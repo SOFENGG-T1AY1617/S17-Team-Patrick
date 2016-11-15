@@ -42,7 +42,5 @@ namespace SOFENGG_Order_Request_Document.Model
         public string PlaceOfBirth { get; set; }
         public StudentDegree[] StudentDegreeList { get; set; }
         public MailingInfo[] MailingInfoList { get; set; }
-
-
     }
 }

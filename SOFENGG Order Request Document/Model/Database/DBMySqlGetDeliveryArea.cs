@@ -23,13 +23,13 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             {
                 deliveryAreaList[i] = new DeliveryArea()
                 {
-                    DaysToDeliver = ObjectList[i][DeliveryArea.ColDaysToDeliver].ToString(),
+                    MinDaysToDeliver = int.Parse(ObjectList[i][DeliveryArea.ColMinDaysToDeliver].ToString()),
+                    MaxDaysToDeliver = int.Parse(ObjectList[i][DeliveryArea.ColMaxDaysToDeliver].ToString()),
                     Id = int.Parse(ObjectList[i][DeliveryArea.ColDeliveryAreaId].ToString()),
                     Name = ObjectList[i][DeliveryArea.ColAreaName].ToString(),
-                    Price = ObjectList[i][DeliveryArea.ColPrice].ToString(),
+                    Price = float.Parse(ObjectList[i][DeliveryArea.ColPrice].ToString())
                 };
             }
-            throw new NotImplementedException();
         }
 
 

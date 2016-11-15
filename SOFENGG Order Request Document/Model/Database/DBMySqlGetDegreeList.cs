@@ -34,8 +34,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             {
                 CampusOffered = campus, Name = name, Level = level,
             };
-
-            Debug.Write("\n\n\n " + name + "\n\n\n");
+            
 
             tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {4} and {2} = '{5}' and {3} = '{6}';",
                 Degree.Table, Degree.ColCampusOfferedId, Degree.ColDegreeName, Degree.ColLevel,
