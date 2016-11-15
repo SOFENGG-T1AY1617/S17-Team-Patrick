@@ -105,8 +105,8 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <asp:Button ID="butAction" runat="server" value="Cancel" class="btn btn-primary" Text="Cancel"/>
-                        <asp:Button ID="butSubmit" runat="server" value="Submit" class="btn btn-primary" OnClick = "SubmitStudentDegree_Click" Text="Submit"/>
+                        <asp:Button ID="btnAction" runat="server" text="Cancel" class="btn btn-primary"></asp:Button>
+                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary" OnClick = "SubmitStudentDegree_Click" text="Submit"></asp:Button>
 
                     </td>
                 </tr>

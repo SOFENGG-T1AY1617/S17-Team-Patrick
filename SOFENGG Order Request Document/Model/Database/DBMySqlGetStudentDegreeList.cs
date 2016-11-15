@@ -39,6 +39,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             {
                 StudentDegreeList[i] = new StudentDegree()
                 {
+                    IdStudent = int.Parse(ObjectList[i][StudentDegree.ColIdStudent].ToString()),
                     Id = int.Parse(ObjectList[i][StudentDegree.ColStudentDegreeId].ToString()),
                     Degree = model.GetDegree(int.Parse(ObjectList[i][StudentDegree.ColDegreeId].ToString())),
                     YearAdmitted = int.Parse(ObjectList[i][StudentDegree.ColYearAdmitted].ToString()),

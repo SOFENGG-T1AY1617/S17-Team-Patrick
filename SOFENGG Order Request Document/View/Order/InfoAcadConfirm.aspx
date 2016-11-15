@@ -30,22 +30,22 @@
             </HeaderTemplate>
 
             <ItemTemplate>
-                <table id="sd1" class="table table-bordered table-striped" runat="server">
+                <table class="table table-bordered table-striped" runat="server">
+                    <tr>
+                        <td>ID Number</td>
+                        <td><asp:Label runat="server" ID="lblIdNumber" Text=<%# Eval("IdStudent")%>/></td>
+                    </tr>
                     <tr>
                         <td>Level</td>
-                        <td><asp:Label runat="server" ID="lblLevel" Text=<%# Eval("Level")%>/></td>
+                        <td><asp:Label runat="server" ID="lblLevel" Text=<%# Eval("Degree.Level")%>/></td>
                     </tr>
                     <tr>
                         <td>Degree</td>
-                        <td><asp:Label runat="server" ID="lblDegree" Text=<%# Eval("Degree")%>/></td>
+                        <td><asp:Label runat="server" ID="lblDegree" Text=<%# Eval("Degree.Name")%>/></td>
                     </tr>
                     <tr>
                         <td>Graduate</td>
-                        <td><asp:Label runat="server" ID="lblGraduate" Text=<%# Eval("IsGraduate")%>/></td>
-                    </tr>
-                    <tr>
-                        <td>ID Number</td>
-                        <td><asp:Label runat="server" ID="lblIdNumber" Text=<%# Eval("IdNumber")%>/></td>
+                        <td><asp:Label runat="server" ID="lblGraduate" Text="True"/></td>
                     </tr>
                     <tr>
                         <td>Admitted as</td>
@@ -53,8 +53,9 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:Button class="btn btn-default" ID=<%# Eval("DegreeId")%> Text="Edit"/>
-                            <asp:Button class="btn btn-default" ID=<%# Eval("DegreeId")%> Text="Delete"/>
+                            <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Degree.Id")%>' />
+                            <asp:Button class="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
+                            <asp:Button class="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
                         </td>
                     </tr>
                 </table>
@@ -64,39 +65,10 @@
             </FooterTemplate>
 
        </asp:Repeater>
-        <!--
-        <table id="sd1" class="table table-bordered table-striped" runat="server">
-            <tr>
-                <td>Level</td>
-                <td>Bachelor </td>
-            </tr>
-            <tr>
-                <td>Degree</td>
-                <td>BS Computer Science</td>
-            </tr>
-            <tr>
-                <td>Graduate</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Year Level</td>
-                <td>3rd Year</td>
-            </tr>
-            <tr>
-                <td>Admitted as</td>
-                <td>Regular Student</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <asp:Button class="btn btn-default" Text="Edit" OnClick=""/>
-                    <asp:Button class="btn btn-default" Text="Delete" OnClick=""/>
-                </td>
-            </tr>
-        </table>
-            -->
+       
         <div>
-            <asp:Button class="btn btn-primary" Text="Add Another Degree" href="/View/Order/InfoAcadDe.aspx"/>
-            <asp:Button class="btn btn-primary" Text="Next" OnClick="GoToInfoMailDe"/>
+            <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
+            <asp:Button class="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
         </div>
         </form>
     </div>

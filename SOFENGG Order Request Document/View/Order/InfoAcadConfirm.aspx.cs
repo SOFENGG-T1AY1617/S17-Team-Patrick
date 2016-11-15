@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -32,20 +34,28 @@ namespace SOFENGG_Order_Request_Document.View.Order
             rptInfoAcadConfirm.DataBind();
         }
 
+        /* CLICK EVENTS */
 
-        public void GoToInfoMailDe(object sender, EventArgs e)
+        protected void GoToInfoMailDe(object sender, EventArgs e)
         {
-            
+            Request.Cookies["StudentInfo"]["StudentDegreeId"] = "";
+            Response.Redirect("~/View/Order/InfoMailDe.aspx");
         }
 
-        public void deleteStudentDegree()
+        protected void DeleteStudentDegree(object sender, EventArgs e)
         {
-            
+            Button btn = sender as Button;
+
         }
 
-        public void editStudentDegree()
+        protected void EditStudentDegree(object sender, EventArgs e)
         {
-            
+        }
+
+        public void AddStudentDegree(object sender, EventArgs e)
+        {
+            Request.Cookies["StudentInfo"]["StudentDegreeId"] = "";
+            Response.Redirect("~/View/Order/InfoAcadDe.aspx");
         }
 
         public int StudentInfoId { get; set; }
