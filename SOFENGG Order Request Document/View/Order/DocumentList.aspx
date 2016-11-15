@@ -46,7 +46,7 @@
                     <td colspan="4" class="content-document-header">Transcript of Records</td>
                 </tr>
             </table>
-            <asp:GridView ID="gvDocumentList" AutoGenerateColumns="False" runat="server">
+            <asp:GridView ID="gvTOR" AutoGenerateColumns="False" runat="server">
                 <Columns >
                     <asp:TemplateField HeaderText="Document">
                         <ItemTemplate>
@@ -73,7 +73,7 @@
                     <td colspan="4" class="content-document-header">Certification</td>
                 </tr>
             </table>
-            <asp:GridView ID="GridView2" AutoGenerateColumns="False" runat="server">
+            <asp:GridView ID="gvCertification" AutoGenerateColumns="False" runat="server">
                 <Columns >
                     <asp:TemplateField>
                         <ItemTemplate>
@@ -100,7 +100,7 @@
                 </tr>
             </table>
 
-            <asp:GridView ID="GridView3" AutoGenerateColumns="False" runat="server">
+            <asp:GridView ID="gvTrueCopy" AutoGenerateColumns="False" runat="server">
                 <Columns >
                     <asp:TemplateField>
                         <ItemTemplate>

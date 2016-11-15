@@ -4,16 +4,16 @@ using System.Linq;
 using System.Web;
 using SOFENGG_Order_Request_Document.Model;
 using SOFENGG_Order_Request_Document.Model.Database;
-using SOFENGG_Order_Request_Document.View.Admin.Interface;
+using SOFENGG_Order_Request_Document.View.Order.Interface;
 
 namespace SOFENGG_Order_Request_Document.Presenter.Admin
 {
     public class DocumentListPresenter
     {
         private readonly IAdminModel _model;
-        private readonly IDocumentListView _view;
+        private readonly IOrderDocumentListView _view;
 
-        public DocumentListPresenter(IDocumentListView view)
+        public DocumentListPresenter(IOrderDocumentListView view)
         {
             _view = view;
             _model = new AdminModel();
@@ -34,9 +34,16 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
             return _model.DeleteDocument(document);
         }
 
-        public void GetDocumentList()
+        /*public void GetDocumentList()
         {
             _view.AvailableDocumentList = _model.GetDocumentList();
+        }*/
+
+        public void GetCertificationDocumentList()
+        {
+            _view.CertificateDocumentList = _model.GetCertificateDocumentList();
         }
+
+        
     }
 }

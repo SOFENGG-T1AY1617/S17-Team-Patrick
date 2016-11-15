@@ -9,6 +9,7 @@ namespace SOFENGG_Order_Request_Document.Model
         bool DeleteDocument(Document document);
         Document[] GetDocumentList();
         Document[] GetPendingDocumentList();
+        Document[] GetCertificateDocumentList();
         bool MarkAsDone(Order order);
         bool MarkAsPending(DateTime newDueDate, string reason);
         bool MarkAsProcessing(Order order);
