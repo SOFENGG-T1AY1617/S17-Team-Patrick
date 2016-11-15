@@ -1,5 +1,6 @@
 ﻿using System;
 using SOFENGG_Order_Request_Document.Model.Database;
+using SOFENGG_Order_Request_Document.Model.Database.OrderList;
 
 namespace SOFENGG_Order_Request_Document.Model
 {
@@ -30,7 +31,14 @@ namespace SOFENGG_Order_Request_Document.Model
             return db.DocumentList;
         }
 
-        public Document[] GetPendingDocumentList()
+        public Order[] GetOrderList()
+        {
+            var db = new DBMySqlGetOrderListPreview();
+            db.ExecuteQuery();
+            return db.OrderList;
+        }
+
+        public Order[] GetOrderList(OrderStatusEnum orderStatus)
         {
             throw new NotImplementedException();
         }

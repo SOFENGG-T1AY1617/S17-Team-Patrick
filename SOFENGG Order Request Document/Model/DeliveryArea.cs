@@ -1,16 +1,12 @@
-<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace SOFENGG_Order_Request_Document.Model
-=======
-﻿namespace SOFENGG_Order_Request_Document.Model
->>>>>>> origin/US01
 {
 
-    public class DeliveryArea
+    public enum DeliveryModeEnum
     {
         Pickup = 0,
         Delivery = 1
