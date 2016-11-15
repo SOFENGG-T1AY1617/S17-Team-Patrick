@@ -5,6 +5,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Always change the css file name to html file name! -->
+
+    <!-- Test Commit - Tyler -->
     <link rel="stylesheet" href="/Content/css/document_list.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
@@ -48,7 +50,7 @@
             </table>
             <asp:GridView ID="gvDocumentList" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
-                <Columns >
+                <Columns>
                     <asp:TemplateField HeaderText="Document">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
