@@ -19,9 +19,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         public bool AddStudentDegree(StudentDegree studentDegree)
         {
             var db = new DBMySqlAddStudentDegree(studentDegree);
-
-            Debug.Write("\n\n\nHELLOOOOOOOOOOOOOOOOOO\n\n\n");
-
             return db.ExecuteQuery();
         }
 
@@ -30,6 +27,13 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             var db = new DBMySqlAddMailingInfo(mailingInfo);
             return db.ExecuteQuery();
         }
+
+        public bool EditStudentInfo(StudentInfo studentInfo)
+        {
+            var db = new DBMySqlEditPersonalInformation(studentInfo);
+            return db.ExecuteQuery();
+        }
+
 
         public Degree GetDegree(int StudentInfoId, String name, int CampusAttended, char Level)
         {

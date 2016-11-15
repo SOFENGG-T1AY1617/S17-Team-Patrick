@@ -10,6 +10,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 {
     public partial class PersonalInformation : System.Web.UI.Page, IPersonalInformationView
     {
+        public int StudentInfoId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -128,6 +129,20 @@ namespace SOFENGG_Order_Request_Document.View.Order
                     this.PopulateMonth();
                     this.PopulateDay();
                 }
+
+
+                try
+                {
+                    //Request.Cookies["StudentInfo"]["Id"] = "19";
+                    if (Request.Cookies["StudentInfo"] != null)
+                    {
+                        PopulatePreviousInput();
+                    }
+                }
+                catch (Exception)
+                {
+                }
+
             }
             else
             {
@@ -140,64 +155,50 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
 
 
-            
-            try
-            {
-                //Request.Cookies["StudentInfo"]["Id"] = "19";
-                if (Request.Cookies["StudentInfo"] != null)
-                {
-                    PopulatePreviousInput();
-                }
-            }
-            catch (Exception)
-            {
-                ////// DEBUGGING. PLEASE DELETE AFTER //////
-                /*
-                HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
-                studentInfoCookie["Id"] = "2";
-                studentInfoCookie["PersonalInformationPage"] = "true";
-                studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
-                Response.Cookies.Add(studentInfoCookie);*/
-            }
-            ////// END-OF-DEBUGGING. PLEASE DELETE AFTER //////
+
         }
 
         protected void SubmitPersonalInformation_Click(object sender, EventArgs e)
         {
-            LastName = txtLName.Text;
-            FirstName = txtFName.Text;
-            MiddleName = txtMName.Text;
-            Gender = (char)optGender.SelectedItem.Value[0];
-            var month = Convert.ToDateTime(ddlBirthMonth.SelectedItem.Text + " 01, 1900").Month;
-            var year = ddlBirthYear.SelectedItem.Text;
-            var day = ddlBirthDay.SelectedItem.Text;
-            BirthDate = Convert.ToDateTime(day + "/" + month + "/" + year).Date;
-            Citizenship = txtCitizen.Text;
-            CurrentAddress = txtCurrentAddress.Text;
-            PhoneNumber = txtPhoneNum.Text;
-            EmailAddress = txtEmail.Text;
-            HighSchoolAttended = txtHSAttended.Text;
-            PlaceOfBirth = txtBirthplace.Text;
+                LastName = txtLName.Text;
+                FirstName = txtFName.Text;
+                MiddleName = txtMName.Text;
+                Gender = (char)optGender.SelectedItem.Value[0];
+                var month = Convert.ToDateTime(ddlBirthMonth.SelectedItem.Text + " 01, 1900").Month;
+                var year = ddlBirthYear.SelectedItem.Text;
+                var day = ddlBirthDay.SelectedItem.Text;
+                BirthDate = Convert.ToDateTime(day + "/" + month + "/" + year).Date;
+                Citizenship = txtCitizen.Text;
+                CurrentAddress = txtCurrentAddress.Text;
+                PhoneNumber = txtPhoneNum.Text;
+                EmailAddress = txtEmail.Text;
+                HighSchoolAttended = txtHSAttended.Text;
+                PlaceOfBirth = txtBirthplace.Text;
 
-                if (Request.Cookies["StudentInfo"] != null)
+            PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
+
+            if (Request.Cookies["StudentInfo"] != null)
+            {
+                StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
+                if (presenter.EditStudentInfo())
                 {
                     Request.Cookies["StudentInfo"]["PersonalInformationPage"] = "true";
                 }
-                else
+            }
+            else
+            {
+                if (presenter.AddStudentInfo())
                 {
-                    PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
-                    if (presenter.AddStudentInfo())
-                    {
-                        HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
-                        studentInfoCookie["Id"] = presenter.GetMyStudentInfo().StudentInfoId + "";
-                        studentInfoCookie["PersonalInformationPage"] = "true";
-                        studentInfoCookie["StudentDegreeId"] = "";
-                        studentInfoCookie["MailInfoId"] = "";
-                        //studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
-                        Response.Cookies.Add(studentInfoCookie);
-                    }
+                    HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
+                    studentInfoCookie["Id"] = presenter.GetMyStudentInfo().StudentInfoId + "";
+                    studentInfoCookie["PersonalInformationPage"] = "true";
+                    studentInfoCookie["StudentDegreeId"] = "";
+                    studentInfoCookie["MailInfoId"] = "";
+                    studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
+                    Response.Cookies.Add(studentInfoCookie);
                 }
-                Response.Redirect("~/View/Order/InfoAcadDe.aspx");
+            }
+            Response.Redirect("~/View/Order/InfoAcadDe.aspx");
  
         }   
 

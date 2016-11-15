@@ -47,6 +47,25 @@ namespace SOFENGG_Order_Request_Document.Presenter
         {
             return model.GetMyStudentInfo();
         }
+
+        public bool EditStudentInfo()
+        {
+            StudentInfo studentInfo = new StudentInfo();
+            studentInfo.StudentInfoId = view.StudentInfoId;
+            studentInfo.LastName = view.LastName;
+            studentInfo.FirstName = view.FirstName;
+            studentInfo.MiddleName = view.MiddleName;
+            studentInfo.Gender = (GenderEnum)view.Gender;
+            studentInfo.BirthDate = view.BirthDate;
+            studentInfo.Citizenship = view.Citizenship;
+            studentInfo.CurrentAddress = view.CurrentAddress;
+            studentInfo.PhoneNumber = view.PhoneNumber;
+            studentInfo.Email = view.EmailAddress;
+            studentInfo.HighSchoolAttended = view.HighSchoolAttended;
+            studentInfo.PlaceOfBirth = view.PlaceOfBirth;
+
+            return model.EditStudentInfo(studentInfo);
+        }
         
 
     }

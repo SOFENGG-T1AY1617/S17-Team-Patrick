@@ -148,6 +148,7 @@
     <Compile Include="Model\Database\DBMySqlAddMailingInfo.cs" />
     <Compile Include="Model\Database\DBMySqlAddPersonalInformation.cs" />
     <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
+    <Compile Include="Model\Database\DBMySqlEditPersonalInformation.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetDocument.cs" />
@@ -333,7 +334,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7766</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

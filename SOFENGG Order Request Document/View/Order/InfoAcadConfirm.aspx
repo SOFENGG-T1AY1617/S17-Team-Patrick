@@ -21,7 +21,6 @@
         <div class="content-divider"></div>
     </div>
     <div class="col-xs-9">
-        <form runat="server">
         <h5>Academic Information</h5>
         
         <asp:Repeater id="rptInfoAcadConfirm" runat="server">
@@ -70,7 +69,6 @@
             <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
             <asp:Button class="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
         </div>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

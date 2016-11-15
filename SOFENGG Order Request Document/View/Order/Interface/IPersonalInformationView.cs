@@ -4,6 +4,7 @@ namespace SOFENGG_Order_Request_Document.View.Order.Interface
 {
     public interface IPersonalInformationView
     {
+        int StudentInfoId { get; set; }
         string LastName { get; set; }
         string FirstName { get; set; }
         string MiddleName { get; set; }
