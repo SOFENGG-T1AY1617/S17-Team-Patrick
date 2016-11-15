@@ -10,6 +10,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         public Document[] DocumentList;
         private readonly bool _isGraduate;
         private readonly bool _isUndergraduate;
+        private readonly int _Category;
 
         public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
         {
@@ -20,6 +21,10 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         public DBMySqlGetDocumentList(int Category)
         {
             _Category = Category;
+        }
+
+        public DBMySqlGetDocumentList()
+        {
         }
 
         protected override void SetQuery()
