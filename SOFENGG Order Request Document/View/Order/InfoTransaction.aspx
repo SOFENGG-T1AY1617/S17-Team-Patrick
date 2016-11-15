@@ -28,7 +28,6 @@
     </div>
 
     <div class="col-xs-9">
-        <form name "frmTransaction" method="post" action="info_transaction.html">
             <h5 class="content-header">Transaction Information</h5>
 
             <table border="1" class="content-form">
@@ -37,11 +36,11 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">Reference No.</td>
-                    <td>1164824547</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Name</td>
-                    <td></td>
+                    <td><!--<% Response.Cookies("") %>--></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Current Address</td>
@@ -61,73 +60,79 @@
                 </tr>
             </table>
 
-            <br>
-
-            <table border="1" class="content-form">
-                <tr>
-                    <td colspan="2" class="content-form_label" align="center">Delivery Details</td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Mailing Address</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Zip Code</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Delivery Area</td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Delivery Charge</td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Processing Type</td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Date Due to the Courier</td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Estimated Delivery Date</td>
-                    <td> </td>
-                </tr>
-            </table>
-
-            <table border="1" class="content-form">
-                <tr>
-                    <td class="content-form_label">Document</td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Degree</td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Cost</td>
-                    <td> </td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">No. of Copies</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Sub Total</td>
-                    <td> </td>
-                </tr>
-
-                <tr>
-                    <td colspan="2" class="content-form_label" align="right" style="padding-right: 6px">
-                        <a href="order_item.html">Edit</a>
-                        &nbsp;<a href="document_list.html">Remove</a>
-                    </td>
-                </tr>
-            </table>
-
-            <br>
+            <br/>
+            <asp:Repeater ID="repDeliveryDetails" runat="server">  
+                <ItemTemplate>  
+                    <table border="1" class="content-form">
+                        <tr>
+                            <td colspan="2" class="content-form_label" align="center">Delivery Details</td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Mailing Address</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Zip Code</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Delivery Area</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Delivery Charge</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Processing Type</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Date Due to the Courier</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Estimated Delivery Date</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <asp:Repeater ID="repDocumentsToDeliver" runat="server">
+                        <ItemTemplate>
+                            <table border="1" class="content-form">
+                                <tr>
+                                    <td class="content-form_label">Document</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="content-form_label">Degree</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="content-form_label">Cost</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="content-form_label">No. of Copies</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="content-form_label">Sub Total</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="content-form_label" align="right" style="padding-right: 6px">
+                                        <a href="order_item.html">Edit</a>
+                                        &nbsp;<a href="document_list.html">Remove</a>
+                                    </td>
+                                </tr>
+                            </table>
+                           </ItemTemplate>
+                    </asp:Repeater>
+                     <br />
+                     <br />
+                </ItemTemplate>
+            </asp:Repeater>
+            <br/>
 
             <table border="1" class="content-form" style="width: 70%" align="center">
                 <tr>
@@ -137,25 +142,24 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">Total Delivery Cost</td>
-                    <td> Php 128.00 </td>
+                    <td><%#Eval("")%></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Total Document Cost</td>
-                    <td> Php 150.00 </td>
+                    <td><%#Eval("")%></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Total Cost</td>
-                    <td> Php 278.00 </td>
+                    <td><%#Eval("")%></td>
                 </tr>
             </table>
 
-            <br>
+            <br/>
 
             <div style="text-align: center">
                 <a href="document_list.html" class="btn btn-primary">Back to Order List</a>
                 <a href="" class="btn btn-primary" disabled="true">Pay On-Line</a>
             </div>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

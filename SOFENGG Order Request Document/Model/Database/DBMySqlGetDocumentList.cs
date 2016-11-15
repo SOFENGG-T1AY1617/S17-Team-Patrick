@@ -10,20 +10,12 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         public Document[] DocumentList;
         private readonly bool _isGraduate;
         private readonly bool _isUndergraduate;
-        private readonly int _Category;
-
-        
-        public DBMySqlGetDocumentList()
-        {
-
-        }
-
 
         public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
-         {
-             _isGraduate = isGraduate;
-             _isUndergraduate = isUndergraduate;
-         } 
+        {
+            _isGraduate = isGraduate;
+            _isUndergraduate = isUndergraduate;
+        }
 
         public DBMySqlGetDocumentList(int Category)
         {
