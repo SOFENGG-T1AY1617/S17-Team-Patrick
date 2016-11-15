@@ -22,7 +22,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             Conn = new MySqlConnection(ConfigurationManager.
                 ConnectionStrings["MySqlConnString"].ConnectionString);
 //            _query =
-//                "INSERT INTO document (name, categoryId, weight, regularPrice, expressPrice, maxCopy, isAvailable, forUndergraduate, forGraduate) VALUES (\"banana\", 0, 1.5, 123, 123, 5, 1, 1, 0);";
+//               "INSERT INTO document (name, categoryId, weight, regularPrice, expressPrice, maxCopy, isAvailable, forUndergraduate, forGraduate) VALUES (\"banana\", 0, 1.5, 123, 123, 5, 1, 1, 0);";
             Conn.Open();
         }
 

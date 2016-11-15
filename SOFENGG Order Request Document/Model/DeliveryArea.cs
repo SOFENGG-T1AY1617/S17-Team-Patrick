@@ -1,11 +1,16 @@
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace SOFENGG_Order_Request_Document.Model
+=======
+﻿namespace SOFENGG_Order_Request_Document.Model
+>>>>>>> origin/US01
 {
-    public enum DeliveryModeEnum
+
+    public class DeliveryArea
     {
         Pickup = 0,
         Delivery = 1
@@ -24,6 +29,7 @@ namespace SOFENGG_Order_Request_Document.Model
         public DeliveryModeEnum Mode { get; set; }
         public string Price { get; set; }
         public string DaysToDeliver { get; set; }
+
 
     }
 }
