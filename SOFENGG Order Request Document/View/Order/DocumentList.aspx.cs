@@ -96,6 +96,9 @@ namespace SOFENGG_Order_Request_Document.View.Order
             var expressPriceValue = ((TextBox)_gvRow.Cells[4].Controls[0]).Text;
             float expressPrice;
 
+            
+
+
             try
             {
                 expressPrice = expressPriceValue.TryParsePrice();
