@@ -5,114 +5,87 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/admin_main.css">
+    <link href="../../Content/css/admin_order_information.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
-    <div class="col-xs-2 content-sidebar">
-        <h3>Menu</h3>
-        <br>
-        <ul>
-            <li>
-                <b>Home</b>
-            </li>
-            <li>
-                <a href="admin_document_list.html">Maintain Document List</a>
-            </li>
-            <li>Update Operational Date</li>
-        </ul>
-        <br>
-        <ul>
-            <li>Current Orders</li>
-            <li>
-                <a href="admin_pending.html">Pending Orders</a>
-            </li>
-            <li>Cancelled Orders</li>
-            <li>Previous Orders</li>
-        </ul>
-    </div>
-    <div class="col-xs-9 col-xs-offset-1 content-main">
-        <div class="main_report">
-            <div class="main_report-left">
-                <h3>Current Orders</h3>
-            </div>
-            <div class="main_report-right">
-                <table class="table table-bordered">
-                    <tr>
-                        <td>
-                            <h4>Processing: <b>
-                                <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
-                        </td>
-                        <td class="warning">
-                            <h4>Pending: <b>
-                                <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
-                        </td>
-                        <td class="success">
-                            <h4>On Time: <b>
-                                <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
-                        </td>
-                        <td class="danger">
-                            <h4>Late: <b>
-                                <asp:Label ID="lblLateCount" runat="server" /></b></h4>
-                        </td>
-                        <td>
-                            <h4>Total Quantity: <b>
-                                <asp:Label ID="lblTotalCount" runat="server" /></b></h4>
-                        </td>
-                    </tr>
-                </table>
+    <div class="content-main">
+        <div class="container">
+            <div class="main_report">
+                <div class="main_report-left">
+                    <h3>Current Orders</h3>
+                </div>
+                <div class="main_report-right">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>
+                                <h4>Processing: <b>
+                                    <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
+                            </td>
+                            <td class="warning">
+                                <h4>Pending: <b>
+                                    <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
+                            </td>
+                            <td class="success">
+                                <h4>On Time: <b>
+                                    <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
+                            </td>
+                            <td class="danger">
+                                <h4>Late: <b>
+                                    <asp:Label ID="lblLateCount" runat="server" /></b></h4>
+                            </td>
+                            <td>
+                                <h4>Total Quantity: <b>
+                                    <asp:Label ID="lblTotalCount" runat="server" /></b></h4>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <asp:Repeater ID="repOrders" runat="server">
+                    <HeaderTemplate>
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Reference Number</td>
+                                    <td>Transaction Date</td>
+                                    <td>Date Due</td>
+                                    <td>Status</td>
+                                    <td>Name</td>
+                                    <td>Amount</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
+                            <td>
+                                <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        </tbody>
+                    </table>
+                    </FooterTemplate>
+                </asp:Repeater>
             </div>
         </div>
-        <asp:Repeater ID="repOrders" runat="server">
-            <HeaderTemplate>
-                <table class="table table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <td>Reference Number</td>
-                            <td>Transaction Date</td>
-                            <td>Date Due</td>
-                            <td>Status</td>
-                            <td>Name</td>
-                            <td>Amount</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
-                    <td>
-                        <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
-                    </td>
-                </tr>
-            </ItemTemplate>
-            <FooterTemplate>
-                </tbody>
-            </table>
-            </FooterTemplate>
-        </asp:Repeater>
-
-        <%--                <tr class="success">
-                    <td>3</td>
-                    <td>11/10/2016</td>
-                    <td>11/11/2016</td>
-                    <td>OnTime</td>
-                    <td>Watch Shock</td>
-                    <td>300.00</td>
-                </tr>--%>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="other" runat="server">
@@ -274,31 +247,45 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4>Reference Number
-                                <asp:Label ID="lblPendingReferenceNo" runat="server"></asp:Label></h4>
+                    <h4>Reference Number <asp:Label ID="lblPendingReferenceNo" runat="server"></asp:Label></h4>
                 </div>
                 <div class="modal-body">
-                    <p>Reason For Delay:</p>
-                    <textarea name="" id="" cols="32" rows="10"></textarea>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="txtReasonForDelay" class="col-sm-2 control-label">Reason For Delay</label>
+                            <div class="col-sm-10">
+                                <textarea id="txtReasonForDelay" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
 
-                    <h4>New Due Date</h4>
-                    <select name="" id="">
-                        <option value="">January</option>
-                        <option value="">February</option>
-                        <option value="">March</option>
-                        <option value="">April</option>
-                        <option value="">May</option>
-                        <option value="">June</option>
-                        <option value="">July</option>
-                        <option value="">August</option>
-                        <option value="">September</option>
-                        <option value="">October</option>
-                        <option value="">November</option>
-                        <option value="">December</option>
-                    </select>
-                    <select name="" id="day"></select>
-                    <select name="" id="year"></select>
-
+                        <div class="form-group">
+                            <label for="date" class="col-sm-2 control-label">New Due Date</label>
+                            <div class="col-sm-10">
+                                <div class="col-sm-5">
+                                    <select name="" id="" class="form-control">
+                                        <option value="">January</option>
+                                        <option value="">February</option>
+                                        <option value="">March</option>
+                                        <option value="">April</option>
+                                        <option value="">May</option>
+                                        <option value="">June</option>
+                                        <option value="">July</option>
+                                        <option value="">August</option>
+                                        <option value="">September</option>
+                                        <option value="">October</option>
+                                        <option value="">November</option>
+                                        <option value="">December</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <select name="" id="day" class="form-control"></select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select name="" id="year" class="form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button id="cancelprocess_popup" class="btn btn-primary">Mark As Processing</button>
