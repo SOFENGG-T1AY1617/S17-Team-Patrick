@@ -255,8 +255,8 @@
                             <%--            Only display "mark as pending" and "mark as done" when currentorder is processing and NOT pending already--%>
                             <div class="content_buttons">
                                 <%--<button id="btnBack" class="btn btn-primary">Back</button>--%>
-                                
-                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" Text="Mark as Pending" runat="server" />
+
+                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" Text="Mark as Pending" OnClientClick="return false;" runat="server"  data-toggle="modal" data-target="#dlgPending" />
                                 <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" />
                                 <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" />
                             </div>
@@ -264,6 +264,47 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dlgPending" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4>Reference Number
+                                <asp:Label ID="lblPendingReferenceNo" runat="server"></asp:Label></h4>
+                </div>
+                <div class="modal-body">
+                    <p>Reason For Delay:</p>
+                    <textarea name="" id="" cols="32" rows="10"></textarea>
+
+                    <h4>New Due Date</h4>
+                    <select name="" id="">
+                        <option value="">January</option>
+                        <option value="">February</option>
+                        <option value="">March</option>
+                        <option value="">April</option>
+                        <option value="">May</option>
+                        <option value="">June</option>
+                        <option value="">July</option>
+                        <option value="">August</option>
+                        <option value="">September</option>
+                        <option value="">October</option>
+                        <option value="">November</option>
+                        <option value="">December</option>
+                    </select>
+                    <select name="" id="day"></select>
+                    <select name="" id="year"></select>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelprocess_popup" class="btn btn-primary">Mark As Processing</button>
+                    <button id="mark_processing_popup" class="btn btn-primary">Cancel</button>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>
