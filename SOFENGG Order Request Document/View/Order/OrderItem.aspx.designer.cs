@@ -31,13 +31,13 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.RadioButton rbExpress;
         
         /// <summary>
-        /// for_pickup control.
+        /// cbPickup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox for_pickup;
+        protected global::System.Web.UI.WebControls.CheckBox cbPickup;
         
         /// <summary>
         /// ddlCampus control.
@@ -67,31 +67,13 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNoCopy;
         
         /// <summary>
-        /// rbBrown control.
+        /// optInsert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbBrown;
-        
-        /// <summary>
-        /// rbWhite control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbWhite;
-        
-        /// <summary>
-        /// rbNone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbNone;
+        protected global::System.Web.UI.WebControls.RadioButtonList optInsert;
         
         /// <summary>
         /// rfvInsert control.

@@ -38,7 +38,7 @@
     </div>
 
     <div class="col-xs-9">
-            <h5 class="content-header">Transaction Information</h5>
+            <h5 class="content-header" >Transaction Information</h5>
 
             <table border="1" class="content-form">
                 <tr>
@@ -46,27 +46,27 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">Reference No.</td>
-                    <td></td>
+                    <td><%#Eval("ReferenceNumber")%></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Name</td>
-                    <td></td>
+                    <td><%#Eval("Name")%></td>
                 </tr>
                 <tr>
                     <td class="auto-style1">Current Address</td>
-                    <td class="auto-style2"><asp:Label runat="server"></asp:Label></td>
+                    <td class="auto-style2"><%#Eval("Address")%></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Phone No.</td>
-                    <td><asp:Label runat="server"></asp:Label></td>
+                    <td><%#Eval("PhoneNumber")%></td>
                 </tr>
                 <tr class="delivery-info">
                     <td class="content-form_label">Email</td>
-                    <td><asp:Label runat="server"></asp:Label></td>
+                    <td><%#Eval("Email")%></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Place of Birth</td>
-                    <td><asp:Label runat="server"></asp:Label></td>
+                    <td><%#Eval("BirthPlace")%></td>
                 </tr>
             </table>
 
@@ -79,31 +79,31 @@
                         </tr>
                         <tr>
                             <td class="content-form_label">Mailing Address</td>
-                            <td></td>
+                            <td><%#Eval("Address")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Zip Code</td>
-                            <td></td>
+                            <td><%#Eval("ZipCode")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Delivery Area</td>
-                            <td></td>
+                            <td><%#Eval("DeliveryArea")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Delivery Charge</td>
-                            <td></td>
+                            <td><%#Eval("DeliveryCharge")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Processing Type</td>
-                            <td></td>
+                            <td><%#Eval("ProcessingType")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Date Due to the Courier</td>
-                            <td></td>
+                            <td><%#Eval("DueDate")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Estimated Delivery Date</td>
-                            <td></td>
+                            <td><%#Eval("EstDeliveryDate")%></td>
                         </tr>
                     </table>
                     <asp:Repeater ID="repDocumentsToDeliver" runat="server">
@@ -111,23 +111,23 @@
                             <table border="1" class="content-form">
                                 <tr>
                                     <td class="content-form_label">Document</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">Degree</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">Cost</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">No. of Copies</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">Sub Total</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="content-form_label" align="right" style="padding-right: 6px">
@@ -167,8 +167,8 @@
             <br/>
 
             <div style="text-align: center">
-                <a href="document_list.html" class="btn btn-primary">Back to Order List</a>
-                <a href="" class="btn btn-primary" disabled="true">Pay On-Line</a>
+                <asp:Button class="btn btn-primary" runat="server"  Text="Back to Order List"/>
+                <asp:Button class="btn btn-primary" runat="server"  Text="Pay On-Line"/>
             </div>
     </div>
 </asp:Content>
