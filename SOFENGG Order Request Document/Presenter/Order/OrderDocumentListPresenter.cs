@@ -19,9 +19,14 @@ namespace SOFENGG_Order_Request_Document.Presenter.Order
             _model = new OrderModel();
         }
 
-        public void GetDocumentList()
+        /*public void GetDocumentList()
         {
             _view.AvailableDocumentList = _model.GetDocumentList();
+        }*/
+
+        public void GetCertificateDocumentList()
+        {
+            _view.CertificateDocumentList = _model.GetCertificateDocumentList();
         }
     }
 }

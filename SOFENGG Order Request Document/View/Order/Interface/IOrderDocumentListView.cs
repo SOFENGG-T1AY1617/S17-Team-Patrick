@@ -8,7 +8,9 @@ namespace SOFENGG_Order_Request_Document.View.Order.Interface
 {
     public interface IOrderDocumentListView
     {
-        Document[] AvailableDocumentList { set; }
+       // Document[] AvailableDocumentList { set; }
+        Document[] CertificateDocumentList { set; }
         void GetDocumentList();
+        
     }
 }

@@ -4,8 +4,9 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     interface IOrderModel
     {
-       
-        Document[] GetDocumentList();
-       
+
+        //Document[] GetDocumentList(int isGraduate, int isUndergraduate);
+        Document[] GetCertificateDocumentList();
+        
     }
 }
