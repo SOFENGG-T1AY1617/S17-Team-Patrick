@@ -73,8 +73,8 @@
     <Content Include="Content\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap.min.css.map" />
-    <Content Include="Script\jquery.min.map" />
-    <Content Include="Script\jquery.slim.min.map" />
+    <Content Include="Presenter\Order\Script\jquery.min.map" />
+    <Content Include="Presenter\Order\Script\jquery.slim.min.map" />
     <Content Include="View\Order\Order.Master" />
     <Content Include="View\Admin\Admin.Master" />
     <Content Include="packages.config" />
@@ -120,21 +120,21 @@
     <Content Include="View\Order\OrderItem.aspx" />
     <Content Include="View\Order\PersonalInformation.aspx" />
     <Content Include="View\Order\Rules.aspx" />
-    <Content Include="Script\admin_document_list.js" />
-    <Content Include="Script\admin_main.js" />
-    <Content Include="Script\bootstrap.js" />
-    <Content Include="Script\bootstrap.min.js" />
-    <Content Include="Script\core.js" />
-    <Content Include="Script\info_acad_de.js" />
-    <Content Include="Script\info_mail_de.js" />
-    <Content Include="Script\jquery.js" />
-    <Content Include="Script\jquery.min.js" />
-    <Content Include="Script\jquery.slim.js" />
-    <Content Include="Script\jquery.slim.min.js" />
-    <Content Include="Script\npm.js" />
-    <Content Include="Script\order_item.js" />
-    <Content Include="Script\personal_information.js" />
-    <Content Include="Script\rules.js" />
+    <Content Include="Presenter\Order\Script\admin_document_list.js" />
+    <Content Include="Presenter\Order\Script\admin_main.js" />
+    <Content Include="Presenter\Order\Script\bootstrap.js" />
+    <Content Include="Presenter\Order\Script\bootstrap.min.js" />
+    <Content Include="Presenter\Order\Script\core.js" />
+    <Content Include="Presenter\Order\Script\info_acad_de.js" />
+    <Content Include="Presenter\Order\Script\info_mail_de.js" />
+    <Content Include="Presenter\Order\Script\jquery.js" />
+    <Content Include="Presenter\Order\Script\jquery.min.js" />
+    <Content Include="Presenter\Order\Script\jquery.slim.js" />
+    <Content Include="Presenter\Order\Script\jquery.slim.min.js" />
+    <Content Include="Presenter\Order\Script\npm.js" />
+    <Content Include="Presenter\Order\Script\order_item.js" />
+    <Content Include="Presenter\Order\Script\personal_information.js" />
+    <Content Include="Presenter\Order\Script\rules.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

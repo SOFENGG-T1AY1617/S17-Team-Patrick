@@ -72,7 +72,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         public void GetDocumentList()
         {
-            _presenter.GetCertificateDocumentList();
+            _presenter.GetCertificateDocumentList(1);
            
         }
 

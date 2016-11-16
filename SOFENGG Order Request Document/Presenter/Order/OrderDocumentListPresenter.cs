@@ -24,9 +24,9 @@ namespace SOFENGG_Order_Request_Document.Presenter.Order
             _view.AvailableDocumentList = _model.GetDocumentList();
         }*/
 
-        public void GetCertificateDocumentList()
+        public void GetCertificateDocumentList(int Category)
         {
-            _view.CertificateDocumentList = _model.GetCertificateDocumentList();
+            _view.CertificateDocumentList = _model.GetCertificateDocumentList(Category);
         }
     }
 }

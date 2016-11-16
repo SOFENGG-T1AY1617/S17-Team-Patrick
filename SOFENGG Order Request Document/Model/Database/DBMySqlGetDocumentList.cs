@@ -16,11 +16,17 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         {
             _isGraduate = isGraduate;
             _isUndergraduate = isUndergraduate;
+            string var = string.Format("WHERE {0} == @{1} && {2} == @{3}", 
+                Document.ColForGraduate, _isGraduate, Document.ColForUndergraduate, _isUndergraduate);
+
+            
+
         }
 
         public DBMySqlGetDocumentList(int Category)
         {
             _Category = Category;
+            string var = string.Format("WHERE {0} = @{1}", Document.ColCategory, Category);
         }
 
         public DBMySqlGetDocumentList()
@@ -34,6 +40,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 //            Cmd.Parameters.AddWithValue("@name", "banana");
             Cmd.Prepare();
         }
+
 
         public override void Parse()
         {
