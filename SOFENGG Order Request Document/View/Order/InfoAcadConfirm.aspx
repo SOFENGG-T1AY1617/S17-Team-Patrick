@@ -9,7 +9,10 @@
         <h5>Request Flow</h5>
         <ul>
             <li>
-                <a href="personal_information.html">Personal Information</a>
+                <asp:HyperLink id="hlPersonal" 
+                    NavigateUrl="personal_information.html" 
+                    Text="Personal Information" 
+                    runat="server"/>
             </li>
             <li>
                 <b>Academic Information</b>
