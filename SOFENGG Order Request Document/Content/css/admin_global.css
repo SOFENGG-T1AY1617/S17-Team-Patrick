@@ -1,12 +1,15 @@
 body {
   background-color: #61788e;
+  margin-left: 250px;
 }
 
 .header {
   height: 80px;
   background-color: #569686;
-  position: relative;
-  margin-left: 250px;
+  position: fixed;
+  top: 0;
+  left: 250;
+  width: 100%;
 }
 .header p {
   position: absolute;
@@ -51,11 +54,9 @@ body {
 }
 
 .content {
-    position: relative;
-    margin-left: 250px;
     background-color: #61788e;
-    height: 100%;
     min-height: 100%;
+    margin-top: 80px;
     padding-top: 2%;
 }
 .content-main div {
@@ -72,7 +73,10 @@ body {
 .content-main td button {
   width: 80px;
 }
-
+.scroll {
+    height: 60%;
+    overflow-x: scroll;
+}
 /*.content-scrolling {
   height: 60%;
   overflow-y: scroll;

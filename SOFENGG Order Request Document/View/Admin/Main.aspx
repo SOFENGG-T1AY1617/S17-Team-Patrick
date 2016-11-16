@@ -9,7 +9,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
-    <div class="content-main">
+    <div class="content-main table-responsive">
         <div class="container">
             <div class="main_report">
                 <div class="main_report-left">
