@@ -1,12 +1,10 @@
 ﻿.main_report {
     margin-top: 2%;
-    margin-bottom: 3%;
 }
 .main_report div, .main_report div h4, .main_report div h3 {
     display: inline;
 }
 .main_report-right {
-    margin-top: -1%;
     float: right;
 }
 

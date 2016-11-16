@@ -255,7 +255,7 @@ CREATE TABLE `orderitem` (
   `studentDegreeId` int(11) DEFAULT NULL,
   PRIMARY KEY (`dtsNo`),
   UNIQUE KEY `dtsNo_UNIQUE` (`dtsNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,7 +264,11 @@ CREATE TABLE `orderitem` (
 
 LOCK TABLES `orderitem` WRITE;
 /*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016,1),(2,4,2,2,1,1,1,2,2015,2),(3,5,3,3,2,2,0,3,2014,3),(4,2,5,4,10,0,0,1,2017,3),(5,3,4,1,999,2,1,1,2014,3);
+=======
+INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016,1),(2,4,2,2,1,1,1,2,2015,2),(3,5,3,3,2,2,0,3,2014,3),(4,2,5,4,10,0,0,1,2017,3),(5,3,4,1,999,2,1,1,2014,3),(6,1,8,2,1,0,0,1,2014,4),(7,1,6,3,1,1,1,2,2013,2),(8,1,10,4,1,2,0,3,2015,4),(9,2,9,1,1,0,1,1,2016,1),(10,2,7,1,1,1,0,2,2017,1),(11,2,6,1,1,2,1,3,2011,2);
+>>>>>>> US07
 /*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,7 +372,7 @@ CREATE TABLE `studentdegree` (
   `admittedAs` char(1) NOT NULL,
   PRIMARY KEY (`studentDegreeId`,`studentInfoId`,`idNumber`),
   UNIQUE KEY `studentDegreeId_UNIQUE` (`studentDegreeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +381,7 @@ CREATE TABLE `studentdegree` (
 
 LOCK TABLES `studentdegree` WRITE;
 /*!40000 ALTER TABLE `studentdegree` DISABLE KEYS */;
-INSERT INTO `studentdegree` VALUES (1,1,11302968,1,2013,'1'),(2,2,11555555,4,2015,'1'),(3,3,11666666,5,2016,'1');
+INSERT INTO `studentdegree` VALUES (1,1,11302968,1,2013,'1'),(2,2,11555555,4,2015,'1'),(3,3,11666666,5,2016,'1'),(4,4,11000000,12,2010,'1');
 /*!40000 ALTER TABLE `studentdegree` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,4 +429,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-14 21:46:16
+
