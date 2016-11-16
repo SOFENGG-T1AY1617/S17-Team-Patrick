@@ -10,7 +10,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin
 {
     public partial class DocumentList : Page, IDocumentListView
     {
-
         private readonly DocumentListPresenter _presenter;
         private GridViewRow _gvRow;
 

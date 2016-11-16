@@ -21,5 +21,6 @@ namespace SOFENGG_Order_Request_Document.Model
         public int MinDaysToDeliver { get; set; }
         public int MaxDaysToDeliver { get; set; }
 
+
     }
 }

@@ -2,41 +2,58 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MySql.Data.MySqlClient;
 
 namespace SOFENGG_Order_Request_Document.Model.Database.Interface
 {
     public class DBMySqlGetStudentInfo: DBMySqlSelectConnection
     {
-        public StudentInfo[] studentInfo;
+        private MySqlCommand tempCmd;
+
+        public StudentInfo[] studentInfoList;
+
+        public void SetQueryForAllStudentInfo()
+        {
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0};", StudentInfo.Table);
+            
+        }
+
+        public void SetQueryForOneStudent(int studentInfoId)
+        {
+            tempCmd = new MySqlCommand();
+            var colVal1 = studentInfoId;
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {2};", StudentInfo.Table, StudentInfo.ColStudentInfoId, colVal1);
+        }
 
         protected override void SetQuery()
         {
-            Cmd.CommandText = string.Format("SELECT * FROM {0}", StudentInfo.Table);
-
-            //            Cmd.Parameters.AddWithValue("@name", "banana");
+            string commandText = tempCmd.CommandText;
+            Cmd.CommandText = commandText;
+            Cmd.CommandText = tempCmd.CommandText;
+            
             Cmd.Prepare();
-            throw new NotImplementedException();
         }
 
         public override void Parse()
         {
-            studentInfo = new StudentInfo[ObjectList.Length];
-            for (int i = 0; i < studentInfo.Length; i++)
+            studentInfoList = new StudentInfo[ObjectList.Length];
+            for (int i = 0; i < studentInfoList.Length; i++)
             {
-                studentInfo[i] = new StudentInfo()
+                studentInfoList[i] = new StudentInfo()
                 {
-                    StudentInfoId = int.Parse(ObjectList[0][StudentInfo.ColAddress].ToString()),
-                    LastName = ObjectList[0][StudentInfo.ColLastName].ToString(),
-                    FirstName = ObjectList[0][StudentInfo.ColFirstName].ToString(),
-                    MiddleName = ObjectList[0][StudentInfo.ColMiddleName].ToString(),
-                    Gender = (GenderEnum)ObjectList[1][StudentInfo.ColGender],
+                    StudentInfoId = int.Parse(ObjectList[i][StudentInfo.ColStudentInfoId].ToString()),
+                    LastName = ObjectList[i][StudentInfo.ColLastName].ToString(),
+                    FirstName = ObjectList[i][StudentInfo.ColFirstName].ToString(),
+                    MiddleName = ObjectList[i][StudentInfo.ColMiddleName].ToString(),
+                    Gender = (GenderEnum)(ObjectList[i][StudentInfo.ColGender].ToString()[0]),
                     Email = ObjectList[0][StudentInfo.ColEmail].ToString(),
-                    BirthDate = (DateTime)ObjectList[0][StudentInfo.ColBirthDate],
-                    Citizenship = ObjectList[0][StudentInfo.ColCitizenship].ToString(),
-                    CurrentAddress = ObjectList[0][StudentInfo.ColAddress].ToString(),
-                    PhoneNumber = ObjectList[0][StudentInfo.ColPhoneNumber].ToString(),
-                    HighSchoolAttended = ObjectList[0][StudentInfo.ColHighSchoolAttended].ToString(),
-                    PlaceOfBirth = ObjectList[0][StudentInfo.ColPlaceOfBirth].ToString(),
+                    BirthDate = Convert.ToDateTime(ObjectList[i][StudentInfo.ColBirthDate].ToString()),
+                    Citizenship = ObjectList[i][StudentInfo.ColCitizenship].ToString(),
+                    CurrentAddress = ObjectList[i][StudentInfo.ColAddress].ToString(),
+                    PhoneNumber = ObjectList[i][StudentInfo.ColPhoneNumber].ToString(),
+                    HighSchoolAttended = ObjectList[i][StudentInfo.ColHighSchoolAttended].ToString(),
+                    PlaceOfBirth = ObjectList[i][StudentInfo.ColPlaceOfBirth].ToString(),
                 };
             }
             

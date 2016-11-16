@@ -28,5 +28,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin.Interface
         Model.Order ActiveOrder { set; }
         OrderItemGroup[] OrderItemGroup { set; }
         void GetOrderInformation(int referenceNo);
+        void MarkAsPending(int referenceNo, string newDueDate, string reason);
     }
 }

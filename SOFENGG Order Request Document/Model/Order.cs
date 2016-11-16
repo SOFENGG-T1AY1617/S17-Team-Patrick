@@ -48,7 +48,7 @@ namespace SOFENGG_Order_Request_Document.Model
             get
             {
                 if (DateReleased == default(DateTime))
-                    return StatusList == null ? OrderStatusEnum.Processing : OrderStatusEnum.Pending;
+                    return string.IsNullOrEmpty(Reason) ? OrderStatusEnum.Processing : OrderStatusEnum.Pending;
 
                 if (NewDueDate == default(DateTime))
                 {

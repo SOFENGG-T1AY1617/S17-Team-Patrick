@@ -27,37 +27,36 @@
         <div class="content-divider"></div>
     </div>
     <div class="col-xs-9">
-        <form name="frmOrderItem" method="post" action="info_acad_de.html">
             <h5 class="content-header" class="content-form">Order Item</h5>
 
             <table border="1" class="content-form" align="center">
                 <tbody>
                 <tr>
                     <td valign="top" class="content-form_label">Document</td>
-                    <td>&nbsp;Official Transcript of Records <!--Dummy Data--></td>
+                    <td>&nbsp;<asp:Label runat="server"></asp:Label></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Academic Profile</td>
-                    <td>&nbsp;CS-ST <!--Dummy Data--></td>
+                    <td>&nbsp;<asp:Label runat="server"></asp:Label></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Price</td>
                     <td>
                         <table class="priceTable" style="border: none; width: 100%; background-color: white;">
                             <tr>
-                                <td>&nbsp;<input type="radio" name="optProc" value="0">&nbsp;Regular Processing</td>
+                                <td>&nbsp;<asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server"></asp:RadioButton>&nbsp;Regular Processing</td>
                                 <td>&nbsp;Php 150.00</td>
                             </tr>
                             <tr>
-                                <td>&nbsp;<input type="radio" name="optProc" value="1">&nbsp;Express Processing</td>
+                                <td>&nbsp;<asp:RadioButton ID="rbExpress" GroupName="optProc" runat="Server"></asp:RadioButton>&nbsp;Express Processing</td>
                                 <td>&nbsp;Php 300.00</td>
                             </tr>
                             <tr>
-                                <td>&nbsp;<input type="checkbox" id="for_pickup">&nbsp;For Pick Up</td>
+                                <td>&nbsp;<asp:CheckBox ID="for_pickup" AutoPostBack="true" runat="server"></asp:CheckBox>&nbsp;For Pick Up</td>
                                 <td>
-                                    <select name="" id="">
-                                        <option value="">DLSU-Manila</option>
-                                    </select>
+                                    <asp:DropDownList id="ddlCampus" runat="server">
+                                        <asp:ListItem Text="DLSU-Manila" value="DLSU-Manila"/>
+                                    </asp:DropDownList>
                                 </td>
                             </tr>
                             <tr>
@@ -70,45 +69,43 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">No. of Copies</td>
-                    <td>&nbsp;<input type="text" name="txtNoCopy" size="2" maxlength="2"></td>
+                    <td>&nbsp;<asp:TextBox ID="tbNoCopy" size="2" maxlength="2" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr class="delivery_only">
                     <td class="content-form_label">Send to</td>
-                    <td>&nbsp;385 Tapuac District Dagupan City <!--Dummy Data--></td>
+                    <td>&nbsp;<asp:Label runat="server"></asp:Label></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Insert Document In</td>
                     <td>
                         &nbsp;
-                        <input type="radio" name="optInsert" value="1"
-                               onclick="stampAlert()"> Brown Envelope
-                        <input type="radio" name="optInsert" value="1"
-                               onclick="stampAlert()"> White Envelope
-                        <input type="radio" name="optInsert" value="1"> None
+                        <asp:RadioButton ID="rbBrown" GroupName ="optInsert" runat="server" /> Brown Envelope
+                        <asp:RadioButton ID="rbWhite" GroupName="optInsert" runat="server"/> White Envelope
+                        <asp:RadioButton ID="rbNone" GroupName="optInsert" runat="server"/> None
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center" style="padding: 8px;">
                         <a href="document_list.html">
-                            <input type="button" value="Cancel" class="btn btn-primary">
+                            <asp:TextBox  value="Cancel" CssClass="btn btn-primary" runat="server"/>
                         </a>
                         <a href="info_transaction.html">
-                            <input type="button" value="Add to Cart" class="btn btn-primary">
+                            <asp:TextBox  value="Add to Cart" CssClass="btn btn-primary" runat="server"/>
                         </a>
                     </td>
                 </tr>
                 </tbody>
             </table>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 
     <script src="/Script/order_item.js"></script>
 
-    <script>
-        function stampAlert() {
-            alert("For a DLSU security sticker to be used for sealing the envelope, please message the following email address: hub@dlsu.edu.ph.");
-        }
+    <script runat ="server">
+
+        
+
+
     </script>
 </asp:Content>

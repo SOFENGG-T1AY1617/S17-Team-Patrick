@@ -8,6 +8,14 @@ namespace SOFENGG_Order_Request_Document.Model.Database
     public class DBMySqlGetDocumentList : DBMySqlSelectConnection
     {
         public Document[] DocumentList;
+        /* private readonly bool _isGraduate;
+         private readonly bool _isUndergraduate;
+
+         public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
+         {
+             _isGraduate = isGraduate;
+             _isUndergraduate = isUndergraduate;
+         } */
 
         protected override void SetQuery()
         {
@@ -23,18 +31,21 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 
             for (var i = 0; i < DocumentList.Length; i++)
             {
-                DocumentList[i] = new Document()
+                var regularPrice = ObjectList[i][Document.ColRegularPrice].ToString();
+                var expressPrice = ObjectList[i][Document.ColExpressPrice].ToString();
+
+                DocumentList[i] = new Document
                 {
                     Id = int.Parse(ObjectList[i][Document.ColId].ToString()),
                     Name = ObjectList[i][Document.ColName].ToString(),
                     Category = (DocumentCategoryEnum)int.Parse(ObjectList[i][Document.ColCategory].ToString()),
                     Weight = float.Parse(ObjectList[i][Document.ColWeight].ToString()),
-                    RegularPrice = float.Parse(ObjectList[i][Document.ColRegularPrice].ToString()),
-                    ExpressPrice = float.Parse(ObjectList[i][Document.ColExpressPrice].ToString()),
+                    RegularPrice = !string.IsNullOrEmpty(regularPrice) ? float.Parse(regularPrice) : 0,
+                    ExpressPrice = !string.IsNullOrEmpty(expressPrice) ? float.Parse(expressPrice) : 0,
                     MaxCopy = int.Parse(ObjectList[i][Document.ColMaxCopy].ToString()),
-                    IsAvailable = bool.Parse(ObjectList[i][Document.ColIsAvailable].ToString()),
-                    IsForUndergraduate = bool.Parse(ObjectList[i][Document.ColForUndergraduate].ToString()),
-                    IsForGraduate = bool.Parse(ObjectList[i][Document.ColForGraduate].ToString())
+                    IsAvailable = int.Parse(ObjectList[i][Document.ColIsAvailable].ToString()) == 1,
+                    IsForUndergraduate = int.Parse(ObjectList[i][Document.ColForUndergraduate].ToString()) == 1,
+                    IsForGraduate = int.Parse(ObjectList[i][Document.ColForGraduate].ToString()) == 1
                 };
             }
         }
