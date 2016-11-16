@@ -6,7 +6,7 @@ namespace SOFENGG_Order_Request_Document.Model
     {
 
         Document[] GetDocumentList();
-        Document[] GetCertificateDocumentList(int Category);
+        Document[] GetFilterDocumentList(DocumentCategoryEnum Category);
         
     }
 }

@@ -13,7 +13,7 @@ namespace SOFENGG_Order_Request_Document.Model
             return db.DocumentList;
         } 
 
-        public Document[] GetCertificateDocumentList(int Category)
+        public Document[] GetFilterDocumentList(DocumentCategoryEnum Category)
         {
             var db = new DBMySqlGetDocumentList(Category);
             db.ExecuteQuery();

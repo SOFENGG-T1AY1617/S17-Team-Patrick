@@ -11,6 +11,8 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         private readonly bool _isGraduate;
         private readonly bool _isUndergraduate;
         private readonly int _Category;
+        protected string AdditionalCondition;
+        protected DocumentCategoryEnum Category;
 
         public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
         {
@@ -23,10 +25,9 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 
         }
 
-        public DBMySqlGetDocumentList(int Category)
+        public DBMySqlGetDocumentList(DocumentCategoryEnum category)
         {
-            _Category = Category;
-            string var = string.Format("WHERE {0} = @{1}", Document.ColCategory, Category);
+            AdditionalCondition = string.Format(" WHERE {0} = @{0}", Document.ColCategory);
         }
 
         public DBMySqlGetDocumentList()
@@ -37,8 +38,20 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         {
             Cmd.CommandText = string.Format("SELECT * FROM {0}", Document.Table);
 
-//            Cmd.Parameters.AddWithValue("@name", "banana");
-            Cmd.Prepare();
+
+            try
+            {
+                if (string.IsNullOrEmpty(AdditionalCondition))
+                    return;
+                Cmd.CommandText += AdditionalCondition;
+                Cmd.Parameters.AddWithValue("@" + Document.ColCategory, (int)Category);
+            }
+            //            Cmd.Parameters.AddWithValue("@name", "banana");
+            finally
+            {
+                Cmd.Prepare();
+            }
+            
         }
 
 

@@ -10,6 +10,11 @@ namespace SOFENGG_Order_Request_Document.View.Order.Interface
     {
        // Document[] AvailableDocumentList { set; }
         Document[] CertificateDocumentList { set; }
+        Document[] TORDocumentList { set; }
+        Document[] TrueCopyDocumentList { set; }
+        Document[] OthersDocumentList { set; }
+        Document[] SpecialDocumentList { set; }
+
         void GetDocumentList();
         
     }
