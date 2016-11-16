@@ -11,11 +11,22 @@ namespace SOFENGG_Order_Request_Document.Model
         Transferee = 1,
         Graduate = 2
     }
-	public class StudentDegree
-	{
-        public int IdNumber { get; set; }
-        public int Year { get; set; }
-        public AdmissionEnum AdmittedAs { get; set; }
+
+    public class StudentDegree
+    {
+        public const string Table = "studentdegree";
+        public const string ColStudentDegreeId = "studentDegreeId";
+        public const string ColStudentInfoId = "studentInfoId";
+        public const string ColIdStudent = "idNumber";
+        public const string ColDegreeId = "degreeId";
+        public const string ColYearAdmitted = "yearAdmitted";
+        public const string ColAdmittedAs = "admittedAs";
+
+        public int Id { get; set; }
+        public int StudentInfoId { get; set; }
+        public int IdStudent { get; set; }
         public Degree Degree { get; set; }
-	}
+        public int YearAdmitted { get; set; }
+        public AdmissionEnum AdmittedAs { get; set; }
+    }
 }

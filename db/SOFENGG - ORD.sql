@@ -1,5 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `ord` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `ord`;
+
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: ord
@@ -26,10 +25,10 @@ DROP TABLE IF EXISTS `campus`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `campus` (
   `campusId` int(11) NOT NULL AUTO_INCREMENT,
-  `campusName` varchar(45) NOT NULL,
+  `campusName` varchar(70) NOT NULL,
   PRIMARY KEY (`campusId`),
   UNIQUE KEY `campusId_UNIQUE` (`campusId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +37,7 @@ CREATE TABLE `campus` (
 
 LOCK TABLES `campus` WRITE;
 /*!40000 ALTER TABLE `campus` DISABLE KEYS */;
-INSERT INTO `campus` VALUES (1,'De La Salle University - Manila'),(2,'De La Salle University - STC'),(3,'De La Salle University - Dasmariñas'),(4,'De La Salle - College of Saint Benilde');
+INSERT INTO `campus` VALUES (1,'De La Salle University - Manila'),(2,'De La Salle University Science and Technology Complex'),(3,'De La Salle-College of Saint Benilde'),(4,'De La Salle University-Dasmariñas'),(18,'De La Salle Health Sciences Institute'),(19,'De La Salle Araneta University'),(20,'De La Salle Andres Soriano Memorial College'),(21,'De La Salle John Bosco College'),(22,'De La Salle Lipa'),(23,'De La Salle Santiago Zobel School'),(24,'Jaime Hilario Integrated School-La Salle'),(25,'La Salle Academy'),(26,'La Salle College Antipolo'),(27,'La Salle Green Hills'),(28,'La Salle University'),(29,'St. Joseph School-La Salle'),(30,'University of St. La Salle');
 /*!40000 ALTER TABLE `campus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +106,8 @@ CREATE TABLE `deliveryarea` (
   `deliveryAreaId` int(11) NOT NULL AUTO_INCREMENT,
   `areaName` varchar(45) NOT NULL,
   `price` float NOT NULL,
-  `daysToDeliver` varchar(45) NOT NULL,
+  `minDaysToDeliver` int(11) NOT NULL,
+  `maxDaysToDeliver` int(11) NOT NULL,
   PRIMARY KEY (`deliveryAreaId`),
   UNIQUE KEY `deliveryAreaId_UNIQUE` (`deliveryAreaId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
@@ -119,7 +119,7 @@ CREATE TABLE `deliveryarea` (
 
 LOCK TABLES `deliveryarea` WRITE;
 /*!40000 ALTER TABLE `deliveryarea` DISABLE KEYS */;
-INSERT INTO `deliveryarea` VALUES (1,'Africa',2544,'3 to 4 Days'),(2,'Australia',1400,'1 to 2 Days'),(3,'Brunei',1200,'1 to 2 Days'),(4,'Canada',1650,'1 to 2 Days'),(5,'China',1400,'2 to 3 Days'),(6,'Europe',2350,'3 to 4 Days'),(7,'Fiji Island',2544,'3 to 4 Days'),(8,'Guam',2500,'2 to 3 Days'),(9,'Hongkong',950,'1 to 2 Days'),(10,'Singapore',950,'1 to 2 Days'),(11,'Indonesia',1200,'1 to 2 Days'),(12,'Malaysia',1200,'1 to 2 Days'),(13,'Taiwan',1200,'1 to 2 Days'),(14,'Thailand',1200,'1 to 2 Days'),(15,'Japan',1200,'1 to 2 Days'),(16,'Luzon',128,'1 Day'),(17,'Metro Manila',128,'1 Day'),(18,'Mexico City',2500,'1 to 2 Days'),(19,'Middle East',2400,'2 to 3 Days'),(20,'Mindanao',158,'1 Day'),(21,'New Zealand',1400,'1 to 2 Days'),(22,'Papua New Guinea',2600,'2 to 3 Days'),(23,'Pickup - DLSU Manila',0,'1 Day'),(24,'South America',3178,'2 to 3 Days'),(25,'South Korea',1200,'2 to 3 Days'),(26,'USA',1650,'1 to 2 Days'),(27,'Vietnam',1400,'1 Day'),(28,'Visayas',142,'1 Day');
+INSERT INTO `deliveryarea` VALUES (1,'Africa',2544,3,4),(2,'Australia',1400,1,2),(3,'Brunei',1200,1,2),(4,'Canada',1650,1,2),(5,'China',1400,2,3),(6,'Europe',2350,3,4),(7,'Fiji Island',2544,3,4),(8,'Guam',2500,2,3),(9,'Hongkong',950,1,2),(10,'Singapore',950,1,2),(11,'Indonesia',1200,1,2),(12,'Malaysia',1200,1,2),(13,'Taiwan',1200,1,2),(14,'Thailand',1200,1,2),(15,'Japan',1200,1,2),(16,'Luzon',128,1,1),(17,'Metro Manila',128,1,1),(18,'Mexico City',2500,1,2),(19,'Middle East',2400,2,3),(20,'Mindanao',158,1,1),(21,'New Zealand',1400,1,2),(22,'Papua New Guinea',2600,2,3),(23,'Pickup - DLSU Manila',0,1,1),(24,'South America',3178,2,3),(25,'South Korea',1200,2,3),(26,'USA',1650,1,2),(27,'Vietnam',1400,1,1),(28,'Visayas',142,1,1);
 /*!40000 ALTER TABLE `deliveryarea` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +265,7 @@ CREATE TABLE `orderitem` (
 
 LOCK TABLES `orderitem` WRITE;
 /*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016,NULL),(2,4,2,2,1,1,1,2,2015,NULL),(3,5,3,3,2,2,0,3,2014,NULL),(4,2,5,4,10,0,0,1,2017,NULL),(5,3,4,1,999,2,1,1,2014,NULL);
+INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016,1),(2,4,2,2,1,1,1,2,2015,2),(3,5,3,3,2,2,0,3,2014,3),(4,2,5,4,10,0,0,1,2017,3),(5,3,4,1,999,2,1,1,2014,3);
 /*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -404,7 +404,7 @@ CREATE TABLE `studentinfo` (
   `placeOfBirth` varchar(100) NOT NULL,
   PRIMARY KEY (`studentInfoId`),
   UNIQUE KEY `studentInfoId_UNIQUE` (`studentInfoId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -413,7 +413,7 @@ CREATE TABLE `studentinfo` (
 
 LOCK TABLES `studentinfo` WRITE;
 /*!40000 ALTER TABLE `studentinfo` DISABLE KEYS */;
-INSERT INTO `studentinfo` VALUES (1,'Mouse','Mickey','D','M','mickey@gmail.com','1996-10-02','Filipino','Clubhouse','8700','DIDNEY','Disney'),(2,'Duck','Donald','D','M','ddquackers@gmail.com','1996-12-10','Filipino','Clubhouse','8700','DIDNEY','Disney'),(3,'Bee','Jolli','B','M','jbforevs@gmail.com','1990-01-12','Filipino','CantoPls','8700','Mascot Ph','Quezon ');
+INSERT INTO `studentinfo` VALUES (1,'Mouse','Mickey','D','M','mickey@gmail.com','1996-10-02','Filipino','Clubhouse','8700','DIDNEY','Disney'),(2,'Duck','Donald','D','M','ddquackers@gmail.com','1996-12-10','Filipino','Clubhouse','8700','DIDNEY','Disney'),(3,'Bee','Jolli','B','M','jbforevs@gmail.com','1990-01-12','Filipino','CantoPls','8700','Mascot Ph','Quezon '),(4,'ef,we;l,','lmelmf;kl','kmeklfmwel','M','okwoek','2013-12-25','sdwp','okowko','okwoek','okwoek','okowe');
 /*!40000 ALTER TABLE `studentinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -426,4 +426,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-14 10:20:02
+-- Dump completed on 2016-11-14 21:46:16

@@ -7,12 +7,28 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     public enum GenderEnum
     {
-        Female = 0,
-        Male   = 1
+        Female = 'f',
+        Male = 'm'    
     }
-	public class StudentInfo
-	{
-        public int Id { get; set; }
+
+    public class StudentInfo
+    {
+        public const string Table = "studentinfo";
+        public const string ColStudentInfoId = "studentInfoId";
+        public const string ColLastName = "lastName";
+        public const string ColFirstName = "firstName";
+        public const string ColMiddleName = "middleName";
+        public const string ColGender = "gender";
+        public const string ColEmail = "email";
+        public const string ColBirthDate = "birthDate";
+        public const string ColCitizenship = "citizenship";
+        public const string ColAddress = "address";
+        public const string ColPhoneNumber = "phoneNumber";
+        public const string ColHighSchoolAttended = "highSchoolAttended";
+        public const string ColPlaceOfBirth = "placeOfBirth";
+
+
+        public int StudentInfoId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -26,5 +42,5 @@ namespace SOFENGG_Order_Request_Document.Model
         public string PlaceOfBirth { get; set; }
         public StudentDegree[] StudentDegreeList { get; set; }
         public MailingInfo[] MailingInfoList { get; set; }
-	}
+    }
 }

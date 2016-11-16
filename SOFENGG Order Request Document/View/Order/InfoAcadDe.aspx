@@ -20,10 +20,12 @@
         <div class="content-divider"></div>
     </div>
     <div class="col-xs-9">
-        <form name "frmAcadInfo" method="post" action="info_acad_de.html">
             <h5 class="content-header" class="content-form">Academic Information</h5>
 
-            <p>This step allows you to enter your academic information.<br><br/>It is possible that you may have earned more than one degree at DLSU. If your request will cover more than one degree, please make sure you enter the details of these degrees. Otherwise, just enter the details of the degree for which you will be requesting a document.
+            <p>This step allows you to enter your academic information.<br><br/>
+            It is possible that you may have earned more than one degree at DLSU. 
+            If your request will cover more than one degree, please make sure you enter the details of these degrees. 
+            Otherwise, just enter the details of the degree for which you will be requesting a document.
             </p>
 
             <table border="1" class="content-form align = 'center'">
@@ -36,63 +38,79 @@
                 <tr>
                     <td class="content-form_label">Campus Attended</td>
                     <td style="padding-left: 3px;">
-                        <select name="" id="">
-                            <option value="Taft">Taft</option>
-                            <option value="STC">STC</option>
-                            <option value="">Makati</option>
-                        </select>
+                        <asp:DropDownList ID="ddlCampus" runat="server" Width="200px">
+                            <asp:ListItem Text="Select Campus" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Taft" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="STC" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Makati" Value="3"></asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Year Admitted</td>
                     <td style="padding-left: 3px;">
-                        <select name="" id="year_admitted"></select>
+                        <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px">
+                        </asp:dropdownlist>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="content-form_label">Level <span style="color: red">*</span></td>
                     <td style="padding-left: 3px;">
-                        &nbsp;<input type="radio" name="optLevel" value="0" id="bachelor" checked>&nbsp;Bachelor
-                        <br/>
-                        &nbsp;<input type="radio" name="optLevel" value="1" id="masters">&nbsp;Masters
-                        <br>
-                        &nbsp;<input type="radio" name="optLevel" value="2" id="doctorate">&nbsp;Doctorate
-                        <br>
+                        <asp:RadioButtonList ID="optLevel" runat="server" 
+                            RepeatDirection="Vertical" RepeatLayout="Flow">
+                            <asp:ListItem Text="Bachelor" Value="U"></asp:ListItem>
+                            <asp:ListItem Text="Masters" Value="M"></asp:ListItem>
+                            <asp:ListItem Text="Doctorate" Value="D"></asp:ListItem>
+                         </asp:RadioButtonList>
+                         <asp:RequiredFieldValidator id="rfvLevel" runat="server"
+                            ControlToValidate="optLevel"
+                            ErrorMessage="Level is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Is Graduate? <span style="color: red">*</span></td>
                     <td>
-                        &nbsp;<input type="checkbox" name="isGraduate" value="0" id="cbGraduate">&nbsp;
+                        &nbsp;
+                        <asp:CheckBox ID="isGraduate" runat="server"/>&nbsp;
                     </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Degree <span style="color: red">*</span></td>
-                    <td>&nbsp;<input type="text" name="txtDegree" maxlength="100" size="40" value></td>
+                    <td>&nbsp;
+                        <asp:DropDownList ID="ddlDegree" runat="server" Width="200px"></asp:DropDownList>
+                        <asp:RequiredFieldValidator id="rfvDegree" runat="server"
+                            ControlToValidate="ddlDegree"
+                            ErrorMessage="Degree is a required field."
+                            ForeColor="Red">
+                        </asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Student No</td>
-                    <td>&nbsp;<input type="text" name="txtStudNo" maxlength="12" size="10" value></td>
+                    <td>&nbsp;<asp:TextBox ID="txtStudNo" runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
                 </tr>
                 <tr>
                     <td class="content-form_label">Admitted as</td>
-                    <td>
-                        &nbsp;<input type="radio" name="optAdmittedAs" value="R">Regular Student
-                        <input type="radio" name="optAdmittedAs" value="T">Transferee
-                        <input type="radio" name="optAdmittedAs" value="G">Graduate
+                    <td style="padding-left: 3px">
+                        <asp:RadioButtonList ID="optAdmittedAs" runat="server" 
+                            RepeatDirection="Vertical" RepeatLayout="Flow">
+                            <asp:ListItem Text="Regular Student" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Transferee" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Graduate" Value="3"></asp:ListItem>
+                        </asp:RadioButtonList>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="button" name="butAction" value="Cancel" class="btn btn-primary">
-                        <a href="info_acad_confirm.html">
-                            <input type="button" value="Submit" class="btn btn-primary">
-                        </a>
+                        <asp:Button ID="btnAction" runat="server" text="Cancel" class="btn btn-primary"></asp:Button>
+                        <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary" OnClick = "SubmitStudentDegree_Click" text="Submit"></asp:Button>
+
                     </td>
                 </tr>
                 </tbody>
             </table>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

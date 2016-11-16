@@ -17,20 +17,21 @@
     </div>
     <div class="agreement">
         <div class="col-xs-9">
-            <input id="checkbox" type="checkbox"><span>&nbsp;&nbsp;I have read and understood the policies regarding this facility</span>.
+            <input type="checkbox" ID="checkbox"
+                   Text="I have read and understood the policies regarding this facility."/>
         </div>
         <div class="col-xs-3">
-            <a id="continue" href="/personal_information.html" class="btn btn-primary disabled">Continue</a>
+            <a id="continue" href="PersonalInformation.aspx" class="btn btn-primary disabled">Continue</a>
         </div>
         <br>
         <div class="card-images">
-            <span><img src="/Content/images/logo_visa1.gif" alt=""></span>
-            <span><img src="/Content/images/logo_master1.gif" alt=""></span>
-            <span><img src="/Content/images/logo_jcb1.gif" alt=""></span>
-            <span><img src="/Content/images/logo_amex1.gif" alt=""></span>
+            <span><img src="~/Content/images/logo_visa1.gif" alt=""></span>
+            <span><img src="~/Content/images/logo_master1.gif" alt=""></span>
+            <span><img src="~/Content/images/logo_jcb1.gif" alt=""></span>
+            <span><img src="~/Content/images/logo_amex1.gif" alt=""></span>
         </div>
     </div>
 </asp:Content>
-<asp:Content ID="script" ContentPlaceHolderID="script" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/rules.js"></script>
 </asp:Content>

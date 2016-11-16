@@ -202,11 +202,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
 
         private Document GetDocumentFromCurrentRow(bool isIdOnly = false)
         {
-            // Parse the Category Value
-            var categoryValue = ((DataBoundLiteralControl) _gvRow.Cells[2].Controls[0]).Text.Trim();
-            var category = categoryValue.GetValueFromDescription<DocumentCategoryEnum>();
-
-            // Parse Weight
+            // Parse Id
             var idValue = _gvRow.Cells[0].Text;
             int id;
 
@@ -230,12 +226,16 @@ namespace SOFENGG_Order_Request_Document.View.Admin
                 };
 
             // Format name
-            var name = ((TextBox) _gvRow.Cells[1].Controls[0]).Text.Trim();
+            var name = ((TextBox) _gvRow.Cells[1].FindControl("txtEditName")).Text.Trim();
             if (string.IsNullOrEmpty(name))
                 throw new NullReferenceException("Name cannot be empty. Please enter a name for the document.");
 
+            // Parse the Category Value
+            var categoryValue = ((Label) _gvRow.Cells[2].FindControl("lblCategory")).Text.Trim();
+            var category = categoryValue.GetValueFromDescription<DocumentCategoryEnum>();
+
             // Parse Regular Price
-            var regularPriceValue = ((TextBox) _gvRow.Cells[3].Controls[0]).Text;
+            var regularPriceValue = ((TextBox) _gvRow.Cells[3].FindControl("txtEditRegularPrice")).Text;
             float regularPrice;
 
             try
@@ -248,7 +248,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
             }
 
             // Parse Express Price
-            var expressPriceValue = ((TextBox) _gvRow.Cells[4].Controls[0]).Text;
+            var expressPriceValue = ((TextBox) _gvRow.Cells[4].FindControl("txtEditExpressPrice")).Text;
             float expressPrice;
 
             try
@@ -261,7 +261,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
             }
 
             // Parse Weight
-            var weightValue = ((TextBox) _gvRow.Cells[5].Controls[0]).Text;
+            var weightValue = ((TextBox) _gvRow.Cells[5].FindControl("txtEditWeight")).Text;
             float weight;
 
             try
@@ -277,6 +277,28 @@ namespace SOFENGG_Order_Request_Document.View.Admin
                 throw new FormatException("Invalid Weight", e);
             }
 
+            // Parse Max Copy
+            var maxCopyValue = ((TextBox) _gvRow.Cells[6].FindControl("txtEditMaxCopy")).Text;
+            int maxCopy;
+
+            try
+            {
+                maxCopy = maxCopyValue.TryParseInt();
+            }
+            catch (NullReferenceException e)
+            {
+                throw new NullReferenceException(
+                    "Max Copy cannot be empty. Please enter a max copy count for the document.", e);
+            }
+            catch (FormatException e)
+            {
+                throw new FormatException("Invalid Max Copy", e);
+            }
+
+            // Get IsForUndergraduate
+            var isForUndergraduate = ((CheckBox) _gvRow.Cells[7].FindControl("chEditForUndergraduate")).Checked;
+            var isForGraduate = ((CheckBox)_gvRow.Cells[8].FindControl("chEditForGraduate")).Checked;
+
             return new Document
             {
                 Id = id,
@@ -284,7 +306,10 @@ namespace SOFENGG_Order_Request_Document.View.Admin
                 Category = category,
                 RegularPrice = regularPrice,
                 ExpressPrice = expressPrice,
-                Weight = weight
+                Weight = weight,
+                MaxCopy = maxCopy,
+                IsForUndergraduate = isForUndergraduate,
+                IsForGraduate = isForGraduate
             };
         }
     }

@@ -5,28 +5,12 @@ using System.Web;
 
 namespace SOFENGG_Order_Request_Document.Model
 {
-    public enum PackagingEnum
+    public class CourseDescription : OrderItem
     {
-        None = 0,
-        BrownEnvelope = 1,
-        WhiteEnvelope = 2
-    }
-    public class CourseDescription
-    {
+        public const string TableCourseDescription = "ordercoursedesc";
+        public const string ColId = "orderCourseDescId";
+        public const string ColCourseId = "courseId";
 
-        public const string Table = "coursedesc";
-        public const string ColDtsNo = "DtsNo";
-        public const string ColDocument = "document";
-        public const string ColMailingAddress = "mailingAddress";
-        public const string ColNoOfCopies = "noOfCopies";
-        public const string ColPackaging = "packagingId";
-        public const string ColCourseList = "courseList";
-
-        public int DtsNo { get; set; }
-        public Document Document { get; set; }
-        public MailingInfo MailingAddress { get; set; }
-        public int NoOfCopies { get; set; }
-        public PackagingEnum Packaging { get; set; }
-        public Course[] CourseList { get; set; }
+        public Course CourseList { get; set; }
     }
 }
