@@ -69,7 +69,10 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">No. of Copies</td>
-                    <td>&nbsp;<asp:TextBox ID="tbNoCopy" size="2" maxlength="2" runat="server"></asp:TextBox></td>
+                    <td>&nbsp;<asp:TextBox ID="tbNoCopy" size="2" maxlength="2" runat="server"></asp:TextBox>
+                               <asp:RequiredFieldValidator id="rfvNoCopy" runat="server" ControlToValidate="tbNoCopy"
+                                   ErrorMessage="No. of Copies is a required field" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr class="delivery_only">
                     <td class="content-form_label">Send to</td>
@@ -82,6 +85,9 @@
                         <asp:RadioButton ID="rbBrown" GroupName ="optInsert" runat="server" /> Brown Envelope
                         <asp:RadioButton ID="rbWhite" GroupName="optInsert" runat="server"/> White Envelope
                         <asp:RadioButton ID="rbNone" GroupName="optInsert" runat="server"/> None
+                        <asp:RequiredFieldValidator id="rfvInsert" runat="server" ControlToValidate="optInsert"
+                        ErrorMessage="Insert into is a required field" ForeColor="Red"></asp:RequiredFieldValidator>
+                    
                     </td>
                 </tr>
                 <tr>
