@@ -28,11 +28,11 @@
                                     <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
                             </td>
                             <td class="success">
-                                <h4>On Time: <b>
+                                <h4><span class="glyphicon glyphicon-ok">&nbsp;</span>On Time: <b>
                                     <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
                             </td>
                             <td class="danger">
-                                <h4>Late: <b>
+                                <h4><span class="glyphicon glyphicon-remove">&nbsp;</span>Late: <b>
                                     <asp:Label ID="lblLateCount" runat="server" /></b></h4>
                             </td>
                             <td>

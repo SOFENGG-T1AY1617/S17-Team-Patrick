@@ -16,17 +16,18 @@
 <body>
 <!-- Fixed container as application is not a full page application -->
 <div class="header">
-    <p>Online Request for Documents</p>
+    <h1 class="navbar-brand">Online Request for Documents</h1>
 </div>
 
 <div class="sidebar_logo"> 
     <img src="../../Content/images/dlsu_logo.png" class="img-responsive header_logo"/>
+    <h3>Admin&nbsp;<span class="glyphicon glyphicon-triangle-bottom"></span></h3>
 </div>
 
 <div class="col-xs-2 sidebar">
     <ul class="nav nav-pills nav-stacked">
-        <li><a href="#">Order List</a></li>
-        <li><a href="#">Document List</a></li>
+        <li><a href="Main.aspx">Order List</a></li>
+        <li><a href="DocumentList.aspx">Document List</a></li>
         <li><a href="#">Update Operational Date</a></li>
     </ul>
 </div>
