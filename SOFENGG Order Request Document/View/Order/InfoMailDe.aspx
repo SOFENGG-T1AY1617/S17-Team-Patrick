@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/info_mail_de.css">
+    <link rel="stylesheet" href="/Content/css/info_mail_de.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="col-xs-3">
@@ -29,7 +29,7 @@
         <p>
             This step allows you to enter your mailing information.
             <br>
-            <br>
+            <br/>
             You may want your documents delivered to more than one mailing address. Enter the addresses here.
         </p>
         <form action=""></form>
@@ -116,7 +116,7 @@
 
 
         </table>
-        <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitMailInfo"/>
+        <asp:Button CssClass="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitMailInfo"/>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

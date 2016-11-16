@@ -53,8 +53,8 @@
                     <tr>
                         <td colspan="2">
                             <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Degree.Id")%>' />
-                            <asp:Button class="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
-                            <asp:Button class="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
+                            <asp:Button Cssclass="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
+                            <asp:Button Cssclass="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
                         </td>
                     </tr>
                 </table>
@@ -66,8 +66,8 @@
        </asp:Repeater>
        
         <div>
-            <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
-            <asp:Button class="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
+            <asp:Button Cssclass="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
+            <asp:Button Cssclass="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
         </div>
     </div>
 </asp:Content>
