@@ -148,32 +148,7 @@
                 </Columns>
             </asp:GridView>
 
-            <table>
-                <tr>
-                    <td colspan="4" class="content-document-header">Special</td>
-                </tr>
-            </table>
-
-            <asp:GridView ID="gvSpecial" AutoGenerateColumns="False" runat="server">
-                <Columns >
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
-                </Columns>
-            </asp:GridView>
+           
 
             
 

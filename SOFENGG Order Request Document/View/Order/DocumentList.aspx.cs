@@ -67,14 +67,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
         }
 
-        public Document[] SpecialDocumentList
-        {
-            set
-            {
-                gvSpecial.DataSource = value;
-                gvSpecial.DataBind();
-            }
-        }
+        
 
 
 
@@ -91,11 +84,12 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         public void GetDocumentList()
         {
-            _presenter.GetFilterDocumentList(DocumentCategoryEnum.Certification);
-            _presenter.GetFilterDocumentList(DocumentCategoryEnum.TranscriptOfRecords);
-            _presenter.GetFilterDocumentList(DocumentCategoryEnum.CertifiedTrueCopy);
-            _presenter.GetFilterDocumentList(DocumentCategoryEnum.Others);
-            _presenter.GetFilterDocumentList(DocumentCategoryEnum.Special);
+            _presenter.GetTORDocumentList(DocumentCategoryEnum.TranscriptOfRecords);
+            _presenter.GetCertificateDocumentList(DocumentCategoryEnum.Certification);
+            
+            _presenter.GetTrueCopyDocumentList(DocumentCategoryEnum.CertifiedTrueCopy);
+            _presenter.GetOthersDocumentList(DocumentCategoryEnum.Others);
+           
 
 
         }

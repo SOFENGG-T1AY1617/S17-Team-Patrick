@@ -24,13 +24,27 @@ namespace SOFENGG_Order_Request_Document.Presenter.Order
             _view.AvailableDocumentList = _model.GetDocumentList();
         }*/
 
-        public void GetFilterDocumentList(DocumentCategoryEnum Category)
+        public void GetCertificateDocumentList(DocumentCategoryEnum Category)
         {
-            _view.CertificateDocumentList = _model.GetFilterDocumentList(Category);
-            _view.TORDocumentList = _model.GetFilterDocumentList(Category);
-            _view.TrueCopyDocumentList = _model.GetFilterDocumentList(Category);
-            _view.OthersDocumentList = _model.GetFilterDocumentList(Category);
-            _view.SpecialDocumentList = _model.GetFilterDocumentList(Category);
+            _view.CertificateDocumentList = _model.GetCertificateDocumentList(Category);
+
+        }
+
+        public void GetTORDocumentList(DocumentCategoryEnum Category)
+        {
+            _view.TORDocumentList = _model.GetTORDocumentList(Category);
+
+        }
+
+        public void GetTrueCopyDocumentList(DocumentCategoryEnum Category)
+        {
+            _view.TrueCopyDocumentList = _model.GetTrueCopyDocumentList(Category);
+
+        }
+
+        public void GetOthersDocumentList(DocumentCategoryEnum Category)
+        {
+            _view.OthersDocumentList = _model.GetOthersDocumentList(Category);
 
         }
     }

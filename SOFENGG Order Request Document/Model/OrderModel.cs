@@ -13,7 +13,28 @@ namespace SOFENGG_Order_Request_Document.Model
             return db.DocumentList;
         } 
 
-        public Document[] GetFilterDocumentList(DocumentCategoryEnum Category)
+        public Document[] GetCertificateDocumentList(DocumentCategoryEnum Category)
+        {
+            var db = new DBMySqlGetDocumentList(Category);
+            db.ExecuteQuery();
+            return db.DocumentList;
+        }
+
+        public Document[] GetOthersDocumentList(DocumentCategoryEnum Category)
+        {
+            var db = new DBMySqlGetDocumentList(Category);
+            db.ExecuteQuery();
+            return db.DocumentList;
+        }
+
+        public Document[] GetTORDocumentList(DocumentCategoryEnum Category)
+        {
+            var db = new DBMySqlGetDocumentList(Category);
+            db.ExecuteQuery();
+            return db.DocumentList;
+        }
+
+        public Document[] GetTrueCopyDocumentList(DocumentCategoryEnum Category)
         {
             var db = new DBMySqlGetDocumentList(Category);
             db.ExecuteQuery();
