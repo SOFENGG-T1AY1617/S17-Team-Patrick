@@ -24,7 +24,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database.OrderList
                 Order.Table, OrderItem.Table, OrderItem.ColReferenceNo,
                 Document.Table, Document.ColId, OrderItem.ColDocumentId,
                 MailingInfo.Table, MailingInfo.ColMailingId, OrderItem.ColMailingId,
-                StudentInfo.Table, StudentInfo.ColStudentInfoId, MailingInfo.ColIdStudent, Order.ColDateReleased);
+                StudentInfo.Table, StudentInfo.ColStudentInfoId, MailingInfo.ColStudentInfoId, Order.ColDateReleased);
 
 //            Cmd.Parameters.AddWithValue("@name", "banana");
             Cmd.Prepare();

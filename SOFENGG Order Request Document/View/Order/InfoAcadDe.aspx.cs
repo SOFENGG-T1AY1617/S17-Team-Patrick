@@ -12,13 +12,18 @@ namespace SOFENGG_Order_Request_Document.View.Order
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            if (Request.Cookies["StudentInfo"]["Id"] == null)
+            {
+                Response.Redirect("~/View/Order/Error.aspx");
+            }
+
             if (!IsPostBack)
             {
                 this.PopulateYear();
                 this.PopulateDegreeDropdown();
             }
-
-
+           
             try
             {
                 if (Request.Cookies["StudentInfo"]["StudentDegreeId"] != null ||
@@ -29,7 +34,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
             catch (Exception)
             {
-                //haven't inputted studentInfo
+                
             }
         }
 

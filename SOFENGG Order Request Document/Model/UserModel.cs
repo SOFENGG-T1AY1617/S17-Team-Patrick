@@ -108,6 +108,27 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             return db.mailingInfoList[0];
         }
 
+        public DeliveryArea[] GetAllDeliveryArea()
+        {
+            var db = new DBMySqlGetDeliveryArea();
+            db.ExecuteQuery();
+            return db.deliveryAreaList;
+        }
+
+        public DeliveryArea GetDeliveryArea(int deliveryId)
+        {
+            var deliveryAreaDB = new DBMySqlGetDeliveryArea();
+            deliveryAreaDB.ExecuteQuery();
+
+            for (int i = 0; i < deliveryAreaDB.deliveryAreaList.Length; i++)
+            {
+                if (deliveryAreaDB.deliveryAreaList[i].Id == deliveryId)
+                {
+                    return deliveryAreaDB.deliveryAreaList[i];
+                }
+            }
+            return null;
+        }
 
     }
 }

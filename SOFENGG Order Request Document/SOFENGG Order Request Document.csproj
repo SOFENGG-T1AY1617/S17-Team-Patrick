@@ -280,6 +280,7 @@
     <Compile Include="View\Order\InfoMailDe.aspx.designer.cs">
       <DependentUpon>InfoMailDe.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\InfoMailDePresenter.cs" />
     <Compile Include="View\Order\InfoTransaction.aspx.cs">
       <DependentUpon>InfoTransaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -288,6 +289,7 @@
       <DependentUpon>InfoTransaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Order\Interface\IInfoAcadDeView.cs" />
+    <Compile Include="View\Order\Interface\IInfoMailDeView.cs" />
     <Compile Include="View\Order\Interface\IOrderDocumentListView.cs" />
     <Compile Include="View\Order\Order.Master.cs">
       <DependentUpon>Order.Master</DependentUpon>
