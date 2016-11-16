@@ -10,9 +10,9 @@ namespace SOFENGG_Order_Request_Document.Model
         Document[] GetDocumentList();
         Order[] GetOrderList();
         Order[] GetOrderList(OrderStatusEnum orderStatus);
-        bool MarkAsDone(Order order);
-        bool MarkAsPending(DateTime newDueDate, string reason);
-        bool MarkAsProcessing(Order order);
+        bool MarkAsDone(int referenceNo);
+        bool MarkAsPending(int referenceNo, DateTime newDueDate, string reason);
+        bool MarkAsProcessing(int referenceNo);
         Order GetOrderInformation(int referenceNo);
     }
 }

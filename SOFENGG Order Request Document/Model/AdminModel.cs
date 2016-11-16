@@ -44,17 +44,18 @@ namespace SOFENGG_Order_Request_Document.Model
             throw new NotImplementedException();
         }
 
-        public bool MarkAsDone(Order order)
+        public bool MarkAsDone(int referenceNo)
         {
             throw new NotImplementedException();
         }
 
-        public bool MarkAsPending(DateTime newDueDate, string reason)
+        public bool MarkAsPending(int referenceNo, DateTime newDueDate, string reason)
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlMarkAsPending(referenceNo, newDueDate, reason);
+            return db.ExecuteQuery();
         }
 
-        public bool MarkAsProcessing(Order order)
+        public bool MarkAsProcessing(int referenceNo)
         {
             throw new NotImplementedException();
         }

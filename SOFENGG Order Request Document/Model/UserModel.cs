@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using SOFENGG_Order_Request_Document.Model.Database.Interface;
 
@@ -16,55 +18,92 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 
         public bool AddStudentDegree(StudentDegree studentDegree)
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlAddStudentDegree(studentDegree);
+
+            Debug.Write("\n\n\nHELLOOOOOOOOOOOOOOOOOO\n\n\n");
+
+            return db.ExecuteQuery();
         }
 
         public bool AddMailingInfo(MailingInfo mailingInfo)
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlAddMailingInfo(mailingInfo);
+            return db.ExecuteQuery();
+        }
+
+        public Degree GetDegree(int StudentInfoId, String name, int CampusAttended, char Level)
+        {
+            var db = new DBMySqlGetDegreeList();
+            db.SetQueryGivenInput((CampusEnum)CampusAttended, name, (DegreeLevelEnum)Level);
+            db.ExecuteQuery();
+            return db.DegreeList[0];
+        }
+
+        public Degree GetDegree(int degreeId)
+        {
+            var db = new DBMySqlGetDegreeList();
+            db.SetQueryGivenDegreeId(degreeId);
+            db.ExecuteQuery();
+            return db.DegreeList[0];
+        }
+
+        public Degree[] GetDegree()
+        {
+            var db = new DBMySqlGetDegreeList();
+            db.SetQueryForAllDegree();
+            db.ExecuteQuery();
+            return db.DegreeList;
+        }
+
+        public StudentInfo GetMyStudentInfo(int studentInfoId)
+        {
+            var db = new DBMySqlGetStudentInfo();
+            db.SetQueryForOneStudent(studentInfoId);
+            db.ExecuteQuery();
+
+            return db.studentInfoList[db.studentInfoList.Length-1];
         }
 
         public StudentInfo GetMyStudentInfo()
         {
             var db = new DBMySqlGetStudentInfo();
+            db.SetQueryForAllStudentInfo();
             db.ExecuteQuery();
-
-            db.studentInfo[db.studentInfo.Length - 1].StudentDegreeList = null;
-            db.studentInfo[db.studentInfo.Length - 1].MailingInfoList = null;
-
-            return db.studentInfo[db.studentInfo.Length-1];
+            return db.studentInfoList[db.studentInfoList.Length-1];
         }
 
-
-
-
-        public StudentDegree[] GetStudentDegree(int studentId)
+        public StudentDegree[] GetStudentDegree(int studentInfoId)
         {
             var db = new DBMySqlGetStudentDegreeList();
+            db.SetQueryGivenStudentInfoId(studentInfoId);
             db.ExecuteQuery();
-            return db.studentDegreeList;
+            return db.StudentDegreeList;
         }
 
-        public MailingInfo[] GetMailingInfo(int studentId)
+        public StudentDegree GetOneStudentDegree(int studentDegreeId)
+        {
+            var db = new DBMySqlGetStudentDegreeList();
+            db.SetQueryGivenStudentDegreeId(studentDegreeId);
+            db.ExecuteQuery();
+            return db.StudentDegreeList[0];
+        }
+
+        public MailingInfo[] GetMailingInfo(int studentInfoId)
         {
             var db = new DBMySqlGetMailingInfo();
+            db.SetQueryForAllMailInfo(studentInfoId);
             db.ExecuteQuery();
             return db.mailingInfoList;
         }
 
-
-        public bool AddMailingInfo(MailingInfo mailingInfo, int studentId)
+        public MailingInfo GetOneMailingInfo(int mailingInfo)
         {
-            var db = new DBMySqlAddMailingInfo(mailingInfo);
-            db.StudentId = studentId;
-            return db.ExecuteQuery();
+            var db = new DBMySqlGetMailingInfo();
+            db.SetQueryForOneMailInfo(mailingInfo);
+            db.ExecuteQuery();
+            return db.mailingInfoList[0];
         }
 
-        public bool AddStudentDegree(StudentDegree studentDegree, int studentId)
-        {
-            var db = new DBMySqlAddStudentDegree(studentDegree);
-            db.StudentId = studentId;
-            return db.ExecuteQuery();
-        }
+
     }
 }

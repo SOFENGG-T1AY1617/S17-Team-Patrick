@@ -19,7 +19,7 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
             _model = new AdminModel();
         }
 
-        protected int GetOrderCount(OrderStatusEnum status, Order[] orderList)
+        protected int GetOrderCount(OrderStatusEnum status, Model.Order[] orderList)
         {
             var count = 0;
             for (var i = 0; i < orderList.Length; i++)
@@ -95,6 +95,11 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
             var o = _model.GetOrderList().FirstOrDefault(i => i.ReferenceNo == referenceNo);
 
             return o == null ? default(OrderStatusEnum) : o.OrderStatus;
+        }
+
+        public bool MarkAsPending(int referenceNo, string newDueDate, string reason)
+        {
+            return _model.MarkAsPending(referenceNo, DateTime.Parse(newDueDate), reason);
         }
     }
 }

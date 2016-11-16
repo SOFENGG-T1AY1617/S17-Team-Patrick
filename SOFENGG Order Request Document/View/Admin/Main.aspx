@@ -9,6 +9,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
+
     <div class="content-main table-responsive">
         <div class="container">
             <div class="main_report">
@@ -229,7 +230,7 @@
                             <div class="content_buttons">
                                 <%--<button id="btnBack" class="btn btn-primary">Back</button>--%>
 
-                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" Text="Mark as Pending" OnClientClick="return false;" runat="server"  data-toggle="modal" data-target="#dlgPending" />
+                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" data-toggle="modal" data-target="#dlgPending" runat="server" Text="Mark as Pending" />
                                 <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" />
                                 <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" />
                             </div>
@@ -252,44 +253,27 @@
                 <div class="modal-body">
                     <div class="form-horizontal">
                         <div class="form-group">
-                            <label for="txtReasonForDelay" class="col-sm-2 control-label">Reason For Delay</label>
-                            <div class="col-sm-10">
-                                <textarea id="txtReasonForDelay" class="form-control" rows="10"></textarea>
+                            <label for="txtPendingReason" class="col-sm-3 control-label">Reason For Delay</label>
+                            <div class="col-sm-7">
+                            <asp:TextBox ID="txtPendingReason" TextMode="MultiLine" runat="server" class="form-control"/>
                             </div>
+                            <asp:RequiredFieldValidator ControlToValidate="txtPendingReason" runat="server" ErrorMessage="Reason for pending cannot be blank." ValidationGroup="vgPending"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
-                            <label for="date" class="col-sm-2 control-label">New Due Date</label>
-                            <div class="col-sm-10">
-                                <div class="col-sm-5">
-                                    <select name="" id="" class="form-control">
-                                        <option value="">January</option>
-                                        <option value="">February</option>
-                                        <option value="">March</option>
-                                        <option value="">April</option>
-                                        <option value="">May</option>
-                                        <option value="">June</option>
-                                        <option value="">July</option>
-                                        <option value="">August</option>
-                                        <option value="">September</option>
-                                        <option value="">October</option>
-                                        <option value="">November</option>
-                                        <option value="">December</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-2">
-                                    <select name="" id="day" class="form-control"></select>
-                                </div>
-                                <div class="col-sm-3">
-                                    <select name="" id="year" class="form-control"></select>
-                                </div>
+                            <label for="txtNewDueDate" class="col-sm-3 control-label">New Due Date</label>
+                            <div class="col-sm-9">
+                                <asp:TextBox ID="txtNewDueDate" CssClass="txtNewDueDate form-control" runat="server" Width="150px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ControlToValidate="txtNewDueDate" runat="server" ValidationGroup="vgPending" ErrorMessage="Please set a new due date." Display="dynamic"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ControlToValidate="txtNewDueDate" ErrorMessage="Invalid format of date. Use MM/DD/YYYY format." runat="server" ValidationExpression="^([0-9]|0[1-9]|1[012])\/([0-9]|0[1-9]|[12][0-9]|3[01])\/(19|20)\d\d$" ValidationGroup="vgPending" Display="dynamic"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="cancelprocess_popup" class="btn btn-primary">Mark As Processing</button>
-                    <button id="mark_processing_popup" class="btn btn-primary">Cancel</button>
+                    <asp:Button ID="btnMarkAsPending" ValidationGroup="vgPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
+                    <button id="btnPendingCancel" type="button" class="btn btn-default" data-dismiss="modal">
+                        Cancel</button>
                 </div>
             </div>
         </div>
@@ -297,4 +281,27 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/admin_main.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+            prm.add_initializeRequest(InitializeRequest);
+            prm.add_endRequest(EndRequest);
+            // Place here the first init of the DatePicker
+
+            $('.txtNewDueDate').datepicker();
+
+        });
+
+        function InitializeRequest(sender, args) { }
+        function EndRequest(sender, args) {
+            // after update occur on UpdatePanel re-init the DatePicker
+
+            $('.txtNewDueDate').datepicker();
+
+        }
+    </script>
 </asp:Content>
