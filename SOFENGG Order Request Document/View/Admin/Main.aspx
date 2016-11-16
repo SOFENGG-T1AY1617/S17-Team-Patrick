@@ -62,48 +62,53 @@
                 </table>
             </div>
         </div>
-        <asp:Repeater ID="repOrders" runat="server">
-            <HeaderTemplate>
-                <table class="table table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <td>Reference Number</td>
-                            <td>Transaction Date</td>
-                            <td>Date Due</td>
-                            <td>Status</td>
-                            <td>Name</td>
-                            <td>Amount</td>
+        <asp:UpdatePanel ID="upOrderList" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+
+                <asp:Repeater ID="repOrders" runat="server">
+                    <HeaderTemplate>
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Reference Number</td>
+                                    <td>Transaction Date</td>
+                                    <td>Date Due</td>
+                                    <td>Status</td>
+                                    <td>Name</td>
+                                    <td>Amount</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
+                            <td>
+                                <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
-                    <td>
-                        <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
-                    </td>
-                </tr>
-            </ItemTemplate>
-            <FooterTemplate>
-                </tbody>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        </tbody>
             </table>
-            </FooterTemplate>
-        </asp:Repeater>
+                    </FooterTemplate>
+                </asp:Repeater>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
         <%--                <tr class="success">
                     <td>3</td>
@@ -256,7 +261,7 @@
                             <div class="content_buttons">
                                 <%--<button id="btnBack" class="btn btn-primary">Back</button>--%>
 
-                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" Text="Mark as Pending" OnClientClick="return false;" runat="server"  data-toggle="modal" data-target="#dlgPending" />
+                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" data-toggle="modal" data-target="#dlgPending" runat="server" Text="Mark as Pending" />
                                 <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" />
                                 <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" />
                             </div>
@@ -279,30 +284,15 @@
                 </div>
                 <div class="modal-body">
                     <p>Reason For Delay:</p>
-                    <textarea name="" id="" cols="32" rows="10"></textarea>
+                    <asp:TextBox ID="txtPendingReason" TextMode="MultiLine" runat="server" />
 
                     <h4>New Due Date</h4>
-                    <select name="" id="">
-                        <option value="">January</option>
-                        <option value="">February</option>
-                        <option value="">March</option>
-                        <option value="">April</option>
-                        <option value="">May</option>
-                        <option value="">June</option>
-                        <option value="">July</option>
-                        <option value="">August</option>
-                        <option value="">September</option>
-                        <option value="">October</option>
-                        <option value="">November</option>
-                        <option value="">December</option>
-                    </select>
-                    <select name="" id="day"></select>
-                    <select name="" id="year"></select>
-
+                    <asp:TextBox ID="txtNewDueDate" CssClass="txtNewDueDate" runat="server" Width="150px"></asp:TextBox>
                 </div>
                 <div class="modal-footer">
-                    <button id="cancelprocess_popup" class="btn btn-primary">Mark As Processing</button>
-                    <button id="mark_processing_popup" class="btn btn-primary">Cancel</button>
+                    <asp:Button ID="btnMarkAsPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
+                    <button id="btnPendingCancel" type="button" class="btn btn-default" data-dismiss="modal">
+                        Cancel</button>
                 </div>
             </div>
         </div>
@@ -310,4 +300,27 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/admin_main.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var prm = Sys.WebForms.PageRequestManager.getInstance();
+            prm.add_initializeRequest(InitializeRequest);
+            prm.add_endRequest(EndRequest);
+            // Place here the first init of the DatePicker
+
+            $('.txtNewDueDate').datepicker();
+
+        });
+
+        function InitializeRequest(sender, args) { }
+        function EndRequest(sender, args) {
+            // after update occur on UpdatePanel re-init the DatePicker
+
+            $('.txtNewDueDate').datepicker();
+
+        }
+    </script>
 </asp:Content>

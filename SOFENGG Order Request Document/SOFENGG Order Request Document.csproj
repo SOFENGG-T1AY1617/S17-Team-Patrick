@@ -150,6 +150,7 @@
     <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
+    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsPending.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetDocument.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetStudentInfoId.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetStudentInfo.cs" />
