@@ -1,13 +1,14 @@
-﻿.main_report {
-    margin-top: 2%;
+﻿.search_bar {
+    padding-top: 10%;
 }
-.main_report div, .main_report div h4, .main_report div h3 {
-    display: inline;
-}
-.main_report-right {
-    float: right;
+.search_bar input {
+    margin-bottom: 1%;
 }
 
-.top_report {
-    display: inline;
+.main_report {
+    font-size: 120%;
+}
+table thead {
+    background-color: #0094ff;
+    color: white;
 }

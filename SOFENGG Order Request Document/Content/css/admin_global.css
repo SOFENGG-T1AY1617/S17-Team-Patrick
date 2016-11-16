@@ -1,68 +1,26 @@
 body {
-  background-color: #61788e;
-  margin-left: 250px;
+  margin: 0px;
+  padding: 0px;
+  background-color: #f5f5f5;
 }
 
-.header {
-  height: 80px;
-  background-color: #4bc2a1;
-  position: fixed;
-  top: 0;
-  left: 250;
-  width: 100%;
-}
-.header h1, .header img {
-    color: white;
-    display: inline;
-}
-
-.sidebar_logo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 210px;
-  background-color: #364F59;
-  width: 250px;
-  text-align: center;
-  z-index: 100;
-}
-.sidebar_logo img {
-    width: 125px;
+.brand img {
+    width: 200px;
     height: auto;
-    margin: 5% auto;
-}
-.sidebar_logo h3 {
-    color: white;
-}
-.sidebar_logo span {
-    font-size:  75%;    
-}
-.sidebar {  
-  position: fixed;
-  top: 210px;
-  left: 0;
-  min-height: 100%;
-  width: 250px;
-  background-color: #2F444D;
-  padding-top: 1%;
-}
-.sidebar ul li a {
-    color: white !important;
-    font-size: 130%;
-}
-.sidebar ul li a:hover {
-    background-color: #6FBEDE;
 }
 
-.content {
-    background-color: #61788e;
-    min-height: 100%;
-    margin-top: 80px;
-    padding-top: 15vh;
-    padding-bottom: 15vh;
+.jumbotron {
+    text-align: center;
+    background-color: #f5f5f5;
 }
+
+.table-fluid {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
 .content-main div {
-    background-color: #F0F0F0;
+    background-color: white;
 }
 .content-main table {
   text-align: center;

@@ -10,42 +10,69 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
 
-    <div class="content-main table-responsive">
-        <div class="container">
-            <div class="main_report">
-                <div class="main_report-left">
-                    <h3>Current Orders</h3>
-                </div>
-                <div class="main_report-right">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td>
-                                <h4>Processing: <b>
-                                    <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
-                            </td>
-                            <td class="warning">
-                                <h4>Pending: <b>
-                                    <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
-                            </td>
-                            <td class="success">
-                                <h4><span class="glyphicon glyphicon-ok">&nbsp;</span>On Time: <b>
-                                    <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
-                            </td>
-                            <td class="danger">
-                                <h4><span class="glyphicon glyphicon-remove">&nbsp;</span>Late: <b>
-                                    <asp:Label ID="lblLateCount" runat="server" /></b></h4>
-                            </td>
-                            <td>
-                                <h4>Total Quantity: <b>
-                                    <asp:Label ID="lblTotalCount" runat="server" /></b></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+    <div class="jumbotron">
+        <h1>Current Orders</h1>
 
+        <div class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filter <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Processing</a></li>
+                    <li><a href="#">Pending</a></li>
+                    <li><a href="#">On Time</a></li>
+                    <li><a href="#">Late</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <div class="navbar-form navbar-left">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search Reference ID">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </div>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </div>
+
+        <div id="myTabContent" class="tab-content">
+            <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <h4>Processing: <b>
+                                <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
+                        </td>
+                        <td class="warning">
+                            <h4>Pending: <b>
+                                <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
+                        </td>
+                        <td class="success">
+                            <h4><span class="glyphicon glyphicon-ok">&nbsp;</span>On Time: <b>
+                                <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
+                        </td>
+                        <td class="danger">
+                            <h4><span class="glyphicon glyphicon-remove">&nbsp;</span>Late: <b>
+                                <asp:Label ID="lblLateCount" runat="server" /></b></h4>
+                        </td>
+                        <td>
+                            <h4>Total Quantity: <b>
+                                <asp:Label ID="lblTotalCount" runat="server" /></b></h4>
+                        </td>
+                    </tr>
+                </table>
+        </div>
+    </div>
+
+    <div class="content-main table-responsive">
+        <div class="main_report">
                 <asp:Repeater ID="repOrders" runat="server">
                     <HeaderTemplate>
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover table-bordered table-fluid">
                             <thead>
                                 <tr>
                                     <td>Reference Number</td>
@@ -86,7 +113,6 @@
                     </FooterTemplate>
                 </asp:Repeater>
             </div>
-        </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="other" runat="server">
