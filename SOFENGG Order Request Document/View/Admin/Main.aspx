@@ -289,18 +289,21 @@
                             <div class="col-sm-7">
                             <asp:TextBox ID="txtPendingReason" TextMode="MultiLine" runat="server" class="form-control"/>
                             </div>
+                            <asp:RequiredFieldValidator ControlToValidate="txtPendingReason" runat="server" ErrorMessage="Reason for pending cannot be blank." ValidationGroup="vgPending"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">
                             <label for="txtNewDueDate" class="col-sm-3 control-label">New Due Date</label>
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtNewDueDate" CssClass="txtNewDueDate form-control" runat="server" Width="150px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ControlToValidate="txtNewDueDate" runat="server" ValidationGroup="vgPending" ErrorMessage="Please set a new due date." Display="dynamic"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ControlToValidate="txtNewDueDate" ErrorMessage="Invalid format of date. Use MM/DD/YYYY format." runat="server" ValidationExpression="^([0-9]|0[1-9]|1[012])\/([0-9]|0[1-9]|[12][0-9]|3[01])\/(19|20)\d\d$" ValidationGroup="vgPending" Display="dynamic"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <asp:Button ID="btnMarkAsPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
+                    <asp:Button ID="btnMarkAsPending" ValidationGroup="vgPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
                     <button id="btnPendingCancel" type="button" class="btn btn-default" data-dismiss="modal">
                         Cancel</button>
                 </div>
