@@ -6,7 +6,7 @@ namespace SOFENGG_Order_Request_Document.Model
     {
 
         //Document[] GetDocumentList(int isGraduate, int isUndergraduate);
-        Document[] GetCertificateDocumentList();
+        Document[] GetCertificateDocumentList(int Category);
         
     }
 }

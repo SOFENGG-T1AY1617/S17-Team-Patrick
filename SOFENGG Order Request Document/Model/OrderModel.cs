@@ -13,9 +13,9 @@ namespace SOFENGG_Order_Request_Document.Model
             return db.DocumentList;
         } */
 
-        public Document[] GetCertificateDocumentList()
+        public Document[] GetCertificateDocumentList(int Category)
         {
-            var db = new DBMySqlGetDocumentList();
+            var db = new DBMySqlGetDocumentList(Category);
             db.ExecuteQuery();
             return db.DocumentList;
         }
