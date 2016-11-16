@@ -3,6 +3,16 @@
 
     <!-- Always change the css file name to html file name! -->
     <link rel="stylesheet" href="/Content/css/info_transaction.css">
+    <style type="text/css">
+        .auto-style1 {
+            width: 30%;
+            padding-left: 1%;
+            height: 19px;
+        }
+        .auto-style2 {
+            height: 19px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="col-xs-3">
@@ -40,23 +50,23 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">Name</td>
-                    <td><!--<% Response.Cookies("") %>--></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td class="content-form_label">Current Address</td>
-                    <td></td>
+                    <td class="auto-style1">Current Address</td>
+                    <td class="auto-style2"><asp:Label runat="server"></asp:Label></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Phone No.</td>
-                    <td></td>
+                    <td><asp:Label runat="server"></asp:Label></td>
                 </tr>
                 <tr class="delivery-info">
                     <td class="content-form_label">Email</td>
-                    <td></td>
+                    <td><asp:Label runat="server"></asp:Label></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Place of Birth</td>
-                    <td></td>
+                    <td><asp:Label runat="server"></asp:Label></td>
                 </tr>
             </table>
 

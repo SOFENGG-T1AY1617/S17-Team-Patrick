@@ -33,7 +33,7 @@
                 <tbody>
                 <tr>
                     <td valign="top" class="content-form_label">Document</td>
-                    <td>&nbsp;<asp:Label runat="server"></asp:Label></td>
+                    <td>&nbsp;<asp:Label runat="server"><%docname = Request.Cookies("DocumentName") response.write("DocumentName=" & docname) %></asp:Label></td>
                 </tr>
                 <tr>
                     <td class="content-form_label">Academic Profile</td>
@@ -45,11 +45,11 @@
                         <table class="priceTable" style="border: none; width: 100%; background-color: white;">
                             <tr>
                                 <td>&nbsp;<asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server"></asp:RadioButton>&nbsp;Regular Processing</td>
-                                <td>&nbsp;Php 150.00</td>
+                                <td>&nbsp;<%#Eval("RegularPrice") %></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;<asp:RadioButton ID="rbExpress" GroupName="optProc" runat="Server"></asp:RadioButton>&nbsp;Express Processing</td>
-                                <td>&nbsp;Php 300.00</td>
+                                <td>&nbsp;<%#Eval("ExpressPrice") %></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;<asp:CheckBox ID="for_pickup" AutoPostBack="true" runat="server"></asp:CheckBox>&nbsp;For Pick Up</td>
@@ -69,7 +69,10 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">No. of Copies</td>
-                    <td>&nbsp;<asp:TextBox ID="tbNoCopy" size="2" maxlength="2" runat="server"></asp:TextBox></td>
+                    <td>&nbsp;<asp:TextBox ID="tbNoCopy" size="2" maxlength="2" runat="server"></asp:TextBox>
+                               <asp:RequiredFieldValidator id="rfvNoCopy" runat="server" ControlToValidate="tbNoCopy"
+                                   ErrorMessage="No. of Copies is a required field" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
                 </tr>
                 <tr class="delivery_only">
                     <td class="content-form_label">Send to</td>
@@ -82,6 +85,9 @@
                         <asp:RadioButton ID="rbBrown" GroupName ="optInsert" runat="server" /> Brown Envelope
                         <asp:RadioButton ID="rbWhite" GroupName="optInsert" runat="server"/> White Envelope
                         <asp:RadioButton ID="rbNone" GroupName="optInsert" runat="server"/> None
+                        <asp:RequiredFieldValidator id="rfvInsert" runat="server" ControlToValidate="optInsert"
+                        ErrorMessage="Insert into is a required field" ForeColor="Red"></asp:RequiredFieldValidator>
+                    
                     </td>
                 </tr>
                 <tr>
@@ -103,9 +109,5 @@
     <script src="/Script/order_item.js"></script>
 
     <script runat ="server">
-
-        
-
-
     </script>
 </asp:Content>
