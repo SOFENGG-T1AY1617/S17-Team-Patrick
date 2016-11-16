@@ -283,11 +283,21 @@
                                 <asp:Label ID="lblPendingReferenceNo" runat="server"></asp:Label></h4>
                 </div>
                 <div class="modal-body">
-                    <p>Reason For Delay:</p>
-                    <asp:TextBox ID="txtPendingReason" TextMode="MultiLine" runat="server" />
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="txtPendingReason" class="col-sm-3 control-label">Reason For Delay</label>
+                            <div class="col-sm-7">
+                            <asp:TextBox ID="txtPendingReason" TextMode="MultiLine" runat="server" class="form-control"/>
+                            </div>
+                        </div>
 
-                    <h4>New Due Date</h4>
-                    <asp:TextBox ID="txtNewDueDate" CssClass="txtNewDueDate" runat="server" Width="150px"></asp:TextBox>
+                        <div class="form-group">
+                            <label for="txtNewDueDate" class="col-sm-3 control-label">New Due Date</label>
+                            <div class="col-sm-9">
+                                <asp:TextBox ID="txtNewDueDate" CssClass="txtNewDueDate form-control" runat="server" Width="150px"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <asp:Button ID="btnMarkAsPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
