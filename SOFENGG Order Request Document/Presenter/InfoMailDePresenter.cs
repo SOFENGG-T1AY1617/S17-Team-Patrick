@@ -23,17 +23,17 @@ namespace SOFENGG_Order_Request_Document.Presenter
         {
             var mailInfo = new MailingInfo()
             {
+                MailingAddress = view.MailingAddress,
                 StudentInfoId = view.StudentInfoId,
                 ContactNo = view.MailingContactNo,
-                DeliveryArea = view.DeliveryArea
-
-                public int Id { get; set; }
-        public string MailingAddress { get; set; }
-        public int ZipCode { get; set; }
-        public DeliveryArea DeliveryArea { get; set; }
-        public string ContactNo { get; set; }
-    };
+                DeliveryArea = model.GetDeliveryArea(view.DeliveryAreaId),
+            };
             return model.AddMailingInfo(mailInfo);
+        }
+
+        public MailingInfo[] GetMailingInfoList()
+        {
+            return model.GetMailingInfo(view.StudentInfoId);
         }
 
 

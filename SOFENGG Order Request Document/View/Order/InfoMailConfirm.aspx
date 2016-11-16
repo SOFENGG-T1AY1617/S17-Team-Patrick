@@ -24,33 +24,46 @@
     </div>
     <div class="col-xs-9">
         <h5>Mailing Information</h5>
-        <table class="table table-bordered table-striped">
-            <tr>
-                <td>Mailing Address</td>
-                <td>78 Taft Street, Manila City</td>
-            </tr>
-            <tr>
-                <td>Delivery Area</td>
-                <td>Metro Manila</td>
-            </tr>
-            <tr>
-                <td>Delivery Charge</td>
-                <td>PHP 128.00</td>
-            </tr>
-            <tr>
-                <td>Contact Number</td>
-                <td>09178287277</td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <a class="btn btn-default" href="/info_acad_de.html">Edit</a>
-                    <a class="btn btn-default" href="/info_acad_de.html">Delete</a>
-                </td>
-            </tr>
-        </table>
+        
+        <asp:Repeater id="rptInfoMailConfirm" runat="server">
+            <HeaderTemplate>
+            </HeaderTemplate>
+
+            <ItemTemplate>
+                <table class="table table-bordered table-striped">
+                <tr>
+                    <td>Mailing Address</td>
+                    <td><asp:Label runat="server" ID="lblMailingAddress" Text=<%# Eval("MailingAddress")%>/></td></td>
+                </tr>
+                <tr>
+                    <td>Delivery Area</td>
+                    <td><asp:Label runat="server" ID="lblIdNumber" Text=<%# Eval("DeliveryArea.Name")%>/></td>
+                </tr>
+                <tr>
+                    <td>Delivery Charge</td>
+                    <td><asp:Label runat="server" ID="Label1" Text=<%# Eval("DeliveryArea.Price")%>/></td>
+                </tr>
+                <tr>
+                    <td>Contact Number</td>
+                    <td><asp:Label runat="server" ID="Label2" Text=<%# Eval("ContactNo")%>/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                         <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Id")%>' />
+                            <asp:Button class="btn btn-default" runat="server" text="Edit" OnClick="EditMailingInfo"/>
+                            <asp:Button class="btn btn-default" runat="server" text="Delete" OnClick="DeleteMailingInfo"/>
+                    </td>
+                </tr>
+                </table>
+            </ItemTemplate>
+
+            <FooterTemplate>
+            </FooterTemplate>
+
+       </asp:Repeater>
         <div>
-            <a href="info_mail_de.html" class="btn btn-primary">Add Another Address</a>
-            <a href="document_list.html" class="btn btn-primary">Next</a>
+            <asp:Button runat="server" Text="Add Another Address" class="btn btn-primary" OnClick="AddMailingInfo"/>
+            <asp:Button runat="server" Text="Next" class="btn btn-primary" OnClick="GoToDocumentList"/>
         </div>
     </div>
 

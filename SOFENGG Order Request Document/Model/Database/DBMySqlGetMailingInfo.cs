@@ -13,13 +13,15 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
 
         public void SetQueryForOneMailInfo(int mailingId)
         {
-            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = '" + mailingId, MailingInfo.Table, MailingInfo.ColStudentInfoId);
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = " + mailingId, MailingInfo.Table, MailingInfo.ColStudentInfoId);
 
         }
 
         public void SetQueryForAllMailInfo(int studentInfoId)
         {
-            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = '" + studentInfoId, MailingInfo.Table, MailingInfo.ColStudentInfoId);
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = " + studentInfoId, MailingInfo.Table, MailingInfo.ColStudentInfoId);
 
         }
 
@@ -39,6 +41,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database.Interface
                 mailingInfoList[i] = new MailingInfo()
                 {
                     Id = int.Parse(ObjectList[i][MailingInfo.ColMailingId].ToString()),
+                    StudentInfoId = int.Parse(ObjectList[i][MailingInfo.ColStudentInfoId].ToString()),
                     MailingAddress = ObjectList[i][MailingInfo.ColMailingAddress].ToString(),
                     ZipCode = int.Parse(ObjectList[i][MailingInfo.ColZipCode].ToString()),
                     DeliveryArea = model.GetDeliveryArea(int.Parse(ObjectList[i][MailingInfo.ColDeliveryAreaId].ToString())),

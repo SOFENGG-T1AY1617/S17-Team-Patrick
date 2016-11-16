@@ -13,7 +13,6 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         {
             Cmd.CommandText = string.Format("SELECT * FROM {0}", DeliveryArea.Table);
             Cmd.Prepare();
-            throw new NotImplementedException();
         }
 
         public override void Parse()

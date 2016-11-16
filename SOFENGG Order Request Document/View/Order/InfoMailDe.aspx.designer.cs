@@ -83,5 +83,14 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMailingNum;
+
+        /// <summary>
+        /// rptInfoMailFonfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptInfoMailConfirm;
     }
 }

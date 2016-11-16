@@ -53,7 +53,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Degree.Id")%>' />
+                            <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Id")%>' />
                             <asp:Button class="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
                             <asp:Button class="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
                         </td>
