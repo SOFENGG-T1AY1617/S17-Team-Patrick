@@ -72,9 +72,34 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">No. of Copies</td>
-                    <td>&nbsp;<asp:TextBox ID="tbNoCopy" size="2" maxlength="2" runat="server"></asp:TextBox>
-                               <asp:RequiredFieldValidator id="rfvNoCopy" runat="server" ControlToValidate="tbNoCopy"
-                                   ErrorMessage="No. of Copies is a required field" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <td>&nbsp;<asp:TextBox ID="tbNoCopy" size="2" maxlength="2" runat="server" />
+                               <br />
+                                <asp:RequiredFieldValidator 
+                                   id="rfvNoCopy" 
+                                   runat="server" 
+                                   ControlToValidate="tbNoCopy"
+                                   ErrorMessage="No. of Copies is a required field" 
+                                   ForeColor="Red"/>
+                                <br />
+                               <asp:CompareValidator 
+                                   ID="cvNoCopy" 
+                                   runat="server" 
+                                   ControlToValidate="tbNoCopy" 
+                                   Type="Integer"
+                                   Operator="DataTypeCheck" 
+                                   ErrorMessage="No. of Copies must be a whole number!"
+                                   ForeColor="Red" />
+                                <br />                      
+                               <asp:RangeValidator
+                                   id="rvNoCopy" 
+                                   ControlToValidate="tbNoCopy" 
+                                   MinimumValue="1"
+                                   MaximumValue="9" 
+                                   Type="Integer" 
+                                   ErrorMessage="Minimum no. of copies is 1; Max number of copies is 99."
+                                   ForeColor="Red"  
+                                   runat="server" /> 
+
                     </td>
                 </tr>
                 <tr class="delivery_only">
@@ -85,10 +110,11 @@
                     <td class="content-form_label">Insert Document In</td>
                     <td style="padding-left: 3px;">
                         <asp:RadioButtonList ID="optInsert" RepeatDirection="Vertical" RepeatLayout="Flow" runat="server">
-                          <asp:ListItem Text="Brown Envelope" Value="1"></asp:ListItem>
-                          <asp:ListItem Text="White Envelope" Value="2"></asp:ListItem>
+                          <asp:ListItem Text="Brown Envelope" Value="1" onclick="alert('For a DLSU security sticker to be used for sealing the envelope, please message the following email address: hub@dlsu.edu.ph.');" ></asp:ListItem>
+                          <asp:ListItem Text="White Envelope" Value="2" onclick="alert('For a DLSU security sticker to be used for sealing the envelope, please message the following email address: hub@dlsu.edu.ph.');"></asp:ListItem>
                           <asp:ListItem Text="None" Value="3"></asp:ListItem>
                           </asp:RadioButtonList> 
+                       <br />
                         <asp:RequiredFieldValidator id="rfvInsert" runat="server" ControlToValidate="optInsert"
                         ErrorMessage="Insert into is a required field" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
