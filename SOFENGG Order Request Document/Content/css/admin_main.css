@@ -10,7 +10,7 @@
 .main_report {
     font-size: 120%;
 }
-table thead {
+.main_report table thead {
     background-color: #0094ff;
     color: white;
 }

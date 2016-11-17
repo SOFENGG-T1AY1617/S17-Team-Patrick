@@ -16,9 +16,9 @@
 
     <div class="jumbotron">
         <h2>Document List</h2>
-        <input type="button" id="add_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document"/>
+        
     </div>
-
+    <input type="button" id="add_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document"/>
     <div class="content-main table-responsive">
             <div class="document_table">
                 <asp:GridView ID="gvDocuments" AutoGenerateColumns="False" runat="server" OnRowEditing="gvDocuments_OnRowEditing" CssClass="table table-bordered table-hover table-fluid" GridLines="Vertical" OnRowDeleting="gvDocuments_OnRowDeleting" OnRowUpdating="gvDocuments_OnRowUpdating" OnRowCancelingEdit="gvDocuments_OnRowCancelingEdit">

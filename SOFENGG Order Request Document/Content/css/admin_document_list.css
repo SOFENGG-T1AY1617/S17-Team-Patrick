@@ -1,16 +1,16 @@
 .jumbotron {
     margin-bottom: -2%;
 }
-.jumbotron button {
-    margin-top: 2%;
+#add_document_modal {
+    display: block;
 }
 
 .document_table {
     border-radius: 5px;
     padding: 1% 1% 1% 1%;
     margin-top: 1%;
+    margin-bottom: 1%;
 }
-
 tbody tr:first-child {
     background-color: #0094ff;
     color: white;
