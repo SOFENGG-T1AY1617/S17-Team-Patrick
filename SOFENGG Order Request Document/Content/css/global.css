@@ -13,9 +13,7 @@ textarea {
 
 .fixed-container {
   min-height: 100%;
-  width: 777px;
   position: relative;
-
 }
 
 .header {
