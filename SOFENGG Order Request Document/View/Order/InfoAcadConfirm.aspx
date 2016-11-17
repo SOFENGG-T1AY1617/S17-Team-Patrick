@@ -5,27 +5,19 @@
     <link rel="stylesheet" href="/Content/css/info_*_confirm.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="col-xs-3">
-        <h5>Request Flow</h5>
-        <ul>
-            <li>
-                <asp:HyperLink id="hlPersonal" 
-                    NavigateUrl="personal_information.html" 
-                    Text="Personal Information" 
-                    runat="server"/>
-            </li>
-            <li>
-                <b>Academic Information</b>
-            </li>
-            <li>Mailing Information</li>
-            <li>Document List</li>
-            <li>Checkout</li>
-        </ul>
-        <div class="content-divider"></div>
-    </div>
-    <div class="col-xs-9">
+    <div class="container-fluid center-block">
+            <ul class="breadcrumb">
+                &nbsp;
+                <li><a href="#">Home</a></li>
+                <li><asp:HyperLink id="hlPersonal" 
+                        NavigateUrl="personal_information.html" 
+                        Text="Personal Information" 
+                        runat="server"/></li>
+                <li class="active">Academic Information</li>
+            </ul>
+       
         <form runat="server">
-        <h5>Academic Information</h5>
+        <h4 class="content-header">Academic Information</h4>
         
         <asp:Repeater id="rptInfoAcadConfirm" runat="server">
             <HeaderTemplate>

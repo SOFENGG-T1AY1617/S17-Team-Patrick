@@ -3,8 +3,8 @@
     <link rel="stylesheet" href="/Content/css/rules.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="container">
-        <h5 class="content-header">Policies and Procedures</h5>
+    <div class="container-fluid center-block">
+        <h4 class="content-header">Policies and Procedures</h5>
         <ol>
             <li>This Online Request for Documents consists of 6 steps, which can be completed in approximately 10 minutes.</li>
             <li>The processing period indicated herein (whether regular or express) is different and 

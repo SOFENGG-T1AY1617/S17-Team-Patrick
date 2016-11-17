@@ -5,45 +5,38 @@
     <link rel="stylesheet" href="/Content/css/info_mail_de.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="col-xs-3">
-        <h5>Request Flow</h5>
-        <ul>
-            <li>
-                <asp:HyperLink id="hlPersonal" 
-                    NavigateUrl="personal_information.html" 
-                    Text="Personal Information" 
-                    runat="server"/>
-            </li>
-            <li>
+    <div class="container-fluid center-block">
+        <ul class="breadcrumb">
+                &nbsp;
+                <li><a href="#">Home</a></li>
+                <li><asp:HyperLink id="hlPersonal" 
+                        NavigateUrl="personal_information.html" 
+                        Text="Personal Information" 
+                        runat="server"/>
+                </li>
+                <li>
                 <asp:HyperLink id="hlAacademic" 
                     NavigateUrl="info_acad_de.html" 
                     Text="Academic Information" 
                     runat="server"/>
-            </li>
-            <li>
-                <b>Mailing Information</b>
-            </li>
-            <li>Document List</li>
-            <li>Checkout</li>
+                </li>
+                <li class="active">Mailing Information</li>
         </ul>
-        <div class="content-divider"></div>
-    </div>
-
-    <div class="col-xs-9">
-        <h5 class="content-header">Mail Information</h5>
-
-        <p>
-            This step allows you to enter your mailing information.
-            <br>
-            <br>
-            You may want your documents delivered to more than one mailing address. Enter the addresses here.
-        </p>
+        
         <form action=""></form>
-        <table border=1 class="content-form">
-
+        <h4 class="content-header">Mailing Information</h4>
+        <blockquote>
+            <p>
+                 This step allows you to enter your mailing information.
+                 <br>
+                 <br>
+                You may want your documents delivered to more than one mailing address. Enter the addresses here.
+            </p>
+        </blockquote>
+        <table class="table table-striped">
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Address</td>
-                <td style="padding-left: 5px; padding-bottom: 3px;">
+                <td>
                     <asp:TextBox ID="txtMailAddress" runat="server" TextMode="MultiLine"></asp:TextBox>
                     <asp:RequiredFieldValidator id="rfvMailAddress" runat="server"
                             ControlToValidate="txtMailAddress"
@@ -55,18 +48,17 @@
             <tr class="delivery-info">
                 <td class="content-form_label">Zip Code</td>
                 <td>
-                    &nbsp;<asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator id="rfvZipCode" runat="server"
                             ControlToValidate="txtZipCode"
                             ErrorMessage="Zip code is a required field."
                             ForeColor="Red">
-                        </asp:RequiredFieldValidator>
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr class="delivery-info">
                 <td class="content-form_label">Delivery Area</td>
-
-                <td style="padding-left: 5px;">
+                <td>
                     <asp:DropDownList ID="ddlDelivery" runat="server" Width="200px">
                         <asp:ListItem Text="Select Area" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Africa" Value="1"></asp:ListItem>
@@ -110,20 +102,25 @@
             </tr>
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Contact Number</td>
-                <td>&nbsp;
+                <td>
                     <asp:TextBox ID="txtMailingNum" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator id="rfvMailingNum" runat="server"
                             ControlToValidate="txtMailingNum"
                             ErrorMessage="Mailing number is a required field."
                             ForeColor="Red">
-                        </asp:RequiredFieldValidator>
+                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
-
-
+            <tr>
+                <td colspan="2" align="center">
+                    <a href="info_mail_confirm.html">
+                        <asp:Button class="btn btn-primary" runat="server">Next</asp:button>
+                    </a>
+                </td>
+            </tr>
         </table>
         <a href="info_mail_confirm.html">
-            <asp:Button class="btn btn-primary content-form_next" runat="server">Next</asp:button>
+            <asp:Button class="btn btn-primary" runat="server">Next</asp:button>
         </a>
     </div>
 </asp:Content>
