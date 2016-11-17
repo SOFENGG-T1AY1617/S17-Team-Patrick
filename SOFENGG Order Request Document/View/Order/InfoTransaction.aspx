@@ -39,36 +39,45 @@
 
     <div class="col-xs-9">
             <h5 class="content-header" >Transaction Information</h5>
+        
+            <asp:Repeater ID="rptPersonalInformation" runat="server">
+                <ItemTemplate>
+                    <table border="1" class="content-form">
+                        <tr>
+                            <td colspan="2" class="content-form_label" align="center">Transaction Details</td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Reference No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Name</td>
+                            <td><%#Eval("FirstName")%> <%#Eval("MiddleName")%> <%#Eval("LastName")%></td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1">Current Address</td>
+                            <td class="auto-style2"><%#Eval("CurrentAddress")%></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Phone No.</td>
+                            <td><%#Eval("PhoneNumber")%></td>
+                        </tr>
+                        <tr class="delivery-info">
+                            <td class="content-form_label">Email</td>
+                            <td><%#Eval("Email")%></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Place of Birth</td>
+                            <td><%#Eval("PlaceOfBirth")%></td>
+                        </tr>
+                    </table>
+                    
 
-            <table border="1" class="content-form">
-                <tr>
-                    <td colspan="2" class="content-form_label" align="center">Transaction Details</td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Reference No.</td>
-                    <td><%#Eval("ReferenceNumber")%></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Name</td>
-                    <td><%#Eval("Name")%></td>
-                </tr>
-                <tr>
-                    <td class="auto-style1">Current Address</td>
-                    <td class="auto-style2"><%#Eval("Address")%></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Phone No.</td>
-                    <td><%#Eval("PhoneNumber")%></td>
-                </tr>
-                <tr class="delivery-info">
-                    <td class="content-form_label">Email</td>
-                    <td><%#Eval("Email")%></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Place of Birth</td>
-                    <td><%#Eval("BirthPlace")%></td>
-                </tr>
-            </table>
+                </ItemTemplate>
+           </asp:Repeater>
+        
+
+            
 
             <br/>
             <asp:Repeater ID="repDeliveryDetails" runat="server">  
@@ -79,7 +88,7 @@
                         </tr>
                         <tr>
                             <td class="content-form_label">Mailing Address</td>
-                            <td><%#Eval("Address")%></td>
+                            <td><%#Eval("MailingAddress")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Zip Code</td>
@@ -87,25 +96,27 @@
                         </tr>
                         <tr>
                             <td class="content-form_label">Delivery Area</td>
-                            <td><%#Eval("DeliveryArea")%></td>
+                            <td><%#Eval("DeliveryArea.Name")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Delivery Charge</td>
-                            <td><%#Eval("DeliveryCharge")%></td>
+                            <td><%#Eval("DeliveryArea.Price")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Processing Type</td>
-                            <td><%#Eval("ProcessingType")%></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Date Due to the Courier</td>
-                            <td><%#Eval("DueDate")%></td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Estimated Delivery Date</td>
-                            <td><%#Eval("EstDeliveryDate")%></td>
+                            <td></td>
                         </tr>
                     </table>
+                    
+
                     <asp:Repeater ID="repDocumentsToDeliver" runat="server">
                         <ItemTemplate>
                             <table border="1" class="content-form">
@@ -115,7 +126,7 @@
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">Degree</td>
-                                    <td><%#Eval("BirthPlace")%></td>
+                                    <td><%#Eval("")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">Cost</td>
@@ -131,8 +142,8 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="content-form_label" align="right" style="padding-right: 6px">
-                                        <a href="order_item.html">Edit</a>
-                                        &nbsp;<a href="document_list.html">Remove</a>
+                                        <a href="OrderItem.aspx">Edit</a>
+                                        &nbsp;<a href="DocumentList.aspx">Remove</a>
                                     </td>
                                 </tr>
                             </table>
