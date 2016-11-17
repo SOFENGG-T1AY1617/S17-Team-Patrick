@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/Content/css/info_acad_de.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="col-xs-3">
+    <div class="container">
         <h5>Request Flow</h5>
         <ul>
             <li>
@@ -20,9 +20,15 @@
             <li>Document List</li>
             <li>Checkout</li>
         </ul>
-        <div class="content-divider"></div>
-    </div>
-    <div class="col-xs-9">
+        <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><asp:HyperLink id="hlPersonal" 
+                    NavigateUrl="personal_information.html" 
+                    Text="Personal Information" 
+                    runat="server"/></li>
+            <li class="active">Academic Information</li>
+        </ul>
+
         <form id="frmAcadInfo" runat="server">
             <h5 class="content-header" class="content-form">Academic Information</h5>
 
