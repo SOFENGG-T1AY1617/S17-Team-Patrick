@@ -18,13 +18,13 @@
 
         <form id="frmAcadInfo" runat="server">
             <h4 class="content-header">Academic Information</h4>
-
-            <p>This step allows you to enter your academic information.<br>
-            It is possible that you may have earned more than one degree at DLSU. 
-            If your request will cover more than one degree, please make sure you enter the details of these degrees. 
-            Otherwise, just enter the details of the degree for which you will be requesting a document.
-            </p>
-
+            <blockquote>
+                <p>This step allows you to enter your academic information.<br><br>
+                It is possible that you may have earned more than one degree at DLSU. <br>
+                If your request will cover more than one degree, please make sure you enter the details of these degrees. <br>
+                Otherwise, just enter the details of the degree for which you will be requesting a document.
+                </p>
+            </blockquote>
             <table class="table table-striped table-hover ">
                 <thead>
                 <tr>
@@ -34,7 +34,7 @@
                 <tbody>
                 <tr>
                     <td class="content-form_label">Campus Attended</td>
-                    <td style="padding-left: 3px;">
+                    <td>&nbsp;
                         <asp:DropDownList ID="ddlCampus" runat="server" Width="200px">
                             <asp:ListItem Text="Select Campus" Value="0"></asp:ListItem>
                             <asp:ListItem Text="Taft" Value="1"></asp:ListItem>
@@ -45,14 +45,14 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">Year Admitted</td>
-                    <td style="padding-left: 3px;">
+                    <td>&nbsp;
                         <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px">
                         </asp:dropdownlist>
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" class="content-form_label">Level <span style="color: red">*</span></td>
-                    <td style="padding-left: 3px;">
+                    <td>&nbsp;
                         <asp:RadioButtonList ID="optLevel" runat="server" 
                             RepeatDirection="Vertical" RepeatLayout="Flow">
                             <asp:ListItem Text="Bachelor" Value="U"></asp:ListItem>
@@ -86,12 +86,13 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">Student No</td>
-                    <td>&nbsp;<asp:TextBox ID="txtStudNo"
-                        runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
+                    <td>&nbsp;
+                        <asp:TextBox ID="txtStudNo"
+                                runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
                 </tr>
                 <tr>
                     <td class="content-form_label">Admitted as</td>
-                    <td style="padding-left: 3px">
+                    <td>
                         <asp:RadioButtonList ID="optAdmittedAs"runat="server" 
                             RepeatDirection="Vertical" RepeatLayout="Flow">
                             <asp:ListItem Text="Regular Student" Value="1"></asp:ListItem>
@@ -104,7 +105,6 @@
                     <td colspan="2" align="center">
                         <asp:Button ID="btnAction" runat="server" text="Cancel" class="btn btn-primary"></asp:Button>
                         <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary" OnClick = "SubmitStudentDegree_Click" text="Submit"></asp:Button>
-
                     </td>
                 </tr>
                 </tbody>
