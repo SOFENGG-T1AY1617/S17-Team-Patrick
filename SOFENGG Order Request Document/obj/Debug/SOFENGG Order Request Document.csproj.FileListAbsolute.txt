@@ -1,0 +1,7 @@
+C:\Users\Ronnie Nieva\Documents\GitHub\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.dll.config
+C:\Users\Ronnie Nieva\Documents\GitHub\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.dll
+C:\Users\Ronnie Nieva\Documents\GitHub\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.pdb
+C:\Users\Ronnie Nieva\Documents\GitHub\S17-Team-Patrick\SOFENGG Order Request Document\bin\MySql.Data.dll
+C:\Users\Ronnie Nieva\Documents\GitHub\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.csprojResolveAssemblyReference.cache
+C:\Users\Ronnie Nieva\Documents\GitHub\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.dll
+C:\Users\Ronnie Nieva\Documents\GitHub\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.pdb

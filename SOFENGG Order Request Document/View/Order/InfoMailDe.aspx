@@ -119,9 +119,7 @@
                 </td>
             </tr>
         </table>
-        <a href="info_mail_confirm.html">
-            <asp:Button class="btn btn-primary" runat="server">Next</asp:button>
-        </a>
+        <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitMailInfo"/>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

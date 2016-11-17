@@ -11,10 +11,19 @@
             <li><a href="#">Home</a></li>
             <li class="active">Personal Information</li>
         </ul>
+<<<<<<< HEAD
 
         <form runat="server">
         <h4 class="content-header">Personal Information</h4>
         <table class="table table-striped">
+=======
+        <div class="content-divider"></div>
+    </div>
+    <div class="col-xs-9">
+        <h5 class="content-header">Personal Information</h5>
+        
+        <table border=1 class="content-form">
+>>>>>>> US14B-Order-InfoMailDe
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>
             </tr>
@@ -165,7 +174,12 @@
                 </td>
             </tr>
         </table>
+<<<<<<< HEAD
         </form>
+=======
+            
+            <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitPersonalInformation_Click"/>
+>>>>>>> US14B-Order-InfoMailDe
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
