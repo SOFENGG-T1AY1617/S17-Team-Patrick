@@ -46,7 +46,8 @@ namespace SOFENGG_Order_Request_Document.Model
 
         public bool MarkAsDone(int referenceNo)
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlMarkAsDone(referenceNo);
+            return db.ExecuteQuery();
         }
 
         public bool MarkAsPending(int referenceNo, DateTime newDueDate, string reason)
@@ -57,7 +58,8 @@ namespace SOFENGG_Order_Request_Document.Model
 
         public bool MarkAsProcessing(int referenceNo)
         {
-            throw new NotImplementedException();
+            var db = new DBMySqlMarkAsProcessing(referenceNo);
+            return db.ExecuteQuery();
         }
 
         public Order GetOrderInformation(int referenceNo)

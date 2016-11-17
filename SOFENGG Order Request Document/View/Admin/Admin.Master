@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="col-md-10 table-responsive">
-            <form runat="server">
+            <form ID="formMain" runat="server">
                 <div class="container">
                     <asp:ContentPlaceHolder ID="body" runat="server">
 
@@ -79,6 +79,7 @@
 </div>
 
 <script src="/Script/jquery.min.js"></script>
+<script src="/Script/jquery.validate.min.js"></script>  
 <script src="/Script/bootstrap.min.js"></script>
 <asp:ContentPlaceHolder ID="script" runat="server">
 

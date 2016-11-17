@@ -78,6 +78,16 @@ namespace SOFENGG_Order_Request_Document.View.Admin
             _presenter.MarkAsPending(referenceNo, newDueDate, reason);
         }
 
+        public void MarkAsProcessing(int referenceNo)
+        {
+            _presenter.MarkAsProcessing(referenceNo);
+        }
+
+        public void MarkAsDone(int referenceNo)
+        {
+            _presenter.MarkAsDone(referenceNo);
+        }
+
         protected void UpdateCountLabels()
         {
             lblProcessingCount.Text = ProcessingCount.ToString();
@@ -130,6 +140,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
                 lblActiveOrderPhoneNumber.Text = ActiveOrder.Receiver.PhoneNumber;
                 lblActiveOrderPlaceOfBirth.Text = ActiveOrder.Receiver.PlaceOfBirth;
                 lblActiveOrderEmail.Text = ActiveOrder.Receiver.Email;
+                lblActiveTransactionDate.Text = ActiveOrder.TransactionDate.ToString("d");
 
                 repOrderMailingInfo.DataSource = OrderItemGroup;
                 repOrderMailingInfo.DataBind();
@@ -150,6 +161,36 @@ namespace SOFENGG_Order_Request_Document.View.Admin
         {
             MarkAsPending(ActiveOrder.ReferenceNo, txtNewDueDate.Text, txtPendingReason.Text);
             GetOrderList();
+
+            UpdateOrderInformationButton();
+        }
+
+        protected void btnMarkProcessing_OnClick(object sender, EventArgs e)
+        {
+            MarkAsProcessing(ActiveOrder.ReferenceNo);
+            GetOrderList();
+
+            UpdateOrderInformationButton();
+        }
+
+        protected void btnMarkDone_OnClick(object sender, EventArgs e)
+        {
+            MarkAsDone(ActiveOrder.ReferenceNo);
+            GetOrderList();
+
+            UpdateOrderInformationButton();
+        }
+
+        protected void UpdateOrderInformationButton()
+        {
+            upOrderList.Update();
+            GetOrderInformation(ActiveOrder.ReferenceNo);
+            var status = ActiveOrder.OrderStatus;
+
+            var isDone = status == OrderStatusEnum.Late || status == OrderStatusEnum.OnTime;
+            btnMarkProcessing.Visible = !isDone && status != OrderStatusEnum.Processing;
+            btnMarkDone.Visible = !isDone && status != OrderStatusEnum.OnTime && status != OrderStatusEnum.Late;
+            btnMarkPending.Visible = !isDone && status != OrderStatusEnum.Pending;
         }
     }
 }

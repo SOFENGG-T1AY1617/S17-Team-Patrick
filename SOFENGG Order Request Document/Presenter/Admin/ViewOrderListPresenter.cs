@@ -101,5 +101,15 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
         {
             return _model.MarkAsPending(referenceNo, DateTime.Parse(newDueDate), reason);
         }
+
+        public bool MarkAsProcessing(int referenceNo)
+        {
+            return _model.MarkAsProcessing(referenceNo);
+        }
+
+        public bool MarkAsDone(int referenceNo)
+        {
+            return _model.MarkAsDone(referenceNo);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Main.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Admin.Main" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Admin/Admin.Master" AutoEventWireup="True" CodeBehind="Main.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Admin.Main" %>
 
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model.Helper" %>
@@ -13,104 +13,112 @@
     <div class="jumbotron">
         <h2>Current Orders</h2>
 
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-7">
-                      <div class="navbar navbar-default">
-                          <div class="collapse navbar-collapse">
-                              <div class="form-group search_bar">
-                                  <input type="text" class="form-control" placeholder="Search Reference ID" />
-                              </div>
-                              <button type="submit" class="btn btn-default">Search</button>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-md-5">
-                      <ul class="nav nav-tabs">
-                          <li class="active"><a href="#home" data-toggle="tab">All</a></li>
-                          <li><a href="#profile" data-toggle="tab">Processing</a></li>
-                          <li><a href="#profile" data-toggle="tab">Pending</a></li>
-                          <li><a href="#profile" data-toggle="tab">On Time</a></li>
-                          <li><a href="#profile" data-toggle="tab">Late</a></li>
-                       </ul>
-
-                  </div>
-              </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="navbar navbar-default">
+                        <div class="collapse navbar-collapse">
+                            <div class="form-group search_bar">
+                                <input type="text" class="form-control" placeholder="Search Reference ID" />
+                            </div>
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#home" data-toggle="tab">All</a></li>
+                        <li><a href="#profile" data-toggle="tab">Processing</a></li>
+                        <li><a href="#profile" data-toggle="tab">Pending</a></li>
+                        <li><a href="#profile" data-toggle="tab">On Time</a></li>
+                        <li><a href="#profile" data-toggle="tab">Late</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div id="myTabContent" class="tab-content">
-            <table class="table table-bordered">
-                    <tr>
-                        <td>
-                            <h6><span class="glyphicon glyphicon-play">&nbsp;</span>Processing: <b>
-                                <asp:Label ID="lblProcessingCount" runat="server" /></b></h6>
-                        </td>
-                        <td class="warning">
-                            <h6><span class="glyphicon glyphicon-pause">&nbsp;</span>Pending: <b>
-                                <asp:Label ID="lblPendingCount" runat="server" /></b></h6>
-                        </td>
-                        <td class="success">
-                            <h6><span class="glyphicon glyphicon-ok">&nbsp;</span>On Time: <b>
-                                <asp:Label ID="lblOnTimeCount" runat="server" /></b></h6>
-                        </td>
-                        <td class="danger">
-                            <h6><span class="glyphicon glyphicon-bell">&nbsp;</span>Late: <b>
-                                <asp:Label ID="lblLateCount" runat="server" /></b></h6>
-                        </td>
-                        <td>
-                            <h6>Total Quantity: <b>
-                                <asp:Label ID="lblTotalCount" runat="server" /></b></h6>
-                        </td>
-                    </tr>
-                </table>
+            <asp:UpdatePanel ID="upStatus" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>
+                                <h4><span class="glyphicon glyphicon-play">&nbsp;</span>Processing: <b>
+                                    <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
+                            </td>
+                            <td class="warning">
+                                <h4><span class="glyphicon glyphicon-pause">&nbsp;</span>Pending: <b>
+                                    <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
+                            </td>
+                            <td class="success">
+                                <h4><span class="glyphicon glyphicon-ok">&nbsp;</span>On Time: <b>
+                                    <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
+                            </td>
+                            <td class="danger">
+                                <h4><span class="glyphicon glyphicon-bell">&nbsp;</span>Late: <b>
+                                    <asp:Label ID="lblLateCount" runat="server" /></b></h4>
+                            </td>
+                            <td>
+                                <h4>Total Quantity: <b>
+                                    <asp:Label ID="lblTotalCount" runat="server" /></b></h4>
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 
     <div class="content-main table-responsive">
         <div class="main_report">
-                <asp:Repeater ID="repOrders" runat="server">
-                    <HeaderTemplate>
-                        <table class="table table-hover table-bordered table-fluid">
-                            <thead>
-                                <tr>
-                                    <td>Reference Number</td>
-                                    <td>Transaction Date</td>
-                                    <td>Date Due</td>
-                                    <td>Status</td>
-                                    <td>Name</td>
-                                    <td>Amount</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
-                            <td>
-                                <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
-                            </td>
-                            <td>
-                                <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
-                            </td>
-                        </tr>
-                    </ItemTemplate>
-                    <FooterTemplate>
-                        </tbody>
+
+            <asp:UpdatePanel ID="upOrderList" ChildrenAsTriggers="True" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <asp:Repeater ID="repOrders" runat="server">
+                        <HeaderTemplate>
+                            <table class="table table-hover table-bordered table-fluid">
+                                <thead>
+                                    <tr>
+                                        <td>Reference Number</td>
+                                        <td>Transaction Date</td>
+                                        <td>Date Due</td>
+                                        <td>Status</td>
+                                        <td>Name</td>
+                                        <td>Amount</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
+                                <td>
+                                    <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
+                                </td>
+                                <td>
+                                    <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </tbody>
                     </table>
-                    </FooterTemplate>
-                </asp:Repeater>
-            </div>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="other" runat="server">
@@ -118,7 +126,7 @@
     <div class="modal fade" id="dlgOrderInformation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
-            <asp:UpdatePanel ID="upOrderInformation" runat="server" UpdateMode="Conditional">
+            <asp:UpdatePanel ID="upOrderInformation" ChildrenAsTriggers="True" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
                     <input type="hidden" id="cmdUpdateOrderInformation" />
                     <div class="modal-content">
@@ -147,7 +155,8 @@
                                         <tr>
                                             <td>Address</td>
                                             <td>
-                                                <asp:Label ID="lblActiveOrderAddress" runat="server" /></td>
+                                                <asp:Label ID="lblActiveOrderAddress" runat="server" />
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Phone Number</td>
@@ -166,6 +175,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <asp:Label ID="lblActiveTransactionDate" style="display: none;" CssClass="lblActiveTransactionDate" runat="server" />
 
                                 <asp:Repeater ID="repOrderMailingInfo" runat="server">
                                     <ItemTemplate>
@@ -254,9 +264,16 @@
                             <div class="content_buttons">
                                 <%--<button id="btnBack" class="btn btn-primary">Back</button>--%>
 
-                                <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" data-toggle="modal" data-target="#dlgPending" runat="server" Text="Mark as Pending" />
-                                <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" />
-                                <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" />
+                                <asp:UpdatePanel ID="upOrderInformationButtons" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" data-toggle="modal" data-target="#dlgPending" runat="server" Text="Mark as Pending" />
+                                        <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" OnClick="btnMarkDone_OnClick" />
+                                        <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" OnClick="btnMarkProcessing_OnClick" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="btnMarkAsPending" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
                             </div>
                         </div>
                     </div>
@@ -279,7 +296,7 @@
                         <div class="form-group">
                             <label for="txtPendingReason" class="col-sm-3 control-label">Reason For Delay</label>
                             <div class="col-sm-7">
-                            <asp:TextBox ID="txtPendingReason" TextMode="MultiLine" runat="server" class="form-control"/>
+                                <asp:TextBox ID="txtPendingReason" MaxLength="200" TextMode="MultiLine" runat="server" class="form-control" />
                             </div>
                         </div>
 
@@ -287,17 +304,19 @@
                             <label for="txtNewDueDate" class="col-sm-3 control-label">New Due Date</label>
                             <div class="col-sm-9">
                                 <asp:TextBox ID="txtNewDueDate" CssClass="txtNewDueDate form-control" runat="server" Width="150px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ControlToValidate="txtNewDueDate" runat="server" ValidationGroup="vgPending" ErrorMessage="Please set a new due date." Display="dynamic"></asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ControlToValidate="txtNewDueDate" ErrorMessage="Invalid format of date. Use MM/DD/YYYY format." runat="server" ValidationExpression="^([0-9]|0[1-9]|1[012])\/([0-9]|0[1-9]|[12][0-9]|3[01])\/(19|20)\d\d$" ValidationGroup="vgPending" Display="dynamic"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <asp:Button ID="btnMarkAsPending" ValidationGroup="vgPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
-                    <button id="btnPendingCancel" type="button" class="btn btn-default" data-dismiss="modal">
-                        Cancel</button>
-                </div>
+                <asp:UpdatePanel ID="upDlgPending" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <div class="modal-footer">
+                            <asp:Button ID="btnMarkAsPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClientClick="$('#dlgPending').modal('hide');" OnClick="btnMarkAsPending_OnClick" data-dismiss="modal" />
+                            <button id="btnPendingCancel" type="button" class="btn btn-default" data-dismiss="modal">
+                                Cancel</button>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
         </div>
     </div>
@@ -305,26 +324,117 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/admin_main.js"></script>
 
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/Content/css/jquery-ui.css" />
+    <script src="/Script/jquery-ui.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
-            var prm = Sys.WebForms.PageRequestManager.getInstance();
-            prm.add_initializeRequest(InitializeRequest);
-            prm.add_endRequest(EndRequest);
-            // Place here the first init of the DatePicker
+            $("#dlgPending")
+                .on('shown.bs.modal', function (e) {
+                    $("#dlgOrderInformation").modal('hide');
 
-            $('.txtNewDueDate').datepicker();
+                    var prm = Sys.WebForms.PageRequestManager.getInstance();
+                    prm.add_initializeRequest(InitializeRequest);
+                    prm.add_endRequest(EndRequest);
+                    // Place here the first init of the DatePicker
 
+                    $('.txtNewDueDate').datepicker(
+                    {
+                        showButtonPanel: true,
+                        minDate: getMinimumNewDueDate($('#<%=lblActiveTransactionDate.ClientID %>').text()),
+                        changeMonth: true,
+                        changeYear: true
+                    });
+                });
         });
 
-        function InitializeRequest(sender, args) { }
-        function EndRequest(sender, args) {
-            // after update occur on UpdatePanel re-init the DatePicker
+            function InitializeRequest(sender, args) { }
+            function EndRequest(sender, args) {
+                // after update occur on UpdatePanel re-init the DatePicker
 
-            $('.txtNewDueDate').datepicker();
+                var minDate = getMinimumNewDueDate($('#<%=lblActiveTransactionDate.ClientID %>').text());
+                $(".txtNewDueDate").datepicker("option", "minDate", minDate).datepicker("setDate", new Date());
 
-        }
+            }
+
+            function getMinimumNewDueDate(transactionDate) {
+                return new Date(new Date(transactionDate).valueOf() + 1000 * 3600 * 24);
+            }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Rule: Greater Than
+            jQuery.validator.addMethod("greaterThan",
+            function(value, element, params) {
+
+                console.log("Current Date = " + value);
+                console.log("Start Date Element Name = " + params);
+                console.log("Start Date = " + $(params).text());
+
+                if (!/Invalid|NaN/.test(new Date(value))) {
+                    return new Date(value) > new Date($(params).text());
+                }
+
+                return isNaN(value) && isNaN($(params).text())
+                    || (Number(value) > Number($(params).text()));
+            },'Must be greater than {0}.');
+
+            // Rule: Date Format
+            $.validator.addMethod("dateFormat", function(value, element, regexp) {
+                return this.optional(element) || regexp.test(value);
+            }, "Please enter a valid date.");
+
+            // Set rules
+            $("#formMain").validate({
+                rules: {
+                    //This section we need to place our custom rule
+                    //for the control.
+                    <%=txtPendingReason.UniqueID %>:{
+                        required: true
+                    },
+                    <%=txtNewDueDate.UniqueID %>:{
+                        required: true,
+                        dateFormat: /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/,
+                        greaterThan: '.lblActiveTransactionDate'
+                    },
+                },
+                messages: {
+                    //This section we need to place our custom
+                    //validation message for each control.
+                    <%=txtPendingReason.UniqueID %>:{
+                        required: "Please enter a reason for delay."
+                    },
+                    <%=txtNewDueDate.UniqueID %>:{
+                        required: "Please enter a new due date.",
+                        greaterThan: "New due date must be after the transaction date.",
+                        dateFormat: "Please enter a valid date (MM/DD/YYYY)"
+                    }
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                },
+                success: function (element) {
+                    //element.text('OK!').addClass('valid')
+                    //    .closest('.form-group').removeClass('has-error').addClass('has-success');
+                    element.addClass('valid')
+                        .closest('.form-group').removeClass('has-error');
+                }
+            });
+
+            // Empty modal controls
+            $('#dlgPending')
+                .on('hidden.bs.modal',
+                    function(e) {
+                        $("#dlgOrderInformation").modal('show');
+                        $(this)
+                            .find("input,textarea,select").not(':submit')
+                            .val('')
+                            .end()
+                            .find("input[type=checkbox], input[type=radio]")
+                            .prop("checked", "")
+                            .end();
+                    });
+        });
     </script>
 </asp:Content>

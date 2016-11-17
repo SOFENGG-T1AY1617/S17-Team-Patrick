@@ -65,10 +65,14 @@
     <Content Include="Content\css\admin_main.css" />
     <Content Include="Content\css\admin_navbar.css" />
     <Content Include="Content\css\admin_order_information.css" />
+    <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\images\dlsu_logo.png" />
+    <Content Include="Script\jquery-ui.js" />
+    <Content Include="Script\jquery.validate.min.js" />
     <Content Include="Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
     <Content Include="View\Admin\Main.aspx" />
+    <Content Include="View\Admin\OrderInformationService.asmx" />
     <Content Include="View\Admin\Pending.aspx" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -153,6 +157,8 @@
     <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
+    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsDone.cs" />
+    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsProcessing.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsPending.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetDocument.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetStudentInfoId.cs" />
@@ -229,6 +235,10 @@
     </Compile>
     <Compile Include="View\Admin\Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\OrderInformationService.asmx.cs">
+      <DependentUpon>OrderInformationService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\Admin\Pending.aspx.cs">
       <DependentUpon>Pending.aspx</DependentUpon>
