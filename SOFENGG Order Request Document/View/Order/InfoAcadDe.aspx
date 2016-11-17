@@ -4,8 +4,7 @@
     <link rel="stylesheet" href="/Content/css/info_acad_de.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class = "text-center">
-        <div class="container-fluid">
+        <div class="container-fluid" align="center">
             <h5>Request Flow</h5>
             <ul class="breadcrumb">
                 &nbsp;
@@ -109,7 +108,6 @@
                 </table>
             </form>
         </div>
-    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 
