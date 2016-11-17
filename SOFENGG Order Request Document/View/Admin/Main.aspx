@@ -281,7 +281,6 @@
                             <div class="col-sm-7">
                             <asp:TextBox ID="txtPendingReason" TextMode="MultiLine" runat="server" class="form-control"/>
                             </div>
-                            <asp:RequiredFieldValidator ControlToValidate="txtPendingReason" runat="server" ErrorMessage="Reason for pending cannot be blank." ValidationGroup="vgPending"></asp:RequiredFieldValidator>
                         </div>
 
                         <div class="form-group">

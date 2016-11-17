@@ -12,10 +12,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    
+    <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
+
     <div class="jumbotron">
         <h2>Document List</h2>
-        <button class="btn btn-primary" id="add_button">Add Document</button>
+        <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document"/>
     </div>
 
     <div class="content-main table-responsive">
@@ -103,79 +104,89 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="other" runat="server">
-    <div class="popup-background">
-        <div class="popup">
-            <h3 class="popup_center_align">Add Document</h3>
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <label for="txtName" class="col-sm-5 control-label">Document Name</label>
-                    <div class="col-sm-7">
-                        <asp:TextBox ID="txtName" class="form-control" type="text" placeholder="Document Name" runat="server" />
-                        <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name cannot be empty."></asp:RequiredFieldValidator>
-                    </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="txtRegularPrice" class="col-sm-5 control-label">Regular Charge</label>
-                    <div class="col-sm-7">
-                        <asp:TextBox ID="txtRegularPrice" class="form-control" type="text" placeholder="Price" runat="server" />
-                        <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" ErrorMessage="Regular price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-                        <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
-                    </div>
+    <div class="modal fade" id="dlgAddDocument" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="popup_center_align">Add Document</h3>
                 </div>
-
-                <div class="form-group">
-                    <label for="txtExpressPrice" class="col-sm-5 control-label">Express Charge</label>
-                    <div class="col-sm-7">
-                        <asp:TextBox ID="txtExpressPrice" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
-                        <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-                        <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="txtWeight" class="col-sm-5 control-label">Weight</label>
-                    <div class="col-sm-7">
-                        <asp:TextBox ID="txtWeight" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
-                        <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvWeight" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-                        <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvWeight" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="txtMaxCopies" class="col-sm-5 control-label">Maximum Copies</label>
-                    <div class="col-sm-7">
-                        <asp:TextBox ID="txtMaxCopies" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
-                        <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvMaxCopies" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-                        <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvMaxCopies" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-5 col-sm-7">
-                        <div class="checkbox">
-                            <label>
-                                <asp:CheckBox ID="cbForUndergraduate" runat="server" CcsClass="checkbox"/>
-                                <asp:Label runat="server" Text="For Undergraduate"></asp:Label>
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <asp:CheckBox ID="cbForGraduate" runat="server" CcsClass="checkbox"/>
-                                <asp:Label runat="server" Text="For Graduate"></asp:Label>
-                            </label>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="txtName" class="col-sm-5 control-label">Document Name</label>
+                        <div class="col-sm-5">
+                            <asp:TextBox ID="txtName" class="form-control" type="text" placeholder="Document Name" runat="server" />
+                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvName" runat="server" ControlToValidate="txtName" ErrorMessage="Name cannot be empty."></asp:RequiredFieldValidator>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="popup_center_align">
-                <asp:Button ID="btnAdd" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
-                <button id="btnAddCancel" class="btn btn-warning">Cancel</button>
+                    <div class="form-group">
+                        <label for="txtRegularPrice" class="col-sm-5 control-label">Regular Charge</label>
+                        <div class="col-sm-5">
+                            <asp:TextBox ID="txtRegularPrice" class="form-control" type="text" placeholder="Price" runat="server" />
+                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" ErrorMessage="Regular price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtExpressPrice" class="col-sm-5 control-label">Express Charge</label>
+                        <div class="col-sm-5">
+                            <asp:TextBox ID="txtExpressPrice" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
+                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvExpressPrice" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtWeight" class="col-sm-5 control-label">Weight</label>
+                        <div class="col-sm-5">
+                            <asp:TextBox ID="txtWeight" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
+                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvWeight" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvWeight" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtMaxCopies" class="col-sm-5 control-label">Maximum Copies</label>
+                        <div class="col-sm-5">
+                            <asp:TextBox ID="txtMaxCopies" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
+                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvMaxCopies" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvMaxCopies" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-7">
+                            <div class="checkbox">
+                                <label>
+                                    <asp:CheckBox ID="cbForUndergraduate" runat="server" CcsClass="checkbox"/>
+                                    <asp:Label runat="server" Text="For Undergraduate"></asp:Label>
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <asp:CheckBox ID="cbForGraduate" runat="server" CcsClass="checkbox"/>
+                                    <asp:Label runat="server" Text="For Graduate"></asp:Label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="popup_center_align">
+                        <asp:Button ID="btnAdd" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
+                        <button id="btnAddCancel" class="btn btn-warning">Cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/admin_document_list.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js" type="text/javascript"></script>
 </asp:Content>

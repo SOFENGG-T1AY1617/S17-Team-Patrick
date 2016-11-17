@@ -66,6 +66,7 @@
     <Content Include="Content\css\admin_navbar.css" />
     <Content Include="Content\css\admin_order_information.css" />
     <Content Include="Content\images\dlsu_logo.png" />
+    <Content Include="Script\jquery.validate.min.js" />
     <Content Include="Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
     <Content Include="View\Admin\Main.aspx" />
