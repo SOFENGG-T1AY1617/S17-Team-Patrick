@@ -19,7 +19,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database.OrderInformation
                 @"SELECT {0}
                 FROM {1}
                 WHERE {2} = @{2}
-                ", MailingInfo.ColIdStudent,
+                ", MailingInfo.ColMailingId,
                 MailingInfo.Table,
                 MailingInfo.ColMailingId);
 
@@ -33,7 +33,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database.OrderInformation
                 throw new NoNullAllowedException(string.Format("No studentInfoId found on mailingId = '{0}'",
                     _mailingId));
 
-            StudentInfoId = int.Parse(ObjectList[0][MailingInfo.ColIdStudent].ToString());
+            StudentInfoId = int.Parse(ObjectList[0][MailingInfo.ColMailingId].ToString());
         }
     }
 }

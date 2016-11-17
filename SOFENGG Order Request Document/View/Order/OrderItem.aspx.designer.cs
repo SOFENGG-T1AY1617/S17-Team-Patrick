@@ -31,13 +31,13 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.RadioButton rbExpress;
         
         /// <summary>
-        /// for_pickup control.
+        /// cbPickup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox for_pickup;
+        protected global::System.Web.UI.WebControls.CheckBox cbPickup;
         
         /// <summary>
         /// ddlCampus control.
@@ -58,30 +58,30 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.TextBox tbNoCopy;
         
         /// <summary>
-        /// rbBrown control.
+        /// rfvNoCopy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbBrown;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNoCopy;
         
         /// <summary>
-        /// rbWhite control.
+        /// optInsert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbWhite;
+        protected global::System.Web.UI.WebControls.RadioButtonList optInsert;
         
         /// <summary>
-        /// rbNone control.
+        /// rfvInsert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbNone;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvInsert;
     }
 }

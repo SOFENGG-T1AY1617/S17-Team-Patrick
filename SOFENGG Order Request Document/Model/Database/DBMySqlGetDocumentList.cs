@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOFENGG_Order_Request_Document.Model.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,22 +9,54 @@ namespace SOFENGG_Order_Request_Document.Model.Database
     public class DBMySqlGetDocumentList : DBMySqlSelectConnection
     {
         public Document[] DocumentList;
-        /* private readonly bool _isGraduate;
-         private readonly bool _isUndergraduate;
+        private readonly bool _isGraduate;
+        private readonly bool _isUndergraduate;
+        private readonly int _Category;
+        protected string AdditionalCondition;
+        protected DocumentCategoryEnum Category;
 
-         public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
-         {
-             _isGraduate = isGraduate;
-             _isUndergraduate = isUndergraduate;
-         } */
+        public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
+        {
+            _isGraduate = isGraduate;
+            _isUndergraduate = isUndergraduate;
+            string var = string.Format("WHERE {0} == @{1} && {2} == @{3}", 
+                Document.ColForGraduate, _isGraduate, Document.ColForUndergraduate, _isUndergraduate);
+
+            
+
+        }
+
+        public DBMySqlGetDocumentList(DocumentCategoryEnum category)
+        {
+            AdditionalCondition = string.Format(" WHERE {0} = @{0}", Document.ColCategory);
+            Category = category;
+        }
+
+        public DBMySqlGetDocumentList()
+        {
+        }
 
         protected override void SetQuery()
         {
             Cmd.CommandText = string.Format("SELECT * FROM {0}", Document.Table);
 
-//            Cmd.Parameters.AddWithValue("@name", "banana");
-            Cmd.Prepare();
+
+            try
+            {
+                if (string.IsNullOrEmpty(AdditionalCondition))
+                    return;
+                Cmd.CommandText += AdditionalCondition;
+                Cmd.Parameters.AddWithValue("@" + Document.ColCategory, (int)Category);
+            }
+            //            Cmd.Parameters.AddWithValue("@name", "banana");
+            finally
+            {
+                Cmd.Prepare();
+                System.Diagnostics.Debug.WriteLine(Cmd.GetPreparedStatementString());
+            }
+            
         }
+
 
         public override void Parse()
         {

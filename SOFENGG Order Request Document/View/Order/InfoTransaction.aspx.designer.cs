@@ -13,6 +13,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
     public partial class InfoTransaction {
         
         /// <summary>
+        /// rptPersonalInformation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptPersonalInformation;
+        
+        /// <summary>
         /// repDeliveryDetails control.
         /// </summary>
         /// <remarks>

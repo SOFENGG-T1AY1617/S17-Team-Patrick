@@ -10,7 +10,6 @@ namespace SOFENGG_Order_Request_Document.Model
         public const string Table = "mailinginfo";
         public const string ColStudentInfoId = "studentInfoId";
         public const string ColMailingId = "mailingId";
-        public const string ColIdStudent = "studentInfoId";
         public const string ColMailingAddress = "mailingAddress";
         public const string ColZipCode = "zipCode";
         public const string ColDeliveryAreaId = "deliveryAreaId";

@@ -19,14 +19,59 @@ namespace SOFENGG_Order_Request_Document.View.Order
             _presenter = new OrderDocumentListPresenter(this);
         }
 
-        public Document[] AvailableDocumentList
+       /*public Document[] AvailableDocumentList
         {
+
             set
             {
                 gvDocumentList.DataSource = value;
                 gvDocumentList.DataBind();
+
+                
+            }
+        } */
+
+        public Document[] CertificateDocumentList
+        {
+            set
+            {
+                gvCertification.DataSource = value;
+                gvCertification.DataBind();
             }
         }
+
+        public Document[] TORDocumentList
+        {
+            set
+            {
+                gvTOR.DataSource = value;
+                gvTOR.DataBind();
+            }
+        }
+
+        public Document[] TrueCopyDocumentList
+        {
+            set
+            {
+                gvTrueCopy.DataSource = value;
+                gvTrueCopy.DataBind();
+            }
+        }
+
+        public Document[] OthersDocumentList
+        {
+            set
+            {
+                gvOthers.DataSource = value;
+                gvOthers.DataBind();
+            }
+        }
+
+        
+
+
+
+
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -39,8 +84,14 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         public void GetDocumentList()
         {
-            _presenter.GetDocumentList();
+            _presenter.GetTORDocumentList(DocumentCategoryEnum.TranscriptOfRecords);
+            _presenter.GetCertificateDocumentList(DocumentCategoryEnum.Certification);
+            
+            _presenter.GetTrueCopyDocumentList(DocumentCategoryEnum.CertifiedTrueCopy);
+            _presenter.GetOthersDocumentList(DocumentCategoryEnum.Others);
            
+
+
         }
 
       
@@ -95,6 +146,9 @@ namespace SOFENGG_Order_Request_Document.View.Order
             // Parse Express Price
             var expressPriceValue = ((TextBox)_gvRow.Cells[4].Controls[0]).Text;
             float expressPrice;
+
+            
+
 
             try
             {

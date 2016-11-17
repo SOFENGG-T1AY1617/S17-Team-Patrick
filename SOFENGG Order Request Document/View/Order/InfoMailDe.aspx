@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoMailDe.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoMailDe" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoMailDe.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoMailDe" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/info_mail_de.css">
+    <link rel="stylesheet" href="/Content/css/info_mail_de.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="col-xs-3">
@@ -29,7 +29,7 @@
         <p>
             This step allows you to enter your mailing information.
             <br>
-            <br>
+            <br/>
             You may want your documents delivered to more than one mailing address. Enter the addresses here.
         </p>
         <form action=""></form>
@@ -99,7 +99,7 @@
                             ControlToValidate="ddlDelivery"
                             ErrorMessage="Select the appropriate delivery area for the inputted mailing address."
                             ForeColor="Red">
-                        </asp:RequiredFieldValidator>
+                        </asp:RequiredFieldValidator>   
                 </td>
             </tr>
             <tr class="delivery-info">
@@ -116,9 +116,7 @@
 
 
         </table>
-        <a href="info_mail_confirm.html">
-            <asp:Button class="btn btn-primary content-form_next" runat="server">Next</asp:button>
-        </a>
+        <asp:Button CssClass="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitMailInfo"/>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

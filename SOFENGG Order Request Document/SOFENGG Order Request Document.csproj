@@ -155,6 +155,7 @@
     <Compile Include="Model\Database\DBMySqlAddMailingInfo.cs" />
     <Compile Include="Model\Database\DBMySqlAddPersonalInformation.cs" />
     <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
+    <Compile Include="Model\Database\DBMySqlEditPersonalInformation.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsDone.cs" />
@@ -203,6 +204,7 @@
     <Compile Include="Model\StudentInfo.cs" />
     <Compile Include="Model\IUserModel.cs" />
     <Compile Include="Presenter\Admin\ViewOrderListPresenter.cs" />
+    <Compile Include="Presenter\Order\InfoTransactionPresenter.cs" />
     <Compile Include="Presenter\PersonalInformationPresenter.cs" />
     <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
     <Compile Include="Presenter\DocumentListPresenter.cs" />
@@ -293,6 +295,7 @@
     <Compile Include="View\Order\InfoMailDe.aspx.designer.cs">
       <DependentUpon>InfoMailDe.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\InfoMailDePresenter.cs" />
     <Compile Include="View\Order\InfoTransaction.aspx.cs">
       <DependentUpon>InfoTransaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -301,6 +304,7 @@
       <DependentUpon>InfoTransaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Order\Interface\IInfoAcadDeView.cs" />
+    <Compile Include="View\Order\Interface\IInfoMailDeView.cs" />
     <Compile Include="View\Order\Interface\IOrderDocumentListView.cs" />
     <Compile Include="View\Order\Order.Master.cs">
       <DependentUpon>Order.Master</DependentUpon>
@@ -347,7 +351,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7766</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

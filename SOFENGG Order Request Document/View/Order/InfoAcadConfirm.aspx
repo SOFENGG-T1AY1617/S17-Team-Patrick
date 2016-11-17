@@ -21,7 +21,6 @@
         <div class="content-divider"></div>
     </div>
     <div class="col-xs-9">
-        <form runat="server">
         <h5>Academic Information</h5>
         
         <asp:Repeater id="rptInfoAcadConfirm" runat="server">
@@ -54,8 +53,8 @@
                     <tr>
                         <td colspan="2">
                             <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Degree.Id")%>' />
-                            <asp:Button class="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
-                            <asp:Button class="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
+                            <asp:Button Cssclass="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
+                            <asp:Button Cssclass="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
                         </td>
                     </tr>
                 </table>
@@ -67,10 +66,9 @@
        </asp:Repeater>
        
         <div>
-            <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
-            <asp:Button class="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
+            <asp:Button Cssclass="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
+            <asp:Button Cssclass="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
         </div>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

@@ -16,8 +16,7 @@ namespace SOFENGG_Order_Request_Document.Model
         CertifiedTrueCopy = 3,
         [Description("Others")]
         Others = 4,
-        [Description("Special")]
-        Special = 0
+        
 
     }
 

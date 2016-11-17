@@ -15,6 +15,10 @@ namespace SOFENGG_Order_Request_Document.View.Order
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["StudentInfo"]["Id"] == null)
+            {
+                Response.Redirect("~/View/Order/Error.aspx");
+            }
             StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
             DisplayAllStudentDegree();
         }
