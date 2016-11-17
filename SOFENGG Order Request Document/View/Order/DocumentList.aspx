@@ -38,12 +38,14 @@
     <div class="col-xs-9">
         <h5 class="content-header">Document List</h5>
         <div>
-            <table border="1" class="content-document">
+            <table border="1"class="content-document" style="width:482px; border-color: lightgrey;" >
                 <tr>
                     <td colspan="1" class="content-document-header" >Below is a list of documents that you can request from the OUR. <br />Press the order link to the document you want to order.</td>
                 </tr>
+            </table>
+            <table style="width:482px; border-color: lightgray; border-top: hidden; border-left: 1px solid; border-right: 1px solid; border-bottom:hidden; border-color: gray;" >
                 <tr>
-                    <td colspan="4" class="content-document-header">Transcript of Records</td>
+                    <td colspan="4" class="content-document-header" >Transcript of Records</td>
                 </tr>
             </table>
             <asp:GridView ID="gvTOR" AutoGenerateColumns="False" runat="server">
@@ -53,10 +55,10 @@
                             <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="125px">
+                    <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="125px" >
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
-                        </ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>'  ID="lbRegularPrice"></asp:Label>  
+                            </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="125px">
                         <ItemTemplate>
@@ -66,9 +68,7 @@
                     <asp:HyperLinkField Text="Order" HeaderStyle-Width="53" navigateurl="~\details.aspx" />
                 </Columns>
             </asp:GridView>
-
-
-            <table>
+            <table style="width:482px; border-left: 1px solid; border-right: 1px solid; border-color: gray;">
                 <tr>
                     <td colspan="4" class="content-document-header">Certification</td>
                 </tr>
@@ -96,7 +96,7 @@
                 </Columns>
             </asp:GridView>
 
-            <table>
+            <table style="width:482px; border-left: 1px solid; border-right: 1px solid; border-color: gray;">
                 <tr>
                     <td colspan="4" class="content-document-header">Certified True Copy</td>
                 </tr>
@@ -123,7 +123,7 @@
                 </Columns>
             </asp:GridView>
 
-            <table>
+            <table style="width:482px; border-left: 1px solid; border-right: 1px solid; border-color: gray;">
                 <tr>
                     <td colspan="4" class="content-document-header">Others</td>
                 </tr>
