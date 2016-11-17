@@ -17,3 +17,7 @@
 .table-fluid tbody tr td:last-child {
     text-align:right;
 }
+
+textarea {
+    resize: none;
+}
