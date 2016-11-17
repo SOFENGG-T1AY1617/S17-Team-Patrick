@@ -35,23 +35,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
         }
 
-
-        protected void SubmitMailInfo(object sender, EventArgs e)
-        {
-            InfoMailDePresenter presenter = new InfoMailDePresenter(this);
-
-            StudentInfoId = int.Parse(Request.Cookies["StudentInfoId"]["Id"]);
-            MailingAddress = txtMailAddress.Text;
-            MailingContactNo = txtMailingNum.Text;
-            Zipcode = int.Parse(txtZipCode.Text);
-            DeliveryAreaId = int.Parse(ddlDelivery.SelectedItem.Value);
-
-            if (presenter.AddMailInfo())
-            {
-                Response.Redirect("~/View/Order/DocumentList.aspx");
-            }
-        }
-
         public int StudentInfoId { get; set; }
         public string MailingAddress { get; set; }
         public int Zipcode { get; set; }
