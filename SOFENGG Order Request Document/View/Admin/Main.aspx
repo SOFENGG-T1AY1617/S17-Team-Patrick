@@ -11,44 +11,42 @@
     <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
 
     <div class="jumbotron">
-        <h1>Current Orders</h1>
+        <h2>Current Orders</h2>
 
-        <div class="navbar navbar-default">
           <div class="container-fluid">
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filter <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Processing</a></li>
-                    <li><a href="#">Pending</a></li>
-                    <li><a href="#">On Time</a></li>
-                    <li><a href="#">Late</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                  <div class="navbar-form navbar-left">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search Reference ID">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+              <div class="row">
+                  <div class="col-md-7">
+                      <div class="navbar navbar-default">
+                          <div class="collapse navbar-collapse">
+                              <div class="form-group search_bar">
+                                  <input type="text" class="form-control" placeholder="Search Reference ID" />
+                              </div>
+                              <button type="submit" class="btn btn-default">Search</button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-5">
+                      <ul class="nav nav-tabs">
+                          <li class="active"><a href="#home" data-toggle="tab">All</a></li>
+                          <li><a href="#profile" data-toggle="tab">Processing</a></li>
+                          <li><a href="#profile" data-toggle="tab">Pending</a></li>
+                          <li><a href="#profile" data-toggle="tab">On Time</a></li>
+                          <li><a href="#profile" data-toggle="tab">Late</a></li>
+                       </ul>
+
+                  </div>
               </div>
-              </ul>
-            </div><!-- /.navbar-collapse -->
-          </div><!-- /.container-fluid -->
         </div>
 
         <div id="myTabContent" class="tab-content">
             <table class="table table-bordered">
                     <tr>
                         <td>
-                            <h4>Processing: <b>
+                            <h4><span class="glyphicon glyphicon-play">&nbsp;</span>Processing: <b>
                                 <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
                         </td>
                         <td class="warning">
-                            <h4>Pending: <b>
+                            <h4><span class="glyphicon glyphicon-pause">&nbsp;</span>Pending: <b>
                                 <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
                         </td>
                         <td class="success">
@@ -56,7 +54,7 @@
                                 <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
                         </td>
                         <td class="danger">
-                            <h4><span class="glyphicon glyphicon-remove">&nbsp;</span>Late: <b>
+                            <h4><span class="glyphicon glyphicon-bell">&nbsp;</span>Late: <b>
                                 <asp:Label ID="lblLateCount" runat="server" /></b></h4>
                         </td>
                         <td>

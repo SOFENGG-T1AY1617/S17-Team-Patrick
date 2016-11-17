@@ -1,8 +1,13 @@
 ﻿.search_bar {
-    padding-top: 10%;
+    display: inline;
 }
 .search_bar input {
-    margin-bottom: 1%;
+    margin-top: 2%;
+    width: 430px;
+    display: inline;
+}
+.search_bar button {
+    display: inline;
 }
 
 .main_report {
