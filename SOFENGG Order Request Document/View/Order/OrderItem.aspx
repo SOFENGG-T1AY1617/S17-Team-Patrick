@@ -94,7 +94,7 @@
                                    id="rvNoCopy" 
                                    ControlToValidate="tbNoCopy" 
                                    MinimumValue="1"
-                                   MaximumValue="9" 
+                                   MaximumValue='<%# Eval("maxCopy") %>' 
                                    Type="Integer" 
                                    ErrorMessage="Minimum no. of copies is 1; Max number of copies is 99."
                                    ForeColor="Red"  
