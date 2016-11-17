@@ -177,7 +177,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="popup_center_align">
-                        <asp:Button ID="btnAdd" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
+                        <asp:Button ID="btnAdd" ValidationGroup="grpAddDocumentRow" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
                         <button id="btnAddCancel" class="btn btn-warning">Cancel</button>
                     </div>
                 </div>
