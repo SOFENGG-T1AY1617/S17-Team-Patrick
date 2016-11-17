@@ -16,7 +16,7 @@
         </ul>
 
         <form id="frmAcadInfo" runat="server">
-            <h5 class="content-header" class="content-form">Academic Information</h5>
+            <h4 class="content-header">Academic Information</h4>
 
             <p>This step allows you to enter your academic information.<br><br/>
             It is possible that you may have earned more than one degree at DLSU. 
@@ -24,7 +24,7 @@
             Otherwise, just enter the details of the degree for which you will be requesting a document.
             </p>
 
-            <table border="1" class="content-form align = 'center'">
+            <table class="table table-striped table-hover ">
                 <thead>
                 <tr>
                     <td colspan="2">&nbsp;<span style="color: red">*</span> - indicates required field</td>
