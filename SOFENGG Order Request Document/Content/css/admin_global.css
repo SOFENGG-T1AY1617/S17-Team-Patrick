@@ -7,6 +7,12 @@ body {
 .brand img {
     width: 200px;
     height: auto;
+}   
+
+.sub-menu li a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
 }
 
 .jumbotron {
@@ -15,7 +21,7 @@ body {
 }
 
 .table-fluid {
-    tabl    e-layout: fixed;
+    table-layout: fixed;
     word-wrap: break-word;
 }
 
@@ -65,29 +71,4 @@ body {
   float: right;
   margin-top: 2%;
   margin-right: 5%;
-}
-
-.popup-background {
-    height: 100%;
-    width: 100%;
-    background:rgba(210,210,210,0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-}
-.popup {
-  z-index: 10;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
-  padding: 0 1% 1% 1%;
-}
-.popup_center_align {
-    text-align: center;
-}
-.popup textarea {
-  resize: none;
 }

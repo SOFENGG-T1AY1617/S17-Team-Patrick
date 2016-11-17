@@ -31,35 +31,35 @@
                             </a>
                         </li>
                         <li data-toggle="collapse" data-target="#order" class="collapsed">
-                            <a href="#"><i class="fa fa-car fa-lg"></i> Order List <span class="glyphicon glyphicon-menu-down"></span></a>
+                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Order List <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="order">
-                            <li><a href="Main.aspx">All</a></li>
-                            <li>Processing</li>
-                            <li>Pending</li>
-                            <li>On Time</li>
-                            <li>Late</li>
+                            <li><a href="Main.aspx">&nbsp;All</a></li>
+                            <li>&nbsp;Processing</li>
+                            <li>&nbsp;Pending</li>
+                            <li>&nbsp;On Time</li>
+                            <li>&nbsp;Late</li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#document" class="collapsed">
-                            <a href="#"><i class="fa fa-car fa-lg"></i> Document List <span class="glyphicon glyphicon-menu-down"></span></a>
+                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Document List <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="document">
-                            <li><a href="DocumentList.aspx">View Document List</a></li>
+                            <li><a href="DocumentList.aspx">&nbsp;View Document List</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#operationaldate" class="collapsed">
-                            <a href="#"><i class="fa fa-car fa-lg"></i> Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
+                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="operationaldate">
-                            <li><a href="#">Manage Operational Date</a></li>
+                            <li><a href="#">&nbsp;Manage Operational Date</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#user" class="collapsed">
-                            <a href="#"><i class="fa fa-car fa-lg"></i> User <span class="glyphicon glyphicon-menu-down"></span></a>
+                            <a href="#"><i class="fa fa-car fa-lg"></i>&nbsp;User <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="user">
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="#">&nbsp;Logout</a></li>
                         </ul>
                     </ul>
                 </div>
