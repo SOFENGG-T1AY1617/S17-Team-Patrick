@@ -3,15 +3,13 @@
     <link rel="stylesheet" href="/Content/css/error.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="error-message">
-        <ol>
-            <li class = "big-header"><b>Bummer.</b></li>
-            <li>The page you have accessed is not available.</li>
-        </ol>
-    </div>
-    <div class="return">
-        <div class="col-xs-3">
-            <a id="continue" href="/rules.html" class="btn btn-primary disabled">Return to Rules Page</a>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Bummer.</h1>
+            <p>
+                The page you have accessed is not available.
+            </p>
+            <a id="continue" href="/rules.html" class="btn btn-primary">Return to Rules Page</a>
         </div>
     </div>
 </asp:Content>
