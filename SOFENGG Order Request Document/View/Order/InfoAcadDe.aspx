@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/Content/css/info_acad_de.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="container">
+    <div class="container-fluid">
         <h5>Request Flow</h5>
         <ul class="breadcrumb">
             &nbsp;
@@ -76,7 +76,7 @@
                 <tr>
                     <td class="content-form_label">Degree <span style="color: red">*</span></td>
                     <td>&nbsp;
-                        <asp:DropDownList ID="ddlDegree" CssClass="form-control" runat="server" Width="200px"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlDegree" runat="server" Width="400px"></asp:DropDownList>
                         <asp:RequiredFieldValidator id="rfvDegree" runat="server"
                             ControlToValidate="ddlDegree"
                             ErrorMessage="Degree is a required field."
@@ -92,7 +92,7 @@
                 <tr>
                     <td class="content-form_label">Admitted as</td>
                     <td style="padding-left: 3px">
-                        <asp:RadioButtonList ID="optAdmittedAs" runat="server" 
+                        <asp:RadioButtonList ID="optAdmittedAs"runat="server" 
                             RepeatDirection="Vertical" RepeatLayout="Flow">
                             <asp:ListItem Text="Regular Student" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Transferee" Value="2"></asp:ListItem>

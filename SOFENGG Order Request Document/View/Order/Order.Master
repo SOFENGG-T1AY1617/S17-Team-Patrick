@@ -30,15 +30,18 @@
             </div>
         </div>
     </div>
-
+	
+	<div class="panel-footer">Panel footer</div>
+   		<div class="container">
+    		<p class="text-muted">Visit the DLSU website at 
+    			<a href="http://www.dlsu.edu.ph">www.dlsu.edu.ph</a></p>
+  		</div>
+	</div>
+	
     <script src="/Script/jquery.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>
 
-<div class="navbar navbar-fixed-bottom">
-    <div class="container">
-    	<p class="text-muted">Visit the DLSU website at <a href="http://www.dlsu.edu.ph">www.dlsu.edu.ph</a></p>
-  	</div>
-</div>
+
 </html>
