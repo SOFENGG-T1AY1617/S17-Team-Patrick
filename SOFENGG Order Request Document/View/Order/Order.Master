@@ -14,7 +14,7 @@
      <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body onload="window.resizeTo(777,600)">
+<body>
     <!-- Fixed container as application is not a full page application -->
     <div class="fixed-container">
         <div class="header">
