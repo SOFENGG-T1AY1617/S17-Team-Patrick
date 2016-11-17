@@ -66,14 +66,16 @@
             </div>
         </div>
         <div class="col-md-10 table-responsive">
-            <form ID="formMain" runat="server">
-                <div class="container">
-                    <asp:ContentPlaceHolder ID="body" runat="server">
+            <div class="row">
+                <div class="col-md-12">
+                    <form ID="formMain" runat="server">
+                            <asp:ContentPlaceHolder ID="body" runat="server">
 
-                    </asp:ContentPlaceHolder>
+                            </asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="other" runat="server"></asp:ContentPlaceHolder>
+                    </form>    
                 </div>
-                <asp:ContentPlaceHolder ID="other" runat="server"></asp:ContentPlaceHolder>
-            </form>    
+            </div>
         </div>
     </div>
 </div>

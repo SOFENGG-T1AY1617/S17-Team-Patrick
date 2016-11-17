@@ -43,10 +43,10 @@
                             <EditItemTemplate>
                                 <asp:TextBox runat="server" Text='<%# Bind("RegularPrice") %>' ID="txtEditRegularPrice" class="form-control"></asp:TextBox>
                                 <asp:RequiredFieldValidator ValidationGroup="grpEditDocumentRow" ID="rfvRegularPrice" runat="server" ControlToValidate="txtEditRegularPrice" ErrorMessage="Regular price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-                                <asp:RangeValidator ValidationGroup="grpEditDocumentRow" ID="rvRegularPrice" runat="server" ControlToValidate="txtEditRegularPrice" Type="Integer" MinimumValue="1" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
+                                <asp:RangeValidator ValidationGroup="grpEditDocumentRow" ID="rvRegularPrice" runat="server" ControlToValidate="txtEditRegularPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                                <asp:Label runat="server" Text='<%# float.Parse(Eval("RegularPrice").ToString()) == 0f ? "N/A" : float.Parse(Eval("RegularPrice").ToString()).ToString("n2") %>' ID="lbRegularPrice"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Express Price">
@@ -56,7 +56,7 @@
                                 <asp:RangeValidator ValidationGroup="grpEditDocumentRow" ID="rvExpressPrice" runat="server" ControlToValidate="txtEditExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                                <asp:Label runat="server" Text='<%# float.Parse(Eval("ExpressPrice").ToString()) == 0f ? "N/A" : float.Parse(Eval("ExpressPrice").ToString()).ToString("n2") %>' ID="lbExpressPrice"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Weight">
@@ -84,7 +84,7 @@
                                 <asp:CheckBox runat="server" Checked='<%# Bind("IsForUndergraduate") %>' ID="chEditForUndergraduate" class="form-control"></asp:CheckBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Bind("IsForUndergraduate") %>' ID="lblForUndergraduate"></asp:Label>
+                                <asp:Label runat="server" Text='<%# bool.Parse(Eval("IsForUndergraduate").ToString()) ? "Yes" : "No" %>' ID="lblForUndergraduate"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="For Graduate">
@@ -92,7 +92,7 @@
                                 <asp:CheckBox runat="server" Checked='<%# Bind("IsForGraduate") %>' ID="chEditForGraduate" class="form-control"></asp:CheckBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label runat="server" Text='<%# Bind("IsForGraduate") %>' ID="lblForGraduate"></asp:Label>
+                                <asp:Label runat="server" Text='<%# bool.Parse(Eval("IsForGraduate").ToString()) ? "Yes" : "No" %>' ID="lblForGraduate"></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -126,7 +126,7 @@
                         <div class="col-sm-5">
                             <asp:TextBox ID="txtRegularPrice" class="form-control" type="text" placeholder="Price" runat="server" />
                             <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" ErrorMessage="Regular price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" Type="Double" MinimumValue="1" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 1." Display="Dynamic"></asp:RangeValidator>
+                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvRegularPrice" runat="server" ControlToValidate="txtRegularPrice" Type="Double" MinimumValue="0" MaximumValue="10000" ErrorMessage="Regular price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
                         </div>
                     </div>
 

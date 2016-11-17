@@ -18,6 +18,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database.OrderList
 		                INNER JOIN {17} m ON m.{18} = item.{19})
                         INNER JOIN {20} s ON s.{21} = m.{22})
                 GROUP BY o.{0}
+                ORDER BY {1} DESC
                 ", Order.ColReferenceNo, Order.ColTransactionDate, Order.ColDateDue, Order.ColNewDateDue,
                 StudentInfo.ColFirstName, StudentInfo.ColMiddleName, StudentInfo.ColLastName, OrderItem.ColNoOfCopies,
                 OrderItem.ColOrderType, Document.ColRegularPrice, Document.ColExpressPrice,

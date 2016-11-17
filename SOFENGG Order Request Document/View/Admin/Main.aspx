@@ -13,7 +13,7 @@
     <div class="jumbotron">
         <h2>Current Orders</h2>
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="display: none;">
             <div class="row">
                 <div class="col-md-7">
                     <div class="navbar navbar-default">
@@ -43,24 +43,24 @@
                     <table class="table table-bordered">
                         <tr>
                             <td>
-                                <h4><span class="glyphicon glyphicon-play">&nbsp;</span>Processing: <b>
-                                    <asp:Label ID="lblProcessingCount" runat="server" /></b></h4>
+                                <h6><span class="glyphicon glyphicon-play">&nbsp;</span>Processing: <b>
+                                    <asp:Label ID="lblProcessingCount" runat="server" /></b></h6>
                             </td>
                             <td class="warning">
-                                <h4><span class="glyphicon glyphicon-pause">&nbsp;</span>Pending: <b>
-                                    <asp:Label ID="lblPendingCount" runat="server" /></b></h4>
+                                <h6><span class="glyphicon glyphicon-pause">&nbsp;</span>Pending: <b>
+                                    <asp:Label ID="lblPendingCount" runat="server" /></b></h6>
                             </td>
                             <td class="success">
-                                <h4><span class="glyphicon glyphicon-ok">&nbsp;</span>On Time: <b>
-                                    <asp:Label ID="lblOnTimeCount" runat="server" /></b></h4>
+                                <h6><span class="glyphicon glyphicon-ok">&nbsp;</span>On Time: <b>
+                                    <asp:Label ID="lblOnTimeCount" runat="server" /></b></h6>
                             </td>
                             <td class="danger">
-                                <h4><span class="glyphicon glyphicon-bell">&nbsp;</span>Late: <b>
-                                    <asp:Label ID="lblLateCount" runat="server" /></b></h4>
+                                <h6><span class="glyphicon glyphicon-bell">&nbsp;</span>Late: <b>
+                                    <asp:Label ID="lblLateCount" runat="server" /></b></h6>
                             </td>
                             <td>
-                                <h4>Total Quantity: <b>
-                                    <asp:Label ID="lblTotalCount" runat="server" /></b></h4>
+                                <h6>Total Quantity: <b>
+                                    <asp:Label ID="lblTotalCount" runat="server" /></b></h6>
                             </td>
                         </tr>
                     </table>
@@ -133,8 +133,8 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4>Reference Number
-                                <asp:Label ID="lblActiveReferenceNo" runat="server"></asp:Label></h4>
+                            <h6>Reference Number
+                                <asp:Label ID="lblActiveReferenceNo" runat="server"></asp:Label></h6>
                         </div>
                         <div class="modal-body">
 
@@ -214,7 +214,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td>Date Due To Courier</td>
-                                                        <td>WAT?</td>
+                                                        <td></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Estimated Delivery Date</td>
@@ -289,7 +289,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4>Mark as Pending</h4>
+                    <h6>Mark as Pending</h6>
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
