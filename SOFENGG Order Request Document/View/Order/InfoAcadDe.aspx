@@ -6,20 +6,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="container">
         <h5>Request Flow</h5>
-        <ul>
-            <li>
-                <asp:HyperLink id="hlPersonal" 
-                    NavigateUrl="personal_information.html" 
-                    Text="Personal Information" 
-                    runat="server"/>
-            </li>
-            <li>
-                <b>Academic Information</b>
-            </li>
-            <li>Mailing Information</li>
-            <li>Document List</li>
-            <li>Checkout</li>
-        </ul>
         <ul class="breadcrumb">
             <li><a href="#">Home</a></li>
             <li><asp:HyperLink id="hlPersonal" 
