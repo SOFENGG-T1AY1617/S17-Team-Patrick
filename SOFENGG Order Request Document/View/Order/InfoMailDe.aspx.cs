@@ -35,9 +35,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
         }
 
-
-        
-
         public int StudentInfoId { get; set; }
         public string MailingAddress { get; set; }
         public int Zipcode { get; set; }
