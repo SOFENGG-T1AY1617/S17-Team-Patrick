@@ -20,12 +20,9 @@ textarea {
   background-color: rgb(74, 128, 83);
 }
 .header-photo {
-  background-image: url("../images/header.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height:76px;
+   height: 100px; 
+   background-image: url("../images/header.jpg"); 
+   background-size: 100% 100%;
 }
 .header p {
   text-align: right;
