@@ -23,7 +23,7 @@
                     If your request will cover more than one degree, please make sure you enter the details of these degrees. <br>
                     Otherwise, just enter the details of the degree for which you will be requesting a document.
                     </p>
-                <table class="table table-striped table-hover ">
+                <table class="table table-striped">
                     <thead>
                     <tr>
                         <td colspan="2"><span style="color: red">*</span> - indicates required field</td>
