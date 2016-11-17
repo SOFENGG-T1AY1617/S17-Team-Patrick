@@ -17,7 +17,6 @@
 <body>
 <!-- Fixed container as application is not a full page application -->
 
-
 <div  class="container-fluid">
     <div class="row">
         <div class="col-md-2">
@@ -35,7 +34,7 @@
                             <a href="#"><i class="fa fa-car fa-lg"></i> Order List <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="order">
-                            <li><a href="OrderList.aspx">All</a></li>
+                            <li><a href="Main.aspx">All</a></li>
                             <li>Processing</li>
                             <li>Pending</li>
                             <li>On Time</li>

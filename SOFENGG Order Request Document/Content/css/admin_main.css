@@ -17,3 +17,6 @@ table thead {
     background-color: #0094ff;
     color: white;
 }
+.table-fluid tbody tr td:last-child {
+    text-align:right;
+}
