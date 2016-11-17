@@ -19,7 +19,9 @@
         </ol>
 
         <div class="col-xs-9">
-            <asp:CheckBox ID="checkbox" runat="server">I have read and understood the policies regarding this facility.</asp:CheckBox>
+            <asp:Label id="labelCB" AssociatedControlId="checkbox" 
+                Text="I have read and understood the policies regarding this facility." runat="server" />
+            <asp:CheckBox ID="checkbox" runat="server"></asp:CheckBox>
         </div>
 
         <div class="col-xs-3">
