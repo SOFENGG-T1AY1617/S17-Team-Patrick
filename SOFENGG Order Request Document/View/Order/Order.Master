@@ -33,9 +33,9 @@
 	
 	<div class="panel-footer">
    		<div class="container">
-    		<p class="text-muted">Visit the DLSU website at 
+    		<p class="text-muted" style="color:white;">Visit the DLSU website at 
     			<a href="http://www.dlsu.edu.ph">www.dlsu.edu.ph</a></p>
-    		<p>(c) 2016 De La Salle University.
+    		<p>(c) 2016 De La Salle University.</p>
   		</div>
 	</div>
 	
