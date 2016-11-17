@@ -16,7 +16,7 @@
 
     <div class="jumbotron">
         <h2>Document List</h2>
-        <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document"/>
+        <input type="button" id="add_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document"/>
     </div>
 
     <div class="content-main table-responsive">
@@ -142,18 +142,18 @@
                     <div class="form-group">
                         <label for="txtWeight" class="col-sm-5 control-label">Weight</label>
                         <div class="col-sm-5">
-                            <asp:TextBox ID="txtWeight" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
-                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvWeight" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvWeight" runat="server" ControlToValidate="txtExpressPrice" Type="Double" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
+                            <asp:TextBox ID="txtWeight" class="form-control express_charge" type="text" placeholder="Weight" runat="server" />
+                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvWeight" runat="server" ControlToValidate="txtWeight" ErrorMessage="Weight field cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvWeight" runat="server" ControlToValidate="txtWeight" Type="Double" MinimumValue="0" MaximumValue="10000" ErrorMessage="Weight cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="txtMaxCopies" class="col-sm-5 control-label">Maximum Copies</label>
                         <div class="col-sm-5">
-                            <asp:TextBox ID="txtMaxCopies" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
-                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvMaxCopies" runat="server" ControlToValidate="txtExpressPrice" ErrorMessage="Express price cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
-                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvMaxCopies" runat="server" ControlToValidate="txtExpressPrice" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Express price cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
+                            <asp:TextBox ID="txtMaxCopies" class="form-control express_charge" type="text" placeholder="Max Copies" runat="server" />
+                            <asp:RequiredFieldValidator ValidationGroup="grpAddDocumentRow" ID="rfvMaxCopies" runat="server" ControlToValidate="txtMaxCopies" ErrorMessage="Max copies field cannot be empty." Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RangeValidator ValidationGroup="grpAddDocumentRow" ID="rvMaxCopies" runat="server" ControlToValidate="txtMaxCopies" Type="Integer" MinimumValue="0" MaximumValue="10000" ErrorMessage="Max copies cannot be less than 0." Display="Dynamic"></asp:RangeValidator>
                         </div>
                     </div>
 
