@@ -14,7 +14,7 @@
      <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body onload="window.resizeTo(777,600)">
+<body>
     <!-- Fixed container as application is not a full page application -->
     <div class="fixed-container">
         <div class="header">
@@ -31,14 +31,19 @@
         </div>
 </form>
     </div>
-
+	
+	<div class="panel-footer">
+   		<div class="container">
+    		<p class="text-muted" style="color:white;">Visit the DLSU website at 
+    			<a href="http://www.dlsu.edu.ph">www.dlsu.edu.ph</a></p>
+    		<p>(c) 2016 De La Salle University.</p>
+  		</div>
+	</div>
+	
     <script src="/Script/jquery.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>
 
-<div class="navbar navbar-fixed-bottom">
-    <div class="footer-photoPole"></div>
-    <div class="footer-photoBase"></div>
-</div>
+
 </html>

@@ -4,21 +4,22 @@
     <link rel="stylesheet" href="/Content/css/info_*_confirm.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-
-    <div class="col-xs-3">
-        <h5>Request Flow</h5>
-        <ul>
-            <li>
-                <a href="personal_information.html">Personal Information</a>
-            </li>
-            <li>
-                <a href="info_acad_de.html">Academic Information</a>
-            </li>
-            <li>
-                <b>Mailing Information</b>
-            </li>
-            <li>Document List</li>
-            <li>Checkout</li>
+    <div class="container-fluid center-block">
+       <ul class="breadcrumb">
+                &nbsp;
+                <li><a href="#">Home</a></li>
+                <li><asp:HyperLink id="hlPersonal" 
+                        NavigateUrl="personal_information.html" 
+                        Text="Personal Information" 
+                        runat="server"/>
+                </li>
+                <li>
+                <asp:HyperLink id="hlAacademic" 
+                    NavigateUrl="info_acad_de.html" 
+                    Text="Academic Information" 
+                    runat="server"/>
+                </li>
+                <li class="active">Mailing Information</li>
         </ul>
         <div class="content-divider"></div>
     </div>
