@@ -35,7 +35,7 @@
                 <tr>
                     <td class="content-form_label">Campus Attended</td>
                     <td style="padding-left: 3px;">
-                        <asp:DropDownList ID="ddlCampus" runat="server" Width="200px" CssClass="form-control">
+                        <asp:DropDownList ID="ddlCampus" runat="server" Width="200px">
                             <asp:ListItem Text="Select Campus" Value="0"></asp:ListItem>
                             <asp:ListItem Text="Taft" Value="1"></asp:ListItem>
                             <asp:ListItem Text="STC" Value="2"></asp:ListItem>
@@ -46,7 +46,7 @@
                 <tr>
                     <td class="content-form_label">Year Admitted</td>
                     <td style="padding-left: 3px;">
-                        <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px" CssClass="form-control">
+                        <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px">
                         </asp:dropdownlist>
                     </td>
                 </tr>
@@ -54,7 +54,7 @@
                     <td valign="top" class="content-form_label">Level <span style="color: red">*</span></td>
                     <td style="padding-left: 3px;">
                         <asp:RadioButtonList ID="optLevel" runat="server" 
-                            RepeatDirection="Vertical" RepeatLayout="Flow" CssClass="form-control">
+                            RepeatDirection="Vertical" RepeatLayout="Flow">
                             <asp:ListItem Text="Bachelor" Value="U"></asp:ListItem>
                             <asp:ListItem Text="Masters" Value="M"></asp:ListItem>
                             <asp:ListItem Text="Doctorate" Value="D"></asp:ListItem>
@@ -70,7 +70,7 @@
                     <td class="content-form_label">Is Graduate? <span style="color: red">*</span></td>
                     <td>
                         &nbsp;
-                        <asp:CheckBox ID="isGraduate" CssClass="form-control" runat="server"/>&nbsp;
+                        <asp:CheckBox ID="isGraduate" runat="server"/>&nbsp;
                     </td>
                 </tr>
                 <tr>
@@ -86,13 +86,13 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">Student No</td>
-                    <td>&nbsp;<asp:TextBox ID="txtStudNo" CssClass="form-control" 
+                    <td>&nbsp;<asp:TextBox ID="txtStudNo"
                         runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
                 </tr>
                 <tr>
                     <td class="content-form_label">Admitted as</td>
                     <td style="padding-left: 3px">
-                        <asp:RadioButtonList ID="optAdmittedAs" CssClass="form-control" runat="server" 
+                        <asp:RadioButtonList ID="optAdmittedAs" runat="server" 
                             RepeatDirection="Vertical" RepeatLayout="Flow">
                             <asp:ListItem Text="Regular Student" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Transferee" Value="2"></asp:ListItem>
