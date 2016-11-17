@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/Content/css/info_acad_de.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-        <div class="container-fluid" align="center">
+        <div class="container-fluid center-block">
             <h5>Request Flow</h5>
             <ul class="breadcrumb">
                 &nbsp;
