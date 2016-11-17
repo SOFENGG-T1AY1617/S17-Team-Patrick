@@ -4,22 +4,20 @@
     <link rel="stylesheet" href="/Content/css/personal_information.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="col-xs-3">
-        <h5>Request Flow</h5>
-        <ul>
-            <li>
-                <b>Personal Information</b>
-            </li>
-            <li>Academic Information</li>
-            <li>Mailing Information</li>
-            <li>Document List</li>
-            <li>Checkout</li>
+<div class = "container">
+    <h5>Request Flow</h5>
+        <ul class="breadcrumb">
+            &nbsp;
+            <li><a href="#">Home</a></li>
+            <li><asp:HyperLink id="hlPersonal" 
+                    NavigateUrl="personal_information.html" 
+                    Text="Personal Information" 
+                    runat="server"/></li>
+            <li class="active">Academic Information</li>
         </ul>
-        <div class="content-divider"></div>
-    </div>
-    <div class="col-xs-9">
-        <h5 class="content-header">Personal Information</h5>
+
         <form runat="server">
+        <h4 class="content-header">Personal Information</h4>
         <table border=1 class="content-form">
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>

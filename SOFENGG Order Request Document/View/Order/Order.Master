@@ -37,7 +37,8 @@
 </body>
 
 <div class="navbar navbar-fixed-bottom">
-    <div class="footer-photoPole"></div>
-    <div class="footer-photoBase"></div>
+    <div class="container">
+    	<p class="text-muted">Visit the DLSU website at <a href="http://www.dlsu.edu.ph">www.dlsu.edu.ph</a></p>
+  	</div>
 </div>
 </html>
