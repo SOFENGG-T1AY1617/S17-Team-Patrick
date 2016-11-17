@@ -31,10 +31,11 @@
         </div>
     </div>
 	
-	<div class="panel-footer">Panel footer</div>
+	<div class="panel-footer">
    		<div class="container">
     		<p class="text-muted">Visit the DLSU website at 
     			<a href="http://www.dlsu.edu.ph">www.dlsu.edu.ph</a></p>
+    		<p>(c) 2016 De La Salle University.
   		</div>
 	</div>
 	

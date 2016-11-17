@@ -93,7 +93,7 @@
                 <tr>
                     <td class="content-form_label">Admitted as</td>
                     <td>
-                        <asp:RadioButtonList ID="optAdmittedAs"runat="server" 
+                        <asp:RadioButtonList ID="optAdmittedAs" runat="server" 
                             RepeatDirection="Vertical" RepeatLayout="Flow">
                             <asp:ListItem Text="Regular Student" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Transferee" Value="2"></asp:ListItem>
