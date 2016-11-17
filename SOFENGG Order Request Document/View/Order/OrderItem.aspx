@@ -44,8 +44,8 @@
                     <td>
                         <table class="priceTable" style="border: none; width: 100%; background-color: white;">
                             <tr>
-
-                                <td>&nbsp;<asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server"></asp:RadioButton>&nbsp;Regular Processing</td>
+                         
+                                <td>&nbsp;<asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server" Checked="True" Selected="True"></asp:RadioButton>&nbsp;Regular Processing</td>
                                 <td>&nbsp;<%#Eval("RegularPrice") %></td>
                             </tr>
                             <tr>
@@ -94,7 +94,7 @@
                                    id="rvNoCopy" 
                                    ControlToValidate="tbNoCopy" 
                                    MinimumValue="1"
-                                   MaximumValue='<%# Eval("maxCopy") %>' 
+                                   MaximumValue="99" 
                                    Type="Integer" 
                                    ErrorMessage="Minimum no. of copies is 1; Max number of copies is 99."
                                    ForeColor="Red"  
