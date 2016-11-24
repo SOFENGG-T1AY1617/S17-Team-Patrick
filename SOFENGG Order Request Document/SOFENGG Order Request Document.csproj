@@ -197,7 +197,6 @@
     <Compile Include="Presenter\Order\InfoTransactionPresenter.cs" />
     <Compile Include="Presenter\PersonalInformationPresenter.cs" />
     <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
-    <Compile Include="Presenter\DocumentListPresenter.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\IOrderModel.cs" />
     <Compile Include="Presenter\Order\OrderDocumentListPresenter.cs" />
@@ -252,7 +251,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="View\Order\IDocumentListView.cs" />
     <Compile Include="View\Order\InfoAcadConfirm.aspx.cs">
       <DependentUpon>InfoAcadConfirm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

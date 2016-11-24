@@ -13,6 +13,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
         private readonly OrderDocumentListPresenter _presenter;
         private GridViewRow _gvRow;
 
+        public int id { get; set; }
 
         public DocumentList()
         {
@@ -78,6 +79,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             if (IsPostBack)
                 return;
+
+            id = int.Parse(Request.Cookies["StudentInfo"]["id"]);
 
             GetDocumentList();
         }
