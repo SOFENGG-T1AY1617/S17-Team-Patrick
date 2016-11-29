@@ -61,22 +61,22 @@
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
                                 </td>
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
                                 </td>
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
                                 </td>
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
                                 </td>
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
                                 </td>
                             </tr>

@@ -33,7 +33,7 @@
 
                         <asp:TemplateField HeaderText="Category">
                             <ItemTemplate>
-                                <asp:Label ID="lblCategory" runat="server" Text='<%#((DocumentCategoryEnum)Eval("Category")).GetDescription() %>'></asp:Label>
+                                <asp:Label CcsClass="text-left" ID="lblCategory" runat="server" Text='<%#((DocumentCategoryEnum)Eval("Category")).GetDescription() %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Regular Price">
