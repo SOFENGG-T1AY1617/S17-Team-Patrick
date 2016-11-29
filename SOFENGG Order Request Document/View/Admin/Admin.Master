@@ -73,6 +73,7 @@
 
                             </asp:ContentPlaceHolder>
                         <asp:ContentPlaceHolder ID="other" runat="server"></asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="edit" runat="server"></asp:ContentPlaceHolder>
                     </form>    
                 </div>
             </div>
