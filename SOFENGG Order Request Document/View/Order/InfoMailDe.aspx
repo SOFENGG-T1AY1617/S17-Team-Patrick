@@ -8,7 +8,6 @@
     <div class="container-fluid center-block">
         <ul class="breadcrumb">
                 &nbsp;
-                <li><a href="#">Home</a></li>
                 <li><asp:HyperLink id="hlPersonal" 
                         NavigateUrl="PersonalInformation.aspx" 
                         Text="Personal Information" 
@@ -104,18 +103,15 @@
                 <td class="content-form_label">Mailing Contact Number</td>
                 <td>
                     <asp:TextBox ID="txtMailingNum" runat="server"></asp:TextBox>
+                    <div id="txtMailingNum" class="alert alert-dismissible alert-danger" style="display: none;">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Oh my goodness!</strong> Contact number must only contain numbers.
+                    </div>
                     <asp:RequiredFieldValidator id="rfvMailingNum" runat="server"
                             ControlToValidate="txtMailingNum"
                             ErrorMessage="Mailing number is a required field."
                             ForeColor="Red">
                     </asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <a href="info_mail_confirm.html">
-                        <asp:Button class="btn btn-primary" runat="server">Next</asp:button>
-                    </a>
                 </td>
             </tr>
         </table>

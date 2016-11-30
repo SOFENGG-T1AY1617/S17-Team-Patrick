@@ -117,6 +117,10 @@
                 <td class="content-form_label">Phone Number</td>
                 <td>
                     <asp:TextBox ID="txtPhoneNum" runat="server"></asp:TextBox>
+                    <div id="txtPhoneNum" class="alert alert-dismissible alert-danger" style="display: none;">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Oh my goodness!</strong> Phone number must only contain numbers.
+                    </div>
                     <asp:RequiredFieldValidator id="rfvPhoneNum" runat="server"
                         ControlToValidate="txtPhoneNum"
                         ErrorMessage="Phone number is a required field."
@@ -128,6 +132,10 @@
                 <td class="content-form_label">Email Address</td>
                 <td>
                     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                    <div id="txtEmail" class="alert alert-dismissible alert-danger" style="display: none;">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Oh my goodness!</strong> Email address must follow this format: "example@example.com".
+                    </div>
                     <asp:RequiredFieldValidator id="rfvEmail" runat="server"
                         ControlToValidate="txtEmail"
                         ErrorMessage="E-mail address is a required field."

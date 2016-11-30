@@ -45,8 +45,7 @@
                     <tr>
                         <td class="content-form_label">Year Admitted</td>
                         <td>
-                            <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px">
-                            </asp:dropdownlist>
+                            <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px"></asp:dropdownlist>
                         </td>
                     </tr>
                     <tr>
@@ -61,10 +60,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="content-form_label">Student No</td>
+                        <td class="content-form_label">Student No.</td>
                         <td>
                             <asp:TextBox ID="txtStudNo"
                                     runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
+                            <div id="txtStudNo" class="alert alert-dismissible alert-danger" style="display: none;">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Oh my goodness!</strong> Student number must only contain 8 numbers.
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td class="content-form_label">Admitted as</td>
