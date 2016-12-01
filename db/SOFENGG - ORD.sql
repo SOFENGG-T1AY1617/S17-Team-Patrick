@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `ord` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `ord`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ord
@@ -53,7 +55,7 @@ CREATE TABLE `course` (
   `courseName` varchar(100) NOT NULL,
   PRIMARY KEY (`courseId`),
   UNIQUE KEY `courseId_UNIQUE` (`courseId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +64,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'WEBAPDE','Web App'),(2,'MACLERN','Machine Learning'),(3,'INTESYS','Intelligent System'),(4,'CCSCAL2','Calculus 2'),(5,'GRAPHIX','Graphics'),(6,'SOFENGG','Software Engineering');
+INSERT INTO `course` VALUES (1,'WEBAPDE','Web App'),(2,'MACLERN','Machine Learning'),(3,'INTESYS','Intelligent System'),(4,'CCSCAL2','Calculus 2'),(5,'GRAPHIX','Graphics'),(6,'SOFENGG','Software Engineering'),(7,'INTFILO','Introduction to Philosophy'),(8,'TREDONE','Theology 1'),(19,'TREDTWO','Theology 2'),(20,'TREDTRI','Theology 3'),(21,'TREDFOR','Theology 4'),(22,'CCSTRIG','Trig for ccs'),(23,'CCSCAL1','cal1 '),(24,'CCSALGE','algebra'),(25,'ENGLRES','English Research'),(26,'SPEECOM','Speaking class'),(27,'GREATWK','Great Works'),(28,'HUMALIT','Human Literature'),(29,'HUMAART','Human Art');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +220,7 @@ DROP TABLE IF EXISTS `ordercoursedesc`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ordercoursedesc` (
   `orderCourseDescId` int(11) NOT NULL AUTO_INCREMENT,
-  `referenceNo` int(11) NOT NULL,
+  `dtsNo` int(11) NOT NULL,
   `courseId` int(11) NOT NULL,
   PRIMARY KEY (`orderCourseDescId`),
   UNIQUE KEY `orderCourseDescId_UNIQUE` (`orderCourseDescId`)
@@ -231,7 +233,7 @@ CREATE TABLE `ordercoursedesc` (
 
 LOCK TABLES `ordercoursedesc` WRITE;
 /*!40000 ALTER TABLE `ordercoursedesc` DISABLE KEYS */;
-INSERT INTO `ordercoursedesc` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,5,5),(6,6,6);
+INSERT INTO `ordercoursedesc` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,5,5),(6,3,6);
 /*!40000 ALTER TABLE `ordercoursedesc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,11 +266,7 @@ CREATE TABLE `orderitem` (
 
 LOCK TABLES `orderitem` WRITE;
 /*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-<<<<<<< HEAD
 INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016,1),(2,4,2,2,1,1,1,2,2015,2),(3,5,3,3,2,2,0,3,2014,3),(4,2,5,4,10,0,0,1,2017,3),(5,3,4,1,999,2,1,1,2014,3);
-=======
-INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016,1),(2,4,2,2,1,1,1,2,2015,2),(3,5,3,3,2,2,0,3,2014,3),(4,2,5,4,10,0,0,1,2017,3),(5,3,4,1,999,2,1,1,2014,3),(6,1,8,2,1,0,0,1,2014,4),(7,1,6,3,1,1,1,2,2013,2),(8,1,10,4,1,2,0,3,2015,4),(9,2,9,1,1,0,1,1,2016,1),(10,2,7,1,1,1,0,2,2017,1),(11,2,6,1,1,2,1,3,2011,2);
->>>>>>> US07
 /*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -429,4 +427,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
+-- Dump completed on 2016-12-01 11:54:07
