@@ -13,18 +13,15 @@
     <ul class="breadcrumb">
                 &nbsp;
                 <li><a href="#">Home</a></li>
-                <li><asp:HyperLink id="hlPersonal" 
-                        NavigateUrl="personal_information.html" 
-                        Text="Personal Information" 
-                        runat="server"/></li>
-                <li><asp:HyperLink id="HyperLink1" 
-                                NavigateUrl="info_acad.de.html" 
-                                Text="Academic Information" 
-                                runat="server"/></li>
-                <li><asp:HyperLink id="HyperLink2" 
-                                        NavigateUrl="info_mail_de.html" 
-                                        Text="Mailing Information" 
-                                        runat="server"/></li>
+                <li>
+                    <a href="PersonalInformation.aspx">Personal Information</a>
+                </li>
+                <li>
+                    <a href="InfoAcadDe.aspx">Academic Information</a>
+                </li>
+                <li>
+                    <a href="InfoMailDe.aspx">Mailing Information</a>
+                </li>
                 <li class="active">Document List</li>
      </ul>
     
@@ -59,7 +56,7 @@
                             <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" HeaderStyle-Width="175px" />
+                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" HeaderStyle-Width="50px" />
                 </Columns>
             </asp:GridView>
             <table class="table table-striped">
@@ -117,7 +114,7 @@
                 </Columns>
             </asp:GridView>
 
-            <table class="table table-striped">
+            <table class="table table-striped" style="">
                 <tr>
                     <td colspan="4" class="content-document-header">Others</td>
                 </tr>
@@ -127,17 +124,17 @@
                 <Columns >
                     <asp:TemplateField HeaderText="Document Name" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                            <asp:Label runat="server"  Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                            <asp:Label runat="server"  Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                            <asp:Label runat="server"  Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
                     <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx"  HeaderStyle-Width="175px" />
