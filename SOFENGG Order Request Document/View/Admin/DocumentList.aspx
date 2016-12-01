@@ -71,8 +71,11 @@
                                 <input type="button" id="edit_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgEditDocument" value="Edit"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        
-                        <asp:CommandField ShowDeleteButton="True" />
+                        <asp:TemplateField HeaderText="Delete">
+                            <ItemTemplate>
+                                <input type="button" id="delete_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgDeleteDocument" value="Delete" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
@@ -229,6 +232,24 @@
                         <asp:Button ID="btnEdit" Text="Submit Edit" CssClass="btn btn-success" runat="server" />
                         <button id="btnEditCancel" class="btn btn-warning">Cancel</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+
+<asp:Content ID="Content6" ContentPlaceHolderID="delete" runat="server">
+    <div class="modal fade" id="dlgDeleteDocument" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h3>Delete Document?</h3>
+                </div>
+                <div class="modal-body">
+                    <button class="btn btn-primary">Yes</button>
+                    <button class="btn btn-primary">No</button>
+                </div>
+                <div class="modal-footer">
                 </div>
             </div>
         </div>

@@ -15,8 +15,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
+                <div class="col-md-offset-3">
                     <asp:UpdatePanel ID="upStatus" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
                              <ul class="nav nav-tabs justified">
@@ -34,7 +33,6 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
-                <div class="col-md-3"></div>
             </div>
         </div>
     </div>

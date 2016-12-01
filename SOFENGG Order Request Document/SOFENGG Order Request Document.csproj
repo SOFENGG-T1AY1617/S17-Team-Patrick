@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\admin_login.css" />
     <Content Include="Content\css\admin_main.css" />
     <Content Include="Content\css\admin_navbar.css" />
     <Content Include="Content\css\admin_order_information.css" />
@@ -71,6 +72,7 @@
     <Content Include="Script\jquery.validate.min.js" />
     <Content Include="Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
+    <Content Include="View\Admin\Login.aspx" />
     <Content Include="View\Admin\Main.aspx" />
     <Content Include="View\Admin\OrderInformationService.asmx" />
     <Content Include="View\Admin\Pending.aspx" />
@@ -229,6 +231,13 @@
     </Compile>
     <Compile Include="View\Admin\Interface\IOrderListView.cs" />
     <Compile Include="View\Admin\Interface\IDocumentListView.cs" />
+    <Compile Include="View\Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
