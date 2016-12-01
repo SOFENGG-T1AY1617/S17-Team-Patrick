@@ -9,22 +9,18 @@
         <ul class="breadcrumb">
                 &nbsp;
                 <li><a href="#">Home</a></li>
-                <li><asp:HyperLink id="hlPersonal" 
-                        NavigateUrl="personal_information.html" 
-                        Text="Personal Information" 
-                        runat="server"/></li>
-                <li><asp:HyperLink id="HyperLink1" 
-                                NavigateUrl="info_acad.de.html" 
-                                Text="Academic Information" 
-                                runat="server"/></li>
-                <li><asp:HyperLink id="HyperLink2" 
-                                        NavigateUrl="info_mail_de.html" 
-                                        Text="Mailing Information" 
-                                        runat="server"/></li>
-                <li><asp:HyperLink id="HyperLink3" 
-                                        NavigateUrl="document_list.html" 
-                                        Text="Document List" 
-                                        runat="server"/></li>
+                <li>
+                    <a href="PersonalInformation.aspx">Personal Information</a>
+                </li>
+                <li>
+                    <a href="InfoAcadDe.aspx">Academic Information</a>                              
+                </li>
+                <li>
+                    <a href="InfoMailDe.aspx">Mailing Information</a>
+                </li>
+                <li>
+                    <a href="DocumentList.aspx">Document List</a>
+                </li>
                 <li class="active">Order Item</li>
          </ul>
         
@@ -58,7 +54,7 @@
                             <tr>
                                 <td><asp:CheckBox ID="cbPickup" runat="server"></asp:CheckBox>For Pick Up</td>
                                 <td>
-                                    <asp:DropDownList id="ddlCampus" runat="server">
+                                    <asp:DropDownList id="ddlCampus" runat="server" style="display:none;">
                                         <asp:ListItem Text="DLSU-Manila" value="DLSU-Manila"/>
                                         <asp:ListItem Text="DLSU-STC" value="DLSU-STC"/>
                                         <asp:ListItem Text="DLSU-Makati" value="DLSU-Makati"/>
