@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Model;
 using SOFENGG_Order_Request_Document.Model.Helper;
 using SOFENGG_Order_Request_Document.Presenter.Order;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
+using System.Web;
+using System.Diagnostics;
 
 namespace SOFENGG_Order_Request_Document.View.Order
 {
@@ -15,22 +18,49 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         public int id { get; set; }
 
+
+
         public DocumentList()
         {
             _presenter = new OrderDocumentListPresenter(this);
         }
 
-       /*public Document[] AvailableDocumentList
+        protected void OnSelectedIndexChangedCert(object sender, EventArgs e)
         {
+            string documentname = gvCertification.SelectedRow.Cells[0].Text;
+            HttpCookie docuCookie = new HttpCookie("Document");
+           // docuCookie[""];
 
-            set
-            {
-                gvDocumentList.DataSource = value;
-                gvDocumentList.DataBind();
 
-                
-            }
-        } */
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+                return;
+
+            HttpCookie cookie = new HttpCookie("StudentInfo");
+            cookie["Id"] = 2 + "";
+            Response.Cookies.Add(cookie);
+            Debug.Write("\n\n\n ADDED PO!! \n\n\n");
+
+            id = int.Parse(Request.Cookies["StudentInfo"]["id"]);
+
+            GetDocumentList(id);
+        }
+
+        /*public Document[] AvailableDocumentList
+         {
+
+             set
+             {
+                 gvDocumentList.DataSource = value;
+                 gvDocumentList.DataBind();
+
+
+             }
+         } */
 
         public Document[] CertificateDocumentList
         {
@@ -75,23 +105,16 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
 
 
-        protected void Page_Load(object sender, EventArgs e)
+        
+
+        public void GetDocumentList(int id)
         {
-            if (IsPostBack)
-                return;
-
-            id = int.Parse(Request.Cookies["StudentInfo"]["id"]);
-
-            GetDocumentList();
-        }
-
-        public void GetDocumentList()
-        {
-            _presenter.GetTORDocumentList(DocumentCategoryEnum.TranscriptOfRecords);
-            _presenter.GetCertificateDocumentList(DocumentCategoryEnum.Certification);
             
-            _presenter.GetTrueCopyDocumentList(DocumentCategoryEnum.CertifiedTrueCopy);
-            _presenter.GetOthersDocumentList(DocumentCategoryEnum.Others);
+            _presenter.GetTORDocumentList(DocumentCategoryEnum.TranscriptOfRecords, id);
+            _presenter.GetCertificateDocumentList(DocumentCategoryEnum.Certification, id);
+            
+            _presenter.GetTrueCopyDocumentList(DocumentCategoryEnum.CertifiedTrueCopy, id);
+            _presenter.GetOthersDocumentList(DocumentCategoryEnum.Others, id);
            
 
 
@@ -232,6 +255,13 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             return value;
         }
+
+        
+
+      /*  protected void OrderDocument_Click(Object sender, EventArgs e)
+        {
+            OrderDocumentListPresenter _presenter = new OrderDocumentListPresenter(this);
+        } */
     }
 
 

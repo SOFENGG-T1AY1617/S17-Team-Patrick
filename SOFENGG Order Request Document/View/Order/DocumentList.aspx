@@ -46,20 +46,20 @@
                 <Columns >
                     <asp:TemplateField HeaderText="Document" HeaderStyle-Width="175px" >
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="TORlbName"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="175px" >
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>'  ID="lbRegularPrice"></asp:Label>  
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>'  ID="TORlbRegularPrice"></asp:Label>  
                             </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="175px" >
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="TORlbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" HeaderStyle-Width="175px" />
+                    <asp:ButtonField Text="Order" CommandName="Select" HeaderStyle-Width="175px" />
                 </Columns>
             </asp:GridView>
             <table class="table table-striped">
@@ -67,25 +67,25 @@
                     <td colspan="4" class="content-document-header">Certification</td>
                 </tr>
             </table>
-            <asp:GridView ID="gvCertification" AutoGenerateColumns="False" runat="server" CssClass="table table-striped">
+            <asp:GridView ID="gvCertification" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" OnSelectedIndexChanged ="OnSelectedIndexChangedCert">
                 <Columns >
                     <asp:TemplateField HeaderText="Document" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="CertlbName"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="175px">
                         <ItemTemplate >
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="CertlbRegularPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="CertlbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
                  
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" HeaderStyle-Width="175px" />
+                    <asp:ButtonField Text="Order" CommandName="Select" HeaderStyle-Width="175px" />
                    
                 </Columns>
             </asp:GridView>
@@ -100,20 +100,20 @@
                 <Columns >
                     <asp:TemplateField HeaderText="Document" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"  ></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="TruelbName"  ></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Regular Price"  HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="TruelbRegularPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Express Price"  HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="TruelbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx"  HeaderStyle-Width="175px" />
+                    <asp:HyperLinkField Text="Order" navigateurl="~/View/Order/OrderItem.aspx"  HeaderStyle-Width="175px" />
                 </Columns>
             </asp:GridView>
 
@@ -127,22 +127,24 @@
                 <Columns >
                     <asp:TemplateField HeaderText="Document Name" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="OtherslbName"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="OtherslbRegularPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="175px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="OtherslbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx"  HeaderStyle-Width="175px" />
+
+                    
                 </Columns>
             </asp:GridView>
+            
         </div>
     </form>
     </div>

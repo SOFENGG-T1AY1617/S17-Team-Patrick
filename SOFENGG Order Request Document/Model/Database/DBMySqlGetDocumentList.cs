@@ -9,19 +9,34 @@ namespace SOFENGG_Order_Request_Document.Model.Database
     public class DBMySqlGetDocumentList : DBMySqlSelectConnection
     {
         public Document[] DocumentList;
-        private readonly bool _isGraduate;
-        private readonly bool _isUndergraduate;
+        private readonly int _isGraduate;
+        private readonly int _isUndergraduate;
         private readonly int _Category;
         protected string AdditionalCondition;
         protected DocumentCategoryEnum Category;
+        protected DegreeLevelEnum Degree;
 
-        public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
+        public DBMySqlGetDocumentList(DocumentCategoryEnum category,DegreeLevelEnum degree )
         {
-            _isGraduate = isGraduate;
+            if (degree == DegreeLevelEnum.Bachelors)
+            {
+                _isUndergraduate = 1;
+                AdditionalCondition = string.Format(" WHERE {0} = @{0} && {1} = {2}", Document.ColCategory, Document.ColForUndergraduate, _isUndergraduate);
+                Category = category;
+            }
+            else
+            {
+                _isGraduate = 1;
+                AdditionalCondition = string.Format(" WHERE {0} = @{0} && {1} = {2}", Document.ColCategory, Document.ColForUndergraduate, _isGraduate);
+                Category = category;
+            }
+
+            /*
+                _isGraduate = isGraduate;
             _isUndergraduate = isUndergraduate;
             string var = string.Format("WHERE {0} == @{1} && {2} == @{3}", 
                 Document.ColForGraduate, _isGraduate, Document.ColForUndergraduate, _isUndergraduate);
-
+                */
             
 
         }
