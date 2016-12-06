@@ -7,3 +7,5 @@ $("#delivery").click(function() {
   $(".pickup-info").css("display", "none");
   $(".delivery-info").css("display", "");
 })
+
+
