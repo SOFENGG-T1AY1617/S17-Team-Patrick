@@ -29,10 +29,10 @@ namespace SOFENGG_Order_Request_Document.Presenter.Order
 
         }
 
-        public Document[] GetDocumentList()
+      /*  public Document[] GetDocumentList()
         {
             
         }
-
+        */
     }
 }
