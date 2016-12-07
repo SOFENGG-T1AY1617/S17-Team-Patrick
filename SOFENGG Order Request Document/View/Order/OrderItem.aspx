@@ -71,34 +71,11 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">No. of Copies</td>
-                    <td><asp:TextBox ID="tbNoCopy" size="2" maxlength="2" runat="server" />
-                               <br />
-                                <asp:RequiredFieldValidator 
-                                   id="rfvNoCopy" 
-                                   runat="server" 
-                                   ControlToValidate="tbNoCopy"
-                                   ErrorMessage="No. of Copies is a required field" 
-                                   ForeColor="Red"/>
-                                <br />
-                               <asp:CompareValidator 
-                                   ID="cvNoCopy" 
-                                   runat="server" 
-                                   ControlToValidate="tbNoCopy" 
-                                   Type="Integer"
-                                   Operator="DataTypeCheck" 
-                                   ErrorMessage="No. of Copies must be a whole number!"
-                                   ForeColor="Red" />
-                                <br />                      
-                               <asp:RangeValidator
-                                   id="rvNoCopy" 
-                                   ControlToValidate="tbNoCopy" 
-                                   MinimumValue="1"
-                                   MaximumValue="99" 
-                                   Type="Integer" 
-                                   ErrorMessage="Minimum no. of copies is 1; Max number of copies is 99."
-                                   ForeColor="Red"  
-                                   runat="server" /> 
-
+                    <td><asp:DropDownList id="ddlNoCopy" runat="server" style="display:block;">
+                                        <asp:ListItem Text="1" value="1"/>
+                                        <asp:ListItem Text="2" value="2"/>
+                                        <asp:ListItem Text="3" value="3"/>
+                                    </asp:DropDownList>
                     </td>
                 </tr>
                 <tr class="delivery_only">
