@@ -39,7 +39,8 @@
                     <td colspan="4" class="content-document-header" >Transcript of Records</td>
                 </tr>
             </table>
-            <asp:GridView ID="gvTOR" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" >
+            <asp:GridView ID="gvTOR" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" 
+                OnSelectedIndexChanged ="OnSelectedIndexChangedTOR">
                 <Columns >
                     <asp:TemplateField HeaderText="Document" HeaderStyle-Width="175px" >
                         <ItemTemplate>
@@ -56,7 +57,7 @@
                             <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" HeaderStyle-Width="50px" />
+                    <asp:ButtonField Text="Order" CommandName="Select" HeaderStyle-Width="50px" ItemStyle-CssClass ="btn btn-primary"/>
                 </Columns>
             </asp:GridView>
             <table class="table table-striped">
