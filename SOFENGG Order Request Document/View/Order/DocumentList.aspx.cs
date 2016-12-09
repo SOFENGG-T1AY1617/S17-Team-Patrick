@@ -76,7 +76,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 docuCookie["id"] = 2 + "";
             Response.Cookies.Add(docuCookie);
             // docuCookie[""];
-            Debug.Write(docuCookie + "my cookie");
+            
 
             Response.Redirect("~/View/Order/OrderItem.aspx");
 
