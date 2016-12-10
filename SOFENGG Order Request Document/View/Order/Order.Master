@@ -16,7 +16,7 @@
 </head>
 <body>
     <!-- Fixed container as application is not a full page application -->
-    <div class="fixed-container">
+    <div class=>
         <div class="header">
             <div class="header-photo"></div>
             <p>Online Request of Documents</p>

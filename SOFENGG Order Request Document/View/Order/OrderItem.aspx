@@ -52,7 +52,7 @@
                                 <td><%#Eval("ExpressPrice") %></td>
                             </tr>
                             <tr>
-                                <td><asp:CheckBox ID="cbPickup" runat="server"></asp:CheckBox>For Pick Up</td>
+                                <td><asp:CheckBox ID="cbPickup" runat="server" onclick=""></asp:CheckBox>For Pick Up</td>
                                 <td>
                                     <asp:DropDownList id="ddlCampus" runat="server" style="display:none;">
                                         <asp:ListItem Text="DLSU-Manila" value="DLSU-Manila"/>
