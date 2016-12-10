@@ -15,12 +15,16 @@
     <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
 
     <div class="jumbotron">
-        <h2>Manage Operational Date</h2>
+        <h2>Offline Dates</h2>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                <div class="alert alert-dismissible alert-danger">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <strong>These are the dates where the system will not be operational.</strong>
+                </div>
                 <div class="list-group">
                   <a href="#" class="list-group-item">December 30, 2016<input type="button" data-toggle="modal" data-target="#dlgRemoveDate" class="remove_date" value="Remove"/></a>
                   <a href="#" class="list-group-item">January 1, 2017<input type="button" data-toggle="modal" data-target="#dlgRemoveDate" class="remove_date" value="Remove"/></a>
