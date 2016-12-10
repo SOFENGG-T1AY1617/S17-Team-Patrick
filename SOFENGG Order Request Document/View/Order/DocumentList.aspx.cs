@@ -27,11 +27,92 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void OnSelectedIndexChangedCert(object sender, EventArgs e)
         {
-            string documentname = gvCertification.SelectedRow.Cells[0].Text;
+            string documentname = (gvTOR.SelectedRow.FindControl("lbName") as Label).Text;
             HttpCookie docuCookie = new HttpCookie("Document");
-           // docuCookie[""];
+            if(documentname.Equals("Course Subject Desciption"))
+            {
+                docuCookie["id"] = 3 + "";
+            }
+            else if(documentname.Equals("Ranking by Degree Program"))
+            {
+                docuCookie["id"] = 4 + "";
+            }
+            else if (documentname.Equals("Ranking by College"))
+            {
+                docuCookie["id"] = 7 + "";
+            }
+            else if (documentname.Equals("Trimestral Calendar"))
+            {
+                docuCookie["id"] = 8 + "";
+            }
+            else if (documentname.Equals("Completion of Academic Units"))
+            {
+                docuCookie["id"] = 9 + "";
+            }
+            else if (documentname.Equals("Cumulative GPA"))
+            {
+                docuCookie["id"] = 10 + "";
+            }
+            else if (documentname.Equals("Deans List"))
+            {
+                docuCookie["id"] = 11 + "";
+            }
+
+            Response.Cookies.Add(docuCookie);
+            Response.Redirect("~/View/Order/OrderItem.aspx");
+            // docuCookie[""];
 
 
+        }
+
+        protected void OnSelectedIndexChangedTOR(object sender, EventArgs e)
+        {
+            string documentname = (gvTOR.SelectedRow.FindControl("lbName") as Label).Text;
+            Debug.Write("document namee: " + documentname);
+            HttpCookie docuCookie = new HttpCookie("Document");
+            if (documentname.Equals("TOR for Evalutaion"))
+                docuCookie["id"] = 1 + "";
+            else
+                docuCookie["id"] = 2 + "";
+            Response.Cookies.Add(docuCookie);
+            // docuCookie[""];
+            
+
+            Response.Redirect("~/View/Order/OrderItem.aspx");
+
+
+        }
+
+        protected void OnSelectedIndexChangedOthers(object sender, EventArgs e)
+        {
+            string documentname = (gvTOR.SelectedRow.FindControl("lbName") as Label).Text;
+            HttpCookie docuCookie = new HttpCookie("Document");
+            docuCookie["id"] = 12 + "";
+
+            Response.Cookies.Add(docuCookie);
+            Response.Redirect("~/View/Order/OrderItem.aspx");
+
+            // docuCookie[""];
+
+
+        }
+
+        protected void OnSelectedIndexChangedTrueCopy(object sender, EventArgs e)
+        {
+            string documentname = gvTrueCopy.SelectedRow.Cells[0].Text;
+            HttpCookie docuCookie = new HttpCookie("Document");
+            // docuCookie[""];
+            if (documentname.Equals("Transcript of Records"))
+            {
+                docuCookie["id"] = 5 + "";
+            }
+            else if (documentname.Equals("Form 137"))
+            {
+                docuCookie["id"] = 6 + "";
+            }
+
+            Response.Cookies.Add(docuCookie);
+            Response.Redirect("~/View/Order/OrderItem.aspx");
         }
 
 
