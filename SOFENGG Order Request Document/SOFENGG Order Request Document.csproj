@@ -64,9 +64,11 @@
   <ItemGroup>
     <Content Include="Content\css\admin_login.css" />
     <Content Include="Content\css\admin_main.css" />
+    <Content Include="Content\css\admin_manage_operational_date.css" />
     <Content Include="Content\css\admin_navbar.css" />
     <Content Include="Content\css\admin_order_information.css" />
     <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\manage_operational_date.css" />
     <Content Include="Content\images\dlsu_logo.png" />
     <Content Include="Script\jquery-ui.js" />
     <Content Include="Script\jquery.validate.min.js" />
@@ -74,6 +76,7 @@
     <Content Include="View\Admin\DocumentList.aspx" />
     <Content Include="View\Admin\Login.aspx" />
     <Content Include="View\Admin\Main.aspx" />
+    <Content Include="View\Admin\ManageOperationalDate.aspx" />
     <Content Include="View\Admin\OrderInformationService.asmx" />
     <Content Include="View\Admin\Pending.aspx" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
@@ -244,6 +247,13 @@
     </Compile>
     <Compile Include="View\Admin\Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ManageOperationalDate.aspx.cs">
+      <DependentUpon>ManageOperationalDate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\ManageOperationalDate.aspx.designer.cs">
+      <DependentUpon>ManageOperationalDate.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\OrderInformationService.asmx.cs">
       <DependentUpon>OrderInformationService.asmx</DependentUpon>
