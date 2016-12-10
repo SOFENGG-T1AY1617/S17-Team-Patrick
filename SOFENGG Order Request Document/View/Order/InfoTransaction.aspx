@@ -15,34 +15,33 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="col-xs-3">
-        <h5>Request Flow</h5>
-        <ul>
-            <li>
-                <a href="personal_information.html">Personal Information</a>
-            </li>
-            <li>
-                <a href="info_acad_de.html">Academic Information</a>
-            </li>
-            <li>
-                <a href="info_mail_de.html">Mailing Information</a>
-            </li>
-            <li>
-                <a href="document_list.html">Document List</a>
-            </li>
-            <li>
-                <b>Checkout</b>
-            </li>
-        </ul>
-        <div class="content-divider"></div>
-    </div>
-
-    <div class="col-xs-9">
+<div class="container-fluid center-block">      
+    <li><a href="#">Home</a></li>
+                <li><asp:HyperLink id="hlPersonal" 
+                        NavigateUrl="personal_information.html" 
+                        Text="Personal Information" 
+                        runat="server"/></li>
+                <li><asp:HyperLink id="HyperLink1" 
+                                NavigateUrl="info_acad.de.html" 
+                                Text="Academic Information" 
+                                runat="server"/></li>
+                <li><asp:HyperLink id="HyperLink2" 
+                                        NavigateUrl="info_mail_de.html" 
+                                        Text="Mailing Information" 
+                                        runat="server"/></li>
+                <li><asp:HyperLink id="HyperLink3" 
+                                        NavigateUrl="document_list.html" 
+                                        Text="Document List" 
+                                        runat="server"/></li>
+                <li class="active">Transaction Details</li>
+         </ul>
+       
+         <form runat="server">
             <h5 class="content-header" >Transaction Information</h5>
         
             <asp:Repeater ID="rptPersonalInformation" runat="server">
                 <ItemTemplate>
-                    <table border="1" class="content-form">
+                    <table class="table table-striped">
                         <tr>
                             <td colspan="2" class="content-form_label" align="center">Transaction Details</td>
                         </tr>
@@ -82,7 +81,7 @@
             <br/>
             <asp:Repeater ID="repDeliveryDetails" runat="server">  
                 <ItemTemplate>  
-                    <table border="1" class="content-form">
+                    <table class="table table-striped">
                         <tr>
                             <td colspan="2" class="content-form_label" align="center">Delivery Details</td>
                         </tr>
@@ -119,7 +118,7 @@
 
                     <asp:Repeater ID="repDocumentsToDeliver" runat="server">
                         <ItemTemplate>
-                            <table border="1" class="content-form">
+                            <table class="table table-striped">
                                 <tr>
                                     <td class="content-form_label">Document</td>
                                     <td><%#Eval("BirthPlace")%></td>
@@ -155,7 +154,7 @@
             </asp:Repeater>
             <br/>
 
-            <table border="1" class="content-form" style="width: 70%" align="center">
+            <table class="table table-striped">
                 <tr>
                     <td colspan="2" class="content-form_label" align="center">
                         Amount Due
@@ -181,6 +180,7 @@
                 <asp:Button class="btn btn-primary" runat="server"  Text="Back to Order List"/>
                 <asp:Button class="btn btn-primary" runat="server"  Text="Pay On-Line"/>
             </div>
+             </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

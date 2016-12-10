@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Model;
 using SOFENGG_Order_Request_Document.Model.Helper;
 using SOFENGG_Order_Request_Document.Presenter.Order;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
+using System.Web;
+using System.Diagnostics;
 
 namespace SOFENGG_Order_Request_Document.View.Order
 {
@@ -13,23 +16,132 @@ namespace SOFENGG_Order_Request_Document.View.Order
         private readonly OrderDocumentListPresenter _presenter;
         private GridViewRow _gvRow;
 
+        public int id { get; set; }
+
+
 
         public DocumentList()
         {
             _presenter = new OrderDocumentListPresenter(this);
         }
 
-       /*public Document[] AvailableDocumentList
+        protected void OnSelectedIndexChangedCert(object sender, EventArgs e)
         {
-
-            set
+            string documentname = (gvTOR.SelectedRow.FindControl("lbName") as Label).Text;
+            HttpCookie docuCookie = new HttpCookie("Document");
+            if(documentname.Equals("Course Subject Desciption"))
             {
-                gvDocumentList.DataSource = value;
-                gvDocumentList.DataBind();
-
-                
+                docuCookie["id"] = 3 + "";
             }
-        } */
+            else if(documentname.Equals("Ranking by Degree Program"))
+            {
+                docuCookie["id"] = 4 + "";
+            }
+            else if (documentname.Equals("Ranking by College"))
+            {
+                docuCookie["id"] = 7 + "";
+            }
+            else if (documentname.Equals("Trimestral Calendar"))
+            {
+                docuCookie["id"] = 8 + "";
+            }
+            else if (documentname.Equals("Completion of Academic Units"))
+            {
+                docuCookie["id"] = 9 + "";
+            }
+            else if (documentname.Equals("Cumulative GPA"))
+            {
+                docuCookie["id"] = 10 + "";
+            }
+            else if (documentname.Equals("Deans List"))
+            {
+                docuCookie["id"] = 11 + "";
+            }
+
+            Response.Cookies.Add(docuCookie);
+            Response.Redirect("~/View/Order/OrderItem.aspx");
+            // docuCookie[""];
+
+
+        }
+
+        protected void OnSelectedIndexChangedTOR(object sender, EventArgs e)
+        {
+            string documentname = (gvTOR.SelectedRow.FindControl("lbName") as Label).Text;
+            Debug.Write("document namee: " + documentname);
+            HttpCookie docuCookie = new HttpCookie("Document");
+            if (documentname.Equals("TOR for Evalutaion"))
+                docuCookie["id"] = 1 + "";
+            else
+                docuCookie["id"] = 2 + "";
+            Response.Cookies.Add(docuCookie);
+            // docuCookie[""];
+            
+
+            Response.Redirect("~/View/Order/OrderItem.aspx");
+
+
+        }
+
+        protected void OnSelectedIndexChangedOthers(object sender, EventArgs e)
+        {
+            string documentname = (gvTOR.SelectedRow.FindControl("lbName") as Label).Text;
+            HttpCookie docuCookie = new HttpCookie("Document");
+            docuCookie["id"] = 12 + "";
+
+            Response.Cookies.Add(docuCookie);
+            Response.Redirect("~/View/Order/OrderItem.aspx");
+
+            // docuCookie[""];
+
+
+        }
+
+        protected void OnSelectedIndexChangedTrueCopy(object sender, EventArgs e)
+        {
+            string documentname = gvTrueCopy.SelectedRow.Cells[0].Text;
+            HttpCookie docuCookie = new HttpCookie("Document");
+            // docuCookie[""];
+            if (documentname.Equals("Transcript of Records"))
+            {
+                docuCookie["id"] = 5 + "";
+            }
+            else if (documentname.Equals("Form 137"))
+            {
+                docuCookie["id"] = 6 + "";
+            }
+
+            Response.Cookies.Add(docuCookie);
+            Response.Redirect("~/View/Order/OrderItem.aspx");
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+                return;
+
+            HttpCookie cookie = new HttpCookie("StudentInfo");
+            cookie["Id"] = 2 + "";
+            Response.Cookies.Add(cookie);
+            Debug.Write("\n\n\n ADDED PO!! \n\n\n");
+
+            id = int.Parse(Request.Cookies["StudentInfo"]["id"]);
+
+            GetDocumentList(id);
+        }
+
+        /*public Document[] AvailableDocumentList
+         {
+
+             set
+             {
+                 gvDocumentList.DataSource = value;
+                 gvDocumentList.DataBind();
+
+
+             }
+         } */
 
         public Document[] CertificateDocumentList
         {
@@ -74,21 +186,16 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
 
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (IsPostBack)
-                return;
+        
 
-            GetDocumentList();
-        }
-
-        public void GetDocumentList()
+        public void GetDocumentList(int id)
         {
-            _presenter.GetTORDocumentList(DocumentCategoryEnum.TranscriptOfRecords);
-            _presenter.GetCertificateDocumentList(DocumentCategoryEnum.Certification);
             
-            _presenter.GetTrueCopyDocumentList(DocumentCategoryEnum.CertifiedTrueCopy);
-            _presenter.GetOthersDocumentList(DocumentCategoryEnum.Others);
+            _presenter.GetTORDocumentList(DocumentCategoryEnum.TranscriptOfRecords, id);
+            _presenter.GetCertificateDocumentList(DocumentCategoryEnum.Certification, id);
+            
+            _presenter.GetTrueCopyDocumentList(DocumentCategoryEnum.CertifiedTrueCopy, id);
+            _presenter.GetOthersDocumentList(DocumentCategoryEnum.Others, id);
            
 
 
@@ -229,6 +336,13 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             return value;
         }
+
+        
+
+      /*  protected void OrderDocument_Click(Object sender, EventArgs e)
+        {
+            OrderDocumentListPresenter _presenter = new OrderDocumentListPresenter(this);
+        } */
     }
 
 

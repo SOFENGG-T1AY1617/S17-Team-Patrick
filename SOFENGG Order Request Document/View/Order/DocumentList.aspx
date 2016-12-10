@@ -8,74 +8,71 @@
     <link rel="stylesheet" href="/Content/css/document_list.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="col-xs-3">
-        <h5> Request Flow</h5>
-        <ul>
-            <li>
-                <a href="personal_information.html">Personal Information</a>
-            </li>
-            <li>
-                <a href="info_acad_de.html">Academic Information</a>
-            </li>
-            <li>
-                <a href="info_mail_de.html">Mailing Information</a>
-            </li>
-            <li>
-                <b>Document List</b>
-            </li>
-            <li>
-                <a href="info_transaction.html">Checkout</a>
-            </li>
-        </ul>
-        <div class="content-divider"></div>
-        <h5>User Information</h5>
-        <ul>
-            <li>Name</li>
-            <li>Address</li>
-            <li>ID Number</li>
-        </ul>
-    </div>
-    <div class="col-xs-9">
-        <h5 class="content-header">Document List</h5>
+    
+<div class="container-fluid center-block"> 
+    <ul class="breadcrumb">
+                &nbsp;
+                <li><a href="#">Home</a></li>
+                <li>
+                    <a href="PersonalInformation.aspx">Personal Information</a>
+                </li>
+                <li>
+                    <a href="InfoAcadDe.aspx">Academic Information</a>
+                </li>
+                <li>
+                    <a href="InfoMailDe.aspx">Mailing Information</a>
+                </li>
+                <li class="active">Document List</li>
+     </ul>
+    
+    
+
+        <form runat="server">
+        <h4 class="content-header">Document List</h4>
         <div>
-            <table border="1"class="content-document" style="width:482px; border-color: lightgrey;" >
-                <tr>
-                    <td colspan="1" class="content-document-header" >Below is a list of documents that you can request from the OUR. <br />Press the order link to the document you want to order.</td>
-                </tr>
-            </table>
-            <table style="width:482px; border-color: lightgray; border-top: hidden; border-left: 1px solid; border-right: 1px solid; border-bottom:hidden; border-color: gray;" >
+            <blockquote>
+                    <p>Below is a list of documents that you can request from the OUR. <br />Press the order link to the document you want to order.</p>
+            </blockquote>
+           
+            <table class="table table-striped" style="width: 571px;" >
                 <tr>
                     <td colspan="4" class="content-document-header" >Transcript of Records</td>
                 </tr>
             </table>
-            <asp:GridView ID="gvTOR" AutoGenerateColumns="False" runat="server">
+            <asp:GridView ID="gvTOR" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px;" >
                 <Columns >
-                    <asp:TemplateField HeaderText="Document" HeaderStyle-Width="178px">
+                    <asp:TemplateField HeaderText="Document" HeaderStyle-Width="250px" >
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="125px" >
+                    <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="120px" >
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>'  ID="lbRegularPrice"></asp:Label>  
                             </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="125px">
+                    <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="120px" >
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" HeaderStyle-Width="53" navigateurl="~\details.aspx" />
+                    <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                            <asp:Button ID="btnTORorder" runat="server" CommandName="OrderItem"
+                            Text="Order" CssClass="btn btn-primary" />
+                    </ItemTemplate>
+                    </asp:TemplateField>
+
                 </Columns>
             </asp:GridView>
-            <table style="width:482px; border-left: 1px solid; border-right: 1px solid; border-color: gray;">
+            <table class="table table-striped" style="width: 571px;">
                 <tr>
                     <td colspan="4" class="content-document-header">Certification</td>
                 </tr>
             </table>
-            <asp:GridView ID="gvCertification" AutoGenerateColumns="False" runat="server">
+            <asp:GridView ID="gvCertification" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px;">
                 <Columns >
-                    <asp:TemplateField HeaderText="Document" HeaderStyle-Width="170px">
+                    <asp:TemplateField HeaderText="Document" HeaderStyle-Width="250px">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
                         </ItemTemplate>
@@ -89,67 +86,81 @@
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField> 
-                 
-                    <asp:HyperLinkField Text="Order" HeaderStyle-Width="50" navigateurl="~\details.aspx" />
-                   
+                    </asp:TemplateField>
+                   <asp:TemplateField ShowHeader="False">
+                    <ItemTemplate>
+                            <asp:Button ID="btnCertOrder" runat="server" CommandName="OrderItem"
+                            Text="Order" CssClass="btn btn-primary" />
+                    </ItemTemplate>
+                    </asp:TemplateField>                
                 </Columns>
             </asp:GridView>
 
-            <table style="width:482px; border-left: 1px solid; border-right: 1px solid; border-color: gray;">
+            <table class="table table-striped" style="width: 571px;">
                 <tr>
                     <td colspan="4" class="content-document-header">Certified True Copy</td>
                 </tr>
             </table>
 
-            <asp:GridView ID="gvTrueCopy" AutoGenerateColumns="False" runat="server">
+            <asp:GridView ID="gvTrueCopy" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px;">
                 <Columns >
-                    <asp:TemplateField HeaderText="Document" HeaderStyle-Width="178px">
+                    <asp:TemplateField HeaderText="Document" HeaderStyle-Width="250px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"  ></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="125px">
+                    <asp:TemplateField HeaderText="Regular Price"  HeaderStyle-Width="120px">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="125px">
+                    <asp:TemplateField HeaderText="Express Price"  HeaderStyle-Width="120px">
                         <ItemTemplate>
                             <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" HeaderStyle-Width="53" navigateurl="~\details.aspx" />
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                                <asp:Button ID="btnTrueCopyOrder" runat="server" CommandName="OrderItem"
+                                Text="Order" CssClass="btn btn-primary" />
+                        </ItemTemplate>
+                    </asp:TemplateField>                  
                 </Columns>
             </asp:GridView>
 
-            <table style="width:482px; border-left: 1px solid; border-right: 1px solid; border-color: gray;">
+            <table class="table table-striped" style="width: 571px;">
                 <tr>
                     <td colspan="4" class="content-document-header">Others</td>
                 </tr>
             </table>
 
-            <asp:GridView ID="gvOthers" AutoGenerateColumns="False" runat="server">
+            <asp:GridView ID="gvOthers" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px;">
                 <Columns >
-                    <asp:TemplateField HeaderText="Document Name" HeaderStyle-Width="178px">
+                    <asp:TemplateField HeaderText="Document Name" HeaderStyle-Width="250px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                            <asp:Label runat="server"  Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="125px">
+                    <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="120px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
+                            <asp:Label runat="server"  Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="125px">
+                    <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="120px">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
+                            <asp:Label runat="server"  Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" HeaderStyle-Width="53" navigateurl="~\details.aspx" />
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                                <asp:Button ID="btnOthersOrder" runat="server" CommandName="OrderItem"
+                                Text="Order" CssClass="btn btn-primary" />
+                        </ItemTemplate>
+                    </asp:TemplateField>  
                 </Columns>
             </asp:GridView>
         </div>
+    </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

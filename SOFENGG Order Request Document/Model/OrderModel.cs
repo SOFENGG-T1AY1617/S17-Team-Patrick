@@ -13,30 +13,30 @@ namespace SOFENGG_Order_Request_Document.Model
             return db.DocumentList;
         } 
 
-        public Document[] GetCertificateDocumentList(DocumentCategoryEnum Category)
+        public Document[] GetCertificateDocumentList(DocumentCategoryEnum Category, Degree degree )
         {
-            var db = new DBMySqlGetDocumentList(Category);
+            var db = new DBMySqlGetDocumentList(Category, degree.Level);
             db.ExecuteQuery();
             return db.DocumentList;
         }
 
-        public Document[] GetOthersDocumentList(DocumentCategoryEnum Category)
+        public Document[] GetOthersDocumentList(DocumentCategoryEnum Category, Degree degree)
         {
-            var db = new DBMySqlGetDocumentList(Category);
+            var db = new DBMySqlGetDocumentList(Category, degree.Level);
             db.ExecuteQuery();
             return db.DocumentList;
         }
 
-        public Document[] GetTORDocumentList(DocumentCategoryEnum Category)
+        public Document[] GetTORDocumentList(DocumentCategoryEnum Category, Degree degree)
         {
-            var db = new DBMySqlGetDocumentList(Category);
+            var db = new DBMySqlGetDocumentList(Category, degree.Level);
             db.ExecuteQuery();
             return db.DocumentList;
         }
 
-        public Document[] GetTrueCopyDocumentList(DocumentCategoryEnum Category)
+        public Document[] GetTrueCopyDocumentList(DocumentCategoryEnum Category, Degree degree)
         {
-            var db = new DBMySqlGetDocumentList(Category);
+            var db = new DBMySqlGetDocumentList(Category, degree.Level);
             db.ExecuteQuery();
             return db.DocumentList;
         }
