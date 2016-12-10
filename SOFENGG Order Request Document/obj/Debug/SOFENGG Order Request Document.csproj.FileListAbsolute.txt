@@ -12,3 +12,10 @@ C:\Users\Yep\Documents\Gelo103097\Programming\ASP\test git2\S17-Team-Patrick\SOF
 C:\Users\Yep\Documents\Gelo103097\Programming\ASP\test git2\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.dll
 C:\Users\Yep\Documents\Gelo103097\Programming\ASP\test git2\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.pdb
 C:\Users\Yep\Documents\Gelo103097\Programming\ASP\test git2\S17-Team-Patrick\SOFENGG Order Request Document\bin\MySql.Data.dll
+C:\Users\VictorJoseph\Desktop\clone\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.dll.config
+C:\Users\VictorJoseph\Desktop\clone\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.dll
+C:\Users\VictorJoseph\Desktop\clone\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.pdb
+C:\Users\VictorJoseph\Desktop\clone\S17-Team-Patrick\SOFENGG Order Request Document\bin\MySql.Data.dll
+C:\Users\VictorJoseph\Desktop\clone\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.csprojResolveAssemblyReference.cache
+C:\Users\VictorJoseph\Desktop\clone\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.dll
+C:\Users\VictorJoseph\Desktop\clone\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.pdb
