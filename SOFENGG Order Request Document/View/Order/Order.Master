@@ -16,12 +16,12 @@
 </head>
 <body>
     <!-- Fixed container as application is not a full page application -->
-    <div class="header">
+
+     <div class="container">
+           <div class="header">
             <div class="header-photo"></div>
             <p>Online Request of Documents</p>
         </div>
-     <div class="container">
-       
 
         <div class="container content">
             <div class="row">

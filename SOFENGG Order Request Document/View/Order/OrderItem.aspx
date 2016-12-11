@@ -3,8 +3,20 @@
 
     <!-- Always change the css file name to html file name! -->
     <link rel="stylesheet" href="/Content/css/order_item.css">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+
+    
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $('#<%=cbPickup.ClientID %>').click(function() {
+                alert("Hello world!");
+            });
+ 
+        });
+    </script>
+
     <div class="container-fluid center-block"> 
         <ul class="breadcrumb">
                 &nbsp;
@@ -52,7 +64,7 @@
                                 <td><%#Eval("ExpressPrice") %></td>
                             </tr>
                             <tr>
-                                <td><asp:CheckBox ID="cbPickup" runat="server" OnCheckChanged="pickUp"></asp:CheckBox>For Pick Up</td>
+                                <td><asp:CheckBox ID="cbPickup" runat="server" ClientIDMode="Static"></asp:CheckBox>For Pick Up</td>
                                 <td>
                                     <asp:DropDownList id="ddlCampus" runat="server" style="display:none;">
                                         <asp:ListItem Text="DLSU-Manila" value="DLSU-Manila"/>
@@ -78,7 +90,7 @@
                                     </asp:DropDownList>
                     </td>
                 </tr>
-                <tr class="delivery_only" style="display:none;" id="delivery">
+                <tr class="delivery_only" style="display:none;" id="trdelivery">
                     <td class="content-form_label">Send to</td>
                     <td><%#Eval("Address")%></td>
                 </tr>
@@ -106,16 +118,7 @@
             </div>
            </form>
     </div>
-    <script>
-        function pickUp() {
-            if (cbPickup.checked) {
-            delivery.setAttribute()
-            }
-            else {
-
-            }
-        }
-    </script>
+   
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 
