@@ -22,7 +22,6 @@
                 <li class="active">Mailing Information</li>
         </ul>
         
-        <form action=""></form>
         <h4 class="content-header">Mailing Information</h4>
         <blockquote>
             <p>

@@ -14,8 +14,6 @@
                         runat="server"/></li>
                 <li class="active">Academic Information</li>
             </ul>
-
-            <form id="frmAcadInfo" runat="server">
                 <h4 class="content-header">Academic Information</h4>
                     <blockquote>
                         <p>This step allows you to enter your academic information.<br><br>
@@ -89,7 +87,6 @@
                     </tr>
                     </tbody>
                 </table>
-            </form>
         </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

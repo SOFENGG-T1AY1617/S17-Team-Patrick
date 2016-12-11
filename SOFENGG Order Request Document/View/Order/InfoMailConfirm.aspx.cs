@@ -20,12 +20,22 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         private void DisplayAllMailingInfo()
         {
+            int mailingInfoNumber = int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]);
             InfoMailDePresenter presenter = new InfoMailDePresenter(this);
             MailingInfo[] mailingInfo = presenter.GetMailingInfoList();
             List<MailingInfo> mailingInfoList = new List<MailingInfo>();
-            for (var i = 0; i < mailingInfo.Length; i++)
+            for (var i = 0; i < mailingInfoNumber; i++)
             {
-                mailingInfoList.Add(mailingInfo[i]);
+                var cookie = Request.Cookies["MailInformation" + i];
+                mailingInfoList.Add(new MailingInfo()
+                {
+                    ContactNo = cookie["ContactNo"],
+                    DeliveryArea = presenter.GetOneDeliveryArea(int.Parse(cookie["DeliveryArea"])),
+                    Id = i,
+                    MailingAddress = cookie["MailingAddress"],
+                    StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]),
+                    ZipCode = int.Parse(cookie["Zipcode"]),
+                });
             }
             rptInfoMailConfirm.DataSource = mailingInfoList;
             rptInfoMailConfirm.DataBind();

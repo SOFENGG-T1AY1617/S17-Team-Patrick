@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoAcadConfirm.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoAcadConfirm" %>
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!-- Always change the css file name to html file name! -->
@@ -16,7 +17,6 @@
                 <li class="active">Academic Information</li>
             </ul>
        
-        <form runat="server">
         <h4 class="content-header">Academic Information</h4>
         
         <asp:Repeater id="rptInfoAcadConfirm" runat="server">
@@ -31,8 +31,8 @@
                         <td><asp:Label runat="server" ID="lblIdNumber" Text=<%# Eval("IdStudent")%>/></td>
                     </tr>
                     <tr>
-                        <td>Level</td>
-                        <td><asp:Label runat="server" ID="lblLevel" Text=<%# Eval("Degree.Level")%>/></td>
+                        <td>Degree</td>
+                        <td><asp:Label runat="server" ID="lblDegree" Text=<%# Eval("Degree.Name")%>/></td>
                     </tr>
                     <tr>
                         <td>Admitted as</td>
@@ -57,7 +57,6 @@
             <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
             <asp:Button class="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
         </div>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

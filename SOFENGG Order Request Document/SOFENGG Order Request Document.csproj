@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\admin_order_information.css" />
-    <Content Include="Script\view_order_information.js" />
+    <Content Include="Presenter\Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
     <Content Include="View\Admin\Main.aspx" />
     <Content Include="View\Admin\Pending.aspx" />
@@ -75,9 +75,9 @@
     <Content Include="Content\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap.min.css.map" />
-    <Content Include="Script\Day.js" />
-    <Content Include="Script\jquery.min.map" />
-    <Content Include="Script\jquery.slim.min.map" />
+    <Content Include="Presenter\Script\Day.js" />
+    <Content Include="Presenter\Script\jquery.min.map" />
+    <Content Include="Presenter\Script\jquery.slim.min.map" />
     <Content Include="View\Admin\ViewOrderInformation.aspx" />
     <Content Include="View\Order\Order.Master" />
     <Content Include="View\Admin\Admin.Master" />
@@ -124,21 +124,21 @@
     <Content Include="View\Order\OrderItem.aspx" />
     <Content Include="View\Order\PersonalInformation.aspx" />
     <Content Include="View\Order\Rules.aspx" />
-    <Content Include="Script\admin_document_list.js" />
-    <Content Include="Script\admin_main.js" />
-    <Content Include="Script\bootstrap.js" />
-    <Content Include="Script\bootstrap.min.js" />
-    <Content Include="Script\core.js" />
-    <Content Include="Script\info_acad_de.js" />
-    <Content Include="Script\info_mail_de.js" />
-    <Content Include="Script\jquery.js" />
-    <Content Include="Script\jquery.min.js" />
-    <Content Include="Script\jquery.slim.js" />
-    <Content Include="Script\jquery.slim.min.js" />
-    <Content Include="Script\npm.js" />
-    <Content Include="Script\order_item.js" />
-    <Content Include="Script\personal_information.js" />
-    <Content Include="Script\rules.js" />
+    <Content Include="Presenter\Script\admin_document_list.js" />
+    <Content Include="Presenter\Script\admin_main.js" />
+    <Content Include="Presenter\Script\bootstrap.js" />
+    <Content Include="Presenter\Script\bootstrap.min.js" />
+    <Content Include="Presenter\Script\core.js" />
+    <Content Include="Presenter\Script\info_acad_de.js" />
+    <Content Include="Presenter\Script\info_mail_de.js" />
+    <Content Include="Presenter\Script\jquery.js" />
+    <Content Include="Presenter\Script\jquery.min.js" />
+    <Content Include="Presenter\Script\jquery.slim.js" />
+    <Content Include="Presenter\Script\jquery.slim.min.js" />
+    <Content Include="Presenter\Script\npm.js" />
+    <Content Include="Presenter\Script\order_item.js" />
+    <Content Include="Presenter\Script\personal_information.js" />
+    <Content Include="Presenter\Script\rules.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +200,6 @@
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\IOrderModel.cs" />
     <Compile Include="Presenter\Order\OrderDocumentListPresenter.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Presenter\InfoAcadDePresenter.cs" />
     <Compile Include="View\Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
@@ -324,6 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -349,6 +347,11 @@
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="9867" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
