@@ -17,7 +17,6 @@
                 <li class="active">Academic Information</li>
             </ul>
        
-        <form runat="server">
         <h4 class="content-header">Academic Information</h4>
         
         <asp:Repeater id="rptInfoAcadConfirm" runat="server">
@@ -58,7 +57,6 @@
             <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
             <asp:Button class="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
         </div>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

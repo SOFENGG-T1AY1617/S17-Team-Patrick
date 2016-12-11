@@ -11,7 +11,6 @@
             <li class="active">Personal Information</li>
         </ul>
 
-        <form runat="server">
         <h4 class="content-header">Personal Information</h4>
         <table class="table table-striped">
             <tr>
@@ -172,7 +171,6 @@
                 </td>
             </tr>
         </table>
-        </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

@@ -112,33 +112,6 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.DropDownList ddlBirthDay;
         
         /// <summary>
-        /// ddlBirthMonth1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBirthMonth1;
-        
-        /// <summary>
-        /// ddlBirthDay1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBirthDay1;
-        
-        /// <summary>
-        /// ddlBirthYear1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBirthYear1;
-        
-        /// <summary>
         /// rfvBirthYear control.
         /// </summary>
         /// <remarks>

@@ -63,9 +63,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
             ddlCampus.Items.FindByValue(studentDegree.Degree.CampusOffered.ToString()).Selected = true;
             ddlYearAdmitted.SelectedItem.Selected = false;
             ddlYearAdmitted.Items.FindByText(studentDegree.YearAdmitted.ToString()).Selected = true;
-            optLevel.SelectedItem.Selected = false;
-            optLevel.Items.FindByValue(studentDegree.Degree.Level.ToString()).Selected = true;
-            isGraduate.Checked = false; //<--- wala tayong isGraduate????? -Dyan
             ddlDegree.SelectedItem.Selected = false;
             ddlDegree.Items.FindByText(studentDegree.Degree.Name).Selected = true;
             optAdmittedAs.SelectedItem.Selected = false;
@@ -80,8 +77,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
             IdNumber = int.Parse(txtStudNo.Text);
             CampusAttended = int.Parse(ddlCampus.SelectedItem.Value);
             YearAdmitted = int.Parse(ddlYearAdmitted.SelectedItem.Text);
-            Level = optLevel.SelectedItem.Value[0];
-            IsGraduate = isGraduate.Checked;
             Degree = ddlDegree.SelectedItem.Text;
             AdmittedAs = (char)int.Parse(optAdmittedAs.SelectedItem.Value);
             
