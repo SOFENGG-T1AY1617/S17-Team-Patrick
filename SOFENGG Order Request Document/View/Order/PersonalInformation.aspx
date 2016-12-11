@@ -8,18 +8,11 @@
     <div class="row">
         <div class="btn-group btn-breadcrumb">
             &nbsp;
-<<<<<<< HEAD
             <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a></li>
             <a class="btn btn-default active">Personal Information</a>
         </div>
     </div>
         <form runat="server">
-=======
-            <li><a href="#">Home</a></li>
-            <li class="active">Personal Information</li>
-        </ul>
-
->>>>>>> origin/ClientInformation
         <h4 class="content-header">Personal Information</h4>
         <table class="table table-striped">
             <tr>
