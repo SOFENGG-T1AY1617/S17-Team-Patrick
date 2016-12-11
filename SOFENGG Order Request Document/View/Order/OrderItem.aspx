@@ -52,7 +52,7 @@
                                 <td><%#Eval("ExpressPrice") %></td>
                             </tr>
                             <tr>
-                                <td><asp:CheckBox ID="cbPickup" runat="server" onclick=""></asp:CheckBox>For Pick Up</td>
+                                <td><asp:CheckBox ID="cbPickup" runat="server" OnCheckChanged="pickUp"></asp:CheckBox>For Pick Up</td>
                                 <td>
                                     <asp:DropDownList id="ddlCampus" runat="server" style="display:none;">
                                         <asp:ListItem Text="DLSU-Manila" value="DLSU-Manila"/>
@@ -62,7 +62,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="2" >
                                     <span style="font-weight: bold; font-style: italic;">"Express processing is NOT available for students with ID no. <br/>80XXXXX (students who entered DLSU-Manila in 1980) and below."</span>
                                 </td>
                             </tr>
@@ -71,14 +71,14 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">No. of Copies</td>
-                    <td><asp:DropDownList id="ddlNoCopy" runat="server" style="display:block;">
+                    <td><asp:DropDownList id="ddlNoCopy" runat="server">
                                         <asp:ListItem Text="1" value="1"/>
                                         <asp:ListItem Text="2" value="2"/>
                                         <asp:ListItem Text="3" value="3"/>
                                     </asp:DropDownList>
                     </td>
                 </tr>
-                <tr class="delivery_only">
+                <tr class="delivery_only" style="display:none;" id="delivery">
                     <td class="content-form_label">Send to</td>
                     <td><%#Eval("Address")%></td>
                 </tr>
@@ -106,11 +106,24 @@
             </div>
            </form>
     </div>
+    <script>
+        function pickUp() {
+            if (cbPickup.checked) {
+            delivery.setAttribute()
+            }
+            else {
+
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 
-    <script src="/Script/order_item.js"></script>
+    <script src="/Script/order_item.js">
+      
 
+    </script>
+       
     <script runat ="server">
     </script>
 </asp:Content>
