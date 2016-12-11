@@ -22,6 +22,15 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.ScriptManager sm;
         
         /// <summary>
+        /// upStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upStatus;
+        
+        /// <summary>
         /// lblProcessingCount control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotalCount;
+        
+        /// <summary>
+        /// upOrderList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upOrderList;
         
         /// <summary>
         /// repOrders control.
@@ -139,6 +157,15 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.Label lblActiveOrderPlaceOfBirth;
         
         /// <summary>
+        /// lblActiveTransactionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActiveTransactionDate;
+        
+        /// <summary>
         /// repOrderMailingInfo control.
         /// </summary>
         /// <remarks>
@@ -146,6 +173,15 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repOrderMailingInfo;
+        
+        /// <summary>
+        /// upOrderInformationButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upOrderInformationButtons;
         
         /// <summary>
         /// btnMarkPending control.
@@ -175,12 +211,39 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.Button btnMarkProcessing;
         
         /// <summary>
-        /// lblPendingReferenceNo control.
+        /// txtPendingReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPendingReferenceNo;
+        protected global::System.Web.UI.WebControls.TextBox txtPendingReason;
+        
+        /// <summary>
+        /// txtNewDueDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNewDueDate;
+        
+        /// <summary>
+        /// upDlgPending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDlgPending;
+        
+        /// <summary>
+        /// btnMarkAsPending control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMarkAsPending;
     }
 }

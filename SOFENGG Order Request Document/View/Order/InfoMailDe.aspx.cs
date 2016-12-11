@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Web;
 using SOFENGG_Order_Request_Document.Model;
 using SOFENGG_Order_Request_Document.Presenter;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
@@ -20,7 +21,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void SubmitMailInfo(object sender, EventArgs e)
         {
-            InfoMailDePresenter presenter = new InfoMailDePresenter(this);
+            
 
             StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
             MailingAddress = txtMailAddress.Text;
@@ -28,15 +29,18 @@ namespace SOFENGG_Order_Request_Document.View.Order
             Zipcode = int.Parse(txtZipCode.Text);
             DeliveryAreaId = int.Parse(ddlDelivery.SelectedItem.Value);
 
-            
-            if (presenter.AddMailInfo())
-            {
-                Response.Redirect("~/View/Order/InfoMailConfirm.aspx");
-            }
+            InfoMailDePresenter presenter = new InfoMailDePresenter(this);
+            HttpCookie mailInfoCookie = presenter.AddMailInfoCookie(int.Parse(Request.Cookies["StudentInfo"]["Id"]),
+                                                                    int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]));
+
+            Response.Cookies.Add(mailInfoCookie);
+            HttpCookie studentCookie = Request.Cookies["StudentInfo"];
+            int mailInfoNum = int.Parse(studentCookie["MailingInfoNum"]) + 1;
+            studentCookie["MailingInfoNum"] = mailInfoNum.ToString();
+            Response.Cookies.Add(studentCookie);
+            Response.Redirect("~/View/Order/InfoMailConfirm.aspx");
+
         }
-
-
-        
 
         public int StudentInfoId { get; set; }
         public string MailingAddress { get; set; }

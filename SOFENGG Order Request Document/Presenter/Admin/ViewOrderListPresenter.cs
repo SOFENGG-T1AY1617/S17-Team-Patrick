@@ -96,5 +96,20 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
 
             return o == null ? default(OrderStatusEnum) : o.OrderStatus;
         }
+
+        public bool MarkAsPending(int referenceNo, string newDueDate, string reason)
+        {
+            return _model.MarkAsPending(referenceNo, DateTime.Parse(newDueDate), reason);
+        }
+
+        public bool MarkAsProcessing(int referenceNo)
+        {
+            return _model.MarkAsProcessing(referenceNo);
+        }
+
+        public bool MarkAsDone(int referenceNo)
+        {
+            return _model.MarkAsDone(referenceNo);
+        }
     }
 }

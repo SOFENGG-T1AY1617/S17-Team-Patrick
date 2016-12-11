@@ -51,17 +51,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin
         public void GetDocumentList()
         {
             _presenter.GetDocumentList();
-            FormatPrices();
-        }
-
-        private void FormatPrices()
-        {
-            foreach (GridViewRow oItem in gvDocuments.Rows)
-            {
-                for (var i = 3; i <= 4; i++)
-                    if (oItem.Cells[i].Text == "0")
-                        oItem.Cells[i].Text = "Not available";
-            }
         }
 
         #region Add Functions
@@ -117,13 +106,32 @@ namespace SOFENGG_Order_Request_Document.View.Admin
                 throw new FormatException("Invalid Weight", e);
             }
 
+            // Parse MaxCopy
+            var maxCopyValue = txtMaxCopies.Text;
+            int maxCopy;
+
+            try
+            {
+                maxCopy = maxCopyValue.TryParseInt();
+            }
+            catch (NullReferenceException e)
+            {
+                throw new NullReferenceException("Max copy count cannot be empty. Please enter a max copy count for the document.", e);
+            }
+            catch (FormatException e)
+            {
+                throw new FormatException("Invalid max copy count", e);
+            }
 
             var document = new Document()
             {
                 Name = name,
                 RegularPrice = regularPrice,
                 ExpressPrice = expressPrice,
-                Weight = weight
+                Weight = weight,
+                MaxCopy = maxCopy,
+                IsForUndergraduate = cbForUndergraduate.Checked,
+                IsForGraduate = cbForGraduate.Checked
             };
 
             if (!_presenter.AddDocument(document))

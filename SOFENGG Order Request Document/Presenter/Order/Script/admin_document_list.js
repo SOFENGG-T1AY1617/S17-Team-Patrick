@@ -1,12 +1,27 @@
-$("#add_button").on('click', function () {
-    $('.popup-background').height($(document).height());
-    $(".popup-background").css("display", "block");
-    event.preventDefault();
-    return false;
-});
+function clear_form_elements(class_name) {
+    $("." + class_name).find(':input').each(function () {
+        switch (this.type) {
+            case 'password':
+            case 'text':
+            case 'textarea':
+            case 'file':
+            case 'select-one':
+            case 'select-multiple':
+            case 'date':
+            case 'number':
+            case 'tel':
+            case 'email':
+                jQuery(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+                break;
+        }
+    });
+}
 
-$("#btnAdd, #btnAddCancel").on('click', function () {
-    $(".popup-background").css("display", "none");
-    event.preventDefault();
-    return false;
+$("#add_document_modal").on('click', function () {
+    clear_form_elements("col-sm-5");
+    clear_form_elements("checkbox");
 });

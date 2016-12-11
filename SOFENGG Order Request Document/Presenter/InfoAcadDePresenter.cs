@@ -20,6 +20,22 @@ namespace SOFENGG_Order_Request_Document.Presenter
             this.view = view;
         }
 
+
+        public HttpCookie AddAcadInfoCookie(int studentInfoId, int AcadId)
+        {   
+
+            StudentDegree[] degreeList = model.GetStudentDegree(studentInfoId);
+            HttpCookie cookie;
+            int acadInfoId = AcadId;
+            cookie = new HttpCookie("AcadInformation" + acadInfoId);
+            cookie["AdmittedAs"] = (int)((AdmissionEnum) view.AdmittedAs) + "";
+            cookie["Degree"] = model.GetDegree(view.StudentInfoId, view.Degree, view.CampusAttended, view.Level).Id + "";
+            cookie["IdStudent"] = view.IdNumber + "";
+            cookie["YearAdmitted"] = view.YearAdmitted + "";
+
+            return cookie;
+        }
+
         public bool AddStudentDegree()
         {   
             StudentDegree studentDegree = new StudentDegree()
@@ -49,6 +65,16 @@ namespace SOFENGG_Order_Request_Document.Presenter
         public Degree[] GetAllDegrees()
         {
             return model.GetDegree();
+        }
+
+        public Degree[] GetDegreeInCampus(int campusAttended)
+        {
+            return model.GetDegreeInCampus(campusAttended);
+        }
+
+        public Degree GetOneDegree(int degreeId)
+        {
+            return model.GetDegree(degreeId);
         }
     }
 }

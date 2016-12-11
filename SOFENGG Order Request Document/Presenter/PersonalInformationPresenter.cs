@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using SOFENGG_Order_Request_Document.Model;
@@ -18,6 +19,31 @@ namespace SOFENGG_Order_Request_Document.Presenter
             model = new UserModel();
             this.view = view;
         }
+
+
+        public HttpCookie AddPersonalInformation()
+        {
+            HttpCookie cookie;
+            cookie = new HttpCookie("StudentInfo");
+
+            cookie["LastName"] = view.LastName;
+            cookie["FirstName"] = view.FirstName;
+            cookie["MiddleName"] = view.MiddleName;
+            cookie["Gender"] = ((GenderEnum) view.Gender).ToString();
+            cookie["BirthDate"] = view.BirthDate.ToString();
+            cookie["Citizenship"] = view.Citizenship;
+            cookie["CurrentAddress"] = view.CurrentAddress;
+            cookie["PhoneNumber"] = view.PhoneNumber;
+            cookie["Email"] = view.EmailAddress;
+            cookie["HighSchoolAttended"] = view.HighSchoolAttended;
+            cookie["PlaceOfBirth"] = view.PlaceOfBirth;
+            cookie["Id"] = (model.GetMyStudentInfo().StudentInfoId + 1) + "";
+            cookie["StudentDegreeNum"] = 0 + "";
+            cookie["MailingInfoNum"] = 0 + "";
+
+            return cookie;
+        }
+        
 
         public bool AddStudentInfo()
         {

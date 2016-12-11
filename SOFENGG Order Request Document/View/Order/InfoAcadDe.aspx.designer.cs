@@ -13,6 +13,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
     public partial class InfoAcadDe {
         
         /// <summary>
+        /// hlPersonal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlPersonal;
+        
+        /// <summary>
         /// ddlCampus control.
         /// </summary>
         /// <remarks>
@@ -29,33 +38,6 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlYearAdmitted;
-        
-        /// <summary>
-        /// optLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList optLevel;
-        
-        /// <summary>
-        /// rfvLevel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLevel;
-        
-        /// <summary>
-        /// isGraduate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox isGraduate;
         
         /// <summary>
         /// ddlDegree control.

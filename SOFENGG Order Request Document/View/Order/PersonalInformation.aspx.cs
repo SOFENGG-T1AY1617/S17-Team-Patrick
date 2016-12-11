@@ -99,24 +99,27 @@ namespace SOFENGG_Order_Request_Document.View.Order
             //get StudentInfo from presenter.GetStudentInfo();
             //populate all txtBox etc etc
             //change all StudentInfo 
-            var studentInfo = presenter.GetMyStudentInfo(int.Parse(Request.Cookies["StudentInfo"]["Id"]));
-            txtBirthplace.Text = studentInfo.PlaceOfBirth;
-            txtCitizen.Text = studentInfo.Citizenship;
-            txtCurrentAddress.Text = studentInfo.CurrentAddress;
-            txtEmail.Text = studentInfo.Email;
-            txtFName.Text = studentInfo.FirstName;
-            txtLName.Text = studentInfo.LastName;
-            txtMName.Text = studentInfo.MiddleName;
-            txtHSAttended.Text = studentInfo.HighSchoolAttended;
-            txtPhoneNum.Text = studentInfo.PhoneNumber;
-            optGender.SelectedValue = (char)studentInfo.Gender + "";
-            ddlBirthMonth.Items.FindByValue(DateTime.Now.Month.ToString()).Selected = false;
-            ddlBirthMonth.Items.FindByValue(studentInfo.BirthDate.Month.ToString()).Selected = true;
-            ddlBirthDay.Items.FindByValue(DateTime.Now.Day.ToString()).Selected = false;
-            ddlBirthDay.Items.FindByValue(studentInfo.BirthDate.Day.ToString()).Selected = true;
-            ddlBirthYear.Items.FindByValue(DateTime.Now.Year.ToString()).Selected = false;
-            ddlBirthYear.Items.FindByValue(studentInfo.BirthDate.Year.ToString()).Selected = true;
+            HttpCookie cookie = Request.Cookies["StudentInfo"];
+            Debug.Write("HIHIHI");
+            txtLName.Text = cookie["LastName"];
+            txtFName.Text = cookie["FirstName"];
+            txtMName.Text = cookie["MiddleName"];
             
+            optGender.SelectedValue = (char)int.Parse(cookie["Gender"]) + "";
+            ddlBirthMonth.Items.FindByValue(cookie["BirthDate"].Substring(0, 1));
+            txtCitizen.Text = cookie["Citizenship"];
+            txtCurrentAddress.Text = cookie["CurrentAddress"];
+            txtPhoneNum.Text = cookie["PhoneNumber"];
+            txtEmail.Text = cookie["Email"];
+            txtHSAttended.Text = cookie["HighSchoolAttended"];
+            txtBirthplace.Text = cookie["PlaceOfBirth"];
+            ddlBirthMonth.Items.FindByValue(DateTime.Now.Month.ToString()).Selected = false;
+            ddlBirthMonth.Items.FindByValue(int.Parse(cookie["BirthDate"].Substring(3, 2)) + "").Selected = true;
+            ddlBirthDay.Items.FindByValue(DateTime.Now.Day.ToString()).Selected = false;
+            ddlBirthDay.Items.FindByValue(int.Parse(cookie["BirthDate"].Substring(0, 2)) + "").Selected = true;
+            ddlBirthYear.Items.FindByValue(DateTime.Now.Year.ToString()).Selected = false;
+            ddlBirthYear.Items.FindByValue(int.Parse(cookie["BirthDate"].Substring(6, 4)) + "").Selected = true;
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -134,6 +137,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 try
                 {
                     //Request.Cookies["StudentInfo"]["Id"] = "19";
+
                     if (Request.Cookies["StudentInfo"] != null)
                     {
                         PopulatePreviousInput();
@@ -155,49 +159,29 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
 
 
-
         }
 
         protected void SubmitPersonalInformation_Click(object sender, EventArgs e)
         {
-                LastName = txtLName.Text;
-                FirstName = txtFName.Text;
-                MiddleName = txtMName.Text;
-                Gender = (char)optGender.SelectedItem.Value[0];
-                var month = Convert.ToDateTime(ddlBirthMonth.SelectedItem.Text + " 01, 1900").Month;
-                var year = ddlBirthYear.SelectedItem.Text;
-                var day = ddlBirthDay.SelectedItem.Text;
-                BirthDate = Convert.ToDateTime(day + "/" + month + "/" + year).Date;
-                Citizenship = txtCitizen.Text;
-                CurrentAddress = txtCurrentAddress.Text;
-                PhoneNumber = txtPhoneNum.Text;
-                EmailAddress = txtEmail.Text;
-                HighSchoolAttended = txtHSAttended.Text;
-                PlaceOfBirth = txtBirthplace.Text;
+            LastName = txtLName.Text;
+            FirstName = txtFName.Text;
+            MiddleName = txtMName.Text;
+            Gender = (char)optGender.SelectedItem.Value[0];
+            var month = Convert.ToDateTime(ddlBirthMonth.SelectedItem.Text + " 01, 1900").Month;
+            var year = ddlBirthYear.SelectedItem.Text;
+            var day = ddlBirthDay.SelectedItem.Text;
+            BirthDate = Convert.ToDateTime(day + "/" + month + "/" + year).Date;
+            Citizenship = txtCitizen.Text;
+            CurrentAddress = txtCurrentAddress.Text;
+            PhoneNumber = txtPhoneNum.Text;
+            EmailAddress = txtEmail.Text;
+            HighSchoolAttended = txtHSAttended.Text;
+            PlaceOfBirth = txtBirthplace.Text;
 
             PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
+            HttpCookie personalInfoCookie = presenter.AddPersonalInformation();
+            Response.Cookies.Add(personalInfoCookie);
 
-            if (Request.Cookies["StudentInfo"] != null)
-            {
-                StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
-                if (presenter.EditStudentInfo())
-                {
-                    Request.Cookies["StudentInfo"]["PersonalInformationPage"] = "true";
-                }
-            }
-            else
-            {
-                if (presenter.AddStudentInfo())
-                {
-                    HttpCookie studentInfoCookie = new HttpCookie("StudentInfo");
-                    studentInfoCookie["Id"] = presenter.GetMyStudentInfo().StudentInfoId + "";
-                    studentInfoCookie["PersonalInformationPage"] = "true";
-                    studentInfoCookie["StudentDegreeId"] = "";
-                    studentInfoCookie["MailInfoId"] = "";
-                    studentInfoCookie.Expires = DateTime.Now.AddMinutes(30.0);
-                    Response.Cookies.Add(studentInfoCookie);
-                }
-            }
             Response.Redirect("~/View/Order/InfoAcadDe.aspx");
  
         }   

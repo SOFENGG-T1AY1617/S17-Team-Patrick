@@ -24,6 +24,12 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 
         }
 
+        public void SetQueryForAllStudentDegree()
+        {
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0};", StudentDegree.Table);
+        }
+
         protected override void SetQuery()
         {
             Cmd.CommandText = tempCmd.CommandText;
