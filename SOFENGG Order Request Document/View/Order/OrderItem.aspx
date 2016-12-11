@@ -3,6 +3,32 @@
 
     <!-- Always change the css file name to html file name! -->
     <link rel="stylesheet" href="/Content/css/order_item.css">
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+                $('#<%=cbPickup.ClientID %>').click(function () {
+                 if ($('#<%=cbPickup.ClientID %>').is(':checked')) {
+                     $("#delivery_only1").hide();
+                     $("#delivery_only2").hide();
+
+                     $("#ddlCampus").css("display", "block");
+
+                 }
+                 else if ($('#<%=cbPickup.ClientID %>').is(':checked') == false) {
+                     $("#delivery_only1").show();
+                     $("#delivery_only2").show();
+
+                     $("#ddlCampus").css("display", "none");
+
+                 }
+            });
+
+           
+
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="container-fluid center-block"> 
@@ -76,7 +102,7 @@
                             <tr>
                                 <td><asp:CheckBox ID="cbPickup" runat="server"></asp:CheckBox>For Pick Up</td>
                                 <td>
-                                    <asp:DropDownList id="ddlCampus" runat="server" style="display:none;">
+                                    <asp:DropDownList id="ddlCampus" runat="server" ClientIDMode="Static" style="display:none; width:150px;">
                                         <asp:ListItem Text="DLSU-Manila" value="DLSU-Manila"/>
                                         <asp:ListItem Text="DLSU-STC" value="DLSU-STC"/>
                                         <asp:ListItem Text="DLSU-Makati" value="DLSU-Makati"/>
@@ -93,7 +119,7 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">No. of Copies</td>
-                    <td><asp:DropDownList id="ddlNoCopy" runat="server" style="display:block;">
+                    <td><asp:DropDownList id="ddlNoCopy" runat="server" style="display:block; width:30px;">
                                         <asp:ListItem Text="1" value="1"/>
                                         <asp:ListItem Text="2" value="2"/>
                                         <asp:ListItem Text="3" value="3"/>
@@ -101,19 +127,17 @@
                     </td>
                 </tr>
                 <tr class="delivery_only">
-                    <td class="content-form_label">Send to</td>
-                    <td><%#Eval("Address")%></td>
+                    <td class="content-form_label" id="delivery_only2">Send to</td>
+                    <td id="delivery_only1">
+                        <asp:DropDownList ID="ddlAddresses" runat="server" style="display:block; width:150px;">
+                            <asp:ListItem Text="Quezon City" value="Quezon City" />
+                            <asp:ListItem Text="Manila" value="Manila" />
+                            <asp:ListItem Text="Makati" value="Makati" />
+                        </asp:DropDownList>
+                    </td>
 
-                </tr>    
-                    <asp:Repeater ID="repAdress" runat="server">
-                        <ItemTemplate>     
-                              <tr>
-                                    <td class="content-form_label">Send to</td>
-                                    <td><%#Eval("Address")%> </td>
-                              </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                <tr>
+
+                
 
                     <td class="content-form_label">Insert Document In</td>
                     <td >
