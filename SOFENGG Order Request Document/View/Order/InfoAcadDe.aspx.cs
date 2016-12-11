@@ -12,31 +12,44 @@ namespace SOFENGG_Order_Request_Document.View.Order
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (Request.Cookies["StudentInfo"]["Id"] == null)
+
+            try
+            {
+                if (!IsPostBack)
+                {
+                    this.PopulateYear();
+                    ddlDegree.Items.Insert(0, "Select Campus");
+                    //this.PopulateDegreeDropdown();
+                }
+
+                if (ddlCampus.SelectedIndex == 0)
+                    ddlDegree.Enabled = false;
+
+                if (Request.Cookies["StudentInfo"]["Id"] == null)
+                {
+                    Response.Redirect("~/View/Order/Error.aspx");
+                }
+            }
+            catch (NullReferenceException)
             {
                 Response.Redirect("~/View/Order/Error.aspx");
             }
 
-            if (!IsPostBack)
-            {
-                this.PopulateYear();
-                this.PopulateDegreeDropdown();
-            }
+            
            
-            try
-            {
-                if (Request.Cookies["StudentInfo"]["StudentDegreeId"] != null ||
-                    Request.Cookies["StudentInfo"]["StudentDegreeId"] != "")
-                {
-                    PopulatePreviousInput();
-                }
-            }
-            catch (Exception)
-            {
-                
-            }
         }
+
+        public void DDLCampus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlCampus.SelectedIndex == 0)
+                ddlDegree.Enabled = false;
+            else
+                ddlDegree.Enabled = true;
+
+            this.PopulateDegreeDropdown();
+        }
+
+
 
         private void PopulatePreviousInput()
         {
@@ -50,9 +63,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
             ddlCampus.Items.FindByValue(studentDegree.Degree.CampusOffered.ToString()).Selected = true;
             ddlYearAdmitted.SelectedItem.Selected = false;
             ddlYearAdmitted.Items.FindByText(studentDegree.YearAdmitted.ToString()).Selected = true;
-            optLevel.SelectedItem.Selected = false;
-            optLevel.Items.FindByValue(studentDegree.Degree.Level.ToString()).Selected = true;
-            isGraduate.Checked = false; //<--- wala tayong isGraduate????? -Dyan
             ddlDegree.SelectedItem.Selected = false;
             ddlDegree.Items.FindByText(studentDegree.Degree.Name).Selected = true;
             optAdmittedAs.SelectedItem.Selected = false;
@@ -61,32 +71,37 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void SubmitStudentDegree_Click(object sender, EventArgs e)
         {
+
             if (Request.Cookies["StudentInfo"] == null) return;
             StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
             IdNumber = int.Parse(txtStudNo.Text);
             CampusAttended = int.Parse(ddlCampus.SelectedItem.Value);
             YearAdmitted = int.Parse(ddlYearAdmitted.SelectedItem.Text);
-            Level = optLevel.SelectedItem.Value[0];
-            IsGraduate = isGraduate.Checked;
             Degree = ddlDegree.SelectedItem.Text;
-            AdmittedAs = (int.Parse(optAdmittedAs.SelectedItem.Value) - 1).ToString()[0];
+            AdmittedAs = (char)int.Parse(optAdmittedAs.SelectedItem.Value);
             
             
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
-            if (presenter.AddStudentDegree())
-            {
-                Response.Redirect("~/View/Order/InfoAcadConfirm.aspx");
-            }
+            HttpCookie acadInfoCookie = presenter.AddAcadInfoCookie(int.Parse(Request.Cookies["StudentInfo"]["Id"]),
+                                                                    int.Parse(Request.Cookies["StudentInfo"]["StudentDegreeNum"]));
+            Response.Cookies.Add(acadInfoCookie);
+            HttpCookie studentCookie = Request.Cookies["StudentInfo"];
+            int studentDegreeNum = int.Parse(studentCookie["StudentDegreeNum"]) + 1;
+            studentCookie["StudentDegreeNum"] = studentDegreeNum.ToString();
+            Response.Cookies.Add(studentCookie);
+            Response.Redirect("~/View/Order/InfoAcadConfirm.aspx");
         }
 
         private void PopulateDegreeDropdown()
         {
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
-            var degreeList = presenter.GetAllDegrees();
-            for (int i = 0; i < degreeList.Length; i++)
+            var degreeList = presenter.GetDegreeInCampus(int.Parse(ddlCampus.SelectedItem.Value));
+            ddlDegree.Items.Clear();
+            ddlDegree.Items.Insert(0, "Select Campus");
+            for (int i = 1; i <= degreeList.Length; i++)
             {
-                ddlDegree.Items.Insert(i, new ListItem(degreeList[i].Name, i+""));
-            }    
+                ddlDegree.Items.Insert(i, new ListItem(degreeList[i-1].Name, i + ""));
+            }
         }
 
         private void PopulateYear()

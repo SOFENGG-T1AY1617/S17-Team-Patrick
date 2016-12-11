@@ -41,6 +41,12 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                 (int)degree.CampusOffered, degree.Name, (char)degree.Level);
         }
 
+        public void SetQueryGivenCampus(CampusEnum campus)
+        {
+            tempCmd = new MySqlCommand();
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE campusOfferedId = {1}", Degree.Table, Degree.ColCampusOfferedId);
+        }
+
         protected override void SetQuery()
         {
             string commandText = tempCmd.CommandText;
