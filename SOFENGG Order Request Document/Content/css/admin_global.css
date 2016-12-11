@@ -43,17 +43,6 @@ body {
     height: 60%;
     overflow-x: scroll;
 }
-/*.content-scrolling {
-  height: 60%;
-  overflow-y: scroll;
-  overflow-x: scroll;
-}
-.content-scrolling div {
-  background-color: white;
-  border-radius: 5px;
-  padding: 1% 1% 1% 1%;
-  margin-top: 1%;
-}*/
 
 .content-form {
   width: 95%;
@@ -89,4 +78,10 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+
+.table-amount {
+    text-align: right;
+}
+.table-text {
+    text-align: left;
 }

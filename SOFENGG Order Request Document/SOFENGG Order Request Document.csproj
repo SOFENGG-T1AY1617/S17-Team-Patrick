@@ -67,10 +67,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\admin_login.css" />
     <Content Include="Content\css\admin_main.css" />
+    <Content Include="Content\css\admin_manage_operational_date.css" />
     <Content Include="Content\css\admin_navbar.css" />
     <Content Include="Content\css\admin_order_information.css" />
     <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\manage_operational_date.css" />
     <Content Include="Content\images\dlsu_logo.png" />
     <Content Include="Script\jquery-ui.js" />
     <Content Include="Script\jquery.validate.min.js" />
@@ -80,6 +83,8 @@
     <Content Include="View\Admin\MainService.asmx" />
     <Content Include="View\Admin\Main.aspx" />
     <Content Include="View\Admin\MainService2.svc" />
+    <Content Include="View\Admin\Login.aspx" />
+    <Content Include="View\Admin\ManageOperationalDate.aspx" />
     <Content Include="View\Admin\OrderInformationService.asmx" />
     <Content Include="View\Admin\Pending.aspx" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
@@ -242,6 +247,13 @@
       <DependentUpon>MainService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="View\Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -251,6 +263,13 @@
     </Compile>
     <Compile Include="View\Admin\MainService2.svc.cs">
       <DependentUpon>MainService2.svc</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ManageOperationalDate.aspx.cs">
+      <DependentUpon>ManageOperationalDate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\ManageOperationalDate.aspx.designer.cs">
+      <DependentUpon>ManageOperationalDate.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\OrderInformationService.asmx.cs">
       <DependentUpon>OrderInformationService.asmx</DependentUpon>

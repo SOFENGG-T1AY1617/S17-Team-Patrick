@@ -131,59 +131,27 @@
     <div class="jumbotron">
         <h2>Current Orders</h2>
 
-        <div class="container-fluid" style="display: none;">
+        <div class="container">
             <div class="row">
-                <div class="col-md-7">
-                    <div class="navbar navbar-default">
-                        <div class="collapse navbar-collapse">
-                            <div class="form-group search_bar">
-                                <input type="text" class="form-control" placeholder="Search Reference ID" />
-                            </div>
-                            <button type="submit" class="btn btn-default">Search</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#home" data-toggle="tab">All</a></li>
-                        <li><a href="#profile" data-toggle="tab">Processing</a></li>
-                        <li><a href="#profile" data-toggle="tab">Pending</a></li>
-                        <li><a href="#profile" data-toggle="tab">On Time</a></li>
-                        <li><a href="#profile" data-toggle="tab">Late</a></li>
-                    </ul>
+                <div class="col-md-offset-3">
+                    <asp:UpdatePanel ID="upStatus" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                             <ul class="nav nav-tabs justified">
+                                <li><a href="#">Processing: <span class="badge">
+                                    <asp:Label ID="lblProcessingCount" runat="server" /></span></a></li>
+                                <li><a href="#">Pending: <span class="badge">
+                                    <asp:Label ID="lblPendingCount" runat="server" /></span></a></li>
+                                <li><a href="#">On Time: <span class="badge">
+                                    <asp:Label ID="lblOnTimeCount" runat="server" /></span></a></li>
+                                <li><a href="#">Late: <span class="badge">
+                                    <asp:Label ID="lblLateCount" runat="server" /></span></a></li>
+                                <li><a href="#">Total Quantity: <span class="badge">
+                                    <asp:Label ID="lblTotalCount" runat="server" /></span></a></li>
+                            </ul>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
-        </div>
-
-        <div id="myTabContent" class="tab-content">
-            <asp:UpdatePanel ID="upStatus" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
-                <ContentTemplate>
-                    <table class="table table-bordered">
-                        <tr>
-                            <td>
-                                <h6><span class="glyphicon glyphicon-play">&nbsp;</span>Processing: <b>
-                                    <asp:Label ID="lblProcessingCount" runat="server" /></b></h6>
-                            </td>
-                            <td class="warning">
-                                <h6><span class="glyphicon glyphicon-pause">&nbsp;</span>Pending: <b>
-                                    <asp:Label ID="lblPendingCount" runat="server" /></b></h6>
-                            </td>
-                            <td class="success">
-                                <h6><span class="glyphicon glyphicon-ok">&nbsp;</span>On Time: <b>
-                                    <asp:Label ID="lblOnTimeCount" runat="server" /></b></h6>
-                            </td>
-                            <td class="danger">
-                                <h6><span class="glyphicon glyphicon-bell">&nbsp;</span>Late: <b>
-                                    <asp:Label ID="lblLateCount" runat="server" /></b></h6>
-                            </td>
-                            <td>
-                                <h6>Total Quantity: <b>
-                                    <asp:Label ID="lblTotalCount" runat="server" /></b></h6>
-                            </td>
-                        </tr>
-                    </table>
-                </ContentTemplate>
-            </asp:UpdatePanel>
         </div>
     </div>
 
@@ -212,19 +180,19 @@
                                 <td>
                                     <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
                                 </td>
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblTransactionDate" runat="server" Text='<%# Eval("TransactionDate") %>' />
                                 </td>
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblDueDate" runat="server" Text='<%# Convert.ToDateTime(Eval("DueDate")).ToString("d") %>' />
                                 </td>
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblStatus" runat="server" Text='<%# ((OrderStatusEnum) Eval("OrderStatus")).GetDescription() %>' />
                                 </td>
-                                <td>
+                                <td class="text-left">
                                     <asp:Label ID="lblName" runat="server" Text='<%# Eval("Receiver.FirstName") + " " + (!string.IsNullOrEmpty(Eval("Receiver.MiddleName").ToString()) ? Eval("Receiver.MiddleName") + " " : "") + Eval("Receiver.LastName") %>' />
                                 </td>
-                                <td>
+                                <td class="text-right">
                                     <asp:Label ID="lblAmount" runat="server" Text='<%# float.Parse(Eval("TotalAmount").ToString()).ToString("n2") %>' />
                                 </td>
                             </tr>
