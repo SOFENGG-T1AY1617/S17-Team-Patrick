@@ -205,6 +205,7 @@
     <Compile Include="Model\IUserModel.cs" />
     <Compile Include="Presenter\Admin\ViewOrderListPresenter.cs" />
     <Compile Include="Presenter\Order\InfoTransactionPresenter.cs" />
+    <Compile Include="Presenter\Order\OrderItemPresenter.cs" />
     <Compile Include="Presenter\PersonalInformationPresenter.cs" />
     <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
     <Compile Include="Model\OrderModel.cs" />

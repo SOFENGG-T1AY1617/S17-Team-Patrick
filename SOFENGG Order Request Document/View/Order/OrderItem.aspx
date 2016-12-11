@@ -28,16 +28,33 @@
     <form runat="server">
             <h5 class="content-header">Order Item</h5>
 
+         
+
             <table class="table table-striped" >
                 <tbody>
-                <tr>
-                    <td valign="top" class="content-form_label">Document</td>
-                    <td>&nbsp;<%#Eval("DocumentName") %></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Academic Profile</td>
-                    <td>&nbsp;<%#Eval("AcademicProfile") %></td>
-                </tr>
+
+                <asp:repeater ID="repDocumentname" runat="server">
+                    <ItemTemplate>
+
+                            <tr>
+                                <td class="content-form_label">Document</td>
+                                <td><%#Eval("Name")%> </td>
+                            </tr>
+
+
+                        </ItemTemplate>
+                </asp:repeater>
+
+                <asp:repeater ID="repAcademicProfile" runat="server">
+                    <ItemTemplate>
+                            <tr>
+                                <td class="auto-style1">Academic Profile</td>
+                                <td class="auto-style2"><%#Eval("Degree.Level")%></td>
+                            </tr>
+
+                    </ItemTemplate>
+                </asp:repeater>
+               
                 <tr>
                     <td class="content-form_label">Price</td>
                     <td>
@@ -81,8 +98,18 @@
                 <tr class="delivery_only">
                     <td class="content-form_label">Send to</td>
                     <td><%#Eval("Address")%></td>
-                </tr>
+
+                </tr>    
+                    <asp:Repeater ID="repAdress" runat="server">
+                        <ItemTemplate>     
+                              <tr>
+                                    <td class="content-form_label">Send to</td>
+                                    <td><%#Eval("Address")%> </td>
+                              </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 <tr>
+
                     <td class="content-form_label">Insert Document In</td>
                     <td >
                         <asp:RadioButtonList ID="optInsert" RepeatDirection="Vertical" RepeatLayout="Flow" runat="server">
