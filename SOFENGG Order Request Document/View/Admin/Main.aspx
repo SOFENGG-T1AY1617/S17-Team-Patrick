@@ -1,14 +1,132 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Admin/Admin.Master" AutoEventWireup="True" CodeBehind="Main.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Admin.Main" %>
 
+<%@ Import Namespace="SOFENGG_Order_Request_Document" %>
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model.Helper" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/admin_main.css">
     <link href="../../Content/css/admin_order_information.css" rel="stylesheet" />
+    <script type="text/javascript">
+        
+        $("#loading").hide();
+        var upOrderInformation = '#<%=upOrderInformation.ClientID %>';
+        var upOrderList = '#<%=upOrderList.ClientID %>';
+
+        isModalOpen = function(modalName) {
+            return ($(modalName).data('bs.modal') || {}).isShown;
+        }
+
+        getUpdatePanelTriggeredName = function() {
+            if (isModalOpen("#dlgPending"))
+                return '#<%=upDlgPending.ClientID %>';
+
+            if (isModalOpen("#dlgOrderInformation"))
+                return '#<%=upOrderInformation.ClientID %>';
+
+            return '#<%=upOrderList.ClientID %>';
+        }
+
+        hideContent = function(control) {
+            $(control).hide();
+        }
+
+        $(document)
+            .ready(function() {
+                
+                $("#loading").hide();
+
+                // dlgOrderInformation Loading Events
+                var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+                function clearPostBack() {
+                    console.log("hi poh");
+                    var updatePanelName = getUpdatePanelTriggeredName();
+                        
+                    $("#loading").hide();
+
+                    try {
+                        if (updatePanelName === upOrderInformation) {
+                            $(upOrderInformation).slideDown();
+                            return;
+                        }
+
+                        if (updatePanelName === upOrderList) {
+                            return;
+                        }
+                    } finally {
+                        
+                        prm.remove_endRequest(clearPostBack);
+                    }
+                }
+
+                prm.add_beginRequest(
+                    function (sender, args) {
+
+                        $("#loading").show();
+                        
+                        var updatePanelName = getUpdatePanelTriggeredName();
+                        
+
+                        try {
+                            if (updatePanelName === upOrderInformation) {
+                                hideContent(upOrderInformation);
+                                return;
+                            }
+
+                            if (updatePanelName === upOrderList) {
+                                hideContent(upOrderInformation);
+                                return;
+                            }
+                        } finally {
+                            prm.add_endRequest(clearPostBack);
+                        }
+                        
+                    });
+
+
+            });
+
+        function pageLoad(sender, args) {
+            
+            // Row click
+            $('.rowOrderItem')
+                .click(function() {
+                    var referenceNo = $(this).attr('id');
+                    __doPostBack('cmdUpdateOrderInformation', referenceNo);
+                });
+        }
+
+        var time;
+
+        function UpdateDlgOrderInformation(referenceNo) {
+            GetOrderInformation(referenceNo);
+            hideContent(upOrderInformation);
+        }
+
+        function GetOrderInformation(referenceNo) {
+            console.log("service called");
+            time = (new Date()).getTime();
+            var service = new AdminService.MainService2();
+            console.log("parameter passed - " + referenceNo);
+            service.GetOrderInformation(referenceNo, GetOrderInformationSuccessCallback);
+        }
+
+        function GetOrderInformationSuccessCallback(result) {
+            var json = $.parseJSON(result);
+            console.log(json.ReferenceNo);
+            __doPostBack('cmdUpdateOrderInformation', result);
+            console.log("service run time: " + ((new Date()).getTime() - time) + " ms");
+            $('.btnMarkAsPending').attr('id', json.ReferenceNo);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <asp:ScriptManager ID="sm" runat="server" EnablePageMethods="true" EnablePartialRendering="true"></asp:ScriptManager>
+    <asp:ScriptManager ID="sm" runat="server">
+        <Services>
+            <asp:ServiceReference Path="~/View/Admin/MainService2.svc" />
+        </Services>
+    </asp:ScriptManager>
 
     <div class="jumbotron">
         <h2>Current Orders</h2>
@@ -71,9 +189,9 @@
 
     <div class="content-main table-responsive">
         <div class="main_report">
-
             <asp:UpdatePanel ID="upOrderList" ChildrenAsTriggers="True" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
+                    <asp:Label style="display: none;" ID="cmdUpdateOrderList" Text=""  runat="server"/>
                     <asp:Repeater ID="repOrders" runat="server">
                         <HeaderTemplate>
                             <table class="table table-hover table-bordered table-fluid">
@@ -90,7 +208,7 @@
                                 <tbody>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <tr class='<%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation" onclick="__doPostBack('cmdUpdateOrderInformation','<%# Eval("ReferenceNo") %>')">
+                            <tr id='<%# Eval("ReferenceNo") %>' class='rowOrderItem <%#SetRowClass((OrderStatusEnum) Eval("OrderStatus")) %>' data-toggle="modal" data-target="#dlgOrderInformation">
                                 <td>
                                     <asp:Label ID="lblReferenceNo" runat="server" Text='<%# Eval("ReferenceNo") %>' />
                                 </td>
@@ -126,159 +244,158 @@
     <div class="modal fade" id="dlgOrderInformation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
-            <asp:UpdatePanel ID="upOrderInformation" ChildrenAsTriggers="True" runat="server" UpdateMode="Conditional">
-                <ContentTemplate>
-                    <input type="hidden" id="cmdUpdateOrderInformation" />
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                            <h6>Reference Number
+            <div class="modal-content">
+                <div id="orderInformation">
+                    <asp:UpdatePanel ID="upOrderInformation" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <input type="hidden" id="cmdUpdateOrderInformation" />
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h6>Reference Number
                                 <asp:Label ID="lblActiveReferenceNo" runat="server"></asp:Label></h6>
-                        </div>
-                        <div class="modal-body">
+                            </div>
+                            <div class="modal-body">
 
-                            <div>
+                                <div>
 
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr class="active">
-                                            <td colspan="2">Transaction Details</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>
-                                                <asp:Label ID="lblActiveOrderName" runat="server" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Address</td>
-                                            <td>
-                                                <asp:Label ID="lblActiveOrderAddress" runat="server" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phone Number</td>
-                                            <td>
-                                                <asp:Label ID="lblActiveOrderPhoneNumber" runat="server" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email</td>
-                                            <td>
-                                                <asp:Label ID="lblActiveOrderEmail" runat="server" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Place of Birth</td>
-                                            <td>
-                                                <asp:Label ID="lblActiveOrderPlaceOfBirth" runat="server" /></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <asp:Label ID="lblActiveTransactionDate" style="display: none;" CssClass="lblActiveTransactionDate" runat="server" />
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="active">
+                                                <td colspan="2">Transaction Details</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>
+                                                    <asp:Label ID="lblActiveOrderName" runat="server" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Address</td>
+                                                <td>
+                                                    <asp:Label ID="lblActiveOrderAddress" runat="server" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone Number</td>
+                                                <td>
+                                                    <asp:Label ID="lblActiveOrderPhoneNumber" runat="server" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td>
+                                                    <asp:Label ID="lblActiveOrderEmail" runat="server" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Place of Birth</td>
+                                                <td>
+                                                    <asp:Label ID="lblActiveOrderPlaceOfBirth" runat="server" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <asp:Label ID="lblActiveTransactionDate" Style="display: none;" CssClass="lblActiveTransactionDate" runat="server" />
 
-                                <asp:Repeater ID="repOrderMailingInfo" runat="server">
-                                    <ItemTemplate>
-                                        <div class="delivery_details_table">
-                                            <table class="table table-bordered table_start">
-                                                <thead>
-                                                    <tr class="active">
-                                                        <td colspan="2">Delivery Details</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="col-md-5">Mailing Address</td>
-                                                        <td>
-                                                            <asp:Label ID="lblMailingAddress" runat="server" Text='<%# Eval("MailingAddress.MailingAddress") %>' /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Zip Code</td>
-                                                        <td>
-                                                            <asp:Label ID="lblZipCode" runat="server" Text='<%# Eval("MailingAddress.ZipCode") %>' /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Delivery Area</td>
-                                                        <td>
-                                                            <asp:Label ID="lblDeliveryArea" runat="server" Text='<%# Eval("MailingAddress.DeliveryArea.Name") %>' /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Delivery Charge</td>
-                                                        <td>PHP
-                                                            <asp:Label ID="lblDeliveryCharge" runat="server" Text='<%# float.Parse(Eval("MailingAddress.DeliveryArea.Price").ToString()).ToString("n2") %>' /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Processing Type</td>
-                                                        <td>
-                                                            <asp:Label ID="lblOrderType" runat="server" Text='<%# ((OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true)).GetDescription() %>' /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Date Due To Courier</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Estimated Delivery Date</td>
-                                                        <td>
-                                                            <asp:Label ID="lblEstimatedDeliveryDate" runat="server" Text='<%# Convert.ToDateTime(Eval("EstimatedDeliveryDate")).ToString("d") %>' /></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <asp:Repeater ID="repOrderItem" DataSource='<%# Eval("OrderItemList") %>' runat="server">
-                                                <ItemTemplate>
-                                                    <table class="table table-bordered">
+                                    <asp:Repeater ID="repOrderMailingInfo" runat="server">
+                                        <ItemTemplate>
+                                            <div class="delivery_details_table">
+                                                <table class="table table-bordered table_start">
+                                                    <thead>
+                                                        <tr class="active">
+                                                            <td colspan="2">Delivery Details</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
                                                         <tr>
-                                                            <td class="col-md-5">Document</td>
+                                                            <td class="col-md-5">Mailing Address</td>
                                                             <td>
-                                                                <asp:Label ID="lblDocumentName" runat="server" Text='<%# Eval("Document.Name") %>' /></td>
+                                                                <asp:Label ID="lblMailingAddress" runat="server" Text='<%# Eval("MailingAddress.MailingAddress") %>' /></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Cost</td>
+                                                            <td>Zip Code</td>
                                                             <td>
-                                                                <asp:Label ID="lblCost" runat="server" Text='<%# (OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true) == OrderType.Regular ? Eval("Document.RegularPrice") : Eval("Document.ExpressPrice") %>' /></td>
+                                                                <asp:Label ID="lblZipCode" runat="server" Text='<%# Eval("MailingAddress.ZipCode") %>' /></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>No. of Copies</td>
+                                                            <td>Delivery Area</td>
                                                             <td>
-                                                                <asp:Label ID="lblNoOfCopes" runat="server" Text='<%# Eval("NoOfCopies") %>' /></td>
+                                                                <asp:Label ID="lblDeliveryArea" runat="server" Text='<%# Eval("MailingAddress.DeliveryArea.Name") %>' /></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Envelope</td>
-                                                            <td>
-                                                                <asp:Label ID="lblEnvelope" runat="server" Text='<%# ((PackagingEnum)Enum.Parse(typeof(PackagingEnum), Eval("Packaging").ToString(), true)).GetDescription() %>' /></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Sub Total</td>
+                                                            <td>Delivery Charge</td>
                                                             <td>PHP
-                                                                <asp:Label ID="lblSubTotal" runat="server" Text='<%# int.Parse(Eval("NoOfCopies").ToString()) * ((OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true) == OrderType.Regular ? float.Parse(Eval("Document.RegularPrice").ToString()) : float.Parse(Eval("Document.ExpressPrice").ToString())) %>' /></td>
+                                                            <asp:Label ID="lblDeliveryCharge" runat="server" Text='<%# float.Parse(Eval("MailingAddress.DeliveryArea.Price").ToString()).ToString("n2") %>' /></td>
                                                         </tr>
-                                                    </table>
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <%--            Only display "mark as pending" and "mark as done" when currentorder is processing and NOT pending already--%>
-                            <div class="content_buttons">
-                                <%--<button id="btnBack" class="btn btn-primary">Back</button>--%>
+                                                        <tr>
+                                                            <td>Processing Type</td>
+                                                            <td>
+                                                                <asp:Label ID="lblOrderType" runat="server" Text='<%# ((OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true)).GetDescription() %>' /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Date Due To Courier</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Estimated Delivery Date</td>
+                                                            <td>
+                                                                <asp:Label ID="lblEstimatedDeliveryDate" runat="server" Text='<%# Convert.ToDateTime(Eval("EstimatedDeliveryDate")).ToString("d") %>' /></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
 
-                                <asp:UpdatePanel ID="upOrderInformationButtons" runat="server" UpdateMode="Conditional">
-                                    <ContentTemplate>
-                                        <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" data-toggle="modal" data-target="#dlgPending" runat="server" Text="Mark as Pending" />
-                                        <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" OnClick="btnMarkDone_OnClick" />
-                                        <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" OnClick="btnMarkProcessing_OnClick" />
-                                    </ContentTemplate>
-                                    <Triggers>
-                                        <asp:AsyncPostBackTrigger ControlID="btnMarkAsPending" EventName="Click" />
-                                    </Triggers>
-                                </asp:UpdatePanel>
+                                                <asp:Repeater ID="repOrderItem" DataSource='<%# Eval("OrderItemList") %>' runat="server">
+                                                    <ItemTemplate>
+                                                        <table class="table table-bordered">
+                                                            <tr>
+                                                                <td class="col-md-5">Document</td>
+                                                                <td>
+                                                                    <asp:Label ID="lblDocumentName" runat="server" Text='<%# Eval("Document.Name") %>' /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Cost</td>
+                                                                <td>
+                                                                    <asp:Label ID="lblCost" runat="server" Text='<%# (OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true) == OrderType.Regular ? Eval("Document.RegularPrice") : Eval("Document.ExpressPrice") %>' /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>No. of Copies</td>
+                                                                <td>
+                                                                    <asp:Label ID="lblNoOfCopes" runat="server" Text='<%# Eval("NoOfCopies") %>' /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Envelope</td>
+                                                                <td>
+                                                                    <asp:Label ID="lblEnvelope" runat="server" Text='<%# ((PackagingEnum)Enum.Parse(typeof(PackagingEnum), Eval("Packaging").ToString(), true)).GetDescription() %>' /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sub Total</td>
+                                                                <td>PHP
+                                                                <asp:Label ID="lblSubTotal" runat="server" Text='<%# int.Parse(Eval("NoOfCopies").ToString()) * ((OrderType)Enum.Parse(typeof(OrderType), Eval("OrderType").ToString(), true) == OrderType.Regular ? float.Parse(Eval("Document.RegularPrice").ToString()) : float.Parse(Eval("Document.ExpressPrice").ToString())) %>' /></td>
+                                                            </tr>
+                                                        </table>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+                            <div class="modal-footer">
+                                <%--            Only display "mark as pending" and "mark as done" when currentorder is processing and NOT pending already--%>
+                                <div class="content_buttons">
+                                    <%--<button id="btnBack" class="btn btn-primary">Back</button>--%>
+
+                                    <asp:UpdatePanel ID="upOrderInformationButtons" runat="server" UpdateMode="Conditional">
+                                        <ContentTemplate>
+                                            <asp:Button ID="btnMarkPending" CssClass="btn btn-warning" data-toggle="modal" data-target="#dlgPending" runat="server" Text="Mark as Pending" />
+                                            <asp:Button ID="btnMarkDone" CssClass="btn btn-success" Text="Mark as Done" runat="server" OnClick="btnMarkDone_OnClick" />
+                                            <asp:Button ID="btnMarkProcessing" CssClass="btn btn-default" Text="Mark as Processing" runat="server" OnClick="btnMarkProcessing_OnClick" />
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -311,7 +428,7 @@
                 <asp:UpdatePanel ID="upDlgPending" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <div class="modal-footer">
-                            <asp:Button ID="btnMarkAsPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClientClick="$('#dlgPending').modal('hide');" OnClick="btnMarkAsPending_OnClick" data-dismiss="modal" />
+                            <asp:Button ID="btnMarkAsPending" class="btn btn-primary btnMarkAsPending" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
                             <button id="btnPendingCancel" type="button" class="btn btn-default" data-dismiss="modal">
                                 Cancel</button>
                         </div>
@@ -320,6 +437,15 @@
             </div>
         </div>
     </div>
+    
+    <div id="loading">
+        <div class="loader" style="position: fixed; left: 50%; top: 50%;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/admin_main.js"></script>
@@ -330,7 +456,7 @@
         $(document).ready(function () {
 
             $("#dlgPending")
-                .on('shown.bs.modal', function (e) {
+                .on('show.bs.modal', function (e) {
                     $("#dlgOrderInformation").modal('hide');
 
                     var prm = Sys.WebForms.PageRequestManager.getInstance();
@@ -348,37 +474,39 @@
                 });
         });
 
-            function InitializeRequest(sender, args) { }
-            function EndRequest(sender, args) {
-                // after update occur on UpdatePanel re-init the DatePicker
+        function InitializeRequest(sender, args) { }
+        function EndRequest(sender, args) {
+            var minDate = getMinimumNewDueDate();
+            $(".txtNewDueDate").datepicker("option", "minDate", minDate).datepicker("setDate", new Date());
 
-                var minDate = getMinimumNewDueDate($('#<%=lblActiveTransactionDate.ClientID %>').text());
-                $(".txtNewDueDate").datepicker("option", "minDate", minDate).datepicker("setDate", new Date());
+        }
 
-            }
+        function getDateToday() {
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return today;
+        }
 
-            function getMinimumNewDueDate(transactionDate) {
-                return new Date(new Date(transactionDate).valueOf() + 1000 * 3600 * 24);
-            }
+        function getMinimumNewDueDate() {
+            return getDateToday();
+        }
     </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             // Rule: Greater Than
-            jQuery.validator.addMethod("greaterThan",
-            function(value, element, params) {
+            jQuery.validator.addMethod("greaterThanEqual",
+                function(value, element, params) {
 
-                console.log("Current Date = " + value);
-                console.log("Start Date Element Name = " + params);
-                console.log("Start Date = " + $(params).text());
+                    console.log("Current Date = " + value);
+                    console.log("Compare to Date = " + params);
 
-                if (!/Invalid|NaN/.test(new Date(value))) {
-                    return new Date(value) > new Date($(params).text());
-                }
+                    if (!/Invalid|NaN/.test(value)) {
+                        return new Date(value) >= params;
+                    }
 
-                return isNaN(value) && isNaN($(params).text())
-                    || (Number(value) > Number($(params).text()));
-            },'Must be greater than {0}.');
+                    return isNaN(value);
+                },'Must be greater than {0}.');
 
             // Rule: Date Format
             $.validator.addMethod("dateFormat", function(value, element, regexp) {
@@ -396,7 +524,7 @@
                     <%=txtNewDueDate.UniqueID %>:{
                         required: true,
                         dateFormat: /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/,
-                        greaterThan: '.lblActiveTransactionDate'
+                        greaterThanEqual: getDateToday()
                     },
                 },
                 messages: {
@@ -407,7 +535,7 @@
                     },
                     <%=txtNewDueDate.UniqueID %>:{
                         required: "Please enter a new due date.",
-                        greaterThan: "New due date must be after the transaction date.",
+                        greaterThanEqual: "You cannot set a date before today.",
                         dateFormat: "Please enter a valid date (MM/DD/YYYY)"
                     }
                 },
@@ -419,6 +547,7 @@
                     //    .closest('.form-group').removeClass('has-error').addClass('has-success');
                     element.addClass('valid')
                         .closest('.form-group').removeClass('has-error');
+
                 }
             });
 
@@ -434,7 +563,34 @@
                             .find("input[type=checkbox], input[type=radio]")
                             .prop("checked", "")
                             .end();
+                        $('#<%= txtPendingReason.ClientID %>').addClass('valid')
+                            .closest('.form-group').removeClass('has-error');
+
+                        $('#<%= txtNewDueDate.ClientID %>').addClass('valid')
+                            .closest('.form-group').removeClass('has-error');
                     });
+
         });
+
+        $(".btnMarkAsPending").click(function(evt) {
+            // Validate the form and retain the result.
+            var isValid = $("#formMain").valid();
+            // If the form didn't validate, prevent the
+            //  form submission.
+
+            console.log(isValid);
+            if (isValid){
+                $('#dlgPending').modal('hide');
+            }
+        });
+
+        jQuery(function ($){
+            $(document).ajaxStop(function(){
+                $(".loader").hide();
+            });
+            $(document).ajaxStart(function(){
+                $(".loader").show();
+            });    
+        }); 
     </script>
 </asp:Content>

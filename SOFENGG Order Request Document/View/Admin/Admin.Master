@@ -9,8 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online Request for Documents</title>
     <link href="/Content/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/Content/css/loading.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/Content/css/admin_global.css" />
     <link href="../../Content/css/admin_navbar.css" rel="stylesheet" />
+    <script src="/Script/jquery.min.js"></script>
+    <script src="/Script/jquery.validate.min.js"></script>  
+    <script src="/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -80,9 +84,6 @@
     </div>
 </div>
 
-<script src="/Script/jquery.min.js"></script>
-<script src="/Script/jquery.validate.min.js"></script>  
-<script src="/Script/bootstrap.min.js"></script>
 <asp:ContentPlaceHolder ID="script" runat="server">
 
 </asp:ContentPlaceHolder>
