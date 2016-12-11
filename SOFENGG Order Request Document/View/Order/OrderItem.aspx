@@ -59,15 +59,20 @@
                     <td class="content-form_label">Price</td>
                     <td>
                         <table class="table table-striped">
-                            <tr>
-                         
-                                <td><asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server" Checked="True" Selected="True"></asp:RadioButton>Regular Processing</td>
-                                <td><%#Eval("RegularPrice") %></td>
-                            </tr>
-                            <tr>
-                                <td><asp:RadioButton ID="rbExpress" GroupName="optProc" runat="Server"></asp:RadioButton>Express Processing</td>
-                                <td><%#Eval("ExpressPrice") %></td>
-                            </tr>
+                            <asp:repeater ID="repPrices" runat="server">
+                                <ItemTemplate>
+                                        <tr>
+                                            <td><asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server" Checked="True" Selected="True"></asp:RadioButton>Regular Processing</td>
+                                            <td>Php <%#Eval("RegularPrice") %></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><asp:RadioButton ID="rbExpress" GroupName="optProc" runat="Server"></asp:RadioButton>Express Processing</td>
+                                            <td>Php <%#Eval("ExpressPrice") %></td>
+                                        </tr>
+
+                                </ItemTemplate>
+                            </asp:repeater>
                             <tr>
                                 <td><asp:CheckBox ID="cbPickup" runat="server"></asp:CheckBox>For Pick Up</td>
                                 <td>

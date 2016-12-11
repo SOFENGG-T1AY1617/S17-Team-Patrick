@@ -54,7 +54,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }*/
             documentList.Add(document);
 
-
+            repPrices.DataSource = ayy;
+            repPrices.DataBind();
 
 
             repAcademicProfile.DataSource = studentdegree;
