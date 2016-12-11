@@ -33,8 +33,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             var db = new DBMySqlEditPersonalInformation(studentInfo);
             return db.ExecuteQuery();
         }
-
-
+        
         public Degree GetDegree(int StudentInfoId, String name, int CampusAttended, char Level)
         {
             var db = new DBMySqlGetDegreeList();
@@ -55,6 +54,14 @@ namespace SOFENGG_Order_Request_Document.Model.Database
         {
             var db = new DBMySqlGetDegreeList();
             db.SetQueryForAllDegree();
+            db.ExecuteQuery();
+            return db.DegreeList;
+        }
+
+        public Degree[] GetDegreeInCampus(int CampusAttended)
+        {
+            var db = new DBMySqlGetDegreeList();
+            db.SetQueryGivenCampus((CampusEnum)CampusAttended);
             db.ExecuteQuery();
             return db.DegreeList;
         }
@@ -81,6 +88,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             var db = new DBMySqlGetStudentDegreeList();
             db.SetQueryGivenStudentInfoId(studentInfoId);
             db.ExecuteQuery();
+            Debug.Write("\n\n" + db.StudentDegreeList + "\n\n");
             return db.StudentDegreeList;
         }
 
@@ -90,6 +98,14 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             db.SetQueryGivenStudentDegreeId(studentDegreeId);
             db.ExecuteQuery();
             return db.StudentDegreeList[0];
+        }
+
+        public StudentDegree[] GetAllStudentDegree()
+        {
+            var db = new DBMySqlGetStudentDegreeList();
+            db.SetQueryForAllStudentDegree();
+            db.ExecuteQuery();
+            return db.StudentDegreeList;
         }
 
         public MailingInfo[] GetMailingInfo(int studentInfoId)

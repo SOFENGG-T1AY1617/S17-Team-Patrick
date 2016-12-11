@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\admin_order_information.css" />
-    <Content Include="Script\view_order_information.js" />
+    <Content Include="Presenter\Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
     <Content Include="View\Admin\Main.aspx" />
     <Content Include="View\Admin\Pending.aspx" />
@@ -75,9 +75,9 @@
     <Content Include="Content\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap.min.css.map" />
-    <Content Include="Script\Day.js" />
-    <Content Include="Script\jquery.min.map" />
-    <Content Include="Script\jquery.slim.min.map" />
+    <Content Include="Presenter\Script\Day.js" />
+    <Content Include="Presenter\Script\jquery.min.map" />
+    <Content Include="Presenter\Script\jquery.slim.min.map" />
     <Content Include="View\Admin\ViewOrderInformation.aspx" />
     <Content Include="View\Order\Order.Master" />
     <Content Include="View\Admin\Admin.Master" />
@@ -124,21 +124,21 @@
     <Content Include="View\Order\OrderItem.aspx" />
     <Content Include="View\Order\PersonalInformation.aspx" />
     <Content Include="View\Order\Rules.aspx" />
-    <Content Include="Script\admin_document_list.js" />
-    <Content Include="Script\admin_main.js" />
-    <Content Include="Script\bootstrap.js" />
-    <Content Include="Script\bootstrap.min.js" />
-    <Content Include="Script\core.js" />
-    <Content Include="Script\info_acad_de.js" />
-    <Content Include="Script\info_mail_de.js" />
-    <Content Include="Script\jquery.js" />
-    <Content Include="Script\jquery.min.js" />
-    <Content Include="Script\jquery.slim.js" />
-    <Content Include="Script\jquery.slim.min.js" />
-    <Content Include="Script\npm.js" />
-    <Content Include="Script\order_item.js" />
-    <Content Include="Script\personal_information.js" />
-    <Content Include="Script\rules.js" />
+    <Content Include="Presenter\Script\admin_document_list.js" />
+    <Content Include="Presenter\Script\admin_main.js" />
+    <Content Include="Presenter\Script\bootstrap.js" />
+    <Content Include="Presenter\Script\bootstrap.min.js" />
+    <Content Include="Presenter\Script\core.js" />
+    <Content Include="Presenter\Script\info_acad_de.js" />
+    <Content Include="Presenter\Script\info_mail_de.js" />
+    <Content Include="Presenter\Script\jquery.js" />
+    <Content Include="Presenter\Script\jquery.min.js" />
+    <Content Include="Presenter\Script\jquery.slim.js" />
+    <Content Include="Presenter\Script\jquery.slim.min.js" />
+    <Content Include="Presenter\Script\npm.js" />
+    <Content Include="Presenter\Script\order_item.js" />
+    <Content Include="Presenter\Script\personal_information.js" />
+    <Content Include="Presenter\Script\rules.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

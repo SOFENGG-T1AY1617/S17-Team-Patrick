@@ -15,23 +15,44 @@ namespace SOFENGG_Order_Request_Document.View.Order
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["StudentInfo"]["Id"] == null)
+            try
+            {
+                if (Request.Cookies["StudentInfo"]["Id"] == null)
+                {
+                    Response.Redirect("~/View/Order/Error.aspx");
+                }
+
+                StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
+                DisplayAllStudentDegree();
+
+            }
+            catch (NullReferenceException)
             {
                 Response.Redirect("~/View/Order/Error.aspx");
             }
-            StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
-            DisplayAllStudentDegree();
+
         }
 
 
         private void DisplayAllStudentDegree()
         {
+            int studentDegreeNumber = int.Parse(Request.Cookies["StudentInfo"]["StudentDegreeNum"]);
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
             StudentDegree[] studentDegree = presenter.GetStudentDegreeList();
             List<StudentDegree> studentDegreeList = new List<StudentDegree>();
-            for (int i = 0; i < studentDegree.Length; i++)
+            for (int i = 0; i < studentDegreeNumber; i++)
             {
-                studentDegreeList.Add(studentDegree[i]);
+                var cookie = Request.Cookies["AcadInformation" + i];
+                studentDegreeList.Add(new StudentDegree()
+                {
+                    AdmittedAs = (AdmissionEnum)int.Parse(cookie["AdmittedAs"]),
+                    IdStudent = int.Parse(cookie["IdStudent"]),
+                    Degree = presenter.GetOneDegree(int.Parse(cookie["Degree"])),
+                    YearAdmitted = int.Parse(cookie["YearAdmitted"]),
+                    Id = i,
+                    StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"])
+
+                });
             }
 
             rptInfoAcadConfirm.DataSource = studentDegreeList;
@@ -42,7 +63,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void GoToInfoMailDe(object sender, EventArgs e)
         {
-            Request.Cookies["StudentInfo"]["StudentDegreeId"] = "";
             Response.Redirect("~/View/Order/InfoMailDe.aspx");
         }
 
@@ -54,11 +74,13 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void EditStudentDegree(object sender, EventArgs e)
         {
+            //HttpCookie editCookie = new HttpCookie("EditCookie");
+            //editCookie["StudentDegree"] = gets the id of selected 
+            Response.Redirect("~/View/Order/InfoAcadDe.aspx");
         }
 
         public void AddStudentDegree(object sender, EventArgs e)
         {
-            Request.Cookies["StudentInfo"]["StudentDegreeId"] = "";
             Response.Redirect("~/View/Order/InfoAcadDe.aspx");
         }
 

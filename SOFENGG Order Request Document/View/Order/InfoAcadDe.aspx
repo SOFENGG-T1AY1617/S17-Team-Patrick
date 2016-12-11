@@ -38,7 +38,7 @@
                 <tr>
                     <td class="content-form_label">Campus Attended</td>
                     <td style="padding-left: 3px;">
-                        <asp:DropDownList ID="ddlCampus" runat="server" Width="200px">
+                        <asp:DropDownList ID="ddlCampus"  AutoPostBack="true" runat="server" Width="200px" OnTextChanged="DDLCampus_SelectedIndexChanged">
                             <asp:ListItem Text="Select Campus" Value="0"></asp:ListItem>
                             <asp:ListItem Text="Taft" Value="1"></asp:ListItem>
                             <asp:ListItem Text="STC" Value="2"></asp:ListItem>
