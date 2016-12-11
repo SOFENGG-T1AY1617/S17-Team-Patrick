@@ -45,19 +45,23 @@ namespace SOFENGG_Order_Request_Document.View.Order
             {
                 studentDegreeList.Add(studentdegree[i]);
             }
-
+            Document[] ayy = new Document[] { presenter.getDocumentName(DocumentId) };
             Document document = presenter.getDocumentName(DocumentId);
             List<Document> documentList = new List<Document>();
-
+            /*for (int i = 0; i < document.Length; i++)
+            {
+                documentList.Add(document[i]);
+            }*/
             documentList.Add(document);
-            
+
+
 
 
             repAcademicProfile.DataSource = studentdegree;
             repAcademicProfile.DataBind();
 
-            /*repDocumentname.DataSource = document;
-            repDocumentname.DataBind();*/
+            repDocumentname.DataSource = ayy;
+            repDocumentname.DataBind();
 
             
 

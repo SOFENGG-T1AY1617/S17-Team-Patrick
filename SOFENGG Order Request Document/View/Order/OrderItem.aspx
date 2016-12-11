@@ -49,7 +49,7 @@
                     <ItemTemplate>
                             <tr>
                                 <td class="auto-style1">Academic Profile</td>
-                                <td class="auto-style2"><%#Eval("Degree.Level")%></td>
+                                <td class="auto-style2"><%#Eval("Degree.Name")%></td>
                             </tr>
 
                     </ItemTemplate>
