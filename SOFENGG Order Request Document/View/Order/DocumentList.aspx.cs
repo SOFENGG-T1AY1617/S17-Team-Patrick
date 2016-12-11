@@ -27,7 +27,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void OnSelectedIndexChangedCert(object sender, EventArgs e)
         {
-            string documentname = (gvTOR.SelectedRow.FindControl("lbName") as Label).Text;
+            string documentname = (gvCertification.SelectedRow.FindControl("lbName") as Label).Text;
+            Debug.Write("document namee: " + documentname);
             HttpCookie docuCookie = new HttpCookie("Document");
             if(documentname.Equals("Course Subject Desciption"))
             {
@@ -85,7 +86,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void OnSelectedIndexChangedOthers(object sender, EventArgs e)
         {
-            string documentname = (gvTOR.SelectedRow.FindControl("lbName") as Label).Text;
+            string documentname = (gvOthers.SelectedRow.FindControl("lbName") as Label).Text;
             HttpCookie docuCookie = new HttpCookie("Document");
             docuCookie["id"] = 12 + "";
 

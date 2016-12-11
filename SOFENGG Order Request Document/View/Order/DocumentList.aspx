@@ -33,13 +33,14 @@
             <blockquote>
                     <p>Below is a list of documents that you can request from the OUR. <br />Press the order link to the document you want to order.</p>
             </blockquote>
-           
-            <table class="table table-striped" style="width: 571px;" >
+           <div>
+            <table class="table table-striped" style="width: 571px; margin-left:auto; margin-right:auto;" >
                 <tr>
                     <td colspan="4" class="content-document-header" >Transcript of Records</td>
                 </tr>
             </table>
-            <asp:GridView ID="gvTOR" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px;" >
+            <asp:GridView ID="gvTOR" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px; margin-left:auto; margin-right:auto;" 
+                OnSelectedIndexChanged="OnSelectedIndexChangedTOR">
                 <Columns >
                     <asp:TemplateField HeaderText="Document" HeaderStyle-Width="250px" >
                         <ItemTemplate>
@@ -56,21 +57,18 @@
                             <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:TemplateField ShowHeader="False">
-                    <ItemTemplate>
-                            <asp:Button ID="btnTORorder" runat="server" CommandName="OrderItem"
-                            Text="Order" CssClass="btn btn-primary" />
-                    </ItemTemplate>
-                    </asp:TemplateField>
+                            <asp:ButtonField ButtonType="Button"  CommandName="Select"
+                            Text="Order" ControlStyle-CssClass="btn btn-primary" />
 
                 </Columns>
             </asp:GridView>
-            <table class="table table-striped" style="width: 571px;">
+            <table class="table table-striped" style="width: 571px; margin-left:auto; margin-right:auto;">
                 <tr>
                     <td colspan="4" class="content-document-header">Certification</td>
                 </tr>
             </table>
-            <asp:GridView ID="gvCertification" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px;">
+            <asp:GridView ID="gvCertification" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px; margin-left:auto; margin-right:auto;"
+                OnSelectedIndexChanged="OnSelectedIndexChangedCert">
                 <Columns >
                     <asp:TemplateField HeaderText="Document" HeaderStyle-Width="250px">
                         <ItemTemplate>
@@ -87,22 +85,19 @@
                             <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                   <asp:TemplateField ShowHeader="False">
-                    <ItemTemplate>
-                            <asp:Button ID="btnCertOrder" runat="server" CommandName="OrderItem"
-                            Text="Order" CssClass="btn btn-primary" />
-                    </ItemTemplate>
-                    </asp:TemplateField>                
+                            <asp:ButtonField ButtonType="Button"  CommandName="Select"
+                            Text="Order" ControlStyle-CssClass="btn btn-primary" />
                 </Columns>
             </asp:GridView>
 
-            <table class="table table-striped" style="width: 571px;">
+            <table class="table table-striped" style="width: 571px; margin-left:auto; margin-right:auto;">
                 <tr>
                     <td colspan="4" class="content-document-header">Certified True Copy</td>
                 </tr>
             </table>
 
-            <asp:GridView ID="gvTrueCopy" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px;">
+            <asp:GridView ID="gvTrueCopy" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px; margin-left:auto; margin-right:auto;"
+                OnSelectedIndexChanged="OnSelectedIndexChangedTrueCopy">
                 <Columns >
                     <asp:TemplateField HeaderText="Document" HeaderStyle-Width="250px">
                         <ItemTemplate>
@@ -119,22 +114,22 @@
                             <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:TemplateField ShowHeader="False">
-                        <ItemTemplate>
-                                <asp:Button ID="btnTrueCopyOrder" runat="server" CommandName="OrderItem"
-                                Text="Order" CssClass="btn btn-primary" />
-                        </ItemTemplate>
-                    </asp:TemplateField>                  
+                            <asp:ButtonField ButtonType="Button"  CommandName="Select"
+                            Text="Order" ControlStyle-CssClass="btn btn-primary" />
+
+                                     
                 </Columns>
             </asp:GridView>
 
-            <table class="table table-striped" style="width: 571px;">
+            <table class="table table-striped" style="width: 571px; margin-left:auto; margin-right:auto;">
                 <tr>
                     <td colspan="4" class="content-document-header">Others</td>
                 </tr>
             </table>
 
-            <asp:GridView ID="gvOthers" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px;">
+            <asp:GridView ID="gvOthers" AutoGenerateColumns="False" runat="server" CssClass="table table-striped" style=" width:0px; margin-left:auto; margin-right:auto;"
+                 OnSelectedIndexChanged="OnSelectedIndexChangedOthers">
+
                 <Columns >
                     <asp:TemplateField HeaderText="Document Name" HeaderStyle-Width="250px">
                         <ItemTemplate>
@@ -151,14 +146,12 @@
                             <asp:Label runat="server"  Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField> 
-                    <asp:TemplateField ShowHeader="False">
-                        <ItemTemplate>
-                                <asp:Button ID="btnOthersOrder" runat="server" CommandName="OrderItem"
-                                Text="Order" CssClass="btn btn-primary" />
-                        </ItemTemplate>
-                    </asp:TemplateField>  
+                        <asp:ButtonField ButtonType="Button"  CommandName="Select"
+                        Text="Order" ControlStyle-CssClass="btn btn-primary" />
+  
                 </Columns>
             </asp:GridView>
+               </div>
         </div>
     </form>
     </div>
