@@ -54,29 +54,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" class="content-form_label">Level <span style="color: red">*</span></td>
-                    <td style="padding-left: 3px;">
-                        <asp:RadioButtonList ID="optLevel" runat="server" 
-                            RepeatDirection="Vertical" RepeatLayout="Flow">
-                            <asp:ListItem Text="Bachelor" Value="U"></asp:ListItem>
-                            <asp:ListItem Text="Masters" Value="M"></asp:ListItem>
-                            <asp:ListItem Text="Doctorate" Value="D"></asp:ListItem>
-                         </asp:RadioButtonList>
-                         <asp:RequiredFieldValidator id="rfvLevel" runat="server"
-                            ControlToValidate="optLevel"
-                            ErrorMessage="Level is a required field."
-                            ForeColor="Red">
-                        </asp:RequiredFieldValidator>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Is Graduate? <span style="color: red">*</span></td>
-                    <td>
-                        &nbsp;
-                        <asp:CheckBox ID="isGraduate" runat="server"/>&nbsp;
-                    </td>
-                </tr>
-                <tr>
                     <td class="content-form_label">Degree <span style="color: red">*</span></td>
                     <td>&nbsp;
                         <asp:DropDownList ID="ddlDegree" runat="server" Width="200px"></asp:DropDownList>

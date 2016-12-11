@@ -36,16 +36,8 @@
                         <td><asp:Label runat="server" ID="lblIdNumber" Text=<%# Eval("IdStudent")%>/></td>
                     </tr>
                     <tr>
-                        <td>Level</td>
-                        <td><asp:Label runat="server" ID="lblLevel" Text=<%# Eval("Degree.Level")%>/></td>
-                    </tr>
-                    <tr>
                         <td>Degree</td>
                         <td><asp:Label runat="server" ID="lblDegree" Text=<%# Eval("Degree.Name")%>/></td>
-                    </tr>
-                    <tr>
-                        <td>Graduate</td>
-                        <td><asp:Label runat="server" ID="lblGraduate" Text="True"/></td>
                     </tr>
                     <tr>
                         <td>Admitted as</td>
