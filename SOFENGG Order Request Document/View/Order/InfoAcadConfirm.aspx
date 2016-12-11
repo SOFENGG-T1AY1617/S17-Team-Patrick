@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoAcadConfirm.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoAcadConfirm" %>
+<%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!-- Always change the css file name to html file name! -->
@@ -10,13 +11,12 @@
                 &nbsp;
                 <li><a href="#">Home</a></li>
                 <li><asp:HyperLink id="hlPersonal" 
-                        NavigateUrl="personal_information.html" 
+                        NavigateUrl="PersonalInformation.aspx" 
                         Text="Personal Information" 
                         runat="server"/></li>
                 <li class="active">Academic Information</li>
             </ul>
        
-        <form runat="server">
         <h4 class="content-header">Academic Information</h4>
         
         <asp:Repeater id="rptInfoAcadConfirm" runat="server">
@@ -31,16 +31,8 @@
                         <td><asp:Label runat="server" ID="lblIdNumber" Text=<%# Eval("IdStudent")%>/></td>
                     </tr>
                     <tr>
-                        <td>Level</td>
-                        <td><asp:Label runat="server" ID="lblLevel" Text=<%# Eval("Degree.Level")%>/></td>
-                    </tr>
-                    <tr>
                         <td>Degree</td>
                         <td><asp:Label runat="server" ID="lblDegree" Text=<%# Eval("Degree.Name")%>/></td>
-                    </tr>
-                    <tr>
-                        <td>Graduate</td>
-                        <td><asp:Label runat="server" ID="lblGraduate" Text="True"/></td>
                     </tr>
                     <tr>
                         <td>Admitted as</td>
@@ -49,8 +41,8 @@
                     <tr>
                         <td colspan="2">
                             <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Degree.Id")%>' />
-                            <asp:Button Cssclass="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
-                            <asp:Button Cssclass="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
+                            <asp:Button class="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
+                            <asp:Button class="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
                         </td>
                     </tr>
                 </table>
@@ -62,8 +54,8 @@
        </asp:Repeater>
        
         <div>
-            <asp:Button Cssclass="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
-            <asp:Button Cssclass="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
+            <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
+            <asp:Button class="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
         </div>
     </div>
 </asp:Content>

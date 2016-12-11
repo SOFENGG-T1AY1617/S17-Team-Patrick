@@ -4,26 +4,15 @@
     <link rel="stylesheet" href="/Content/css/personal_information.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-<div class = "container">
-    <h5>Request Flow</h5>
+<div class = "container-fluid center-block">
         <ul class="breadcrumb">
             &nbsp;
             <li><a href="#">Home</a></li>
             <li class="active">Personal Information</li>
         </ul>
-<<<<<<< HEAD
 
-        <form runat="server">
         <h4 class="content-header">Personal Information</h4>
         <table class="table table-striped">
-=======
-        <div class="content-divider"></div>
-    </div>
-    <div class="col-xs-9">
-        <h5 class="content-header">Personal Information</h5>
-        
-        <table border=1 class="content-form">
->>>>>>> US14B-Order-InfoMailDe
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>
             </tr>
@@ -127,6 +116,10 @@
                 <td class="content-form_label">Phone Number</td>
                 <td>
                     <asp:TextBox ID="txtPhoneNum" runat="server"></asp:TextBox>
+                    <div id="txtPhoneNum" class="alert alert-dismissible alert-danger" style="display: none;">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Oh my goodness!</strong> Phone number must only contain numbers.
+                    </div>
                     <asp:RequiredFieldValidator id="rfvPhoneNum" runat="server"
                         ControlToValidate="txtPhoneNum"
                         ErrorMessage="Phone number is a required field."
@@ -138,6 +131,10 @@
                 <td class="content-form_label">Email Address</td>
                 <td>
                     <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                    <div id="txtEmail" class="alert alert-dismissible alert-danger" style="display: none;">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Oh my goodness!</strong> Email address must follow this format: "example@example.com".
+                    </div>
                     <asp:RequiredFieldValidator id="rfvEmail" runat="server"
                         ControlToValidate="txtEmail"
                         ErrorMessage="E-mail address is a required field."
@@ -174,12 +171,6 @@
                 </td>
             </tr>
         </table>
-<<<<<<< HEAD
-        </form>
-=======
-            
-            <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitPersonalInformation_Click"/>
->>>>>>> US14B-Order-InfoMailDe
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

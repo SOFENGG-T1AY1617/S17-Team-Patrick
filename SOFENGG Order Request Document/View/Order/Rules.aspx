@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.Rules" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.Rules" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/rules.css">
 </asp:Content>
@@ -19,9 +19,9 @@
         </ol>
 
         <div class="col-xs-9">
+            <asp:CheckBox ID="checkbox" runat="server"></asp:CheckBox>
             <asp:Label id="labelCB" AssociatedControlId="checkbox" 
                 Text="I have read and understood the policies regarding this facility." runat="server" />
-            <asp:CheckBox ID="checkbox" runat="server"></asp:CheckBox>
         </div>
 
         <div class="col-xs-3">
@@ -31,14 +31,14 @@
         <br>
 
         <div class="card-images">
-            <span><img src="~/Content/images/logo_visa1.gif" alt=""></span>
-            <span><img src="~/Content/images/logo_master1.gif" alt=""></span>
-            <span><img src="~/Content/images/logo_jcb1.gif" alt=""></span>
-            <span><img src="~/Content/images/logo_amex1.gif" alt=""></span>
+            <span><img src="Content/images/logo_visa1.gif" alt=""></span>
+            <span><img src="Content/images/logo_master1.gif" alt=""></span>
+            <span><img src="Content/images/logo_jcb1.gif" alt=""></span>
+            <span><img src="Content/images/logo_amex1.gif" alt=""></span>
         </div>
 
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+<asp:Content ID="script" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/rules.js"></script>
 </asp:Content>

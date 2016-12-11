@@ -9,24 +9,21 @@
                 &nbsp;
                 <li><a href="#">Home</a></li>
                 <li><asp:HyperLink id="hlPersonal" 
-                        NavigateUrl="personal_information.html" 
+                        NavigateUrl="PersonalInformaton.aspx" 
                         Text="Personal Information" 
                         runat="server"/>
                 </li>
                 <li>
                 <asp:HyperLink id="hlAacademic" 
-                    NavigateUrl="info_acad_de.html" 
+                    NavigateUrl="InfoAcadDe.aspx" 
                     Text="Academic Information" 
                     runat="server"/>
                 </li>
                 <li class="active">Mailing Information</li>
         </ul>
-        <div class="content-divider"></div>
-    </div>
-    <div class="col-xs-9">
-        <h5>Mailing Information</h5>
         
-        <asp:Repeater id="rptInfoMailConfirm" runat="server">
+        <h4 class = "content-header">Mailing Information</h4>
+         <asp:Repeater id="rptInfoMailConfirm" runat="server">
             <HeaderTemplate>
             </HeaderTemplate>
 

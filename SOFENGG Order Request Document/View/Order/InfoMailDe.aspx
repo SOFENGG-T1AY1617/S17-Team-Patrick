@@ -1,29 +1,27 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoMailDe.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoMailDe" EnableEventValidation="false"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoMailDe.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoMailDe" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/info_mail_de.css"/>
+    <link rel="stylesheet" href="/Content/css/info_mail_de.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="container-fluid center-block">
         <ul class="breadcrumb">
                 &nbsp;
-                <li><a href="#">Home</a></li>
                 <li><asp:HyperLink id="hlPersonal" 
-                        NavigateUrl="personal_information.html" 
+                        NavigateUrl="PersonalInformation.aspx" 
                         Text="Personal Information" 
                         runat="server"/>
                 </li>
                 <li>
-                <asp:HyperLink id="hlAacademic" 
-                    NavigateUrl="info_acad_de.html" 
+                <asp:HyperLink id="hlAcademic" 
+                    NavigateUrl="InfoAcadDe.aspx" 
                     Text="Academic Information" 
                     runat="server"/>
                 </li>
                 <li class="active">Mailing Information</li>
         </ul>
         
-        <form action=""></form>
         <h4 class="content-header">Mailing Information</h4>
         <blockquote>
             <p>
@@ -97,13 +95,17 @@
                             ControlToValidate="ddlDelivery"
                             ErrorMessage="Select the appropriate delivery area for the inputted mailing address."
                             ForeColor="Red">
-                        </asp:RequiredFieldValidator>   
+                        </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Contact Number</td>
                 <td>
                     <asp:TextBox ID="txtMailingNum" runat="server"></asp:TextBox>
+                    <div id="txtMailingNum" class="alert alert-dismissible alert-danger" style="display: none;">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Oh my goodness!</strong> Contact number must only contain numbers.
+                    </div>
                     <asp:RequiredFieldValidator id="rfvMailingNum" runat="server"
                             ControlToValidate="txtMailingNum"
                             ErrorMessage="Mailing number is a required field."
@@ -111,15 +113,8 @@
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <a href="info_mail_confirm.html">
-                        <asp:Button class="btn btn-primary" runat="server">Next</asp:button>
-                    </a>
-                </td>
-            </tr>
         </table>
-        <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitMailInfo"/>
+       <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitMailInfo"/>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
