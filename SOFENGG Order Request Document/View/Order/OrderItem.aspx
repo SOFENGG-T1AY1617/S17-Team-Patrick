@@ -9,12 +9,7 @@
 
     
      <script type="text/javascript">
-        $(document).ready(function() {
-            $('#<%=cbPickup.ClientID %>').click(function() {
-                alert("Hello world!");
-            });
- 
-        });
+     
     </script>
 
     <div class="container-fluid center-block"> 
@@ -37,7 +32,6 @@
          </ul>
         
     
-    <form runat="server">
             <h5 class="content-header">Order Item</h5>
 
             <table class="table table-striped" >
@@ -116,7 +110,6 @@
                 <asp:Button class="btn btn-primary" runat="server"  Text="Add to Cart"/>
                   
             </div>
-           </form>
     </div>
    
 </asp:Content>
