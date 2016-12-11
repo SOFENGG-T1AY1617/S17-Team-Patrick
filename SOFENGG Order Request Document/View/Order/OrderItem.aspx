@@ -4,14 +4,33 @@
     <!-- Always change the css file name to html file name! -->
     <link rel="stylesheet" href="/Content/css/order_item.css">
 
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+                $('#<%=cbPickup.ClientID %>').click(function () {
+                 if ($('#<%=cbPickup.ClientID %>').is(':checked')) {
+                     $("#delivery_only1").hide();
+                     $("#delivery_only2").hide();
+
+                     $("#ddlCampus").css("display", "block");
+
+                 }
+                 else if ($('#<%=cbPickup.ClientID %>').is(':checked') == false) {
+                     $("#delivery_only1").show();
+                     $("#delivery_only2").show();
+
+                     $("#ddlCampus").css("display", "none");
+
+                 }
+            });
+
+           
+
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-
-    
-     <script type="text/javascript">
-     
-    </script>
-
     <div class="container-fluid center-block"> 
         <ul class="breadcrumb">
                 &nbsp;
@@ -32,35 +51,58 @@
          </ul>
         
     
+    <form runat="server">
             <h5 class="content-header">Order Item</h5>
+
+         
 
             <table class="table table-striped" >
                 <tbody>
-                <tr>
-                    <td valign="top" class="content-form_label">Document</td>
-                    <td>&nbsp;<%#Eval("DocumentName") %></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Academic Profile</td>
-                    <td>&nbsp;<%#Eval("AcademicProfile") %></td>
-                </tr>
+
+                <asp:repeater ID="repDocumentname" runat="server">
+                    <ItemTemplate>
+
+                            <tr>
+                                <td class="content-form_label">Document</td>
+                                <td><%#Eval("Name")%> </td>
+                            </tr>
+
+
+                        </ItemTemplate>
+                </asp:repeater>
+
+                <asp:repeater ID="repAcademicProfile" runat="server">
+                    <ItemTemplate>
+                            <tr>
+                                <td class="auto-style1">Academic Profile</td>
+                                <td class="auto-style2"><%#Eval("Degree.Name")%></td>
+                            </tr>
+
+                    </ItemTemplate>
+                </asp:repeater>
+               
                 <tr>
                     <td class="content-form_label">Price</td>
                     <td>
                         <table class="table table-striped">
+                            <asp:repeater ID="repPrices" runat="server">
+                                <ItemTemplate>
+                                        <tr>
+                                            <td><asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server" Checked="True" Selected="True"></asp:RadioButton>Regular Processing</td>
+                                            <td>Php <%#Eval("RegularPrice") %></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><asp:RadioButton ID="rbExpress" GroupName="optProc" runat="Server"></asp:RadioButton>Express Processing</td>
+                                            <td>Php <%#Eval("ExpressPrice") %></td>
+                                        </tr>
+
+                                </ItemTemplate>
+                            </asp:repeater>
                             <tr>
-                         
-                                <td><asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server" Checked="True" Selected="True"></asp:RadioButton>Regular Processing</td>
-                                <td><%#Eval("RegularPrice") %></td>
-                            </tr>
-                            <tr>
-                                <td><asp:RadioButton ID="rbExpress" GroupName="optProc" runat="Server"></asp:RadioButton>Express Processing</td>
-                                <td><%#Eval("ExpressPrice") %></td>
-                            </tr>
-                            <tr>
-                                <td><asp:CheckBox ID="cbPickup" runat="server" ClientIDMode="Static"></asp:CheckBox>For Pick Up</td>
+                                <td><asp:CheckBox ID="cbPickup" runat="server"></asp:CheckBox>For Pick Up</td>
                                 <td>
-                                    <asp:DropDownList id="ddlCampus" runat="server" style="display:none;">
+                                    <asp:DropDownList id="ddlCampus" runat="server" ClientIDMode="Static" style="display:none; width:150px;">
                                         <asp:ListItem Text="DLSU-Manila" value="DLSU-Manila"/>
                                         <asp:ListItem Text="DLSU-STC" value="DLSU-STC"/>
                                         <asp:ListItem Text="DLSU-Makati" value="DLSU-Makati"/>
@@ -68,7 +110,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" >
+                                <td colspan="2">
                                     <span style="font-weight: bold; font-style: italic;">"Express processing is NOT available for students with ID no. <br/>80XXXXX (students who entered DLSU-Manila in 1980) and below."</span>
                                 </td>
                             </tr>
@@ -77,18 +119,26 @@
                 </tr>
                 <tr>
                     <td class="content-form_label">No. of Copies</td>
-                    <td><asp:DropDownList id="ddlNoCopy" runat="server">
+                    <td><asp:DropDownList id="ddlNoCopy" runat="server" style="display:block; width:30px;">
                                         <asp:ListItem Text="1" value="1"/>
                                         <asp:ListItem Text="2" value="2"/>
                                         <asp:ListItem Text="3" value="3"/>
                                     </asp:DropDownList>
                     </td>
                 </tr>
-                <tr class="delivery_only" style="display:none;" id="trdelivery">
-                    <td class="content-form_label">Send to</td>
-                    <td><%#Eval("Address")%></td>
-                </tr>
-                <tr>
+                <tr class="delivery_only">
+                    <td class="content-form_label" id="delivery_only2">Send to</td>
+                    <td id="delivery_only1">
+                        <asp:DropDownList ID="ddlAddresses" runat="server" style="display:block; width:150px;">
+                            <asp:ListItem Text="Quezon City" value="Quezon City" />
+                            <asp:ListItem Text="Manila" value="Manila" />
+                            <asp:ListItem Text="Makati" value="Makati" />
+                        </asp:DropDownList>
+                    </td>
+
+
+                
+
                     <td class="content-form_label">Insert Document In</td>
                     <td >
                         <asp:RadioButtonList ID="optInsert" RepeatDirection="Vertical" RepeatLayout="Flow" runat="server">
@@ -110,16 +160,13 @@
                 <asp:Button class="btn btn-primary" runat="server"  Text="Add to Cart"/>
                   
             </div>
+           </form>
     </div>
-   
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
 
-    <script src="/Script/order_item.js">
-      
+    <script src="/Script/order_item.js"></script>
 
-    </script>
-       
     <script runat ="server">
     </script>
 </asp:Content>
