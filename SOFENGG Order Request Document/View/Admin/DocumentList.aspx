@@ -68,12 +68,12 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Edit">
                             <ItemTemplate>
-                                <input type="button" id="edit_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgEditDocument" value="Edit"/>
+                                <input type="button" id="edit_document_modal" data-toggle="modal" data-target="#dlgEditDocument" value="Edit"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Delete">
                             <ItemTemplate>
-                                <input type="button" id="delete_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgDeleteDocument" value="Delete" />
+                                <input type="button" id="delete_document_modal" data-toggle="modal" data-target="#dlgDeleteDocument" value="Delete" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -155,8 +155,8 @@
                 </div>
                 <div class="modal-footer">
                     <div class="popup_center_align">
-                        <asp:Button ID="btnAdd" ValidationGroup="grpAddDocumentRow" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
-                        <button id="btnAddCancel" class="btn btn-warning">Cancel</button>
+                        <asp:Button ID="btnAdd" ValidationGroup="grpAddDocumentRow" Text="Add" CssClass="btn btn-primary" OnClick="btnAdd_Click" runat="server" />
+                        <button id="btnAddCancel" class="btn">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -170,7 +170,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="popup_center_align">Add Document</h3>
+                    <h3 class="popup_center_align">Edit Document</h3>
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
@@ -229,8 +229,8 @@
                 </div>
                 <div class="modal-footer">
                     <div class="popup_center_align">
-                        <asp:Button ID="btnEdit" Text="Submit Edit" CssClass="btn btn-success" runat="server" />
-                        <button id="btnEditCancel" class="btn btn-warning">Cancel</button>
+                        <asp:Button ID="btnEdit" Text="Submit Edit" CssClass="btn btn-primary" runat="server" />
+                        <button id="btnEditCancel" class="btn">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -247,6 +247,7 @@
                 </div>
                 <div class="modal-body">
                     <button class="btn btn-primary">Yes</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button class="btn btn-primary">No</button>
                 </div>
                 <div class="modal-footer">

@@ -35,3 +35,9 @@ table td:nth-child(4), td:nth-child(5) {
 table td:nth-child(10), td:nth-child(11) {
     text-align: center;
 }
+
+#edit_document_modal, #delete_document_modal {
+    border: none;
+    background: none;
+    padding: 0;
+}

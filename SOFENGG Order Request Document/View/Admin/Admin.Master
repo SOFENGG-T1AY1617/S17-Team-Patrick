@@ -49,10 +49,10 @@
                         </ul>
 
                         <li data-toggle="collapse" data-target="#operationaldate" class="collapsed">
-                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
+                            <a><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="operationaldate">
-                            <li><a href="#">&nbsp;Manage Operational Date</a></li>
+                            <li><a href="ManageOperationalDate.aspx">&nbsp;Manage Operational Date</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#user" class="collapsed">
