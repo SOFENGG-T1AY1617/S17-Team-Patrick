@@ -40,7 +40,6 @@
                 var prm = Sys.WebForms.PageRequestManager.getInstance();
 
                 function clearPostBack() {
-                    console.log("hi poh");
                     var updatePanelName = getUpdatePanelTriggeredName();
                         
                     $("#loading").hide();
@@ -95,37 +94,26 @@
                     var referenceNo = $(this).attr('id');
                     __doPostBack('cmdUpdateOrderInformation', referenceNo);
                 });
+
+            $(".btnMarkAsPending").click(function(evt) {
+                // Validate the form and retain the result.
+                var isValid = $("#formMain").valid();
+                console.log("isValid = " + isValid);
+                // If the form didn't validate, prevent the
+                //  form submission.
+
+                console.log(isValid);
+                if (isValid) {
+                    console.log("MarkAsPending");
+                    $('#dlgPending').modal('hide');
+                }
+            });
         }
 
-        var time;
-
-        function UpdateDlgOrderInformation(referenceNo) {
-            GetOrderInformation(referenceNo);
-            hideContent(upOrderInformation);
-        }
-
-        function GetOrderInformation(referenceNo) {
-            console.log("service called");
-            time = (new Date()).getTime();
-            var service = new AdminService.MainService2();
-            console.log("parameter passed - " + referenceNo);
-            service.GetOrderInformation(referenceNo, GetOrderInformationSuccessCallback);
-        }
-
-        function GetOrderInformationSuccessCallback(result) {
-            var json = $.parseJSON(result);
-            console.log(json.ReferenceNo);
-            __doPostBack('cmdUpdateOrderInformation', result);
-            console.log("service run time: " + ((new Date()).getTime() - time) + " ms");
-            $('.btnMarkAsPending').attr('id', json.ReferenceNo);
-        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <asp:ScriptManager ID="sm" runat="server">
-        <Services>
-            <asp:ServiceReference Path="~/View/Admin/MainService2.svc" />
-        </Services>
     </asp:ScriptManager>
 
     <div class="jumbotron">
@@ -538,18 +526,6 @@
                             .closest('.form-group').removeClass('has-error');
                     });
 
-        });
-
-        $(".btnMarkAsPending").click(function(evt) {
-            // Validate the form and retain the result.
-            var isValid = $("#formMain").valid();
-            // If the form didn't validate, prevent the
-            //  form submission.
-
-            console.log(isValid);
-            if (isValid){
-                $('#dlgPending').modal('hide');
-            }
         });
 
         jQuery(function ($){
