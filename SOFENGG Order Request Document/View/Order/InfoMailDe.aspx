@@ -114,7 +114,10 @@
                 </td>
             </tr>
         </table>
-       <asp:Button class="btn btn-primary content-form_next" text="Next" runat="server" OnClick="SubmitMailInfo"/>
+       <ul class="pager">
+            <li class="previous disabled"><a href="#">&larr; Previous</a></li>
+            <li class="next"><asp:HyperLink text="Next &rarr;" runat="server" OnClick="SubmitMailInfo"></asp:HyperLink></li>
+        </ul>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

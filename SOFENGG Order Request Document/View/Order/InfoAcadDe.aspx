@@ -43,7 +43,7 @@
                     <tr>
                         <td class="content-form_label">Year Admitted</td>
                         <td>
-                            <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px"></asp:dropdownlist>
+                            <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px"></asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
@@ -79,14 +79,12 @@
                             </asp:RadioButtonList>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="2" align="center">
-                            <asp:Button ID="btnAction" runat="server" text="Cancel" class="btn btn-primary"></asp:Button>
-                            <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary" OnClick = "SubmitStudentDegree_Click" text="Submit"></asp:Button>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
+			 <ul class="pager">
+            <li class="previous disabled"><a href="PersonalInformation.aspx" id="btnAction">&larr; Previous</a></li>
+            <li class="next"><asp:HyperLink text="Next &rarr;" id="btnSubmit" runat="server" OnClick="SubmitStudentDegree_Click"></asp:HyperLink></li>
+        </ul>
         </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

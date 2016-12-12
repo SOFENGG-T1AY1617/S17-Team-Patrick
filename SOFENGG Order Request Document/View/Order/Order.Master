@@ -11,17 +11,17 @@
     <title>Online Request of Documents</title>
     <link href="/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/Content/css/global.css">
-     <asp:ContentPlaceHolder ID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body onload="window.resizeTo(777,600)">
+<body>
     <!-- Fixed container as application is not a full page application -->
     <div class="fixed-container">
         <div class="header">
-            <div class="header-photo"></div>
-            <p>Online Request of Documents</p>
+           		<div class="header-photo"></div>
+            	<p>Online Request of Documents</p>
         </div>
-<form runat="server">
+		<form runat="server">
         <div class="container content">
             <div class="row">
                 <asp:ContentPlaceHolder ID="body" runat="server">
@@ -32,13 +32,8 @@
 </form>
     </div>
 
-    <script src="/Script/jquery.min.js"></script>
-    <script src="/Script/bootstrap.min.js"></script>
+    <script src="/Presenter/Script/jquery.min.js"></script>
+    <script src="/Presenter/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>
-
-<div class="navbar navbar-fixed-bottom">
-    <div class="footer-photoPole"></div>
-    <div class="footer-photoBase"></div>
-</div>
 </html>

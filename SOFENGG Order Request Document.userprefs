@@ -1,9 +1,21 @@
 ﻿<Properties StartupConfiguration="{1885F5B4-823A-4851-AC58-0980DD451574}|">
   <MonoDevelop.Ide.ItemProperties.SOFENGG_220Order_220Request_220Document PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SOFENGG Order Request Document/Web.config">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SOFENGG Order Request Document/View/Order/InfoAcadConfirm.aspx.cs">
     <Files>
-      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadDe.aspx" Line="47" Column="29" />
-      <File FileName="SOFENGG Order Request Document/Web.config" Line="19" Column="108" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadDe.aspx" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadConfirm.aspx" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoMailDe.aspx" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoMailConfirm.aspx" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/PersonalInformation.aspx.cs" Line="104" Column="48" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadDe.aspx.cs" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadDe.aspx.designer.cs" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/Rules.aspx" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/Order.Master" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoMailDe.aspx.cs" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadConfirm.aspx.cs" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/Error.aspx" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/IDocumentListView.cs" Line="1" Column="1" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoMailConfirm.aspx.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
