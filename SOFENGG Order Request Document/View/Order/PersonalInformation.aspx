@@ -51,16 +51,16 @@
             <tr>
                 <td class="content-form_label">Gender</td>
                 <td>
-	                    <asp:RadioButtonList ID="optGender" runat="server" 
-	                            RepeatDirection="Horizontal" RepeatLayout="Flow">
-	                            <asp:ListItem Text="Male" Value="M"></asp:ListItem>
-	                            <asp:ListItem Text="Female" Value="F"></asp:ListItem>
-	                    </asp:RadioButtonList>
-	                    <asp:RequiredFieldValidator id="rfvGender" runat="server"
-	                        ControlToValidate="optGender"
-	                        ErrorMessage="Gender is a required field."
-	                            ForeColor="Red">
-	                    </asp:RequiredFieldValidator>
+		                    <asp:RadioButtonList ID="optGender" runat="server" 
+		                            RepeatDirection="Horizontal" RepeatLayout="Flow">
+		                            <asp:ListItem class="radio-inline" Text="Male" Value="M"></asp:ListItem>
+		                            <asp:ListItem class="radio-inline" Text="Female" Value="F"></asp:ListItem>
+		                    </asp:RadioButtonList>
+		                    <asp:RequiredFieldValidator id="rfvGender" runat="server"
+		                        ControlToValidate="optGender"
+		                        ErrorMessage="Gender is a required field."
+		                            ForeColor="Red">
+		                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <!-- Add date using PHP/ASP here -->

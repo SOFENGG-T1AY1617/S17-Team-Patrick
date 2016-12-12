@@ -35,7 +35,7 @@
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Address</td>
                 <td>
-                    <asp:TextBox ID="txtMailAddress" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="txtMailAddress" CssClass="form-control" runat="server" TextMode="MultiLine"></asp:TextBox>
                     <asp:RequiredFieldValidator id="rfvMailAddress" runat="server"
                             ControlToValidate="txtMailAddress"
                             ErrorMessage="Please enter your mailing address."
@@ -46,7 +46,7 @@
             <tr class="delivery-info">
                 <td class="content-form_label">Zip Code</td>
                 <td>
-                    <asp:TextBox ID="txtZipCode" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtZipCode" CssClass="form-control" Width="50px" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator id="rfvZipCode" runat="server"
                             ControlToValidate="txtZipCode"
                             ErrorMessage="Zip code is a required field."
@@ -101,7 +101,7 @@
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Contact Number</td>
                 <td>
-                    <asp:TextBox ID="txtMailingNum" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtMailingNum" CssClass="form-control" runat="server"></asp:TextBox>
                     <div id="txtMailingNum" class="alert alert-dismissible alert-danger" style="display: none;">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Oh my goodness!</strong> Contact number must only contain numbers.

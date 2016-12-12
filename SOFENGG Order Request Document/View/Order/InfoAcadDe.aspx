@@ -60,7 +60,7 @@
                     <tr>
                         <td class="content-form_label">Student No.</td>
                         <td>
-                            <asp:TextBox ID="txtStudNo"
+                            <asp:TextBox ID="txtStudNo" CssClass="form-control"
                                     runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
                             <div id="txtStudNo" class="alert alert-dismissible alert-danger" style="display: none;">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -71,12 +71,14 @@
                     <tr>
                         <td class="content-form_label">Admitted as</td>
                         <td>
+						<div class="checkbox checkboxlist col-sm-12">
                             <asp:RadioButtonList ID="optAdmittedAs" runat="server" 
-                                RepeatDirection="Vertical" RepeatLayout="Flow">
-                                <asp:ListItem Text="Regular Student" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Transferee" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="Graduate" Value="3"></asp:ListItem>
+                                RepeatDirection="Horizontal" RepeatLayout="Flow">
+                                <asp:ListItem class="radio-inline" Text="Regular Student" Value="1"></asp:ListItem>
+                                <asp:ListItem class="radio-inline" Text="Transferee" Value="2"></asp:ListItem>
+                                <asp:ListItem class="radio-inline" Text="Graduate" Value="3"></asp:ListItem>
                             </asp:RadioButtonList>
+						</div>
                         </td>
                     </tr>
                     </tbody>
