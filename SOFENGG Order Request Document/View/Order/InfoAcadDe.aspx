@@ -32,7 +32,7 @@
                     <tr>
                         <td class="content-form_label">Campus Attended</td>
                         <td>
-                            <asp:DropDownList ID="ddlCampus" runat="server" Width="200px">
+                            <asp:DropDownList ID="ddlCampus" runat="server" AutoPostBack="true" Width="200px" OnTextChanged="DDLCampus_SelectedIndexChanged">
                                 <asp:ListItem Text="Select Campus" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Taft" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="STC" Value="2"></asp:ListItem>
@@ -85,7 +85,7 @@
                 </table>
 			 <ul class="pager">
             <li class="previous disabled"><a href="PersonalInformation.aspx" id="btnAction">&larr; Previous</a></li>
-            <li class="next"><asp:HyperLink text="Next &rarr;" id="btnSubmit" runat="server" OnClick="SubmitStudentDegree_Click"></asp:HyperLink></li>
+            <li class="next"><asp:LinkButton text="Next &rarr;" id="btnSubmitStudentDegree" runat="server" OnClick="SubmitStudentDegree_Click"></asp:LinkButton></li>
         </ul>
         </div>
 </asp:Content>

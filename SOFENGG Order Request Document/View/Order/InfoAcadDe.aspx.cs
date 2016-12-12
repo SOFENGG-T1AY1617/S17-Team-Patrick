@@ -41,6 +41,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         public void DDLCampus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Debug.Write("\n\nHELLO\n\n");
+
             if (ddlCampus.SelectedIndex == 0)
                 ddlDegree.Enabled = false;
             else
