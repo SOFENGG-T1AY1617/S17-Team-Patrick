@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/Content/css/info_*_confirm.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="container-fluid center-block">
+    <div class="container-fluid center-block" style="width:800px;">
             <ul class="breadcrumb">
                 &nbsp;
                 <li><a href="#">Home</a></li>

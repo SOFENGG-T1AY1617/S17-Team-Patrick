@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/Content/css/info_mail_de.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="container-fluid center-block">
+    <div class="container-fluid center-block" style="width:800px;">
         <ul class="breadcrumb">
                 &nbsp;
                 <li><asp:HyperLink id="hlPersonal" 
