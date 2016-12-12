@@ -171,6 +171,6 @@
 </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
-    <script src="/Presenter/Script/personal_information.js"></script>
-    <script src="/Presenter/Script/Day.js"></script>
+    <script src="/Script/personal_information.js"></script>
+    <script src="/Script/Day.js"></script>
 </asp:Content>
