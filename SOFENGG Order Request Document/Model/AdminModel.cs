@@ -68,5 +68,12 @@ namespace SOFENGG_Order_Request_Document.Model
             db.ExecuteQuery();
             return db.OrderInformation;
         }
+
+        public Document GetDocument(int documentId)
+        {
+            var db = new DBMySqlGetDocument(documentId);
+            db.ExecuteQuery();
+            return db.Document;
+        }
     }
 }
