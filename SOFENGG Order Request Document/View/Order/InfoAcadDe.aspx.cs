@@ -21,17 +21,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
                     this.PopulateYear();
                     ddlDegree.Items.Insert(0, "Select Campus");
                     ddlDegree.Enabled = false;
-
-
-                    try
-                    {
-                        if (Request.Cookies["EditCookie"]["Id"] != null)
-                        {
-                            PopulatePreviousInput(int.Parse(Request.Cookies["EditCookie"]["Id"]));
-                        }
-                    }
-                    catch (NullReferenceException) { }
-
                 }
 
                 if (Request.Cookies["StudentInfo"]["Id"] == null)
@@ -44,6 +33,15 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 Response.Redirect("~/View/Order/Error.aspx");
             }
 
+            try
+            {
+                if (!IsPostBack){
+                    if (Request.Cookies["EditCookie"]["Id"] != null){
+                        PopulatePreviousInput(int.Parse(Request.Cookies["EditCookie"]["Id"]));
+                    }
+                }
+            }catch (NullReferenceException) { }
+            
             
 
             
