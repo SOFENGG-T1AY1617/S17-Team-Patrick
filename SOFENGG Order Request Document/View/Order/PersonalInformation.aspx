@@ -11,7 +11,7 @@
             <li class="active">Personal Information</li>
         </ul>
         <h4 class="content-header">Personal Information</h4>
-        <table class="table table-striped">
+        <table class="table table-bordered table-striped">
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>
             </tr>

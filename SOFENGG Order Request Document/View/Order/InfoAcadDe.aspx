@@ -22,7 +22,7 @@
                         Otherwise, just enter the details of the degree for which you will be requesting a document.
                         </p>
                     </blockquote>
-                <table class="table table-striped">
+                <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <td colspan="2"><span style="color: red">*</span> - indicates required field</td>

@@ -31,7 +31,7 @@
                 You may want your documents delivered to more than one mailing address. Enter the addresses here.
             </p>
         </blockquote>
-        <table class="table table-striped">
+        <table class="table table-bordered table-striped">
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Address</td>
                 <td>

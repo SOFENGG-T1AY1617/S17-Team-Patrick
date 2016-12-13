@@ -55,9 +55,13 @@ namespace SOFENGG_Order_Request_Document.View.Order {
 		
 		protected System.Web.UI.WebControls.TextBox txtPhoneNum;
 		
+		protected System.Web.UI.WebControls.RegularExpressionValidator rexPhoneNum;
+		
 		protected System.Web.UI.WebControls.RequiredFieldValidator rfvPhoneNum;
 		
 		protected System.Web.UI.WebControls.TextBox txtEmail;
+		
+		protected System.Web.UI.WebControls.RegularExpressionValidator rexEmail;
 		
 		protected System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
 		
