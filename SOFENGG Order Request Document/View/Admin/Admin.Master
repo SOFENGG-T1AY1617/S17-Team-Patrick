@@ -34,11 +34,7 @@
                             <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Order List <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="order">
-                            <li><a href="Main.aspx">&nbsp;All</a></li>
-                            <li>&nbsp;Processing</li>
-                            <li>&nbsp;Pending</li>
-                            <li>&nbsp;On Time</li>
-                            <li>&nbsp;Late</li>
+                            <li><a href="Main.aspx">&nbsp;View All</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#document" class="collapsed">

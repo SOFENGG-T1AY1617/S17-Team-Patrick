@@ -279,7 +279,7 @@
                 <asp:UpdatePanel ID="upDlgPending" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <div class="modal-footer">
-                            <asp:Button ID="btnMarkAsPending" class="btn btn-primary" runat="server" Text="Mark As Pending" OnClientClick="$('#dlgPending').modal('hide');" OnClick="btnMarkAsPending_OnClick" data-dismiss="modal" />
+                            <asp:Button ID="btnMarkAsPending" class="btn btn-success" runat="server" Text="Mark As Pending" OnClientClick="$('#dlgPending').modal('hide');" OnClick="btnMarkAsPending_OnClick" data-dismiss="modal" />
                             <button id="btnPendingCancel" type="button" class="btn btn-default" data-dismiss="modal">
                                 Cancel</button>
                         </div>

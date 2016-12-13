@@ -18,7 +18,7 @@
         <h2>Document List</h2>
     </div>
 
-    <input type="button" id="add_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document"/>
+    <input type="button" id="add_document_modal" class="btn btn-success" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document"/>
 
     <div class="content-main table-responsive">
             <div class="document_table">
@@ -155,7 +155,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="popup_center_align">
-                        <asp:Button ID="btnAdd" ValidationGroup="grpAddDocumentRow" Text="Add" CssClass="btn btn-primary" OnClick="btnAdd_Click" runat="server" />
+                        <asp:Button ID="btnAdd" ValidationGroup="grpAddDocumentRow" Text="Add" CssClass="btn btn-success" OnClick="btnAdd_Click" runat="server" />
                         <button id="btnAddCancel" class="btn">Cancel</button>
                     </div>
                 </div>
@@ -229,7 +229,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="popup_center_align">
-                        <asp:Button ID="btnEdit" Text="Submit Edit" CssClass="btn btn-primary" runat="server" />
+                        <asp:Button ID="btnEdit" Text="Submit Edit" CssClass="btn btn-success" runat="server" />
                         <button id="btnEditCancel" class="btn">Cancel</button>
                     </div>
                 </div>
