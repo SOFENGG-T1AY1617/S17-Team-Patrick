@@ -75,6 +75,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
         protected void DeleteStudentDegree(object sender, EventArgs e)
         {
             Button button = sender as Button;
+            Debug.Write(button.Parent.FindControl("updateBtns"));
+            
             var idControl = button.Parent.FindControl("updateBtns") as HiddenField;
             
             HttpCookie deletedCookie = Request.Cookies["AcadInformation" + idControl.Value];
