@@ -37,6 +37,8 @@ namespace SOFENGG_Order_Request_Document.View.Order {
 		
 		protected System.Web.UI.WebControls.TextBox txtMailingNum;
 		
+		protected System.Web.UI.WebControls.RegularExpressionValidator rexMailingNum;
+		
 		protected System.Web.UI.WebControls.RequiredFieldValidator rfvMailingNum;
 		
 		protected System.Web.UI.WebControls.Content Content3;

@@ -63,7 +63,7 @@
                             <asp:TextBox ID="txtStudNo" CssClass="form-control"
                                     runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
                             <asp:RegularExpressionValidator runat="server" id="rexStudNo" 
-								controltovalidate="txtStudNo" validationexpression="^[0-9]{7-8}$" errormessage="Please enter a student number!" />
+								controltovalidate="txtStudNo" validationexpression="^[0-9]{7,8}$" errormessage="Please enter your student number!" />
                         </td>
                     </tr>
                     <tr>
