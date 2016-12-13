@@ -31,13 +31,40 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.Repeater repAcademicProfile;
         
         /// <summary>
-        /// repPrices control.
+        /// rbRegular control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repPrices;
+        protected global::System.Web.UI.WebControls.RadioButton rbRegular;
+        
+        /// <summary>
+        /// lblRegularPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegularPrice;
+        
+        /// <summary>
+        /// rbExpress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbExpress;
+        
+        /// <summary>
+        /// lblExpressPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblExpressPrice;
         
         /// <summary>
         /// cbPickup control.

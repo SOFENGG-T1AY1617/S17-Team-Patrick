@@ -100,7 +100,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void OnSelectedIndexChangedTrueCopy(object sender, EventArgs e)
         {
-            string documentname = gvTrueCopy.SelectedRow.Cells[0].Text;
+            string documentname = (gvTrueCopy.SelectedRow.FindControl("lbName") as Label).Text;
             HttpCookie docuCookie = new HttpCookie("Document");
             // docuCookie[""];
             if (documentname.Equals("Transcript of Records"))

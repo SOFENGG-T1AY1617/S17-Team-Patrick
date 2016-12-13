@@ -29,5 +29,10 @@ namespace SOFENGG_Order_Request_Document.Presenter.Order
             return usermodel.GetStudentDegree(studentId);
         }
 
+        public MailingInfo[] getMailingInfo(int studentId)
+        {
+            return usermodel.GetMailingInfo(studentId);
+        }
+
     }
 }
