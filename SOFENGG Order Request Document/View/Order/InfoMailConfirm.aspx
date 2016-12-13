@@ -8,13 +8,13 @@
        <ul class="breadcrumb">
                 &nbsp;
                 <li><a href="#">Home</a></li>
-                <li><asp:HyperLink id="hlPersonal" 
+                <li><asp:HyperLink ID="hlPersonal" 
                         NavigateUrl="PersonalInformaton.aspx" 
                         Text="Personal Information" 
                         runat="server"/>
                 </li>
                 <li>
-                <asp:HyperLink id="hlAacademic" 
+                <asp:HyperLink ID="hlAacademic" 
                     NavigateUrl="InfoAcadDe.aspx" 
                     Text="Academic Information" 
                     runat="server"/>

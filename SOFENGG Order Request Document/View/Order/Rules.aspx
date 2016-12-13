@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.Rules" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="Rules.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.Rules" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="/Content/css/rules.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="container-fluid center-block">
-        <h4 class="content-header">Policies and Procedures</h5>
+        <h4 class="content-header">Policies and Procedures</h4>
         <ol>
             <li>This Online Request for Documents consists of 6 steps, which can be completed in approximately 10 minutes.</li>
             <li>The processing period indicated herein (whether regular or express) is different and 
@@ -31,10 +31,10 @@
         <br>
 
         <div class="card-images">
-            <span><img src="Content/images/logo_visa1.gif" alt=""></span>
-            <span><img src="Content/images/logo_master1.gif" alt=""></span>
-            <span><img src="Content/images/logo_jcb1.gif" alt=""></span>
-            <span><img src="Content/images/logo_amex1.gif" alt=""></span>
+            <span><img src="<%= Page.ResolveUrl("~/Content/images/logo_visa1.gif") %>" alt="" /></span>
+            <span><img src="<%= Page.ResolveUrl("~/Content/images/logo_master1.gif") %>" alt="" /></span>
+            <span><img src="<%= Page.ResolveUrl("~/Content/images/logo_jcb1.gif") %>" alt="" /></span>
+            <span><img src="<%= Page.ResolveUrl("~/Content/images/logo_amex1.gif") %>" alt="" /></span>
         </div>
 
     </div>

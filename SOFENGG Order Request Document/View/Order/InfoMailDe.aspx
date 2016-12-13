@@ -102,7 +102,7 @@
                 <td class="content-form_label">Mailing Contact Number</td>
                 <td>
                     <asp:TextBox ID="txtMailingNum" runat="server"></asp:TextBox>
-                    <div id="txtMailingNum" class="alert alert-dismissible alert-danger" style="display: none;">
+                    <div id="divMailingNum" class="alert alert-dismissible alert-danger" style="display: none;">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Oh my goodness!</strong> Contact number must only contain numbers.
                     </div>
