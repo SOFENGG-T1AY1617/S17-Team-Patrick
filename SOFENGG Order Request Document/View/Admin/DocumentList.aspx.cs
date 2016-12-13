@@ -190,13 +190,15 @@ namespace SOFENGG_Order_Request_Document.View.Admin
 
         public void DeleteDocument(int documentId)
         {
-            if (!_presenter.DeleteDocument(new Document { Id = documentId }))
-            {
-                // TODO: Error handler
-                throw new Exception("Failed to delete");
-            }
-            else
-                Debug.WriteLine("success poh");
+            _presenter.DeleteDocument(new Document {Id = documentId});
+
+//            if (!_presenter.DeleteDocument(new Document { Id = documentId }))
+//            {
+//                // TODO: Error handler
+//                throw new Exception("Failed to delete");
+//            }
+//            else
+//                Debug.WriteLine("success poh");
         }
 
         #endregion Delete Functions
@@ -284,11 +286,13 @@ namespace SOFENGG_Order_Request_Document.View.Admin
                 Category = (DocumentCategoryEnum) int.Parse(lblEditDocumentType.Text)
             };
 
-            if (!_presenter.EditDocument(document))
-            {
-                // TODO: Error handler
-                throw new Exception("Failed to update");
-            }
+            _presenter.EditDocument(document);
+
+//            if (!_presenter.EditDocument(document))
+//            {
+//                // TODO: Error handler
+//                throw new Exception("Failed to update");
+//            }
         }
 
         #endregion Editing Functions

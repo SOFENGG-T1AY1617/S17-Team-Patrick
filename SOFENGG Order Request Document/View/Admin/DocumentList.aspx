@@ -266,7 +266,7 @@
                 <asp:UpdatePanel ID="upDlgDeleteDocumentButtons" UpdateMode="Conditional" runat="server">
                     <ContentTemplate>
                         <div class="modal-body">
-                            <button id="btnDeleteYes" class="btn btn-primary">Yes</button>
+                            <button id="btnDeleteYes" class="btn btn-primary" onclick="return false;">Yes</button>
                             <button class="btn btn-primary" data-dismiss="modal">No</button>
                         </div>
                     </ContentTemplate>
@@ -293,7 +293,7 @@
             function clearPostBack() {
 
                 $("#loading").hide();
-
+                
                 prm.remove_endRequest(clearPostBack);
             }
 
@@ -485,6 +485,9 @@
 
         function pageLoad(sender, args) {
 
+            this.__EVENTTARGET.value = "";
+            this.__EVENTARGUMENT.value = "";
+
             $(".btnAdd").click(function(evt) {
                 // Validate the form and retain the result.
                 var isValid = $("#formMain").valid();
@@ -509,12 +512,13 @@
 
                 console.log(isValid);
                 if (!isValid)
-                    return;
+                    return false;
 
                 $('#dlgEditDocument').modal('hide');
 
                 var documentId = $(this).attr('name');
                 __doPostBack('<%=upDlgEditDocumentButtons.ClientID%>', documentId);
+                return false;
             });
 
             $(".btnEditItem")
@@ -522,6 +526,7 @@
                     var documentId = $(this).attr('name');
                     $("#btnEdit").attr('name', documentId);
                     __doPostBack('<%=upDocumentList.ClientID%>', documentId);
+                    return false;
                 });
 
             $(".btnDeleteItem")
