@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="container-fluid center-block" style="width: 600px;">
-        <h4 class="content-header">Policies and Procedures</h5>
+        <h4 class="content-header">Policies and Procedures</h4>
         <ol class="text-justify">
             <li>This Online Request for Documents consists of 6 steps, which can be completed in approximately 10 minutes.</li>
             <li>The processing period indicated herein (whether regular or express) is different and 
@@ -21,7 +21,7 @@
         <div class="row">
                  <div class="checkbox">
                     <label>
-                        <input type="checkbox" id="checkbox"></asp:CheckBox>
+                        <input type="checkbox" id="checkbox">
                             I have read and understood the policies regarding this facility.
                         </label>
                 </div>
@@ -38,8 +38,7 @@
             <span><img src="/Content/images/logo_jcb1.gif"></span>
             <span><img src="/Content/images/logo_amex1.gif"></span>
         </div>
-
-    </div>
+	</div>
 </asp:Content>
 <asp:Content ID="script" ContentPlaceHolderID="script" runat="server">
 <script src="/Script/rules.js"></script>

@@ -32,8 +32,8 @@
 </form>
     </div>
 
-    <script src="/Presenter/Script/jquery.min.js"></script>
-    <script src="/Presenter/Script/bootstrap.min.js"></script>
+    <script src="/Script/jquery.min.js"></script>
+    <script src="/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>
