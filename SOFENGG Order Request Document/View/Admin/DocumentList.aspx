@@ -168,7 +168,7 @@
                         <div class="modal-footer">
                             <div class="popup_center_align">
                                 <button id="btnEdit" class="btn btn-success">Submit Edit</button>
-                                <button id="btnEditCancel" class="btn btn-warning">Cancel</button>
+                                <button id="btnEditCancel" class="btn btn-warning" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </ContentTemplate>
@@ -266,7 +266,7 @@
                 <asp:UpdatePanel ID="upDlgDeleteDocumentButtons" UpdateMode="Conditional" runat="server">
                     <ContentTemplate>
                         <div class="modal-body">
-                            <button id="btnDeleteYes" class="btn btn-primary" onclick="return false;">Yes</button>
+                            <button id="btnDeleteYes" class="btn btn-primary">Yes</button>
                             <button class="btn btn-primary" data-dismiss="modal">No</button>
                         </div>
                     </ContentTemplate>
@@ -512,13 +512,12 @@
 
                 console.log(isValid);
                 if (!isValid)
-                    return false;
+                    return;
 
                 $('#dlgEditDocument').modal('hide');
 
                 var documentId = $(this).attr('name');
                 __doPostBack('<%=upDlgEditDocumentButtons.ClientID%>', documentId);
-                return false;
             });
 
             $(".btnEditItem")
@@ -526,7 +525,6 @@
                     var documentId = $(this).attr('name');
                     $("#btnEdit").attr('name', documentId);
                     __doPostBack('<%=upDocumentList.ClientID%>', documentId);
-                    return false;
                 });
 
             $(".btnDeleteItem")
