@@ -77,7 +77,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
             PopulateDegreeDropdown();
             ddlDegree.SelectedItem.Selected = false;
             ddlDegree.Items.FindByText(presenter.GetOneDegree(int.Parse(cookie["Degree"])).Name).Selected = true;
-            Debug.Write(int.Parse(cookie["AdmittedAs"]).ToString());
             optAdmittedAs.Items.FindByValue(int.Parse(cookie["AdmittedAs"]).ToString()).Selected = true;
         }
 

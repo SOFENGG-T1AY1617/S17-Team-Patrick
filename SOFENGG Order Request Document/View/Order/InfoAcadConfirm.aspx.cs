@@ -56,6 +56,10 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
                 });
             }
+            if (studentDegreeList.Count == 0)
+            {
+                Response.Redirect("~/View/Order/InfoMailDe.aspx");
+            }
 
             rptInfoAcadConfirm.DataSource = studentDegreeList;
             rptInfoAcadConfirm.DataBind();
