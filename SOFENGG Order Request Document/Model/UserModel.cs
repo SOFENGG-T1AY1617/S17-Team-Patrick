@@ -10,6 +10,57 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 {
     public class UserModel : IUserModel
     {
+
+
+        public bool AddClientInformation(HttpCookie studentInfoCookie, HttpCookie[] acadInfoCookie, HttpCookie[] mailInfoCookie)
+        {
+            var studentInfo = new StudentInfo()
+            {
+                StudentInfoId = int.Parse(studentInfoCookie["Id"]),
+                FirstName = studentInfoCookie["FirstName"],
+                LastName = studentInfoCookie["LastName"],
+                MiddleName = studentInfoCookie["MiddleName"],
+                BirthDate = Convert.ToDateTime(studentInfoCookie["BirthDate"]),
+                Citizenship = studentInfoCookie["Citizenship"],
+                CurrentAddress = studentInfoCookie["CurrentAddress"],
+                Email = studentInfoCookie["Email"],
+                Gender = (GenderEnum)((char)int.Parse(studentInfoCookie["Gender"])),
+                HighSchoolAttended = studentInfoCookie["HighSchoolAttended"],
+                PlaceOfBirth = studentInfoCookie["PlaceOfBirth"],
+                PhoneNumber = studentInfoCookie["PhoneNumber"],
+            };
+            if(!AddStudentInfo(studentInfo)) return false;
+
+            for (int i = 0; i < acadInfoCookie.Length; i++)
+            {
+                var studentDegree = new StudentDegree()
+                {
+                    StudentInfoId = int.Parse(studentInfoCookie["Id"]),
+                    AdmittedAs = (AdmissionEnum)(int.Parse(acadInfoCookie[i]["AdmittedAs"])),
+                    Degree = GetDegree(int.Parse(acadInfoCookie[i]["Degree"])),
+                    Id = i,
+                    IdStudent = int.Parse(acadInfoCookie[i]["IdStudent"]),
+                    YearAdmitted = int.Parse(acadInfoCookie[i]["YearAdmitted"]),
+                };
+                if (!AddStudentDegree(studentDegree)) return false;
+            }
+
+            for (int i = 0; i < mailInfoCookie.Length; i++)
+            {
+                var mailInfo = new MailingInfo()
+                {
+                    Id = i,
+                    ContactNo = mailInfoCookie[i]["ContactNo"],
+                    DeliveryArea = GetDeliveryArea(int.Parse(mailInfoCookie[i]["DeliveryArea"])),
+                    MailingAddress = mailInfoCookie[i]["MailingAddress"],
+                    StudentInfoId = int.Parse(studentInfoCookie["Id"]),
+                    ZipCode = int.Parse(mailInfoCookie[i]["Zipcode"]),
+                };
+                if (!AddMailingInfo(mailInfo)) return false;
+            }
+            return true;
+        }
+
         public bool AddStudentInfo(StudentInfo studentInfo)
         {
             var db = new DBMySqlAddPersonalInformation(studentInfo);
@@ -34,12 +85,12 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             return db.ExecuteQuery();
         }
         
-        public Degree GetDegree(int StudentInfoId, String name, int CampusAttended, char Level)
+        public Degree GetDegree(int StudentInfoId, String name, int CampusAttended)
         {
             var db = new DBMySqlGetDegreeList();
-            db.SetQueryGivenInput((CampusEnum)CampusAttended, name, (DegreeLevelEnum)Level);
+            db.SetQueryGivenInput((CampusEnum)CampusAttended, name);
             db.ExecuteQuery();
-            return db.DegreeList[0];
+            return db.DegreeList.Length != 0 ? db.DegreeList[0] : null;
         }
 
         public Degree GetDegree(int degreeId)
@@ -47,7 +98,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             var db = new DBMySqlGetDegreeList();
             db.SetQueryGivenDegreeId(degreeId);
             db.ExecuteQuery();
-            return db.DegreeList[0];
+            return db.DegreeList.Length != 0 ? db.DegreeList[0] : null;
         }
 
         public Degree[] GetDegree()

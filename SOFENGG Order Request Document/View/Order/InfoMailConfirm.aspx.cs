@@ -62,7 +62,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
         protected void GoToDocumentList(object sender, EventArgs e)
         {
             // .DEBUG.MODE. ============ TRYING ADDING OF COOKIES TO DATABASE ============== .DEBUG.MODE. //
-            var studentInfoCookie = Request.Cookies["StudentInfo"];
+            /*var studentInfoCookie = Request.Cookies["StudentInfo"];
             int acadInfoNumber = int.Parse(studentInfoCookie["StudentDegreeNum"]);
             int mailingInfoNumber = int.Parse(studentInfoCookie["MailingInfoNum"]);
             HttpCookie[] acadInfoCookie = new HttpCookie[acadInfoNumber];
@@ -76,9 +76,9 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 mailInfoCookie[i] = Request.Cookies["MailInformation" + i];
             }
             var model = new UserModel();
-            model.AddClientInformation(studentInfoCookie, acadInfoCookie, mailInfoCookie);
+            model.AddClientInformation(studentInfoCookie, acadInfoCookie, mailInfoCookie);*/
 
-            //Response.Redirect("~/View/Order/DocumentList.aspx");
+            Response.Redirect("~/View/Order/DocumentList.aspx");
         }
 
         public int StudentInfoId { get; set; }
