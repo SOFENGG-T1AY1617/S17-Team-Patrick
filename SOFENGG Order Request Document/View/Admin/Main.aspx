@@ -5,7 +5,7 @@
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model.Helper" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="/Content/css/admin_main.css">
+    <link href="../../Content/css/admin_main.css" rel="stylesheet" />
     <link href="../../Content/css/admin_order_information.css" rel="stylesheet" />
     <script type="text/javascript">
         
@@ -208,8 +208,10 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span></button>
-                                <h6>Reference Number
-                                <asp:Label ID="lblActiveReferenceNo" runat="server"></asp:Label></h6>
+                                <strong>
+                                    <h4>Reference Number
+                                <asp:Label ID="lblActiveReferenceNo" runat="server"></asp:Label></h4>
+                                </strong>
                             </div>
                             <div class="modal-body">
 
@@ -384,7 +386,7 @@
                 <asp:UpdatePanel ID="upDlgPending" ChildrenAsTriggers="False" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         <div class="modal-footer">
-                            <asp:Button ID="btnMarkAsPending" class="btn btn-primary btnMarkAsPending" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
+                            <asp:Button ID="btnMarkAsPending" class="btn btn-success btnMarkAsPending" runat="server" Text="Mark As Pending" OnClick="btnMarkAsPending_OnClick" />
                             <button id="btnPendingCancel" type="button" class="btn btn-default" data-dismiss="modal">
                                 Cancel</button>
                         </div>
