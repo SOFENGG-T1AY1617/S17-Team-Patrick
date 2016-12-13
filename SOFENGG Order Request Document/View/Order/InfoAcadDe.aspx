@@ -62,10 +62,8 @@
                         <td>
                             <asp:TextBox ID="txtStudNo" CssClass="form-control"
                                     runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
-                            <div id="txtStudNo" class="alert alert-dismissible alert-danger" style="display: none;">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Oh my goodness!</strong> Student number must only contain 8 numbers.
-                            </div>
+                            <asp:RegularExpressionValidator runat="server" id="rexStudNo" 
+								controltovalidate="txtStudNo" validationexpression="^[0-9]{7-8}$" errormessage="Please enter a student number!" />
                         </td>
                     </tr>
                     <tr>

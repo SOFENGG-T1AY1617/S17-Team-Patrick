@@ -115,13 +115,10 @@
                 <td class="content-form_label">Phone Number</td>
                 <td>
                     <asp:TextBox ID="txtPhoneNum" class="form-control" runat="server"></asp:TextBox>
-                    <div id="txtPhoneNum" class="alert alert-dismissible alert-danger" style="display: none;">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh my goodness!</strong> Phone number must only contain numbers.
-                    </div>
+                    <asp:RegularExpressionValidator runat="server" id="rexPhoneNum" 
+						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7}$" errormessage="Please enter a 7-digit telephone number!" />
                     <asp:RequiredFieldValidator id="rfvPhoneNum" runat="server"
-                        ControlToValidate="txtPhoneNum"
-                        ErrorMessage="Phone number is a required field."
+                        ControlToValidate="txtPhoneNum" ErrorMessage="Phone number is a required field."
                             ForeColor="Red">
                     </asp:RequiredFieldValidator>
                 </td>
@@ -130,10 +127,11 @@
                 <td class="content-form_label">Email Address</td>
                 <td>
                     <asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
-                    <div id="txtEmail" class="alert alert-dismissible alert-danger" style="display: none;">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh my goodness!</strong> Email address must follow this format: "example@example.com".
-                    </div>
+                    <asp:RegularExpressionValidator
+              			runat="server" ErrorMessage="Please enter a valid email address."
+                 		 id="rexEmail" ControlToValidate="txtEmail" ForeColor="Red"
+                  			ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                  	</asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator id="rfvEmail" runat="server"
                         ControlToValidate="txtEmail"
                         ErrorMessage="E-mail address is a required field."

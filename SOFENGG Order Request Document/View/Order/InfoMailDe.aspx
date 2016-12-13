@@ -47,6 +47,8 @@
                 <td class="content-form_label">Zip Code</td>
                 <td>
                     <asp:TextBox ID="txtZipCode" CssClass="form-control" Width="50px" MaxLength="4" runat="server"></asp:TextBox>
+					<asp:RegularExpressionValidator runat="server" id="rexZipCode" 
+						controltovalidate="txtZipCode" validationexpression="^[0-9]{4}$" errormessage="Please enter a 4-digit zip code!" />
                     <asp:RequiredFieldValidator id="rfvZipCode" runat="server"
                             ControlToValidate="txtZipCode"
                             ErrorMessage="Zip code is a required field."
@@ -102,7 +104,7 @@
                 <td class="content-form_label">Mailing Contact Number</td>
                 <td>
                     <asp:TextBox ID="txtMailingNum" CssClass="form-control" runat="server"></asp:TextBox>
-                    <div id="txtMailingNum" class="alert alert-dismissible alert-danger" style="display: none;">
+                    <div id="errorMailingNum" class="alert alert-dismissible alert-danger" style="display: none;">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Oh my goodness!</strong> Contact number must only contain numbers.
                     </div>
