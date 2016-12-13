@@ -46,7 +46,7 @@
             <tr class="delivery-info">
                 <td class="content-form_label">Zip Code</td>
                 <td>
-                    <asp:TextBox ID="txtZipCode" CssClass="form-control" Width="50px" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtZipCode" CssClass="form-control" Width="50px" MaxLength="4" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator id="rfvZipCode" runat="server"
                             ControlToValidate="txtZipCode"
                             ErrorMessage="Zip code is a required field."
