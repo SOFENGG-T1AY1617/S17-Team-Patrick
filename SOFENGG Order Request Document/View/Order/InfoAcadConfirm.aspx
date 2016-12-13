@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoAcadConfirm.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoAcadConfirm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoAcadConfirm.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoAcadConfirm" EnableEventValidation="false" %>
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -40,7 +40,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Degree.Id")%>' />
+                            <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Id")%>' />
                             <asp:Button class="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
 							<a href="#myModal" class="btn btn-default" data-toggle="modal">Delete</a>
 						</td>

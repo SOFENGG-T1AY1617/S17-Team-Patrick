@@ -74,9 +74,16 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void EditStudentDegree(object sender, EventArgs e)
         {
+            Button button = sender as Button;
+            var idControl = button.Parent.FindControl("updateBtns") as HiddenField;
+            HttpCookie editCookie = new HttpCookie("EditCookie");
+            editCookie["Id"] = idControl.Value;
+            Response.Cookies.Add(editCookie);
+            Debug.Write("\n\n" + idControl.Value + "\n\n");
+            Response.Redirect("~/View/Order/InfoAcadDe.aspx");
             //HttpCookie editCookie = new HttpCookie("EditCookie");
             //editCookie["StudentDegree"] = gets the id of selected 
-            Response.Redirect("~/View/Order/InfoAcadDe.aspx");
+            // Response.Redirect("~/View/Order/InfoAcadDe.aspx");
         }
 
         public void AddStudentDegree(object sender, EventArgs e)
