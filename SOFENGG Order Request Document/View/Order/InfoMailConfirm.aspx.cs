@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
 using SOFENGG_Order_Request_Document.Model;
+using SOFENGG_Order_Request_Document.Model.Database;
 using SOFENGG_Order_Request_Document.Presenter;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
 
@@ -59,7 +61,24 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void GoToDocumentList(object sender, EventArgs e)
         {
-            Response.Redirect("~/View/Order/DocumentList.aspx");
+            // .DEBUG.MODE. ============ TRYING ADDING OF COOKIES TO DATABASE ============== .DEBUG.MODE. //
+            var studentInfoCookie = Request.Cookies["StudentInfo"];
+            int acadInfoNumber = int.Parse(studentInfoCookie["StudentDegreeNum"]);
+            int mailingInfoNumber = int.Parse(studentInfoCookie["MailingInfoNum"]);
+            HttpCookie[] acadInfoCookie = new HttpCookie[acadInfoNumber];
+            HttpCookie[] mailInfoCookie = new HttpCookie[mailingInfoNumber];
+            for (int i = 0; i < acadInfoNumber; i++)
+            {
+                acadInfoCookie[i] = Request.Cookies["AcadInformation" + i];
+            }
+            for (int i = 0; i < mailingInfoNumber; i++)
+            {
+                mailInfoCookie[i] = Request.Cookies["MailInformation" + i];
+            }
+            var model = new UserModel();
+            model.AddClientInformation(studentInfoCookie, acadInfoCookie, mailInfoCookie);
+
+            //Response.Redirect("~/View/Order/DocumentList.aspx");
         }
 
         public int StudentInfoId { get; set; }

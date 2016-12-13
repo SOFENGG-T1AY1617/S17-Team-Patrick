@@ -116,7 +116,7 @@
         </table>
        <ul class="pager">
             <li class="previous disabled"><a href="#">&larr; Previous</a></li>
-            <li class="next"><asp:HyperLink text="Next &rarr;" runat="server" OnClick="SubmitMailInfo"></asp:HyperLink></li>
+            <li class="next"><asp:LinkButton text="Next &rarr;" runat="server" OnClick="SubmitMailInfo"></asp:LinkButton></li>
         </ul>
     </div>
 </asp:Content>

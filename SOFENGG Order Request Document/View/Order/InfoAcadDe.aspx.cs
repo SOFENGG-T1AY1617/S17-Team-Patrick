@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Web;
 using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Model;
@@ -19,6 +20,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 {
                     this.PopulateYear();
                     ddlDegree.Items.Insert(0, "Select Campus");
+                    ddlDegree.Attributes.Add("bgcolor", "gray");
                     //this.PopulateDegreeDropdown();
                 }
 
@@ -41,10 +43,11 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         public void DDLCampus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Debug.Write("\n\nHELLO\n\n");
-
             if (ddlCampus.SelectedIndex == 0)
+            {
                 ddlDegree.Enabled = false;
+                ddlDegree.Attributes.Add("bgcolor", "gray");
+            }
             else
                 ddlDegree.Enabled = true;
 
@@ -98,6 +101,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
             var degreeList = presenter.GetDegreeInCampus(int.Parse(ddlCampus.SelectedItem.Value));
+            Debug.Write("\n\n" + ddlCampus.SelectedItem.Value + "\n\n");
             ddlDegree.Items.Clear();
             ddlDegree.Items.Insert(0, "Select Campus");
             for (int i = 1; i <= degreeList.Length; i++)

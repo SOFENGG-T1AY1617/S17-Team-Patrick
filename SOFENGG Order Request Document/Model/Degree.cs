@@ -13,8 +13,9 @@ namespace SOFENGG_Order_Request_Document.Model
     }
     public enum CampusEnum
     {
-        Taft = 0,
-        STC = 1
+        Taft = 1,
+        STC = 2,
+        Makati = 3,
     }
 
     public class Degree
