@@ -137,8 +137,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             addtoCart["packaging"] = packaging.ToString();
 
-            Request.Cookies.Add(addtoCart);
-            // Response.Redirect("~/View/Order/InfoTransaction.aspx");
+      
 
             var o = new Model.OrderItem
             {
@@ -158,6 +157,9 @@ namespace SOFENGG_Order_Request_Document.View.Order
             o.OrderType = addtoCart["Ordertype"];
 
             var orderItem = (OrderItem) new JavaScriptSerializer().DeserializeObject(json);
+
+            Request.Cookies.Add(addtoCart);
+            // Response.Redirect("~/View/Order/InfoTransaction.aspx")
 
 
         }
