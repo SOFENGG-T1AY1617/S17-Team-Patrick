@@ -121,10 +121,13 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             if (IsPostBack)
                 return;
-
+            if (Request.Cookies["StudentInfo"] == null) { 
             HttpCookie cookie = new HttpCookie("StudentInfo");
             cookie["Id"] = 2 + "";
+            cookie["MailingInfoNum"] = "0";
+            cookie["StudentDegreeNum"] = "1";
             Response.Cookies.Add(cookie);
+            }
             Debug.Write("\n\n\n ADDED PO!! \n\n\n");
 
             id = int.Parse(Request.Cookies["StudentInfo"]["id"]);

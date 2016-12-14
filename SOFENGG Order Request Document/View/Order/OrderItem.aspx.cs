@@ -3,6 +3,7 @@ using SOFENGG_Order_Request_Document.Presenter;
 using SOFENGG_Order_Request_Document.Presenter.Order;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -114,11 +115,15 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
 
             lblRegularPrice.Text = document.RegularPrice.ToString();
-            if (document.ExpressPrice != 0  || document.Id == 12)
+            if (document.ExpressPrice != 0  || document.Id != 12 || !(StudentInfo.ColStudentInfoId[0] == 8 && StudentInfo.ColStudentInfoId[0] == 0 ))
             {
                 lblExpressPrice.Text = "Php " + document.ExpressPrice.ToString();
                 rbExpress.Visible = true;
 
+            }
+            if(StudentInfo.ColStudentInfoId[0] == 8 && StudentInfo.ColStudentInfoId[0] == 0)
+            {
+                rbExpress.Visible = false;
             }
             if (document.Id == 12)
             {
@@ -286,7 +291,9 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 orderItemCookie["docuId"] = Request.Cookies["Document"]["id"];
                 if (rbExpress.Checked == true)
                 {
+                    
                     orderItemCookie["orderType"] = 1+"";
+                    
                 }
                 else
                     orderItemCookie["orderType"] = 0+"";
@@ -301,6 +308,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 orderItemCookie["docuId"] += ","+ Request.Cookies["Document"]["id"];
                 if (rbExpress.Checked == true)
                 {
+                    
                     orderItemCookie["orderType"] += ",1";
                 }
                 else
