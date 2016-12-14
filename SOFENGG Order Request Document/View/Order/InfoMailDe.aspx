@@ -8,6 +8,7 @@
     <div class="container-fluid center-block" style="width:800px;">
         <ul class="breadcrumb">
                 &nbsp;
+            <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
                 <li><asp:HyperLink id="hlPersonal" 
                         NavigateUrl="PersonalInformation.aspx" 
                         Text="Personal Information" 
