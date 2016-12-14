@@ -29,7 +29,7 @@ namespace SOFENGG_Order_Request_Document.Presenter
             int acadInfoId = AcadId;
             cookie = new HttpCookie("AcadInformation" + acadInfoId);
             cookie["AdmittedAs"] = (int)((AdmissionEnum) view.AdmittedAs) + "";
-            cookie["Degree"] = model.GetDegree(view.StudentInfoId, view.Degree, view.CampusAttended, view.Level).Id + "";
+            cookie["Degree"] = model.GetDegree(view.StudentInfoId, view.Degree, view.CampusAttended).Id + "";
             cookie["IdStudent"] = view.IdNumber + "";
             cookie["YearAdmitted"] = view.YearAdmitted + "";
 
@@ -42,7 +42,7 @@ namespace SOFENGG_Order_Request_Document.Presenter
             {
                 StudentInfoId = view.StudentInfoId,
                 AdmittedAs = (AdmissionEnum)view.AdmittedAs,
-                Degree = model.GetDegree(view.StudentInfoId, view.Degree, view.CampusAttended, view.Level),
+                Degree = model.GetDegree(view.StudentInfoId, view.Degree, view.CampusAttended),
                 IdStudent = view.IdNumber,
                 YearAdmitted = view.YearAdmitted,
             };

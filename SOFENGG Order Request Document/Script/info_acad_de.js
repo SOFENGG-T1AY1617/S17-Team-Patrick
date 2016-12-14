@@ -17,3 +17,7 @@ $("#doctorate").click(function() {
 $("#cbGraduate").click(function() {
   $("#doctorate").prop("checked", true);
 })
+
+$("select#body_ddlCampus").click(function () {
+    console.log($("select#body_ddlCampus"));
+})

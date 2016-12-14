@@ -5,35 +5,33 @@
     <link rel="stylesheet" href="/Content/css/personal_information.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="container-fluid center-block">
-        <div class="row">
-            <div class="btn-group btn-breadcrumb">
-                &nbsp;
-            <a href="#" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
-                <a class="btn btn-default active">Personal Information</a>
-            </div>
-        </div>
+<div class = "container-fluid center-block" style="width:800px;">
+        <ul class="breadcrumb">
+            &nbsp;
+            <li><a href="#" class="step"><i class="glyphicon glyphicon-home"></i></a></li>
+            <li class="active">Personal Information</li>
+        </ul>
         <h4 class="content-header">Personal Information</h4>
-        <table class="table table-striped">
+        <table class="table table-bordered table-striped">
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>
             </tr>
             <tr>
                 <td class="content-form_label">Last Name</td>
                 <td>
-                    <asp:TextBox ID="txtLName" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvLName" runat="server"
-                        ControlToValidate="txtLName"
-                        ErrorMessage="Last name is a required field."
-                        ForeColor="Red">
-                    </asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtLName" class="form-control" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator id="rfvLName" runat="server"
+                            ControlToValidate="txtLName"
+                                ErrorMessage="Last name is a required field."
+                                ForeColor="Red">
+                        </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td class="content-form_label">First Name</td>
                 <td>
-                    <asp:TextBox ID="txtFName" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvFName" runat="server"
+                    <asp:TextBox ID="txtFName" class="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvFName" runat="server"
                         ControlToValidate="txtFName"
                         ErrorMessage="First name is a required field."
                         ForeColor="Red">
@@ -43,8 +41,8 @@
             <tr>
                 <td class="content-form_label">Middle Name</td>
                 <td>
-                    <asp:TextBox ID="txtMName" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvMName" runat="server"
+                    <asp:TextBox ID="txtMName" class="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvMName" runat="server"
                         ControlToValidate="txtMName"
                         ErrorMessage="Middle name is a required field."
                         ForeColor="Red">
@@ -54,27 +52,27 @@
             <tr>
                 <td class="content-form_label">Gender</td>
                 <td>
-                    <asp:RadioButtonList ID="optGender" runat="server"
-                        RepeatDirection="Vertical" RepeatLayout="Flow">
-                        <asp:ListItem Text="Male" Value="M" style="padding: 7px;"></asp:ListItem>
-                        <asp:ListItem Text="Female" Value="F" style="padding: 7px;"></asp:ListItem>
-                    </asp:RadioButtonList>
-                    <asp:RequiredFieldValidator ID="rfvGender" runat="server"
-                        ControlToValidate="optGender"
-                        ErrorMessage="Gender is a required field."
-                        ForeColor="Red">
-                    </asp:RequiredFieldValidator>
+		                    <asp:RadioButtonList ID="optGender" runat="server" 
+		                            RepeatDirection="Horizontal" RepeatLayout="Flow">
+		                            <asp:ListItem class="radio-inline" Text="Male" Value="M"></asp:ListItem>
+		                            <asp:ListItem class="radio-inline" Text="Female" Value="F"></asp:ListItem>
+		                    </asp:RadioButtonList>
+		                    <asp:RequiredFieldValidator id="rfvGender" runat="server"
+		                        ControlToValidate="optGender"
+		                        ErrorMessage="Gender is a required field."
+		                            ForeColor="Red">
+		                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <!-- Add date using PHP/ASP here -->
             <tr>
                 <td class="content-form_label">Birth Date</td>
                 <td>
-                    <asp:DropDownList ID="ddlBirthYear" runat="server" Width="80px" onchange="PopulateDays()" />
-                    <asp:DropDownList ID="ddlBirthMonth" runat="server" Width="100px" onchange="PopulateDays()" />
-                    <asp:DropDownList ID="ddlBirthDay" runat="server" Width="50px" />
-
-                    <asp:RequiredFieldValidator ID="rfvBirthYear" runat="server"
+					<div class="btn-group">
+	                    <asp:DropDownList ID="ddlBirthMonth" runat="server" Width="100px" onchange = "PopulateDays()" />
+	                    <asp:DropDownList ID="ddlBirthDay" runat="server" Width="50px" />
+						<asp:DropDownList ID="ddlBirthYear" runat="server" Width="80px" onchange = "PopulateDays()" />
+                    <asp:RequiredFieldValidator id="rfvBirthYear" runat="server"
                         ControlToValidate="ddlBirthYear"
                         ErrorMessage="Birthyear is a required field."
                         ForeColor="Red">
@@ -87,15 +85,15 @@
                     <asp:RequiredFieldValidator ID="rfvBirthDay" runat="server"
                         ControlToValidate="ddlBirthDay"
                         ErrorMessage="Birthday is a required field."
-                        ForeColor="Red">
-                    </asp:RequiredFieldValidator>
+                            ForeColor="Red">
+                    </asp:RequiredFieldValidator></div>
                 </td>
             </tr>
             <tr>
                 <td class="content-form_label">Citizenship</td>
                 <td>
-                    <asp:TextBox ID="txtCitizen" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCitizen" runat="server"
+                    <asp:TextBox ID="txtCitizen" class="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvCitizen" runat="server"
                         ControlToValidate="txtCitizen"
                         ErrorMessage="Citizenship is a required field."
                         ForeColor="Red">
@@ -103,11 +101,12 @@
                 </td>
             </tr>
             <tr>
-                <td class="content-form_label">Current Address</td>
-                <td>
                     <asp:TextBox ID="txtCurrentAddress" runat="server"
                         TextMode="MultiLine" Columns="40" Rows="5"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvCurrentAddress" runat="server"
+                    <asp:TextBox ID="txtCurrentAddress" class="form-control" runat="server" 
+                        TextMode="MultiLine"  Columns="40" Rows="5"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvCurrentAddress" runat="server"
                         ControlToValidate="txtCurrentAddress"
                         ErrorMessage="Current address is a required field."
                         ForeColor="Red">
@@ -115,29 +114,27 @@
                 </td>
             </tr>
             <tr>
-                <td class="content-form_label">Phone Number</td>
+                <td class="content-form_label">Contact Number</td>
                 <td>
-                    <asp:TextBox ID="txtPhoneNum" runat="server"></asp:TextBox>
-                    <div id="divPhoneNum" class="alert alert-dismissible alert-danger" style="display: none;">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh my goodness!</strong> Phone number must only contain numbers.
-                    </div>
-                    <asp:RequiredFieldValidator ID="rfvPhoneNum" runat="server"
-                        ControlToValidate="txtPhoneNum"
-                        ErrorMessage="Phone number is a required field."
-                        ForeColor="Red">
+                    <asp:TextBox ID="txtPhoneNum" class="form-control" runat="server"></asp:TextBox>
+                    <asp:RegularExpressionValidator runat="server" id="rexPhoneNum" 
+						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter your contact number containing 7 to 15 digits!" />
+                    <asp:RequiredFieldValidator id="rfvPhoneNum" runat="server"
+                        ControlToValidate="txtPhoneNum" ErrorMessage="Phone number is a required field."
+                            ForeColor="Red">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td class="content-form_label">Email Address</td>
                 <td>
-                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-                    <div id="txtEmail" class="alert alert-dismissible alert-danger" style="display: none;">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh my goodness!</strong> Email address must follow this format: "example@example.com".
-                    </div>
-                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
+                    <asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
+                    <asp:RegularExpressionValidator
+              			runat="server" ErrorMessage="Please enter a valid email address."
+                 		 id="rexEmail" ControlToValidate="txtEmail" ForeColor="Red"
+                  			ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                  	</asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator id="rfvEmail" runat="server"
                         ControlToValidate="txtEmail"
                         ErrorMessage="E-mail address is a required field."
                         ForeColor="Red">
@@ -147,8 +144,8 @@
             <tr>
                 <td class="content-form_label">High School Attended</td>
                 <td>
-                    <asp:TextBox ID="txtHSAttended" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvHSAttended" runat="server"
+                    <asp:TextBox ID="txtHSAttended" class="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvHSAttended" runat="server"
                         ControlToValidate="txtHSAttended"
                         ErrorMessage="High school attended is a required field."
                         ForeColor="Red">
@@ -156,24 +153,22 @@
                 </td>
             </tr>
             <tr>
-                <td class="content-form_label">Place of Birth</td>
-                <td>
                     <asp:TextBox ID="txtBirthplace" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvBirthplace" runat="server"
+                    <asp:TextBox ID="txtBirthplace" class="form-control" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator id="rfvBirthplace" runat="server"
                         ControlToValidate="txtBirthplace"
                         ErrorMessage="birthplace is a required field."
                         ForeColor="Red">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <asp:Button class="btn btn-primary"
-                        Text="Next" runat="server" OnClick="SubmitPersonalInformation_Click" />
-                </td>
-            </tr>
         </table>
-    </div>
+        <ul class="pager">
+            <li class="previous disabled"><a href="#">&larr; Previous</a></li>
+            <li class="next"><asp:LinkButton text="Next &rarr;" runat="server" OnClick="SubmitPersonalInformation_Click"></asp:LinkButton></li>
+        </ul>
+</div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
     <script src="/Script/personal_information.js"></script>

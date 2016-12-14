@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{1885F5B4-823A-4851-AC58-0980DD451574}|">
   <MonoDevelop.Ide.ItemProperties.SOFENGG_220Order_220Request_220Document PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SOFENGG Order Request Document/Web.config">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SOFENGG Order Request Document/View/Order/InfoMailDe.aspx">
     <Files>
-      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadDe.aspx" Line="47" Column="29" />
-      <File FileName="SOFENGG Order Request Document/Web.config" Line="19" Column="108" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadConfirm.aspx" Line="45" Column="8" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoMailConfirm.aspx" Line="31" Column="65" />
+      <File FileName="SOFENGG Order Request Document/View/Order/PersonalInformation.aspx" Line="14" Column="57" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoAcadDe.aspx" Line="25" Column="65" />
+      <File FileName="SOFENGG Order Request Document/View/Order/InfoMailDe.aspx" Line="34" Column="57" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

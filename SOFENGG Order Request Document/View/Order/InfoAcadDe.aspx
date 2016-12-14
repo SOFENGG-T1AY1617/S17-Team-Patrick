@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/Content/css/info_acad_de.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-        <div class="container-fluid center-block">
+        <div class="container-fluid center-block" style="width:800px;">
             <ul class="breadcrumb">
                 &nbsp;
                 <li><a href="#">Home</a></li>
@@ -22,7 +22,7 @@
                         Otherwise, just enter the details of the degree for which you will be requesting a document.
                         </p>
                     </blockquote>
-                <table class="table table-striped">
+                <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <td colspan="2"><span style="color: red">*</span> - indicates required field</td>
@@ -32,7 +32,7 @@
                     <tr>
                         <td class="content-form_label">Campus Attended</td>
                         <td>
-                            <asp:DropDownList ID="ddlCampus" runat="server" Width="200px">
+                            <asp:DropDownList ID="ddlCampus" runat="server" AutoPostBack="true" Width="200px" OnTextChanged="DDLCampus_SelectedIndexChanged">
                                 <asp:ListItem Text="Select Campus" Value="0"></asp:ListItem>
                                 <asp:ListItem Text="Taft" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="STC" Value="2"></asp:ListItem>
@@ -43,7 +43,7 @@
                     <tr>
                         <td class="content-form_label">Year Admitted</td>
                         <td>
-                            <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px"></asp:dropdownlist>
+                            <asp:DropDownList ID="ddlYearAdmitted" runat="server" Width="200px"></asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
@@ -60,33 +60,36 @@
                     <tr>
                         <td class="content-form_label">Student No.</td>
                         <td>
-                            <asp:TextBox ID="txtStudNo"
+                            <asp:TextBox ID="txtStudNo" CssClass="form-control"
                                     runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
-                            <div id="txtStudNo" class="alert alert-dismissible alert-danger" style="display: none;">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>Oh my goodness!</strong> Student number must only contain 8 numbers.
-                            </div>
+                            <asp:RegularExpressionValidator runat="server" id="rexStudNo"
+								controltovalidate="txtStudNo" validationexpression="^[0-9]{7,8}$" errormessage="Please enter a student number!" />
+                            <asp:RequiredFieldValidator id="rfvStudNo" runat="server"
+                                ControlToValidate="txtStudNo"
+                                ErrorMessage="Student No. is a required field."
+                                ForeColor="Red">
+                            </asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
                         <td class="content-form_label">Admitted as</td>
                         <td>
+						<div class="checkbox checkboxlist col-sm-12">
                             <asp:RadioButtonList ID="optAdmittedAs" runat="server" 
-                                RepeatDirection="Vertical" RepeatLayout="Flow">
-                                <asp:ListItem Text="Regular Student" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Transferee" Value="2"></asp:ListItem>
-                                <asp:ListItem Text="Graduate" Value="3"></asp:ListItem>
+                                RepeatDirection="Horizontal" RepeatLayout="Flow">
+                                <asp:ListItem class="radio-inline" Text="Regular Student" Value="1"></asp:ListItem>
+                                <asp:ListItem class="radio-inline" Text="Transferee" Value="2"></asp:ListItem>
+                                <asp:ListItem class="radio-inline" Text="Graduate" Value="3"></asp:ListItem>
                             </asp:RadioButtonList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" align="center">
-                            <asp:Button ID="btnAction" runat="server" text="Cancel" class="btn btn-primary"></asp:Button>
-                            <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary" OnClick = "SubmitStudentDegree_Click" text="Submit"></asp:Button>
+						</div>
                         </td>
                     </tr>
                     </tbody>
                 </table>
+			 <ul class="pager">
+            <li class="previous disabled"><a href="PersonalInformation.aspx" id="btnAction">&larr; Previous</a></li>
+            <li class="next"><asp:LinkButton text="Next &rarr;" id="btnSubmitStudentDegree" runat="server" OnClick="SubmitStudentDegree_Click"></asp:LinkButton></li>
+        </ul>
         </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

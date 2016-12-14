@@ -1477,7 +1477,7 @@ abbr[data-original-title] {
 blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
-  font-size: 14px;
+  font-size: 12px;
   border-left: 5px solid #eee;
 }
 blockquote p:last-child,
@@ -4703,7 +4703,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .breadcrumb > li + li:before {
   padding: 0 5px;
   color: #ccc;
-  content: "/\00a0";
+  content: "\00BB";
 }
 .breadcrumb > .active {
   color: #777;
@@ -6754,7 +6754,7 @@ button.close {
     display: none !important;
   }
 }
-/** The Magic **/
+
 .btn-breadcrumb .btn:not(:last-child):after {
   content: " ";
   display: block;
@@ -6785,17 +6785,14 @@ button.close {
   z-index: 3;
 }
 
-/** The Spacing **/
 .btn-breadcrumb .btn {
   padding:6px 12px 6px 24px;
 }
 .btn-breadcrumb .btn:first-child {
   padding:6px 6px 6px 10px;
-  margin-right:1px;
 }
 .btn-breadcrumb .btn:last-child {
   padding:6px 18px 6px 24px;
-  margin-left:0px;
 }
 
 /** Default button **/
@@ -6812,73 +6809,73 @@ button.close {
   border-left: 10px solid #adadad;
 }
 
-/** Primary button **/
-.btn-breadcrumb .btn.btn-primary:not(:last-child):after {
-  border-left: 10px solid #428bca;
-}
-.btn-breadcrumb .btn.btn-primary:not(:last-child):before {
-  border-left: 10px solid #357ebd;
-}
-.btn-breadcrumb .btn.btn-primary:hover:not(:last-child):after {
-  border-left: 10px solid #3276b1;
-}
-.btn-breadcrumb .btn.btn-primary:hover:not(:last-child):before {
-  border-left: 10px solid #285e8e;
+/* The responsive part */
+
+.btn-breadcrumb > * > div {
+    /* With less: .text-overflow(); */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
 }
 
-/** Success button **/
-.btn-breadcrumb .btn.btn-success:not(:last-child):after {
-  border-left: 10px solid #5cb85c;
-}
-.btn-breadcrumb .btn.btn-success:not(:last-child):before {
-  border-left: 10px solid #4cae4c;
-}
-.btn-breadcrumb .btn.btn-success:hover:not(:last-child):after {
-  border-left: 10px solid #47a447;
-}
-.btn-breadcrumb .btn.btn-success:hover:not(:last-child):before {
-  border-left: 10px solid #398439;
+.btn-breadcrumb > *:nth-child(n+2) {
+  display:none;
 }
 
-/** Danger button **/
-.btn-breadcrumb .btn.btn-danger:not(:last-child):after {
-  border-left: 10px solid #d9534f;
-}
-.btn-breadcrumb .btn.btn-danger:not(:last-child):before {
-  border-left: 10px solid #d43f3a;
-}
-.btn-breadcrumb .btn.btn-danger:hover:not(:last-child):after {
-  border-left: 10px solid #d2322d;
-}
-.btn-breadcrumb .btn.btn-danger:hover:not(:last-child):before {
-  border-left: 10px solid #ac2925;
+/* === For phones =================================== */
+@media (max-width: 767px) {
+    .btn-breadcrumb > *:nth-last-child(-n+2) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 60px;
+    }
 }
 
-/** Warning button **/
-.btn-breadcrumb .btn.btn-warning:not(:last-child):after {
-  border-left: 10px solid #f0ad4e;
-}
-.btn-breadcrumb .btn.btn-warning:not(:last-child):before {
-  border-left: 10px solid #eea236;
-}
-.btn-breadcrumb .btn.btn-warning:hover:not(:last-child):after {
-  border-left: 10px solid #ed9c28;
-}
-.btn-breadcrumb .btn.btn-warning:hover:not(:last-child):before {
-  border-left: 10px solid #d58512;
+/* === For tablets ================================== */
+@media (min-width: 768px) and (max-width:991px) {
+    .btn-breadcrumb > *:nth-last-child(-n+4) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 100px;
+    }
 }
 
-/** Info button **/
-.btn-breadcrumb .btn.btn-info:not(:last-child):after {
-  border-left: 10px solid #5bc0de;
+/* === For desktops ================================== */
+@media (min-width: 992px) {
+    .btn-breadcrumb > *:nth-last-child(-n+6) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 170px;
+    }
 }
-.btn-breadcrumb .btn.btn-info:not(:last-child):before {
-  border-left: 10px solid #46b8da;
+
+/*** radio button edit ***/
+.radio.radiobuttonlist input[type="radio"],
+.checkbox.checkboxlist input[type="checkbox"]
+{
+	margin-left: 0;
 }
-.btn-breadcrumb .btn.btn-info:hover:not(:last-child):after {
-  border-left: 10px solid #39b3d7;
+
+.radio.radiobuttonlist label,
+.checkbox.checkboxlist label
+{
+	margin-bottom: 4px;
+	margin-left: 0;
 }
-.btn-breadcrumb .btn.btn-info:hover:not(:last-child):before {
-  border-left: 10px solid #269abc;
+
+fieldset legend
+{
+	border: 0;
+	font-size: inherit;
+	font-weight: 700;
+	margin-bottom: 0;
 }
-/*# sourceMappingURL=bootstrap.css.map */
+
+fieldset .radio,
+fieldset .checkbox
+{
+	margin-top: 4px;
+}

@@ -27,24 +27,24 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {2}", Degree.Table, Degree.ColDegreeId, degree.Id);
         }
 
-        public void SetQueryGivenInput(CampusEnum campus, string name, DegreeLevelEnum level)
+        public void SetQueryGivenInput(CampusEnum campus, string name)
         {
             tempCmd = new MySqlCommand();
             Degree degree = new Degree()
             {
-                CampusOffered = campus, Name = name, Level = level,
+                CampusOffered = campus, Name = name
             };
             
 
-            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {4} and {2} = '{5}' and {3} = '{6}';",
-                Degree.Table, Degree.ColCampusOfferedId, Degree.ColDegreeName, Degree.ColLevel,
-                (int)degree.CampusOffered, degree.Name, (char)degree.Level);
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {3} and {2} = '{4}';",
+                Degree.Table, Degree.ColCampusOfferedId, Degree.ColDegreeName,
+                (int)degree.CampusOffered, degree.Name);
         }
 
         public void SetQueryGivenCampus(CampusEnum campus)
         {
             tempCmd = new MySqlCommand();
-            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE campusOfferedId = {1}", Degree.Table, Degree.ColCampusOfferedId);
+            tempCmd.CommandText = string.Format("SELECT * FROM {0} WHERE {1} = {2}", Degree.Table, Degree.ColCampusOfferedId, (int)campus);
         }
 
         protected override void SetQuery()
