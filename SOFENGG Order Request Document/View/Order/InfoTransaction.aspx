@@ -15,7 +15,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-<div class="container-fluid center-block">      
+    <div class="container-fluid center-block">      
     <li><a href="#">Home</a></li>
                 <li><asp:HyperLink id="hlPersonal" 
                         NavigateUrl="personal_information.html" 

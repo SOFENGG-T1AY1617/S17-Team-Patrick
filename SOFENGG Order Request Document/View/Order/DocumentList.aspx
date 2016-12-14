@@ -15,7 +15,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 
-    <div class="container-fluid center-block">
+<div class="container-fluid center-block"  style="width:800px;"> 
         <ul class="breadcrumb">
             &nbsp;
                 <li><a href="#">Home</a></li>
@@ -31,7 +31,7 @@
             <li class="active">Document List</li>
         </ul>
 
-        <form runat="server">
+        
             <h4 class="content-header">Document List</h4>
             <div>
                 <blockquote>
@@ -44,7 +44,7 @@
                 <div>
                     <asp:Repeater ID="repDocumentList" runat="server">
                         <ItemTemplate>
-                            <table class="table table-striped" style="width: 571px; margin-left: auto; margin-right: auto;">
+                            <table class="table table-striped" style="width:590px; margin-left: auto; margin-right: auto;">
                                 <tr>
                                     <td colspan="4" class="content-document-header"><%# Eval("Category") %></td>
                                 </tr>
@@ -69,7 +69,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:Button ID="btnOrder" runat="server" CssClass="btn btn-primary" Text="Button" OnClick="btnOrder_OnClick"/>
+                                            <asp:Button ID="btnOrder" runat="server" CssClass="btn btn-primary" Text="Order" OnClick="btnOrder_OnClick"/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -78,7 +78,7 @@
                     </asp:Repeater>
                 </div>
             </div>
-        </form>
+        
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

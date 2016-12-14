@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SOFENGG_Order_Request_Document.View.Order {
-    
-    
-    public partial class DocumentList {
-        
+namespace SOFENGG_Order_Request_Document.View.Order
+{
+
+
+    public partial class DocumentList
+    {
+
         /// <summary>
         /// repDocumentList control.
         /// </summary>

@@ -56,6 +56,10 @@ namespace SOFENGG_Order_Request_Document.Presenter.Order
                 currGroup.DocumentList.Add(documentList[i]);
             }
 
+            for (int i = 0; i < groupList.Count; i++)
+                if (groupList[i].DocumentList.Count <= 0)
+                    groupList.RemoveAt(i);
+
             return groupList.ToArray();
         }
 

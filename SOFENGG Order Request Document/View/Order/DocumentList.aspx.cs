@@ -26,24 +26,24 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             _presenter = new OrderDocumentListPresenter(this);
         }
-        
-//        protected void OnSelectedIndexChangedTrueCopy(object sender, EventArgs e)
-//        {
-//            string documentname = gvTrueCopy.SelectedRow.Cells[0].Text;
-//            HttpCookie docuCookie = new HttpCookie("Document");
-//            // docuCookie[""];
-//            if (documentname.Equals("Transcript of Records"))
-//            {
-//                docuCookie["id"] = 5 + "";
-//            }
-//            else if (documentname.Equals("Form 137"))
-//            {
-//                docuCookie["id"] = 6 + "";
-//            }
-//
-//            Response.Cookies.Add(docuCookie);
-//            Response.Redirect("~/View/Order/OrderItem.aspx");
-//        }
+
+        //        protected void OnSelectedIndexChangedTrueCopy(object sender, EventArgs e)
+        //        {
+        //            string documentname = gvTrueCopy.SelectedRow.Cells[0].Text;
+        //            HttpCookie docuCookie = new HttpCookie("Document");
+        //            // docuCookie[""];
+        //            if (documentname.Equals("Transcript of Records"))
+        //            {
+        //                docuCookie["id"] = 5 + "";
+        //            }
+        //            else if (documentname.Equals("Form 137"))
+        //            {
+        //                docuCookie["id"] = 6 + "";
+        //            }
+        //
+        //            Response.Cookies.Add(docuCookie);
+        //            Response.Redirect("~/View/Order/OrderItem.aspx");
+        //        }
 
 
         protected void Page_Load(object sender, EventArgs e)
