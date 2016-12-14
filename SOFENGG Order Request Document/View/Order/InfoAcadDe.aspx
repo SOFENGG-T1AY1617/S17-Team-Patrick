@@ -63,7 +63,12 @@
                             <asp:TextBox ID="txtStudNo" CssClass="form-control"
                                     runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
                             <asp:RegularExpressionValidator runat="server" id="rexStudNo" 
-								controltovalidate="txtStudNo" validationexpression="^[0-9]{7-8}$" errormessage="Please enter a student number!" />
+								controltovalidate="txtStudNo" validationexpression="^[0-9]{7,8}$" errormessage="Please enter a student number!" />
+                            <asp:RequiredFieldValidator id="rfvStudNo" runat="server"
+                                ControlToValidate="txtStudNo"
+                                ErrorMessage="Student No. is a required field."
+                                ForeColor="Red">
+                            </asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>

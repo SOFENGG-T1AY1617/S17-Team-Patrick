@@ -116,7 +116,7 @@
                 <td>
                     <asp:TextBox ID="txtPhoneNum" class="form-control" runat="server"></asp:TextBox>
                     <asp:RegularExpressionValidator runat="server" id="rexPhoneNum" 
-						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7}$" errormessage="Please enter a 7-digit telephone number!" />
+						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a 7-digit telephone number!" />
                     <asp:RequiredFieldValidator id="rfvPhoneNum" runat="server"
                         ControlToValidate="txtPhoneNum" ErrorMessage="Phone number is a required field."
                             ForeColor="Red">

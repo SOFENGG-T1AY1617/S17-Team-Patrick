@@ -58,7 +58,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
             if (studentDegreeList.Count == 0)
             {
-                Response.Redirect("~/View/Order/InfoMailDe.aspx");
+                Response.Redirect("~/View/Order/InfoAcadDe.aspx");
             }
 
             rptInfoAcadConfirm.DataSource = studentDegreeList;
@@ -83,6 +83,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
             deletedCookie.Expires = DateTime.Now.AddDays(-1d);
             Response.Cookies.Add(deletedCookie);
             
+            Response.Redirect("~/View/Order/InfoAcadConfirm.aspx");
+
             DisplayAllStudentDegree();
 
         }

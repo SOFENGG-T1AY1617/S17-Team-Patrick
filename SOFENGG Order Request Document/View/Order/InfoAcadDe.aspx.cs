@@ -85,7 +85,15 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             if (Request.Cookies["StudentInfo"] == null) return;
             StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
-            IdNumber = int.Parse(txtStudNo.Text);
+            if (txtStudNo.Text.CompareTo("") != 0)
+            {
+                IdNumber = int.Parse(txtStudNo.Text);
+            }
+            else
+            {
+                IdNumber = 0;
+            }
+            
             CampusAttended = int.Parse(ddlCampus.SelectedItem.Value);
             YearAdmitted = int.Parse(ddlYearAdmitted.SelectedItem.Text);
             Degree = ddlDegree.SelectedItem.Text;

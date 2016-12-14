@@ -58,6 +58,15 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.TextBox txtZipCode;
         
         /// <summary>
+        /// rexZipCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rexZipCode;
+        
+        /// <summary>
         /// rfvZipCode control.
         /// </summary>
         /// <remarks>

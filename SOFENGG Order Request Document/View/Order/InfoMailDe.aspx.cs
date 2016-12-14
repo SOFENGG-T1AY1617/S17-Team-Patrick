@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web;
+using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Model;
 using SOFENGG_Order_Request_Document.Presenter;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
@@ -21,6 +22,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             try{
                 if (!IsPostBack){
+                    PopulateDeliveryDropdown();
                     if (Request.Cookies["EditCookie"]["Id"] != null){
                         PopulatePreviousInput(int.Parse(Request.Cookies["EditCookie"]["Id"]));
                     }
@@ -28,7 +30,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
             catch (NullReferenceException) { }
 
-
+            
         }
 
         protected void SubmitMailInfo(object sender, EventArgs e)
@@ -76,6 +78,18 @@ namespace SOFENGG_Order_Request_Document.View.Order
             txtZipCode.Text = cookie["Zipcode"];
             ddlDelivery.SelectedItem.Selected = false;
             ddlDelivery.Items.FindByValue(cookie["DeliveryArea"]).Selected = true;
+        }
+
+        private void PopulateDeliveryDropdown()
+        {
+            InfoMailDePresenter presenter = new InfoMailDePresenter(this);
+            var deliveryAreaList = presenter.GetDeliveryAreaList();
+            ddlDelivery.Items.Clear();
+            ddlDelivery.Items.Insert(0, new ListItem("Select Delivery Area", 0 + ""));
+            for (int i = 1; i <= deliveryAreaList.Length; i++)
+            {
+                ddlDelivery.Items.Insert(i, new ListItem(deliveryAreaList[i - 1].Name, i + ""));
+            }
         }
 
         public int StudentInfoId { get; set; }

@@ -184,14 +184,13 @@ namespace SOFENGG_Order_Request_Document.Model.Database
 
         public DeliveryArea GetDeliveryArea(int deliveryId)
         {
-            var deliveryAreaDB = new DBMySqlGetDeliveryArea();
-            deliveryAreaDB.ExecuteQuery();
+            var deliveryAreaList = GetAllDeliveryArea();
 
-            for (int i = 0; i < deliveryAreaDB.deliveryAreaList.Length; i++)
+            for (int i = 0; i < deliveryAreaList.Length; i++)
             {
-                if (deliveryAreaDB.deliveryAreaList[i].Id == deliveryId)
+                if (deliveryAreaList[i].Id == deliveryId)
                 {
-                    return deliveryAreaDB.deliveryAreaList[i];
+                    return deliveryAreaList[i];
                 }
             }
             return null;

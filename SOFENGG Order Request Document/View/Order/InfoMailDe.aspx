@@ -60,30 +60,6 @@
                 <td class="content-form_label">Delivery Area</td>
                 <td>
                     <asp:DropDownList ID="ddlDelivery" runat="server" Width="200px">
-                        <asp:ListItem Text="Select Area" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Africa" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Australia" Value="2"></asp:ListItem>
-                        <asp:ListItem Text="Brunei" Value="3"></asp:ListItem>
-                        <asp:ListItem Text="Canada" Value="4"></asp:ListItem>
-                        <asp:ListItem Text="China" Value="5"></asp:ListItem>
-                        <asp:ListItem Text="Europe" Value="6"></asp:ListItem>
-                        <asp:ListItem Text="Fiji" Value="7"></asp:ListItem>
-                        <asp:ListItem Text="Guam" Value="8"></asp:ListItem>
-                        <asp:ListItem Text="Hong Kong / Singapore" Value="9"></asp:ListItem>
-                        <asp:ListItem Text="Indonesia / Malaysia / Taiwan / Thailand" Value="10"></asp:ListItem>
-                        <asp:ListItem Text="Japan" Value="11"></asp:ListItem>
-                        <asp:ListItem Text="Mexico City" Value="12"></asp:ListItem>
-                        <asp:ListItem Text="Middle East" Value="13"></asp:ListItem>
-                        <asp:ListItem Text="New Zealand" Value="14"></asp:ListItem>
-                        <asp:ListItem Text="Papua New Guinea" Value="15"></asp:ListItem>
-                        <asp:ListItem Text="Philippines: Luzon" Value="16"></asp:ListItem>
-                        <asp:ListItem Text="Philippines: Metro Manila" Value="17"></asp:ListItem>
-                        <asp:ListItem Text="Philippines: Visayas" Value="18"></asp:ListItem>
-                        <asp:ListItem Text="Philippines: Mindanao" Value="19"></asp:ListItem>
-                        <asp:ListItem Text="South Korea" Value="20"></asp:ListItem>
-                        <asp:ListItem Text="USA" Value="21"></asp:ListItem>
-                        <asp:ListItem Text="South America" Value="22"></asp:ListItem>
-                        <asp:ListItem Text="Vietname" Value="23"></asp:ListItem>
                     </asp:DropDownList>
 
                     <!-- DELIVERY RATES (pop-up)

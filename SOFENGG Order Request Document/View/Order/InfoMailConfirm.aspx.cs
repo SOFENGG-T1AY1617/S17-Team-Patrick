@@ -19,7 +19,11 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 Response.Redirect("~/View/Order/Error.aspx");
             }
             StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
-            DisplayAllMailingInfo();
+
+            if (!IsPostBack)
+            {
+                DisplayAllMailingInfo();
+            }
         }
 
         private void DisplayAllMailingInfo()
@@ -78,7 +82,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
             deletedCookie.Expires = DateTime.Now.AddDays(-1d);
             Response.Cookies.Add(deletedCookie);
 
-            DisplayAllMailingInfo();
+            Response.Redirect("~/View/Order/InfoMailConfirm.aspx");
+            
 
         }
 
