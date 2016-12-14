@@ -28,8 +28,6 @@ namespace SOFENGG_Order_Request_Document.Model
             return db.Document;
         }
 
-        
-
         public Document[] GetOthersDocumentList(DocumentCategoryEnum Category, Degree degree)
         {
             var db = new DBMySqlGetDocumentList(Category, degree.Level);
