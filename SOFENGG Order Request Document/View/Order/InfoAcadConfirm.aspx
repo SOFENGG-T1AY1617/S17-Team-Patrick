@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/info_*_confirm.css">
+    <link href="../../Content/css/info___confirm.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="container-fluid center-block" style="width:800px;">
@@ -76,7 +76,7 @@
         
         
        
-        <div>
+        <div class="next_buttons">
             <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
             <asp:Button class="btn btn-primary" runat="server"  Text="Next" OnClick="GoToInfoMailDe"/>
         </div>

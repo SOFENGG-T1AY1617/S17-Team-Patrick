@@ -84,7 +84,7 @@
 
        </asp:Repeater>
 		
-        <div>
+        <div class="next_buttons">
             <asp:Button runat="server" Text="Add Another Address" class="btn btn-primary" OnClick="AddMailingInfo"/>
             <asp:Button runat="server" Text="Next" class="btn btn-primary" OnClick="GoToDocumentList"/>
         </div>

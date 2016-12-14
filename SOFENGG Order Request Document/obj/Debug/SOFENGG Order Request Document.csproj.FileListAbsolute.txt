@@ -26,3 +26,16 @@ C:\Users\Yep\Documents\Gelo103097\Programming\ASP\test git2\S17-Team-Patrick (wi
 C:\Users\Yep\Documents\Gelo103097\Programming\ASP\test git2\S17-Team-Patrick (with Loading)\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.csprojResolveAssemblyReference.cache
 C:\Users\Yep\Documents\Gelo103097\Programming\ASP\test git2\S17-Team-Patrick (with Loading)\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.dll
 C:\Users\Yep\Documents\Gelo103097\Programming\ASP\test git2\S17-Team-Patrick (with Loading)\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.pdb
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.dll.config
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.dll
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\SOFENGG Order Request Document.pdb
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\EntityFramework.dll
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\EntityFramework.SqlServer.dll
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\MySql.Data.dll
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\mysql.data.entity.EF6.dll
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\MySql.Web.dll
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\EntityFramework.xml
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\bin\EntityFramework.SqlServer.xml
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.csprojResolveAssemblyReference.cache
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.dll
+C:\Users\Patrick\Desktop\Order Request Document\S17-Team-Patrick\SOFENGG Order Request Document\obj\Debug\SOFENGG Order Request Document.pdb
