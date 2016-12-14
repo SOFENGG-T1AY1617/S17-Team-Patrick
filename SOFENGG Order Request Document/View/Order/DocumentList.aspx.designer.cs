@@ -13,39 +13,12 @@ namespace SOFENGG_Order_Request_Document.View.Order {
     public partial class DocumentList {
         
         /// <summary>
-        /// gvTOR control.
+        /// repDocumentList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvTOR;
-        
-        /// <summary>
-        /// gvCertification control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCertification;
-        
-        /// <summary>
-        /// gvTrueCopy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvTrueCopy;
-        
-        /// <summary>
-        /// gvOthers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvOthers;
+        protected global::System.Web.UI.WebControls.Repeater repDocumentList;
     }
 }

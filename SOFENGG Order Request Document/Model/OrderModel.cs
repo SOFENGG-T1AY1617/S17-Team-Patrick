@@ -12,7 +12,14 @@ namespace SOFENGG_Order_Request_Document.Model
             var db = new DBMySqlGetDocumentList();
             db.ExecuteQuery();
             return db.DocumentList;
-        } 
+        }
+
+        public Document[] GetDocumentList(int[] degreeIdList)
+        {
+            var db = new DBMySqlGetDocumentList(degreeIdList);
+            db.ExecuteQuery();
+            return db.DocumentList;
+        }
 
         public Document[] GetCertificateDocumentList(DocumentCategoryEnum Category, Degree degree )
         {

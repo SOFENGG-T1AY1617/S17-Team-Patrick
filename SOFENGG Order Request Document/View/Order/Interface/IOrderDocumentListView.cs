@@ -8,15 +8,10 @@ namespace SOFENGG_Order_Request_Document.View.Order.Interface
 {
     public interface IOrderDocumentListView
     {
-        int id { get; set; }
-       // Document[] AvailableDocumentList { set; }
-        Document[] CertificateDocumentList { set; }
-        Document[] TORDocumentList { set; }
-        Document[] TrueCopyDocumentList { set; }
-        Document[] OthersDocumentList { set; }
+//        int id { get; set; }
+//        Document[] AvailableDocumentList { set; }
         
-
-        void GetDocumentList(int id);
+        void GetDocumentList();
         
     }
 }

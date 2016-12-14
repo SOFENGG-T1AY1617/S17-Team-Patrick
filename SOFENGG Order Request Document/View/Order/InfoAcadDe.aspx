@@ -17,9 +17,9 @@
                 <h4 class="content-header">Academic Information</h4>
                     <blockquote>
                         <p>This step allows you to enter your academic information.<br><br>
-                        It is possible that you may have earned more than one degree at DLSU. <br>
-                        If your request will cover more than one degree, please make sure you enter the details of these degrees. <br>
-                        Otherwise, just enter the details of the degree for which you will be requesting a document.
+                        It is possible that you may have earned more than one degreeIdList at DLSU. <br>
+                        If your request will cover more than one degreeIdList, please make sure you enter the details of these degreeIdLists. <br>
+                        Otherwise, just enter the details of the degreeIdList for which you will be requesting a document.
                         </p>
                     </blockquote>
                 <table class="table table-striped">
