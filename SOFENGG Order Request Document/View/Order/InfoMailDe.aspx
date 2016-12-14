@@ -31,7 +31,7 @@
                 You may want your documents delivered to more than one mailing address. Enter the addresses here.
             </p>
         </blockquote>
-        <table class="table table-striped">
+        <table class="table table-bordered table-striped">
             <tr class="delivery-info">
                 <td class="content-form_label">Mailing Address</td>
                 <td>
@@ -80,10 +80,8 @@
                 <td class="content-form_label">Mailing Contact Number</td>
                 <td>
                     <asp:TextBox ID="txtMailingNum" CssClass="form-control" runat="server"></asp:TextBox>
-                    <div id="errorMailingNum" class="alert alert-dismissible alert-danger" style="display: none;">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh my goodness!</strong> Contact number must only contain numbers.
-                    </div>
+                    <asp:RegularExpressionValidator runat="server" id="rexMailingNum" 
+						controltovalidate="txtMailingNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a mailing number containing 7 to 15 digits!" />
                     <asp:RequiredFieldValidator id="rfvMailingNum" runat="server"
                             ControlToValidate="txtMailingNum"
                             ErrorMessage="Mailing number is a required field."

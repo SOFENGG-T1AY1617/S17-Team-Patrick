@@ -11,7 +11,7 @@
             <li class="active">Personal Information</li>
         </ul>
         <h4 class="content-header">Personal Information</h4>
-        <table class="table table-striped">
+        <table class="table table-bordered table-striped">
             <tr>
                 <td colspan="2" class="content-form_label">Please fill out the form below.</td>
             </tr>
@@ -112,11 +112,11 @@
                 </td>
             </tr>
             <tr>
-                <td class="content-form_label">Phone Number</td>
+                <td class="content-form_label">Contact Number</td>
                 <td>
                     <asp:TextBox ID="txtPhoneNum" class="form-control" runat="server"></asp:TextBox>
                     <asp:RegularExpressionValidator runat="server" id="rexPhoneNum" 
-						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a 7-digit telephone number!" />
+						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter your contact number containing 7 to 15 digits!" />
                     <asp:RequiredFieldValidator id="rfvPhoneNum" runat="server"
                         ControlToValidate="txtPhoneNum" ErrorMessage="Phone number is a required field."
                             ForeColor="Red">

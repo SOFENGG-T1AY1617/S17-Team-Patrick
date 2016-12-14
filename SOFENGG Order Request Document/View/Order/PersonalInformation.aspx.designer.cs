@@ -8,8 +8,6 @@
 //------------------------------------------------------------------------------
 
 namespace SOFENGG_Order_Request_Document.View.Order {
-    
-    
     public partial class PersonalInformation {
         
         /// <summary>
@@ -264,4 +262,5 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBirthplace;
     }
+
 }

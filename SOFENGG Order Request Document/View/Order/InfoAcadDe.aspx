@@ -22,7 +22,7 @@
                         Otherwise, just enter the details of the degree for which you will be requesting a document.
                         </p>
                     </blockquote>
-                <table class="table table-striped">
+                <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <td colspan="2"><span style="color: red">*</span> - indicates required field</td>
@@ -62,7 +62,7 @@
                         <td>
                             <asp:TextBox ID="txtStudNo" CssClass="form-control"
                                     runat="server" style="maxlength:12px; size:10px;"></asp:TextBox>
-                            <asp:RegularExpressionValidator runat="server" id="rexStudNo" 
+                            <asp:RegularExpressionValidator runat="server" id="rexStudNo"
 								controltovalidate="txtStudNo" validationexpression="^[0-9]{7,8}$" errormessage="Please enter a student number!" />
                             <asp:RequiredFieldValidator id="rfvStudNo" runat="server"
                                 ControlToValidate="txtStudNo"
