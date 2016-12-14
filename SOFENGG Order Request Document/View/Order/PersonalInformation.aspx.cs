@@ -169,7 +169,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             var month = Convert.ToDateTime(ddlBirthMonth.SelectedItem.Text + " 01, 1900").Month;
             var year = ddlBirthYear.SelectedItem.Text;
             var day = ddlBirthDay.SelectedItem.Text;
-            BirthDate = Convert.ToDateTime(day + "/" + month + "/" + year).Date;
+            BirthDate = Convert.ToDateTime(month + "/" + day + "/" + year).Date;
             Citizenship = txtCitizen.Text;
             CurrentAddress = txtCurrentAddress.Text;
             PhoneNumber = txtPhoneNum.Text;

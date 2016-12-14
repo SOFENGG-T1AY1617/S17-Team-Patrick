@@ -309,19 +309,19 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 if (rbExpress.Checked == true)
                 {
                     
-                    orderItemCookie["orderType"] += ",1";
+                    orderItemCookie["orderType"] += "|1";
                 }
                 else
-                    orderItemCookie["orderType"] += ",0";
+                    orderItemCookie["orderType"] += "|0";
 
-                orderItemCookie["mailingId"] += "," + ddlAddresses.Text;
-                orderItemCookie["noOfCopies"] += "," + ddlNoCopy.Text;
-                orderItemCookie["packaging"] += "," + optInsert.Text;
+                orderItemCookie["mailingId"] += "|" + ddlAddresses.Text;
+                orderItemCookie["noOfCopies"] += "|" + ddlNoCopy.Text;
+                orderItemCookie["packaging"] += "|" + optInsert.Text;
 
             }
 
             Response.Cookies.Add(orderItemCookie);
-          //  Response.Redirect("~/View/Order/InfoTransaction.aspx");
+            Response.Redirect("~/View/Order/InfoTransaction.aspx");
 
         }
 
