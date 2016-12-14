@@ -58,7 +58,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
             documentList.Add(document);
 
             lblRegularPrice.Text = document.RegularPrice.ToString();
-            lblExpressPrice.Text = document.ExpressPrice.ToString();
+            if(document.ExpressPrice != 0)
+                lblExpressPrice.Text = "Php" + document.ExpressPrice.ToString();
 
 
             repAcademicProfile.DataSource = studentdegree;
@@ -89,7 +90,14 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
 
 
-           
+            var o = new Model.OrderItem
+            {
+                Document = new Document { Id = int.Parse(Request.Cookies["Document"]["id"]) },
+                MailingAddress = new MailingInfo { },
+                NoOfCopies = new int { },
+                Packaging = new PackagingEnum { },
+                OrderType = new OrderType { }
+            };
 
             orderList.Add(o);
 
@@ -139,22 +147,16 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
       
 
-            var o = new Model.OrderItem
-            {
-                Document = new Document { Id = int.Parse(Request.Cookies["Document"]["id"]) },
-                MailingAddress = new MailingInfo {  },
-                NoOfCopies = new int { } ,
-                Packaging = new PackagingEnum { } ,
-                OrderType = new OrderType { }
-            };
+            
 
             var json = new JavaScriptSerializer().Serialize(o);
 
             // Add to cookies
+            /*
             o.MailingAddress = addtoCart["mailingAddress"];
             o.NoOfCopies = int.Parse(addtoCart["noofpackaging"]);
             o.Packaging = addtoCart["packaging"];
-            o.OrderType = addtoCart["Ordertype"];
+            o.OrderType = addtoCart["Ordertype"]; */
 
             var orderItem = (OrderItem) new JavaScriptSerializer().DeserializeObject(json);
 

@@ -14,14 +14,14 @@
                      $("#delivery_only2").hide();
 
                      $("#ddlCampus").css("display", "block");
-
+                     $("#pCampus").css("display", "block");
                  }
                  else if ($('#<%=cbPickup.ClientID %>').is(':checked') == false) {
                      $("#delivery_only1").show();
                      $("#delivery_only2").show();
 
                      $("#ddlCampus").css("display", "none");
-
+                     $("#pCampus").css("display", "none");
                  }
             });
 
@@ -56,7 +56,7 @@
 
          
 
-            <table class="table table-striped" >
+            <table class="table table-striped" style="width:650px; margin-left:auto; margin-right:auto;" >
                 <tbody>
 
                 <asp:repeater ID="repDocumentname" runat="server">
@@ -85,30 +85,27 @@
                     <td class="content-form_label">Price</td>
                     <td>
                         <table class="table table-striped">
-                            <asp:repeater ID="repPrices" runat="server">
-                                <ItemTemplate>
-                                        <tr>
-                                            <td><asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server" Checked="True" Selected="True"></asp:RadioButton>Regular Processing</td>
-                                            <td>Php <%#Eval("RegularPrice") %></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><asp:RadioButton ID="rbExpress" GroupName="optProc" runat="Server"></asp:RadioButton>Express Processing</td>
-                                            <td>Php <%#Eval("ExpressPrice") %></td>
-                                        </tr>
-
-                                </ItemTemplate>
-                            </asp:repeater>
+                             <tr>
+                                            
+                                        <td style="width:220px;"><asp:RadioButton ID="rbRegular" GroupName="optProc" runat="Server" Checked="True" Selected="True"></asp:RadioButton>Regular Processing</td>
+                                        <td>Php <asp:Label ID="lblRegularPrice" runat="server" Text="Label"></asp:Label></td>
+                            </tr>
+                            <tr>
+                                        <td style="width:220px;"><asp:RadioButton ID="rbExpress" GroupName="optProc" runat="Server"></asp:RadioButton>Express Processing</td>
+                                        <td> <asp:Label ID="lblExpressPrice" runat="server" Text="Not Available"></asp:Label></td>
+                            </tr>
                             <tr>
                                 <td><asp:CheckBox ID="cbPickup" runat="server"></asp:CheckBox>For Pick Up</td>
-                                <td>
-                                    <asp:DropDownList id="ddlCampus" runat="server" ClientIDMode="Static" style="display:none; width:150px;">
-                                        <asp:ListItem Text="DLSU-Manila" value="DLSU-Manila"/>
-                                        <asp:ListItem Text="DLSU-STC" value="DLSU-STC"/>
-                                        <asp:ListItem Text="DLSU-Makati" value="DLSU-Makati"/>
+                                <td> <p id="pCampus" style="display:none; margin:0 0 0.2em;">Campus:</p>
+                                    <asp:DropDownList id="ddlCampus" runat="server" ClientIDMode="Static" style="display:none; width:150px; top:0px;">
+                                       
+                                         <asp:ListItem Text="DLSU-Manila" value="0"/>
+                                        <asp:ListItem Text="DLSU-STC" value="1"/>
                                     </asp:DropDownList>
                                 </td>
                             </tr>
+                            
+
                             <tr>
                                 <td colspan="2">
                                     <span style="font-weight: bold; font-style: italic;">"Express processing is NOT available for students with ID no. <br/>80XXXXX (students who entered DLSU-Manila in 1980) and below."</span>
@@ -144,7 +141,7 @@
                         <asp:RadioButtonList ID="optInsert" RepeatDirection="Vertical" RepeatLayout="Flow" runat="server">
                           <asp:ListItem Text="Brown Envelope" Value="1" onclick="alert('For a DLSU security sticker to be used for sealing the envelope, please message the following email address: hub@dlsu.edu.ph.');" ></asp:ListItem>
                           <asp:ListItem Text="White Envelope" Value="2" onclick="alert('For a DLSU security sticker to be used for sealing the envelope, please message the following email address: hub@dlsu.edu.ph.');"></asp:ListItem>
-                          <asp:ListItem Text="None" Value="3"></asp:ListItem>
+                          <asp:ListItem Text="None" Value="0"></asp:ListItem>
                           </asp:RadioButtonList> 
                        <br />
                         <asp:RequiredFieldValidator id="rfvInsert" runat="server" ControlToValidate="optInsert"
@@ -157,7 +154,7 @@
             <div style="text-align: center">
                  
                 <asp:Button class="btn btn-primary" runat="server"  Text="Cancel"/>
-                <asp:Button class="btn btn-primary" runat="server"  Text="Add to Cart"/>
+                <asp:Button class="btn btn-primary" runat="server"  Text="Add to Cart" OnClick ="SubmitOrderInfo"/>
                   
             </div>
            </form>
