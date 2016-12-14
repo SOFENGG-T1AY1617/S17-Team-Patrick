@@ -19,7 +19,7 @@
         <h2>Document List</h2>
     </div>
 
-    <input type="button" id="add_document_modal" class="btn btn-primary" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document" />
+    <input type="button" id="add_document_modal" class="btn btn-success" data-toggle="modal" data-target="#dlgAddDocument" value="Add Document" />
 
     <div class="content-main table-responsive">
         <div class="document_table">
@@ -72,12 +72,12 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Edit">
                                 <ItemTemplate>
-                                    <input type="button" class="btnEditItem btn btn-primary" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgEditDocument" value="Edit" />
+                                    <input type="button" id="edit_document_modal" class="btnEditItem" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgEditDocument" value="Edit" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Delete">
                                 <ItemTemplate>
-                                    <input type="button" class="btnDeleteItem btn btn-primary" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgDeleteDocument" value="Delete" />
+                                    <input type="button" id="delete_document_modal" class="btnDeleteItem" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgDeleteDocument" value="Delete" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -100,7 +100,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="popup_center_align">Edit Document</h3>
+                    <h3 class="text-center">Edit Document</h3>
                 </div>
                 <asp:UpdatePanel ID="upEditDocument" UpdateMode="Conditional" runat="server">
                     <ContentTemplate>
@@ -168,7 +168,7 @@
                         <div class="modal-footer">
                             <div class="popup_center_align">
                                 <button id="btnEdit" class="btn btn-success">Submit Edit</button>
-                                <button id="btnEditCancel" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                <button id="btnEditCancel" class="btn" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </ContentTemplate>
@@ -184,7 +184,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="popup_center_align">Add Document</h3>
+                    <h3 class="text-center">Add Document</h3>
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
@@ -246,7 +246,7 @@
                         <ContentTemplate>
                             <div class="popup_center_align">
                                 <asp:Button ID="btnAdd" CssClass="btn btn-success btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
-                                <button id="btnAddCancel" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                <button id="btnAddCancel" class="btn" data-dismiss="modal">Cancel</button>
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
@@ -261,13 +261,14 @@
         <div class="modal-dialog">
             <div class="modal-content text-center">
                 <div class="modal-header">
-                    <h3>Delete Document?</h3>
+                    <h3>Are you sure you want to delete this document?</h3>
                 </div>
                 <asp:UpdatePanel ID="upDlgDeleteDocumentButtons" UpdateMode="Conditional" runat="server">
                     <ContentTemplate>
                         <div class="modal-body">
-                            <button id="btnDeleteYes" class="btn btn-primary">Yes</button>
-                            <button class="btn btn-primary" data-dismiss="modal">No</button>
+                            <button id="btnDeleteYes" class="btn btn-danger">Yes</button>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn" data-dismiss="modal">No</button>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>

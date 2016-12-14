@@ -38,11 +38,7 @@
                             <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Order List <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="order">
-                            <li><a href="Main.aspx">&nbsp;All</a></li>
-                            <li>&nbsp;Processing</li>
-                            <li>&nbsp;Pending</li>
-                            <li>&nbsp;On Time</li>
-                            <li>&nbsp;Late</li>
+                            <li><a href="Main.aspx">&nbsp;View All</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#document" class="collapsed">
@@ -53,10 +49,10 @@
                         </ul>
 
                         <li data-toggle="collapse" data-target="#operationaldate" class="collapsed">
-                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
+                            <a><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="operationaldate">
-                            <li><a href="#">&nbsp;Manage Operational Date</a></li>
+                            <li><a href="ManageOperationalDate.aspx">&nbsp;Manage Operational Date</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#user" class="collapsed">

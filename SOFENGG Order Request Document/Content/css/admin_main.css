@@ -8,9 +8,10 @@
 }
 
 .main_report table thead {
-    background-color: #0094ff;
     color: white;
+     background-color: #7FAD82;
 }
+
 .table-fluid tbody tr td:last-child {
     text-align:right;
 }
