@@ -74,10 +74,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\admin_main.css" />
+    <Content Include="Content\css\admin_navbar.css" />
     <Content Include="Content\css\admin_order_information.css" />
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\images\dlsu_logo.png" />
+    <Content Include="Script\jquery-ui.js" />
+    <Content Include="Script\jquery.validate.min.js" />
     <Content Include="Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
     <Content Include="View\Admin\Main.aspx" />
+    <Content Include="View\Admin\OrderInformationService.asmx" />
     <Content Include="View\Admin\Pending.aspx" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -164,6 +171,9 @@
     <Compile Include="Model\Database\DBMySqlEditPersonalInformation.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
+    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsDone.cs" />
+    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsProcessing.cs" />
+    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsPending.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetDocument.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetStudentInfoId.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlGetStudentInfo.cs" />
@@ -207,9 +217,10 @@
     <Compile Include="Model\StudentInfo.cs" />
     <Compile Include="Model\IUserModel.cs" />
     <Compile Include="Presenter\Admin\ViewOrderListPresenter.cs" />
+    <Compile Include="Presenter\Order\InfoTransactionPresenter.cs" />
+    <Compile Include="Presenter\Order\OrderItemPresenter.cs" />
     <Compile Include="Presenter\PersonalInformationPresenter.cs" />
     <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
-    <Compile Include="Presenter\DocumentListPresenter.cs" />
     <Compile Include="Model\OrderModel.cs" />
     <Compile Include="Model\IOrderModel.cs" />
     <Compile Include="Presenter\Order\OrderDocumentListPresenter.cs" />
@@ -237,6 +248,10 @@
     <Compile Include="View\Admin\Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\OrderInformationService.asmx.cs">
+      <DependentUpon>OrderInformationService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\Admin\Pending.aspx.cs">
       <DependentUpon>Pending.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -261,7 +276,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="View\Order\IDocumentListView.cs" />
     <Compile Include="View\Order\InfoAcadConfirm.aspx.cs">
       <DependentUpon>InfoAcadConfirm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

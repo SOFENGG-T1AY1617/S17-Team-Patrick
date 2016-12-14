@@ -13,31 +13,40 @@ namespace SOFENGG_Order_Request_Document.View.Order {
     public partial class OrderItem {
         
         /// <summary>
-        /// rbRegular control.
+        /// repDocumentname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbRegular;
+        protected global::System.Web.UI.WebControls.Repeater repDocumentname;
         
         /// <summary>
-        /// rbExpress control.
+        /// repAcademicProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbExpress;
+        protected global::System.Web.UI.WebControls.Repeater repAcademicProfile;
         
         /// <summary>
-        /// for_pickup control.
+        /// repPrices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox for_pickup;
+        protected global::System.Web.UI.WebControls.Repeater repPrices;
+        
+        /// <summary>
+        /// cbPickup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbPickup;
         
         /// <summary>
         /// ddlCampus control.
@@ -49,39 +58,39 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         protected global::System.Web.UI.WebControls.DropDownList ddlCampus;
         
         /// <summary>
-        /// tbNoCopy control.
+        /// ddlNoCopy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNoCopy;
+        protected global::System.Web.UI.WebControls.DropDownList ddlNoCopy;
         
         /// <summary>
-        /// rbBrown control.
+        /// ddlAddresses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbBrown;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAddresses;
         
         /// <summary>
-        /// rbWhite control.
+        /// optInsert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbWhite;
+        protected global::System.Web.UI.WebControls.RadioButtonList optInsert;
         
         /// <summary>
-        /// rbNone control.
+        /// rfvInsert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbNone;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvInsert;
     }
 }

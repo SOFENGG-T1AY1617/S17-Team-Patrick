@@ -137,6 +137,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 try
                 {
                     //Request.Cookies["StudentInfo"]["Id"] = "19";
+
                     if (Request.Cookies["StudentInfo"] != null)
                     {
                         PopulatePreviousInput();
@@ -156,7 +157,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
                     ddlBirthDay.Items.FindByValue(Request.Form[ddlBirthDay.UniqueID]).Selected = true;
                 }
             }
-
 
 
         }

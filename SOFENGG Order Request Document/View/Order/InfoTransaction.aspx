@@ -3,85 +3,103 @@
 
     <!-- Always change the css file name to html file name! -->
     <link rel="stylesheet" href="/Content/css/info_transaction.css">
+    <style type="text/css">
+        .auto-style1 {
+            width: 30%;
+            padding-left: 1%;
+            height: 19px;
+        }
+        .auto-style2 {
+            height: 19px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="col-xs-3">
-        <h5>Request Flow</h5>
-        <ul>
-            <li>
-                <a href="personal_information.html">Personal Information</a>
-            </li>
-            <li>
-                <a href="info_acad_de.html">Academic Information</a>
-            </li>
-            <li>
-                <a href="info_mail_de.html">Mailing Information</a>
-            </li>
-            <li>
-                <a href="document_list.html">Document List</a>
-            </li>
-            <li>
-                <b>Checkout</b>
-            </li>
-        </ul>
-        <div class="content-divider"></div>
-    </div>
+<div class="container-fluid center-block">      
+    <li><a href="#">Home</a></li>
+                <li><asp:HyperLink id="hlPersonal" 
+                        NavigateUrl="personal_information.html" 
+                        Text="Personal Information" 
+                        runat="server"/></li>
+                <li><asp:HyperLink id="HyperLink1" 
+                                NavigateUrl="info_acad.de.html" 
+                                Text="Academic Information" 
+                                runat="server"/></li>
+                <li><asp:HyperLink id="HyperLink2" 
+                                        NavigateUrl="info_mail_de.html" 
+                                        Text="Mailing Information" 
+                                        runat="server"/></li>
+                <li><asp:HyperLink id="HyperLink3" 
+                                        NavigateUrl="document_list.html" 
+                                        Text="Document List" 
+                                        runat="server"/></li>
+                <li class="active">Transaction Details</li>
+         </ul>
+       
+         <form runat="server">
+            <h5 class="content-header" >Transaction Information</h5>
+        
+            <asp:Repeater ID="rptPersonalInformation" runat="server">
+                <ItemTemplate>
+                    <table class="table table-striped">
+                        <tr>
+                            <td colspan="2" class="content-form_label" align="center">Transaction Details</td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Reference No.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Name</td>
+                            <td><%#Eval("FirstName")%> <%#Eval("MiddleName")%> <%#Eval("LastName")%></td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style1">Current Address</td>
+                            <td class="auto-style2"><%#Eval("CurrentAddress")%></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Phone No.</td>
+                            <td><%#Eval("PhoneNumber")%></td>
+                        </tr>
+                        <tr class="delivery-info">
+                            <td class="content-form_label">Email</td>
+                            <td><%#Eval("Email")%></td>
+                        </tr>
+                        <tr>
+                            <td class="content-form_label">Place of Birth</td>
+                            <td><%#Eval("PlaceOfBirth")%></td>
+                        </tr>
+                    </table>
+                    
 
-    <div class="col-xs-9">
-            <h5 class="content-header">Transaction Information</h5>
+                </ItemTemplate>
+           </asp:Repeater>
+        
 
-            <table border="1" class="content-form">
-                <tr>
-                    <td colspan="2" class="content-form_label" align="center">Transaction Details</td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Reference No.</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Name</td>
-                    <td><!--<% Response.Cookies("") %>--></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Current Address</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Phone No.</td>
-                    <td></td>
-                </tr>
-                <tr class="delivery-info">
-                    <td class="content-form_label">Email</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td class="content-form_label">Place of Birth</td>
-                    <td></td>
-                </tr>
-            </table>
+            
 
             <br/>
             <asp:Repeater ID="repDeliveryDetails" runat="server">  
                 <ItemTemplate>  
-                    <table border="1" class="content-form">
+                    <table class="table table-striped">
                         <tr>
                             <td colspan="2" class="content-form_label" align="center">Delivery Details</td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Mailing Address</td>
-                            <td></td>
+                            <td><%#Eval("MailingAddress")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Zip Code</td>
-                            <td></td>
+                            <td><%#Eval("ZipCode")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Delivery Area</td>
-                            <td></td>
+                            <td><%#Eval("DeliveryArea.Name")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Delivery Charge</td>
-                            <td></td>
+                            <td><%#Eval("DeliveryArea.Price")%></td>
                         </tr>
                         <tr>
                             <td class="content-form_label">Processing Type</td>
@@ -96,33 +114,35 @@
                             <td></td>
                         </tr>
                     </table>
+                    
+
                     <asp:Repeater ID="repDocumentsToDeliver" runat="server">
                         <ItemTemplate>
-                            <table border="1" class="content-form">
+                            <table class="table table-striped">
                                 <tr>
                                     <td class="content-form_label">Document</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">Degree</td>
-                                    <td></td>
+                                    <td><%#Eval("")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">Cost</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">No. of Copies</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td class="content-form_label">Sub Total</td>
-                                    <td></td>
+                                    <td><%#Eval("BirthPlace")%></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="content-form_label" align="right" style="padding-right: 6px">
-                                        <a href="order_item.html">Edit</a>
-                                        &nbsp;<a href="document_list.html">Remove</a>
+                                        <a href="OrderItem.aspx">Edit</a>
+                                        &nbsp;<a href="DocumentList.aspx">Remove</a>
                                     </td>
                                 </tr>
                             </table>
@@ -134,7 +154,7 @@
             </asp:Repeater>
             <br/>
 
-            <table border="1" class="content-form" style="width: 70%" align="center">
+            <table class="table table-striped">
                 <tr>
                     <td colspan="2" class="content-form_label" align="center">
                         Amount Due
@@ -157,9 +177,10 @@
             <br/>
 
             <div style="text-align: center">
-                <a href="document_list.html" class="btn btn-primary">Back to Order List</a>
-                <a href="" class="btn btn-primary" disabled="true">Pay On-Line</a>
+                <asp:Button class="btn btn-primary" runat="server"  Text="Back to Order List"/>
+                <asp:Button class="btn btn-primary" runat="server"  Text="Pay On-Line"/>
             </div>
+             </form>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
