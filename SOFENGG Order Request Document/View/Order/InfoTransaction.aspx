@@ -36,7 +36,7 @@
                 <li class="active">Transaction Details</li>
          </ul>
        
-         <form runat="server">
+        
             <h5 class="content-header" >Transaction Information</h5>
         
             <asp:Repeater ID="rptPersonalInformation" runat="server">
@@ -180,7 +180,7 @@
                 <asp:Button class="btn btn-primary" runat="server"  Text="Back to Order List"/>
                 <asp:Button class="btn btn-primary" runat="server"  Text="Pay On-Line"/>
             </div>
-             </form>
+             
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

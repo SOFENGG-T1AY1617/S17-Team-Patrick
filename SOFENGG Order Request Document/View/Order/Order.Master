@@ -21,7 +21,7 @@
            		<div class="header-photo"></div>
             	<p>Online Request of Documents</p>
         </div>
-		
+		<form runat="server">
         <div class="container content">
             <div class="row">
                 <asp:ContentPlaceHolder ID="body" runat="server">
@@ -29,15 +29,9 @@
                 </asp:ContentPlaceHolder>
             </div>
         </div>
-
+    </form>
     </div>
-    <div class="panel-footer">
-   		<div class="container">
-    		<p class="text-muted" style="color:white;">Visit the DLSU website at 
-    			<a href="http://www.dlsu.edu.ph">www.dlsu.edu.ph</a></p>
-    		<p>(c) 2016 De La Salle University.</p>
-  		</div>
-	</div>
+
     <script src="/Script/jquery.min.js"></script>
     <script src="/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="script" runat="server"></asp:ContentPlaceHolder>

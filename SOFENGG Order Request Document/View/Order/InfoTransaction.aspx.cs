@@ -12,7 +12,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             if(Request.Cookies["StudentInfo"] == null) { 
             HttpCookie cookie = new HttpCookie("StudentInfo");
-            cookie["Id"] = "5";
+            cookie["Id"] = "2";
             Response.Cookies.Add(cookie);
             }
 
@@ -22,10 +22,10 @@ namespace SOFENGG_Order_Request_Document.View.Order
             rptPersonalInformation.DataSource = studentInfoList;
             rptPersonalInformation.DataBind();
 
-            ArrayList mailingInfoList = new ArrayList();
+          /*  ArrayList mailingInfoList = new ArrayList();
             mailingInfoList.AddRange(((StudentInfo)studentInfoList[0]).MailingInfoList);
             repDeliveryDetails.DataSource = mailingInfoList;
-            repDeliveryDetails.DataBind();
+            repDeliveryDetails.DataBind(); */
         }
     }
 }

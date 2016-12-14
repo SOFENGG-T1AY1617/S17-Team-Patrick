@@ -27,7 +27,7 @@
     
     
 
-        <form runat="server">
+        
         <h4 class="content-header">Document List</h4>
         <div>
             <blockquote>
@@ -153,7 +153,7 @@
             </asp:GridView>
                </div>
         </div>
-    </form>
+   
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
