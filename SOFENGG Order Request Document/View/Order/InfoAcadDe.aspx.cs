@@ -19,7 +19,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 if (!IsPostBack)
                 {
                     this.PopulateYear();
-                    ddlDegree.Items.Insert(0, "Select Campus");
+                    ddlDegree.Items.Insert(0, "");
                     ddlDegree.Enabled = false;
                 }
 
@@ -59,6 +59,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 ddlDegree.Enabled = true;
 
             this.PopulateDegreeDropdown();
+
+            upDegree.Update();
         }
 
 
@@ -129,7 +131,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             var degreeList = presenter.GetDegreeInCampus(int.Parse(ddlCampus.SelectedItem.Value));
             Debug.Write("\n\n" + ddlCampus.SelectedItem.Value + "\n\n");
             ddlDegree.Items.Clear();
-            ddlDegree.Items.Insert(0, "Select Campus");
+            ddlDegree.Items.Insert(0, "Select degree");
             for (int i = 1; i <= degreeList.Length; i++)
             {
                 ddlDegree.Items.Insert(i, new ListItem(degreeList[i-1].Name, i + ""));

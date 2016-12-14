@@ -8,6 +8,8 @@
 //------------------------------------------------------------------------------
 
 namespace SOFENGG_Order_Request_Document.View.Order {
+    
+    
     public partial class PersonalInformation {
         
         /// <summary>
@@ -54,15 +56,6 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMName;
-        
-        /// <summary>
-        /// rfvMName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMName;
         
         /// <summary>
         /// optGender control.
@@ -262,5 +255,4 @@ namespace SOFENGG_Order_Request_Document.View.Order {
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBirthplace;
     }
-
 }
