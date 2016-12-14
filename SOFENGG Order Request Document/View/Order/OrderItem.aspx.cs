@@ -88,20 +88,19 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 orderList = (List < Model.OrderItem > ) new JavaScriptSerializer().DeserializeObject(orderListCookie.Value);
             }
 
+            var o = new Model.OrderItem
+            {
+                Document = new Document { Id = int.Parse(Request.Cookies["Document"]["id"]) },
+                MailingAddress = new MailingInfo { },
+                NoOfCopies = new int { },
+                Packaging = new PackagingEnum { },
+                OrderType = new OrderType { }
+            };
 
-           
 
             orderList.Add(o);
 
             orderListCookie.Value = new JavaScriptSerializer().Serialize(orderList);
-
-
-
-
-
-
-
-
 
             HttpCookie addtoCart = new HttpCookie("addtoCart");
 
@@ -139,14 +138,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
       
 
-            var o = new Model.OrderItem
-            {
-                Document = new Document { Id = int.Parse(Request.Cookies["Document"]["id"]) },
-                MailingAddress = new MailingInfo {  },
-                NoOfCopies = new int { } ,
-                Packaging = new PackagingEnum { } ,
-                OrderType = new OrderType { }
-            };
+           
 
             var json = new JavaScriptSerializer().Serialize(o);
 
