@@ -143,12 +143,11 @@ namespace SOFENGG_Order_Request_Document.View.Order
             var json = new JavaScriptSerializer().Serialize(o);
 
             // Add to cookies
-            /*
             o.MailingAddress = addtoCart["mailingAddress"];
             o.NoOfCopies = int.Parse(addtoCart["noofpackaging"]);
             o.Packaging = addtoCart["packaging"];
             o.OrderType = addtoCart["Ordertype"];
-            */
+
             var orderItem = (OrderItem) new JavaScriptSerializer().DeserializeObject(json);
 
             Request.Cookies.Add(addtoCart);
