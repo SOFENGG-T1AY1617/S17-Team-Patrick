@@ -100,7 +100,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
             //populate all txtBox etc etc
             //change all StudentInfo 
             HttpCookie cookie = Request.Cookies["StudentInfo"];
-            Debug.Write("HIHIHI");
             txtLName.Text = cookie["LastName"];
             txtFName.Text = cookie["FirstName"];
             txtMName.Text = cookie["MiddleName"];

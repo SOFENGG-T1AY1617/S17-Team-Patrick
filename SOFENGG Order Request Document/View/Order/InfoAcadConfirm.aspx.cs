@@ -21,15 +21,14 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 {
                     Response.Redirect("~/View/Order/Error.aspx");
                 }
-
-                StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
-                DisplayAllStudentDegree();
-
             }
             catch (NullReferenceException)
             {
                 Response.Redirect("~/View/Order/Error.aspx");
             }
+
+            StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
+            DisplayAllStudentDegree();
 
         }
 
@@ -42,7 +41,10 @@ namespace SOFENGG_Order_Request_Document.View.Order
             List<StudentDegree> studentDegreeList = new List<StudentDegree>();
             for (int i = 0; i < studentDegreeNumber; i++)
             {
-                var cookie = Request.Cookies["AcadInformation" + i];
+                HttpCookie cookie = null;
+                if(Request.Cookies["AcadInformation" + i] == null)
+                    continue;
+                cookie = Request.Cookies["AcadInformation" + i];
                 studentDegreeList.Add(new StudentDegree()
                 {
                     AdmittedAs = (AdmissionEnum)int.Parse(cookie["AdmittedAs"]),
@@ -53,6 +55,10 @@ namespace SOFENGG_Order_Request_Document.View.Order
                     StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"])
 
                 });
+            }
+            if (studentDegreeList.Count == 0)
+            {
+                Response.Redirect("~/View/Order/InfoMailDe.aspx");
             }
 
             rptInfoAcadConfirm.DataSource = studentDegreeList;
@@ -68,14 +74,27 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void DeleteStudentDegree(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
+            Button button = sender as Button;
+            Debug.Write(button.Parent.FindControl("updateBtns"));
+            
+            var idControl = button.Parent.FindControl("updateBtns") as HiddenField;
+            
+            HttpCookie deletedCookie = Request.Cookies["AcadInformation" + idControl.Value];
+            deletedCookie.Expires = DateTime.Now.AddDays(-1d);
+            Response.Cookies.Add(deletedCookie);
+            
+            DisplayAllStudentDegree();
 
         }
 
         protected void EditStudentDegree(object sender, EventArgs e)
         {
-            //HttpCookie editCookie = new HttpCookie("EditCookie");
-            //editCookie["StudentDegree"] = gets the id of selected 
+            Button button = sender as Button;
+            var idControl = button.Parent.FindControl("updateBtns") as HiddenField;
+            HttpCookie editCookie = new HttpCookie("EditCookie");
+            editCookie["Id"] = idControl.Value;
+            Response.Cookies.Add(editCookie);
+            Debug.Write("\n\n" + idControl.Value + "\n\n");
             Response.Redirect("~/View/Order/InfoAcadDe.aspx");
         }
 

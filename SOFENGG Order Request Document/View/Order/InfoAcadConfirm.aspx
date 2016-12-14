@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoAcadConfirm.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoAcadConfirm" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoAcadConfirm.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoAcadConfirm" EnableEventValidation="false" %>
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/Content/css/info_*_confirm.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="container-fluid center-block">
+    <div class="container-fluid center-block" style="width:800px;">
             <ul class="breadcrumb">
                 &nbsp;
                 <li><a href="#">Home</a></li>
@@ -40,18 +40,41 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Degree.Id")%>' />
+                            <asp:HiddenField id="updateBtns" runat="server" Value='<%# Eval("Id")%>' />
                             <asp:Button class="btn btn-default" runat="server" text="Edit" OnClick="EditStudentDegree"/>
-                            <asp:Button class="btn btn-default" runat="server" text="Delete" OnClick="DeleteStudentDegree"/>
-                        </td>
+							<a href="#myModal" class="btn btn-default" data-toggle="modal">Delete</a>
+                            
+                            <div id="myModal" class="modal fade">
+		                        <div class="modal-dialog">
+		                            <div class="modal-content">
+		                                <div class="modal-header">
+		                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                                    <h4 class="modal-title">Confirmation</h4>
+		                                </div>
+		                                <div class="modal-body">
+		                                    <p>Are you sure you want to proceed with this action?</p>
+		                                    <p class="text-warning"><small>If you proceed, your changes will be lost.</small></p>
+		                                </div>
+		                                <div class="modal-footer">
+		                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						                    <asp:Button class="btn btn-default" runat="server" text="Proceed" OnClick="DeleteStudentDegree"/>
+		                                </div>
+		                            </div>
+		                        </div>
+	                        </div>
+                            
+                            
+
+						</td>
                     </tr>
                 </table>
             </ItemTemplate>
-
             <FooterTemplate>
             </FooterTemplate>
 
        </asp:Repeater>
+        
+        
        
         <div>
             <asp:Button class="btn btn-primary" runat="server"  Text="Add Another Degree" OnClick="AddStudentDegree"/>
