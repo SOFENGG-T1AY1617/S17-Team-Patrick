@@ -39,7 +39,7 @@
                     <asp:RequiredFieldValidator id="rfvMailAddress" runat="server"
                             ControlToValidate="txtMailAddress"
                             ErrorMessage="Please enter your mailing address."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                         </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -48,11 +48,11 @@
                 <td>
                     <asp:TextBox ID="txtZipCode" CssClass="form-control" Width="50px" MaxLength="4" runat="server"></asp:TextBox>
 					<asp:RegularExpressionValidator runat="server" id="rexZipCode" 
-						controltovalidate="txtZipCode" validationexpression="^[0-9]{4}$" errormessage="Please enter a 4-digit zip code!" />
+						controltovalidate="txtZipCode" validationexpression="^[0-9]{4}$" errormessage="Please enter a 4-digit zip code!"  Display="Dynamic"/>
                     <asp:RequiredFieldValidator id="rfvZipCode" runat="server"
                             ControlToValidate="txtZipCode"
                             ErrorMessage="Zip code is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -72,7 +72,7 @@
                     <asp:RequiredFieldValidator id="rfvDelivery" runat="server"
                             ControlToValidate="ddlDelivery"
                             ErrorMessage="Select the appropriate delivery area for the inputted mailing address."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                         </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -81,11 +81,11 @@
                 <td>
                     <asp:TextBox ID="txtMailingNum" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RegularExpressionValidator runat="server" id="rexMailingNum" 
-						controltovalidate="txtMailingNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a mailing number containing 7 to 15 digits!" />
+						controltovalidate="txtMailingNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a mailing number containing 7 to 15 digits!"  Display="Dynamic"/>
                     <asp:RequiredFieldValidator id="rfvMailingNum" runat="server"
                             ControlToValidate="txtMailingNum"
                             ErrorMessage="Mailing number is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>

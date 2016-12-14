@@ -66,7 +66,7 @@
                                 <asp:RequiredFieldValidator ID="rfvDegree" runat="server"
                                     ControlToValidate="ddlDegree"
                                     ErrorMessage="Degree is a required field."
-                                    ForeColor="Red">
+                                    ForeColor="Red" Display="Dynamic">
                                 </asp:RequiredFieldValidator>
                             </ContentTemplate>
                         </asp:UpdatePanel>
@@ -78,11 +78,11 @@
                         <asp:TextBox ID="txtStudNo" CssClass="form-control"
                             runat="server" Style="size: 10px;"></asp:TextBox>
                         <asp:RegularExpressionValidator runat="server" ID="rexStudNo"
-                            ControlToValidate="txtStudNo" ValidationExpression="^[0-9]{7,8}$" ErrorMessage="Please enter a student number." />
+                            ControlToValidate="txtStudNo" ValidationExpression="^[0-9]{7,8}$" ErrorMessage="Please enter a student number." / Display="Dynamic">
                         <asp:RequiredFieldValidator ID="rfvStudNo" runat="server"
                             ControlToValidate="txtStudNo"
                             ErrorMessage="Student No. is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                         </asp:RequiredFieldValidator>
                     </td>
                 </tr>
