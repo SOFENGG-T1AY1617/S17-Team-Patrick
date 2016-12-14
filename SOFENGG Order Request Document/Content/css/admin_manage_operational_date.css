@@ -1,0 +1,18 @@
+﻿.list-group a {
+    color: black;
+    font-size: 130%;
+}
+
+.remove_date {
+    display: inline; 
+    float: right;
+    border: none;
+    background: none;
+    padding: 0;
+    color: red;
+}
+
+.date_information {
+    margin-top: 2%;
+    width: 243px;
+}

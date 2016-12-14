@@ -9,8 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online Request for Documents</title>
     <link href="/Content/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/Content/css/loading.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/Content/css/admin_global.css" />
     <link href="../../Content/css/admin_navbar.css" rel="stylesheet" />
+    <script src="/Script/jquery.min.js"></script>
+    <script src="/Script/jquery.validate.min.js"></script>  
+    <script src="/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -34,11 +38,7 @@
                             <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Order List <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="order">
-                            <li><a href="Main.aspx">&nbsp;All</a></li>
-                            <li>&nbsp;Processing</li>
-                            <li>&nbsp;Pending</li>
-                            <li>&nbsp;On Time</li>
-                            <li>&nbsp;Late</li>
+                            <li><a href="Main.aspx">&nbsp;View All</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#document" class="collapsed">
@@ -49,10 +49,10 @@
                         </ul>
 
                         <li data-toggle="collapse" data-target="#operationaldate" class="collapsed">
-                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
+                            <a><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="operationaldate">
-                            <li><a href="#">&nbsp;Manage Operational Date</a></li>
+                            <li><a href="ManageOperationalDate.aspx">&nbsp;Manage Operational Date</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#user" class="collapsed">
@@ -73,6 +73,8 @@
 
                             </asp:ContentPlaceHolder>
                         <asp:ContentPlaceHolder ID="other" runat="server"></asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="edit" runat="server"></asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="delete" runat="server"></asp:ContentPlaceHolder>
                     </form>    
                 </div>
             </div>
@@ -80,9 +82,6 @@
     </div>
 </div>
 
-<script src="/Script/jquery.min.js"></script>
-<script src="/Script/jquery.validate.min.js"></script>  
-<script src="/Script/bootstrap.min.js"></script>
 <asp:ContentPlaceHolder ID="script" runat="server">
 
 </asp:ContentPlaceHolder>

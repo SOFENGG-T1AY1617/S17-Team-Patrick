@@ -25,8 +25,8 @@ namespace SOFENGG_Order_Request_Document.View.Admin.Interface
         int LateCount { set; }
         int TotalCount { set; }
 
-        Model.Order ActiveOrder { set; }
-        OrderItemGroup[] OrderItemGroup { set; }
+        Model.Order ActiveOrder { get; set; }
+        OrderItemGroup[] ActiveOrderItemList { set; }
         void GetOrderInformation(int referenceNo);
         void MarkAsPending(int referenceNo, string newDueDate, string reason);
         void MarkAsProcessing(int referenceNo);

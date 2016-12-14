@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,6 +46,9 @@
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -74,16 +79,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\admin_login.css" />
     <Content Include="Content\css\admin_main.css" />
+    <Content Include="Content\css\admin_manage_operational_date.css" />
     <Content Include="Content\css\admin_navbar.css" />
     <Content Include="Content\css\admin_order_information.css" />
     <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\manage_operational_date.css" />
     <Content Include="Content\images\dlsu_logo.png" />
     <Content Include="Script\jquery-ui.js" />
     <Content Include="Script\jquery.validate.min.js" />
+    <Content Include="Content\css\loading.css" />
     <Content Include="Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
+    <Content Include="View\Admin\MainService.asmx" />
     <Content Include="View\Admin\Main.aspx" />
+    <Content Include="View\Admin\MainService2.svc" />
+    <Content Include="View\Admin\Login.aspx" />
+    <Content Include="View\Admin\ManageOperationalDate.aspx" />
     <Content Include="View\Admin\OrderInformationService.asmx" />
     <Content Include="View\Admin\Pending.aspx" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
@@ -216,6 +229,7 @@
     <Compile Include="Model\StudentDegree.cs" />
     <Compile Include="Model\StudentInfo.cs" />
     <Compile Include="Model\IUserModel.cs" />
+    <Compile Include="Presenter\Admin\ViewOrderListPresenter2.cs" />
     <Compile Include="Presenter\Admin\ViewOrderListPresenter.cs" />
     <Compile Include="Presenter\Order\InfoTransactionPresenter.cs" />
     <Compile Include="Presenter\Order\OrderItemPresenter.cs" />
@@ -241,12 +255,33 @@
     </Compile>
     <Compile Include="View\Admin\Interface\IOrderListView.cs" />
     <Compile Include="View\Admin\Interface\IDocumentListView.cs" />
+    <Compile Include="View\Admin\MainService.asmx.cs">
+      <DependentUpon>MainService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\Main.aspx.cs">
       <DependentUpon>Main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Admin\Main.aspx.designer.cs">
       <DependentUpon>Main.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\MainService2.svc.cs">
+      <DependentUpon>MainService2.svc</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ManageOperationalDate.aspx.cs">
+      <DependentUpon>ManageOperationalDate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\ManageOperationalDate.aspx.designer.cs">
+      <DependentUpon>ManageOperationalDate.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Admin\OrderInformationService.asmx.cs">
       <DependentUpon>OrderInformationService.asmx</DependentUpon>
