@@ -14,6 +14,7 @@
                      $("#delivery_only2").hide();
 
                      $("#ddlCampus").css("display", "block");
+                     $("#pCampus").css("display", "block");
 
                  }
                  else if ($('#<%=cbPickup.ClientID %>').is(':checked') == false) {
@@ -21,6 +22,7 @@
                      $("#delivery_only2").show();
 
                      $("#ddlCampus").css("display", "none");
+                     $("#pCampus").css("display", "none");
 
                  }
             });
@@ -34,7 +36,7 @@
     <div class="container-fluid center-block"> 
         <ul class="breadcrumb">
                 &nbsp;
-                <li><a href="#">Home</a></li>
+                <li><a href="#" class="step"><i class="glyphicon glyphicon-home"></i></a></li>
                 <li>
                     <a href="PersonalInformation.aspx">Personal Information</a>
                 </li>
@@ -50,12 +52,13 @@
                 <li class="active">Order Item</li>
          </ul>
         
+        
 
             <h5 class="content-header">Order Item</h5>
 
          
 
-            <table class="table table-striped" >
+            <table class="table table-striped table-bordered" style="margin-left:auto; margin-right:auto;" >
                 <tbody>
 
                 <asp:repeater ID="repDocumentname" runat="server">
