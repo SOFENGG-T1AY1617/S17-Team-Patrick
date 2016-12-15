@@ -12,7 +12,7 @@ namespace SOFENGG_Order_Request_Document.Model.Database
     {
 
 
-        public bool AddClientInformation(HttpCookie studentInfoCookie, HttpCookie[] acadInfoCookie, HttpCookie[] mailInfoCookie)
+        public bool AddClientInformation(HttpCookie studentInfoCookie, HttpCookie acadInfoCookie, HttpCookie mailInfoCookie)
         {
             var studentInfo = new StudentInfo()
             {
@@ -31,33 +31,47 @@ namespace SOFENGG_Order_Request_Document.Model.Database
             };
             if(!AddStudentInfo(studentInfo)) return false;
 
-            for (int i = 0; i < acadInfoCookie.Length; i++)
+            var studentDegreeNum = int.Parse(studentInfoCookie["StudentDegreeNum"]);
+            var idStudentDegreeString = acadInfoCookie["Id"].Split('|');
+            var admittedString = acadInfoCookie["AdmittedAs"].Split('|');
+            var degreeString = acadInfoCookie["Degree"].Split('|');
+            var idStudentString = acadInfoCookie["IdStudent"].Split('|');
+            var yearString = acadInfoCookie["YearAdmitted"].Split('|');
+            for (int i = 0; i < studentDegreeNum; i++)
             {
                 var studentDegree = new StudentDegree()
                 {
                     StudentInfoId = int.Parse(studentInfoCookie["Id"]),
-                    AdmittedAs = (AdmissionEnum)(int.Parse(acadInfoCookie[i]["AdmittedAs"])),
-                    Degree = GetDegree(int.Parse(acadInfoCookie[i]["Degree"])),
-                    Id = i,
-                    IdStudent = int.Parse(acadInfoCookie[i]["IdStudent"]),
-                    YearAdmitted = int.Parse(acadInfoCookie[i]["YearAdmitted"]),
+                    AdmittedAs = (AdmissionEnum)(int.Parse(admittedString[i])),
+                    Degree = GetDegree(int.Parse(degreeString[i])),
+                    Id = int.Parse(idStudentDegreeString[i]),
+                    IdStudent = int.Parse(idStudentString[i]),
+                    YearAdmitted = int.Parse(yearString[i]),
                 };
                 if (!AddStudentDegree(studentDegree)) return false;
             }
 
-            for (int i = 0; i < mailInfoCookie.Length; i++)
+            var mailingInfoNum = int.Parse(studentInfoCookie["MailingInfoNum"]);
+            var idMailInfoString = mailInfoCookie["Id"].Split('|');
+            var mailingAddressString = mailInfoCookie["MailingAddress"].Split('|');
+            var contactNoString = mailInfoCookie["ContactNo"].Split('|');
+            var deliveryAreaString = mailInfoCookie["DeliveryArea"].Split('|');
+            var zipcodeString = mailInfoCookie["Zipcode"].Split('|');
+            for (int i = 0; i < mailingInfoNum; i++)
             {
                 var mailInfo = new MailingInfo()
                 {
-                    Id = i,
-                    ContactNo = mailInfoCookie[i]["ContactNo"],
-                    DeliveryArea = GetDeliveryArea(int.Parse(mailInfoCookie[i]["DeliveryArea"])),
-                    MailingAddress = mailInfoCookie[i]["MailingAddress"],
+                    ContactNo = contactNoString[i],
+                    DeliveryArea = GetDeliveryArea(int.Parse(deliveryAreaString[i])),
+                    Id = int.Parse(idMailInfoString[i]),
+                    MailingAddress = mailingAddressString[i],
                     StudentInfoId = int.Parse(studentInfoCookie["Id"]),
-                    ZipCode = int.Parse(mailInfoCookie[i]["Zipcode"]),
+                    ZipCode = int.Parse(zipcodeString[i]),
                 };
+
                 if (!AddMailingInfo(mailInfo)) return false;
             }
+
             return true;
         }
 

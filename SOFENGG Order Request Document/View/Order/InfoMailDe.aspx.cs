@@ -13,7 +13,18 @@ namespace SOFENGG_Order_Request_Document.View.Order
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try { 
+            try {
+
+                
+                // ========== DEBUG MODE. PLEASE ERASE THIS AFTER ============= //
+                if (Request.Cookies["StudentInfo"] == null)
+                {
+                    HttpCookie studentInfo = new HttpCookie("StudentInfo");
+                    studentInfo["Id"] = "8";
+                    studentInfo["MailingInfoNum"] = 0 + "";
+                    Response.Cookies.Add(studentInfo);
+                }
+                
                 StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
             }catch(Exception)
             {
@@ -51,7 +62,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
             catch (NullReferenceException)
             {
-                editInfoId = int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]) + 1;
+                editInfoId = int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]);
                 HttpCookie studentCookie = Request.Cookies["StudentInfo"];
                 int studentDegreeNum = int.Parse(studentCookie["MailingInfoNum"]) + 1;
                 studentCookie["MailingInfoNum"] = studentDegreeNum.ToString();
@@ -60,8 +71,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             InfoMailDePresenter presenter = new InfoMailDePresenter(this);
             HttpCookie mailCookie;
-            if (Request.Cookies["AcadInformation"] != null)
-                mailCookie = Request.Cookies["AcadInformation"];
+            if (Request.Cookies["MailInformation"] != null)
+                mailCookie = Request.Cookies["MailInformation"];
             else mailCookie = null;
             HttpCookie mailInfoCookie = presenter.AddMailInfoCookie(mailCookie, editInfoId);
             Response.Cookies.Add(mailInfoCookie);

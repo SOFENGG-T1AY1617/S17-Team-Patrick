@@ -97,20 +97,12 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             // .DEBUG.MODE. ============ TRYING ADDING OF COOKIES TO DATABASE ============== .DEBUG.MODE. //
             /*var studentInfoCookie = Request.Cookies["StudentInfo"];
-            int acadInfoNumber = int.Parse(studentInfoCookie["StudentDegreeNum"]);
-            int mailingInfoNumber = int.Parse(studentInfoCookie["MailingInfoNum"]);
-            HttpCookie[] acadInfoCookie = new HttpCookie[acadInfoNumber];
-            HttpCookie[] mailInfoCookie = new HttpCookie[mailingInfoNumber];
-            for (int i = 0; i < acadInfoNumber; i++)
-            {
-                acadInfoCookie[i] = Request.Cookies["AcadInformation" + i];
-            }
-            for (int i = 0; i < mailingInfoNumber; i++)
-            {
-                mailInfoCookie[i] = Request.Cookies["MailInformation" + i];
-            }
+            HttpCookie acadInfoCookie = Request.Cookies["AcadInformation"];
+            HttpCookie mailInfoCookie = Request.Cookies["MailInformation"];
             var model = new UserModel();
-            model.AddClientInformation(studentInfoCookie, acadInfoCookie, mailInfoCookie);*/
+            if(model.AddClientInformation(studentInfoCookie, acadInfoCookie, mailInfoCookie))
+                Debug.Write("ClientInformation has been added to the database");
+            */
 
             Response.Redirect("~/View/Order/DocumentList.aspx");
         }
