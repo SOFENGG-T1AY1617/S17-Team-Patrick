@@ -29,10 +29,8 @@
                 <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
                 <div class="menu-list">
                     <ul id="menu-content" class="menu-content collapse out">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                            </a>
+                        <li data-toggle="collapse" data-target="#" class="collapsed">
+                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Dashboard</a>
                         </li>
                         <li data-toggle="collapse" data-target="#order" class="collapsed">
                             <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Order List <span class="glyphicon glyphicon-menu-down"></span></a>
@@ -49,10 +47,10 @@
                         </ul>
 
                         <li data-toggle="collapse" data-target="#operationaldate" class="collapsed">
-                            <a><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
+                            <a><i class="fa fa-car fa-lg"></i> &nbsp;System Dates <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="operationaldate">
-                            <li><a href="ManageOperationalDate.aspx">&nbsp;Manage Operational Date</a></li>
+                            <li><a href="ManageOperationalDate.aspx">&nbsp;Manage Offline Dates</a></li>
                         </ul>
 
                         <li data-toggle="collapse" data-target="#user" class="collapsed">

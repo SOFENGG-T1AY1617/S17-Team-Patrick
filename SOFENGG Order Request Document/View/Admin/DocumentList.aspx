@@ -42,17 +42,17 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Regular Price">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# float.Parse(Eval("RegularPrice").ToString()) == 0f ? "N/A" : float.Parse(Eval("RegularPrice").ToString()).ToString("n2") %>' ID="lbRegularPrice"></asp:Label>
+                                    P<asp:Label runat="server" Text='<%# float.Parse(Eval("RegularPrice").ToString()) == 0f ? "N/A" : float.Parse(Eval("RegularPrice").ToString()).ToString("n2") %>' ID="lbRegularPrice"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Express Price">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# float.Parse(Eval("ExpressPrice").ToString()) == 0f ? "N/A" : float.Parse(Eval("ExpressPrice").ToString()).ToString("n2") %>' ID="lbExpressPrice"></asp:Label>
+                                    P<asp:Label runat="server" Text='<%# float.Parse(Eval("ExpressPrice").ToString()) == 0f ? "N/A" : float.Parse(Eval("ExpressPrice").ToString()).ToString("n2") %>' ID="lbExpressPrice"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Weight">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# Bind("Weight") %>' ID="lbWeight"></asp:Label>
+                                    <asp:Label runat="server" Text='<%# Bind("Weight") %>' ID="lbWeight"></asp:Label>&nbsp;grams
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Maximum Copy">
@@ -72,12 +72,12 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Edit">
                                 <ItemTemplate>
-                                    <input type="button" id="edit_document_modal" class="btnEditItem" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgEditDocument" value="Edit" />
+                                    <button id="edit_document_modal" class="btnEditItem glypicon glyphicon-pencil" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgEditDocument" value="Edit"></button>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Delete">
                                 <ItemTemplate>
-                                    <input type="button" id="delete_document_modal" class="btnDeleteItem" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgDeleteDocument" value="Delete" />
+                                    <button id="delete_document_modal" class="btnDeleteItem glyphicon glyphicon-trash" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgDeleteDocument" value="Delete"></button>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -198,21 +198,21 @@
                         <div class="form-group">
                             <label for="txtRegularPrice" class="col-sm-5 control-label">Regular Charge</label>
                             <div class="col-sm-5">
-                                <asp:TextBox ID="txtRegularPrice" class="form-control" type="text" placeholder="Price" runat="server" />
+                                <asp:TextBox ID="txtRegularPrice" class="form-control" type="text" placeholder="Price in peso" runat="server" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="txtExpressPrice" class="col-sm-5 control-label">Express Charge</label>
                             <div class="col-sm-5">
-                                <asp:TextBox ID="txtExpressPrice" class="form-control express_charge" type="text" placeholder="Price" runat="server" />
+                                <asp:TextBox ID="txtExpressPrice" class="form-control express_charge" type="text" placeholder="Price in peso" runat="server" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="txtWeight" class="col-sm-5 control-label">Weight</label>
                             <div class="col-sm-5">
-                                <asp:TextBox ID="txtWeight" class="form-control express_charge" type="text" placeholder="Weight" runat="server" />
+                                <asp:TextBox ID="txtWeight" class="form-control express_charge" type="text" placeholder="Weight in grams" runat="server" />
                             </div>
                         </div>
 
