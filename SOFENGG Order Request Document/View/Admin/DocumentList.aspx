@@ -72,7 +72,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Edit">
                                 <ItemTemplate>
-                                    <input type="button" id="edit_document_modal" class="btnEditItem" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgEditDocument" value="Edit" />
+                                    <input type="button" id="edit_document_modal" class="btnEditItem glyphicon glypicon-pencil" name="<%# Eval("Id") %>" data-toggle="modal" data-target="#dlgEditDocument" value="Edit"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Delete">
