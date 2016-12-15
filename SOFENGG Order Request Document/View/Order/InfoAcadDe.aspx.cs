@@ -13,6 +13,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
             // ========== DEBUG MODE. PLEASE ERASE THIS AFTER ============= //
             if (Request.Cookies["StudentInfo"] == null)
             {
@@ -20,7 +21,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 studentInfo["Id"] = "8";
                 studentInfo["StudentDegreeNum"] = 0 + "";
                 Response.Cookies.Add(studentInfo);
-            }
+            }*/
 
             try
             {
