@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
@@ -22,6 +23,8 @@ namespace SOFENGG_Order_Request_Document.View.Admin
             {
                 repOrders.DataSource = value;
                 repOrders.DataBind();
+                cmdUpdateOrderList.Text = DateTime.Now.ToLongTimeString();
+                upOrderList.Update();
             }
         }
 
@@ -31,9 +34,14 @@ namespace SOFENGG_Order_Request_Document.View.Admin
         public int LateCount { get; set; }
         public int TotalCount { get; set; }
         public Model.Order ActiveOrder { get; set; }
-        public OrderItemGroup[] OrderItemGroup { get; set; }
+        public OrderItemGroup[] ActiveOrderItemList { get; set; }
 
         #region Initialization Functions
+
+        public static class Functions
+        {
+            public const string CmdCloseDlgPending = "CmdCloseDlgPending";
+        }
 
         public Main()
         {
@@ -95,6 +103,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
             lblOnTimeCount.Text = OnTimeCount.ToString();
             lblLateCount.Text = LateCount.ToString();
             lblTotalCount.Text = TotalCount.ToString();
+            upStatus.Update();
         }
 
         #region UI Formatters
@@ -130,8 +139,11 @@ namespace SOFENGG_Order_Request_Document.View.Admin
 
             if (sControlName == "cmdUpdateOrderInformation")
             {
-                lblActiveReferenceNo.Text = sParameter;
-                GetOrderInformation(int.Parse(sParameter));
+                _presenter.GetOrderInformation(int.Parse(sParameter));
+
+                _presenter.SortOrderItemByAddress();
+
+                lblActiveReferenceNo.Text = ActiveOrder.ReferenceNo.ToString();
                 lblActiveOrderName.Text = ActiveOrder.Receiver.FirstName + " " +
                                           (!string.IsNullOrEmpty(ActiveOrder.Receiver.MiddleName)
                                               ? ActiveOrder.Receiver.MiddleName + " "
@@ -142,16 +154,17 @@ namespace SOFENGG_Order_Request_Document.View.Admin
                 lblActiveOrderEmail.Text = ActiveOrder.Receiver.Email;
                 lblActiveTransactionDate.Text = ActiveOrder.TransactionDate.ToString("d");
 
-                repOrderMailingInfo.DataSource = OrderItemGroup;
+                repOrderMailingInfo.DataSource = ActiveOrderItemList;
                 repOrderMailingInfo.DataBind();
 
-                var referenceNo = int.Parse(sParameter);
-                var status = _presenter.GetOrderStatus(referenceNo);
+                var status = _presenter.GetOrderStatus(ActiveOrder.ReferenceNo);
 
                 var isDone = status == OrderStatusEnum.Late || status == OrderStatusEnum.OnTime;
                 btnMarkProcessing.Visible = !isDone && status != OrderStatusEnum.Processing;
                 btnMarkDone.Visible = !isDone && status != OrderStatusEnum.OnTime && status != OrderStatusEnum.Late;
                 btnMarkPending.Visible = !isDone && status != OrderStatusEnum.Pending;
+
+                upOrderInformation.Update();
             }
         }
 
@@ -168,6 +181,7 @@ namespace SOFENGG_Order_Request_Document.View.Admin
         protected void btnMarkProcessing_OnClick(object sender, EventArgs e)
         {
             MarkAsProcessing(ActiveOrder.ReferenceNo);
+            upDlgPending.Update();
             GetOrderList();
 
             UpdateOrderInformationButton();
@@ -183,7 +197,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin
 
         protected void UpdateOrderInformationButton()
         {
-            upOrderList.Update();
             GetOrderInformation(ActiveOrder.ReferenceNo);
             var status = ActiveOrder.OrderStatus;
 

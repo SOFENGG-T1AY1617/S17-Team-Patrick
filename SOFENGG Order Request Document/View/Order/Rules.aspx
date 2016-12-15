@@ -33,10 +33,10 @@
         <br>
 
         <div class="card-images">
-            <span><img src="/Content/images/logo_amex1.gif"></span>
-            <span><img src="/Content/images/logo_master1.gif"></span>
-            <span><img src="/Content/images/logo_jcb1.gif"></span>
-            <span><img src="/Content/images/logo_amex1.gif"></span>
+            <span><img src="<%= Page.ResolveUrl("~/Content/images/logo_visa1.gif") %>" alt="" /></span>
+            <span><img src="<%= Page.ResolveUrl("~/Content/images/logo_master1.gif") %>" alt="" /></span>
+            <span><img src="<%= Page.ResolveUrl("~/Content/images/logo_jcb1.gif") %>" alt="" /></span>
+            <span><img src="<%= Page.ResolveUrl("~/Content/images/logo_amex1.gif") %>" alt="" /></span>
         </div>
 	</div>
 </asp:Content>

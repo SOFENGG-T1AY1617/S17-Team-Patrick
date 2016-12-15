@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
@@ -28,7 +29,9 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                     cmd.Parameters.AddWithValue("@" + Document.ColId, Document.Id);
                     cmd.Prepare();
 
-                    return cmd.ExecuteNonQuery() > 0;
+                    var result = cmd.ExecuteNonQuery();
+                    Debug.WriteLine(result);
+                    return result > 0;
                 }
             }
             finally

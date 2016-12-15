@@ -22,6 +22,24 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.ScriptManager sm;
         
         /// <summary>
+        /// upDocumentList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDocumentList;
+        
+        /// <summary>
+        /// cmdUpDocumentList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox cmdUpDocumentList;
+        
+        /// <summary>
         /// gvDocuments control.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,105 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvDocuments;
+        
+        /// <summary>
+        /// upEditDocument control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upEditDocument;
+        
+        /// <summary>
+        /// cmdUpEditDocument control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox cmdUpEditDocument;
+        
+        /// <summary>
+        /// lblEditDocumentType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox lblEditDocumentType;
+        
+        /// <summary>
+        /// txtEditName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditName;
+        
+        /// <summary>
+        /// txtEditRegularPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditRegularPrice;
+        
+        /// <summary>
+        /// txtEditExpressPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditExpressPrice;
+        
+        /// <summary>
+        /// txtEditWeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditWeight;
+        
+        /// <summary>
+        /// txtEditMaxCopies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditMaxCopies;
+        
+        /// <summary>
+        /// cbEditForUndergraduate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditForUndergraduate;
+        
+        /// <summary>
+        /// cbEditForGraduate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditForGraduate;
+        
+        /// <summary>
+        /// upDlgEditDocumentButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDlgEditDocumentButtons;
         
         /// <summary>
         /// txtName control.
@@ -40,15 +157,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// rfvName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvName;
-        
-        /// <summary>
         /// txtRegularPrice control.
         /// </summary>
         /// <remarks>
@@ -56,24 +164,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRegularPrice;
-        
-        /// <summary>
-        /// rfvRegularPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvRegularPrice;
-        
-        /// <summary>
-        /// rvRegularPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rvRegularPrice;
         
         /// <summary>
         /// txtExpressPrice control.
@@ -85,24 +175,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtExpressPrice;
         
         /// <summary>
-        /// rfvExpressPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvExpressPrice;
-        
-        /// <summary>
-        /// rvExpressPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rvExpressPrice;
-        
-        /// <summary>
         /// txtWeight control.
         /// </summary>
         /// <remarks>
@@ -112,24 +184,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtWeight;
         
         /// <summary>
-        /// rfvWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvWeight;
-        
-        /// <summary>
-        /// rvWeight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rvWeight;
-        
-        /// <summary>
         /// txtMaxCopies control.
         /// </summary>
         /// <remarks>
@@ -137,24 +191,6 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMaxCopies;
-        
-        /// <summary>
-        /// rfvMaxCopies control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMaxCopies;
-        
-        /// <summary>
-        /// rvMaxCopies control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rvMaxCopies;
         
         /// <summary>
         /// cbForUndergraduate control.
@@ -175,6 +211,15 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         protected global::System.Web.UI.WebControls.CheckBox cbForGraduate;
         
         /// <summary>
+        /// upDlgAddDocument control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDlgAddDocument;
+        
+        /// <summary>
         /// btnAdd control.
         /// </summary>
         /// <remarks>
@@ -182,5 +227,14 @@ namespace SOFENGG_Order_Request_Document.View.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAdd;
+        
+        /// <summary>
+        /// upDlgDeleteDocumentButtons control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upDlgDeleteDocumentButtons;
     }
 }

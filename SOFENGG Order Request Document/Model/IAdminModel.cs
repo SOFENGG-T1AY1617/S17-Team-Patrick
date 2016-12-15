@@ -14,5 +14,6 @@ namespace SOFENGG_Order_Request_Document.Model
         bool MarkAsPending(int referenceNo, DateTime newDueDate, string reason);
         bool MarkAsProcessing(int referenceNo);
         Order GetOrderInformation(int referenceNo);
+        Document GetDocument(int documentId);
     }
 }

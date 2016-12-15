@@ -8,6 +8,7 @@
     <div class="container-fluid center-block" style="width:800px;">
         <ul class="breadcrumb">
                 &nbsp;
+            <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
                 <li><asp:HyperLink id="hlPersonal" 
                         NavigateUrl="PersonalInformation.aspx" 
                         Text="Personal Information" 
@@ -39,7 +40,7 @@
                     <asp:RequiredFieldValidator id="rfvMailAddress" runat="server"
                             ControlToValidate="txtMailAddress"
                             ErrorMessage="Please enter your mailing address."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                         </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -48,11 +49,11 @@
                 <td>
                     <asp:TextBox ID="txtZipCode" CssClass="form-control" Width="50px" MaxLength="4" runat="server"></asp:TextBox>
 					<asp:RegularExpressionValidator runat="server" id="rexZipCode" 
-						controltovalidate="txtZipCode" validationexpression="^[0-9]{4}$" errormessage="Please enter a 4-digit zip code!" />
+						controltovalidate="txtZipCode" validationexpression="^[0-9]{4}$" errormessage="Please enter a 4-digit zip code!"  Display="Dynamic"/>
                     <asp:RequiredFieldValidator id="rfvZipCode" runat="server"
                             ControlToValidate="txtZipCode"
                             ErrorMessage="Zip code is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -60,30 +61,6 @@
                 <td class="content-form_label">Delivery Area</td>
                 <td>
                     <asp:DropDownList ID="ddlDelivery" runat="server" Width="200px">
-                        <asp:ListItem Text="Select Area" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Africa" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Australia" Value="2"></asp:ListItem>
-                        <asp:ListItem Text="Brunei" Value="3"></asp:ListItem>
-                        <asp:ListItem Text="Canada" Value="4"></asp:ListItem>
-                        <asp:ListItem Text="China" Value="5"></asp:ListItem>
-                        <asp:ListItem Text="Europe" Value="6"></asp:ListItem>
-                        <asp:ListItem Text="Fiji" Value="7"></asp:ListItem>
-                        <asp:ListItem Text="Guam" Value="8"></asp:ListItem>
-                        <asp:ListItem Text="Hong Kong / Singapore" Value="9"></asp:ListItem>
-                        <asp:ListItem Text="Indonesia / Malaysia / Taiwan / Thailand" Value="10"></asp:ListItem>
-                        <asp:ListItem Text="Japan" Value="11"></asp:ListItem>
-                        <asp:ListItem Text="Mexico City" Value="12"></asp:ListItem>
-                        <asp:ListItem Text="Middle East" Value="13"></asp:ListItem>
-                        <asp:ListItem Text="New Zealand" Value="14"></asp:ListItem>
-                        <asp:ListItem Text="Papua New Guinea" Value="15"></asp:ListItem>
-                        <asp:ListItem Text="Philippines: Luzon" Value="16"></asp:ListItem>
-                        <asp:ListItem Text="Philippines: Metro Manila" Value="17"></asp:ListItem>
-                        <asp:ListItem Text="Philippines: Visayas" Value="18"></asp:ListItem>
-                        <asp:ListItem Text="Philippines: Mindanao" Value="19"></asp:ListItem>
-                        <asp:ListItem Text="South Korea" Value="20"></asp:ListItem>
-                        <asp:ListItem Text="USA" Value="21"></asp:ListItem>
-                        <asp:ListItem Text="South America" Value="22"></asp:ListItem>
-                        <asp:ListItem Text="Vietname" Value="23"></asp:ListItem>
                     </asp:DropDownList>
 
                     <!-- DELIVERY RATES (pop-up)
@@ -96,7 +73,7 @@
                     <asp:RequiredFieldValidator id="rfvDelivery" runat="server"
                             ControlToValidate="ddlDelivery"
                             ErrorMessage="Select the appropriate delivery area for the inputted mailing address."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                         </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -105,11 +82,11 @@
                 <td>
                     <asp:TextBox ID="txtMailingNum" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RegularExpressionValidator runat="server" id="rexMailingNum" 
-						controltovalidate="txtMailingNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a mailing number containing 7 to 15 digits!" />
+						controltovalidate="txtMailingNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a mailing number containing 7 to 15 digits!" Display="Dynamic"/>
                     <asp:RequiredFieldValidator id="rfvMailingNum" runat="server"
                             ControlToValidate="txtMailingNum"
                             ErrorMessage="Mailing number is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>

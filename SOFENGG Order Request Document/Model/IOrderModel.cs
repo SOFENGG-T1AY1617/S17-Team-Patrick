@@ -6,6 +6,7 @@ namespace SOFENGG_Order_Request_Document.Model
     {
 
         Document[] GetDocumentList();
+        Document[] GetDocumentList(int[] degreeIdList);
         Document[] GetTORDocumentList(DocumentCategoryEnum Category,Degree degree);
         Document[] GetCertificateDocumentList(DocumentCategoryEnum Category, Degree degree);
         Document[] GetTrueCopyDocumentList(DocumentCategoryEnum Category, Degree degree);

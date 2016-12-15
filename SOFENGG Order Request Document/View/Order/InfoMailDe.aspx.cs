@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Web;
+using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Model;
 using SOFENGG_Order_Request_Document.Presenter;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
@@ -12,7 +13,18 @@ namespace SOFENGG_Order_Request_Document.View.Order
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            try { 
+            try {
+
+                
+                // ========== DEBUG MODE. PLEASE ERASE THIS AFTER ============= //
+                if (Request.Cookies["StudentInfo"] == null)
+                {
+                    HttpCookie studentInfo = new HttpCookie("StudentInfo");
+                    studentInfo["Id"] = "8";
+                    studentInfo["MailingInfoNum"] = 0 + "";
+                    Response.Cookies.Add(studentInfo);
+                }
+                
                 StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
             }catch(Exception)
             {
@@ -21,6 +33,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             try{
                 if (!IsPostBack){
+                    PopulateDeliveryDropdown();
                     if (Request.Cookies["EditCookie"]["Id"] != null){
                         PopulatePreviousInput(int.Parse(Request.Cookies["EditCookie"]["Id"]));
                     }
@@ -28,7 +41,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
             catch (NullReferenceException) { }
 
-
+            
         }
 
         protected void SubmitMailInfo(object sender, EventArgs e)
@@ -57,9 +70,11 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
 
             InfoMailDePresenter presenter = new InfoMailDePresenter(this);
-            HttpCookie mailInfoCookie = presenter.AddMailInfoCookie(int.Parse(Request.Cookies["StudentInfo"]["Id"]),
-                                                                    editInfoId);
-
+            HttpCookie mailCookie;
+            if (Request.Cookies["MailInformation"] != null)
+                mailCookie = Request.Cookies["MailInformation"];
+            else mailCookie = null;
+            HttpCookie mailInfoCookie = presenter.AddMailInfoCookie(mailCookie, editInfoId);
             Response.Cookies.Add(mailInfoCookie);
             Response.Redirect("~/View/Order/InfoMailConfirm.aspx");
 
@@ -68,14 +83,30 @@ namespace SOFENGG_Order_Request_Document.View.Order
         private void PopulatePreviousInput(int i)
         {
             //can only be accessed when pressed EDIT
-            HttpCookie cookie = Request.Cookies["MailInformation" + i];
+            var mailingAddressCookie = Request.Cookies["MailInformation"]["MailingAddress"].Split('|');
+            var contactNoCookie = Request.Cookies["MailInformation"]["ContactNo"].Split('|');
+            var zipCodeCookie = Request.Cookies["MailInformation"]["Zipcode"].Split('|');
+            var deliveryAreaCookie = Request.Cookies["MailInformation"]["DeliveryArea"].Split('|');
+            
             InfoMailDePresenter presenter = new InfoMailDePresenter(this);
 
-            txtMailAddress.Text = cookie["MailingAddress"];
-            txtMailingNum.Text = cookie["ContactNo"];
-            txtZipCode.Text = cookie["Zipcode"];
+            txtMailAddress.Text = mailingAddressCookie[i];
+            txtMailingNum.Text = contactNoCookie[i];
+            txtZipCode.Text = zipCodeCookie[i];
             ddlDelivery.SelectedItem.Selected = false;
-            ddlDelivery.Items.FindByValue(cookie["DeliveryArea"]).Selected = true;
+            ddlDelivery.Items.FindByValue(deliveryAreaCookie[i]).Selected = true;
+        }
+
+        private void PopulateDeliveryDropdown()
+        {
+            InfoMailDePresenter presenter = new InfoMailDePresenter(this);
+            var deliveryAreaList = presenter.GetDeliveryAreaList();
+            ddlDelivery.Items.Clear();
+            ddlDelivery.Items.Insert(0, new ListItem("Select Delivery Area", 0 + ""));
+            for (int i = 1; i <= deliveryAreaList.Length; i++)
+            {
+                ddlDelivery.Items.Insert(i, new ListItem(deliveryAreaList[i - 1].Name, i + ""));
+            }
         }
 
         public int StudentInfoId { get; set; }

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="PersonalInformation.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.PersonalInformation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/personal_information.css">
+    <link href="../../Content/css/personal_information.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 <div class = "container-fluid center-block" style="width:800px;">
@@ -22,7 +22,7 @@
                         <asp:RequiredFieldValidator id="rfvLName" runat="server"
                             ControlToValidate="txtLName"
                                 ErrorMessage="Last name is a required field."
-                                ForeColor="Red">
+                                ForeColor="Red" Display="Dynamic">
                         </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -33,7 +33,7 @@
                     <asp:RequiredFieldValidator id="rfvFName" runat="server"
                         ControlToValidate="txtFName"
                         ErrorMessage="First name is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -41,11 +41,6 @@
                 <td class="content-form_label">Middle Name</td>
                 <td>
                     <asp:TextBox ID="txtMName" class="form-control" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator id="rfvMName" runat="server"
-                        ControlToValidate="txtMName"
-                        ErrorMessage="Middle name is a required field."
-                            ForeColor="Red">
-                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -54,12 +49,13 @@
 		                    <asp:RadioButtonList ID="optGender" runat="server" 
 		                            RepeatDirection="Horizontal" RepeatLayout="Flow">
 		                            <asp:ListItem class="radio-inline" Text="Male" Value="M"></asp:ListItem>
-		                            <asp:ListItem class="radio-inline" Text="Female" Value="F"></asp:ListItem>
+                                    
+		                            <asp:ListItem class="radio-inline radio_margin" Text="Female" Value="F"></asp:ListItem>
 		                    </asp:RadioButtonList>
 		                    <asp:RequiredFieldValidator id="rfvGender" runat="server"
 		                        ControlToValidate="optGender"
 		                        ErrorMessage="Gender is a required field."
-		                            ForeColor="Red">
+		                            ForeColor="Red" Display="Dynamic">
 		                    </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -74,17 +70,17 @@
                     <asp:RequiredFieldValidator id="rfvBirthYear" runat="server"
                         ControlToValidate="ddlBirthYear"
                         ErrorMessage="Birthyear is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                     <asp:RequiredFieldValidator id="rfvBirthMonth" runat="server"
                         ControlToValidate="ddlBirthMonth"
                         ErrorMessage="Birthmonth is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                     <asp:RequiredFieldValidator id="rfvBirthDay" runat="server"
                         ControlToValidate="ddlBirthDay"
                         ErrorMessage="Birthday is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator></div>
                 </td>
             </tr>
@@ -95,7 +91,7 @@
                     <asp:RequiredFieldValidator id="rfvCitizen" runat="server"
                         ControlToValidate="txtCitizen"
                         ErrorMessage="Citizenship is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -107,7 +103,7 @@
                     <asp:RequiredFieldValidator id="rfvCurrentAddress" runat="server"
                         ControlToValidate="txtCurrentAddress"
                         ErrorMessage="Entering your current address is required."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -116,9 +112,10 @@
                 <td>
                     <asp:TextBox ID="txtPhoneNum" class="form-control" runat="server"></asp:TextBox>
                     <asp:RegularExpressionValidator runat="server" id="rexPhoneNum" 
-						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter your contact number containing 7 to 15 digits!" />
+						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter your contact number containing 7 to 15 digits!"  Display="Dynamic"/>
                     <asp:RequiredFieldValidator id="rfvPhoneNum" runat="server"
-                        ControlToValidate="txtPhoneNum" ErrorMessage="Phone number is a required field."
+                        ControlToValidate="txtPhoneNum" ErrorMessage="Phone number is a required field." 
+                        Display="Dynamic" 
                             ForeColor="Red">
                     </asp:RequiredFieldValidator>
                 </td>
@@ -130,12 +127,12 @@
                     <asp:RegularExpressionValidator
               			runat="server" ErrorMessage="Please enter a valid email address."
                  		 id="rexEmail" ControlToValidate="txtEmail" ForeColor="Red"
-                  			ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                  			ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic">
                   	</asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator id="rfvEmail" runat="server"
                         ControlToValidate="txtEmail"
                         ErrorMessage="E-mail address is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -146,7 +143,7 @@
                     <asp:RequiredFieldValidator id="rfvHSAttended" runat="server"
                         ControlToValidate="txtHSAttended"
                         ErrorMessage="High school attended is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -157,7 +154,7 @@
                     <asp:RequiredFieldValidator id="rfvBirthplace" runat="server"
                         ControlToValidate="txtBirthplace"
                         ErrorMessage="birthplace is a required field."
-                            ForeColor="Red">
+                            ForeColor="Red" Display="Dynamic">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>

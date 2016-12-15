@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SOFENGG_Order_Request_Document.View.Admin.MainService2" CodeBehind="MainService2.svc.cs" %>

@@ -11,8 +11,8 @@ namespace SOFENGG_Order_Request_Document.View.Admin.Interface
         Document[] AvailableDocumentList { set; }
 
         void AddDocument();
-        void EditDocument();
-        void DeleteDocument();
+        void EditDocument(int documentId);
+        void DeleteDocument(int documentId);
         void GetDocumentList();
     }
 }

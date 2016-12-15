@@ -19,29 +19,34 @@ namespace SOFENGG_Order_Request_Document.View.Order
                 Response.Redirect("~/View/Order/Error.aspx");
             }
             StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
-            DisplayAllMailingInfo();
+
+            if (!IsPostBack)
+            {
+                DisplayAllMailingInfo();
+            }
         }
 
         private void DisplayAllMailingInfo()
         {
             int mailingInfoNumber = int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]);
             InfoMailDePresenter presenter = new InfoMailDePresenter(this);
-            MailingInfo[] mailingInfo = presenter.GetMailingInfoList();
+            var contactNoCookie = Request.Cookies["MailInformation"]["ContactNo"].Split('|');
+            var deliveryAreaCookie = Request.Cookies["MailInformation"]["DeliveryArea"].Split('|');
+            var idCookie = Request.Cookies["MailInformation"]["Id"].Split('|');
+            var mailingAddressCookie = Request.Cookies["MailInformation"]["MailingAddress"].Split('|');
+            var zipCodeCookie = Request.Cookies["MailInformation"]["Zipcode"].Split('|');
             List<MailingInfo> mailingInfoList = new List<MailingInfo>();
             for (var i = 0; i < mailingInfoNumber; i++)
             {
-                HttpCookie cookie;
-                if(Request.Cookies["MailInformation" + i] == null)
-                    continue;
-                cookie = Request.Cookies["MailInformation" + i];
+                var cookie = Request.Cookies["MailInformation"];
                 mailingInfoList.Add(new MailingInfo()
                 {
-                    ContactNo = cookie["ContactNo"],
-                    DeliveryArea = presenter.GetOneDeliveryArea(int.Parse(cookie["DeliveryArea"])),
+                    ContactNo = contactNoCookie[i],
+                    DeliveryArea = presenter.GetOneDeliveryArea(int.Parse(deliveryAreaCookie[i])),
                     Id = i,
-                    MailingAddress = cookie["MailingAddress"],
+                    MailingAddress = mailingAddressCookie[i],
                     StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]),
-                    ZipCode = int.Parse(cookie["Zipcode"]),
+                    ZipCode = int.Parse(zipCodeCookie[i]),
                 });
             }
             rptInfoMailConfirm.DataSource = mailingInfoList;
@@ -73,12 +78,18 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             Button button = sender as Button;
             var idControl = button.Parent.FindControl("updateBtns") as HiddenField;
+            var index = int.Parse(idControl.Value);
 
-            HttpCookie deletedCookie = Request.Cookies["MailInformation" + idControl.Value];
-            deletedCookie.Expires = DateTime.Now.AddDays(-1d);
-            Response.Cookies.Add(deletedCookie);
+            InfoMailDePresenter presenter = new InfoMailDePresenter(this);
+            HttpCookie cookie = presenter.DeleteMailInfoCookie(Request.Cookies["AcadInformation"], index);
+            Response.Cookies.Add(cookie);
 
-            DisplayAllMailingInfo();
+            HttpCookie studentInfoCookie = Request.Cookies["StudentInfo"];
+            studentInfoCookie["StudentDegreeNum"] = (int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]) - 1) + "";
+            Response.Cookies.Add(studentInfoCookie);
+
+            Response.Redirect("~/View/Order/InfoMailConfirm.aspx");
+            
 
         }
 
@@ -86,20 +97,12 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             // .DEBUG.MODE. ============ TRYING ADDING OF COOKIES TO DATABASE ============== .DEBUG.MODE. //
             /*var studentInfoCookie = Request.Cookies["StudentInfo"];
-            int acadInfoNumber = int.Parse(studentInfoCookie["StudentDegreeNum"]);
-            int mailingInfoNumber = int.Parse(studentInfoCookie["MailingInfoNum"]);
-            HttpCookie[] acadInfoCookie = new HttpCookie[acadInfoNumber];
-            HttpCookie[] mailInfoCookie = new HttpCookie[mailingInfoNumber];
-            for (int i = 0; i < acadInfoNumber; i++)
-            {
-                acadInfoCookie[i] = Request.Cookies["AcadInformation" + i];
-            }
-            for (int i = 0; i < mailingInfoNumber; i++)
-            {
-                mailInfoCookie[i] = Request.Cookies["MailInformation" + i];
-            }
+            HttpCookie acadInfoCookie = Request.Cookies["AcadInformation"];
+            HttpCookie mailInfoCookie = Request.Cookies["MailInformation"];
             var model = new UserModel();
-            model.AddClientInformation(studentInfoCookie, acadInfoCookie, mailInfoCookie);*/
+            if(model.AddClientInformation(studentInfoCookie, acadInfoCookie, mailInfoCookie))
+                Debug.Write("ClientInformation has been added to the database");
+            */
 
             Response.Redirect("~/View/Order/DocumentList.aspx");
         }
