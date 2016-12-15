@@ -8,3 +8,8 @@ table tr td:nth-child(2) {
 table tr:last-child {
   text-align: right;
 }
+
+
+.next_buttons {
+    margin-bottom: 2%;
+}

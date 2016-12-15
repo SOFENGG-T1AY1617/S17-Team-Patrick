@@ -1,17 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Model;
 using SOFENGG_Order_Request_Document.Model.Helper;
 using SOFENGG_Order_Request_Document.Presenter.Order;
 using SOFENGG_Order_Request_Document.View.Order.Interface;
+using System.Web;
+using System.Diagnostics;
 
 namespace SOFENGG_Order_Request_Document.View.Order
 {
     public partial class DocumentList : System.Web.UI.Page, IOrderDocumentListView
     {
+        private int[] _degreeIdList;
+
         private readonly OrderDocumentListPresenter _presenter;
-        private GridViewRow _gvRow;
+
+        public int id { get; set; }
+
 
 
         public DocumentList()
@@ -19,163 +27,111 @@ namespace SOFENGG_Order_Request_Document.View.Order
             _presenter = new OrderDocumentListPresenter(this);
         }
 
-        public Document[] AvailableDocumentList
-        {
-            set
-            {
-                gvDocumentList.DataSource = value;
-                gvDocumentList.DataBind();
-            }
-        }
+        //        protected void OnSelectedIndexChangedTrueCopy(object sender, EventArgs e)
+        //        {
+        //            string documentname = gvTrueCopy.SelectedRow.Cells[0].Text;
+        //            HttpCookie docuCookie = new HttpCookie("Document");
+        //            // docuCookie[""];
+        //            if (documentname.Equals("Transcript of Records"))
+        //            {
+        //                docuCookie["id"] = 5 + "";
+        //            }
+        //            else if (documentname.Equals("Form 137"))
+        //            {
+        //                docuCookie["id"] = 6 + "";
+        //            }
+        //
+        //            Response.Cookies.Add(docuCookie);
+        //            Response.Redirect("~/View/Order/OrderItem.aspx");
+        //        }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            var cookie = new HttpCookie("StudentInfo");
+            cookie["StudentDegreeNum"] = 2 + "";
+            Response.Cookies.Add(cookie);
+
+            cookie = new HttpCookie("AcadInformation0");
+            cookie["Degree"] = 1 + "";
+            Response.Cookies.Add(cookie);
+
+            cookie = new HttpCookie("AcadInformation0");
+            cookie["Degree"] = 2 + "";
+            Response.Cookies.Add(cookie);
+
             if (IsPostBack)
                 return;
 
-            GetDocumentList();
+            var isValidRequest = false;
+
+            try
+            {
+                // Get all degree id
+                var studentInfoCookie = Request.Cookies["StudentInfo"];
+                if (studentInfoCookie == null)
+                    return;
+
+                var degreeCountString = studentInfoCookie["StudentDegreeNum"];
+
+                if (string.IsNullOrEmpty(degreeCountString) || int.Parse(degreeCountString) == 0)
+                    return;
+
+                var degreeCount = int.Parse(degreeCountString);
+                var degreeIdList = new List<int>();
+
+                for (var i = 0; i < degreeCount; i++)
+                {
+                    var acadInfoCookie = Request.Cookies["AcadInformation" + i];
+
+                    if (acadInfoCookie == null)
+                        continue;
+
+                    var degreeIdString = acadInfoCookie["Degree"];
+                    if (string.IsNullOrEmpty(degreeIdString) || int.Parse(degreeIdString) == 0)
+                        continue;
+
+                    degreeIdList.Add(int.Parse(degreeIdString));
+                }
+
+                if (degreeIdList.Count <= 0)
+                    return;
+
+                _degreeIdList = degreeIdList.ToArray();
+
+                // Get all documents
+                GetDocumentList();
+
+                isValidRequest = true;
+            }
+            finally
+            {
+                if (!isValidRequest)
+                    Response.Redirect("~/View/Order/InfoAcadDe.aspx");
+            }
+
         }
 
         public void GetDocumentList()
         {
-            _presenter.GetDocumentList();
-           
+            repDocumentList.DataSource = _presenter.GetDocumentListSortByCategory(_degreeIdList);
+            repDocumentList.DataBind();
         }
 
-      
-
-        private Document GetDocumentFromCurrentRow(bool isIdOnly = false)
+        protected void btnOrder_OnClick(object sender, EventArgs e)
         {
-            // Parse the Category Value
-            var categoryValue = ((DataBoundLiteralControl)_gvRow.Cells[2].Controls[0]).Text.Trim();
-            var category = categoryValue.GetValueFromDescription<DocumentCategoryEnum>();
+            var btn = (Button)sender;
+            var gvr = (GridViewRow)btn.NamingContainer;
 
-            // Parse Weight
-            var idValue = _gvRow.Cells[0].Text;
-            int id;
+            var documentId = int.Parse(gvr.Cells[0].Text);
 
-            try
-            {
-                id = idValue.TryParseInt();
-            }
-            catch (NullReferenceException e)
-            {
-                throw new NullReferenceException("ID cannot be null.", e);
-            }
-            catch (FormatException e)
-            {
-                throw new FormatException("Invalid ID", e);
-            }
-
-            if (isIdOnly)
-                return new Document
-                {
-                    Id = id
-                };
-
-            // Format name
-            var name = ((TextBox)_gvRow.Cells[1].Controls[0]).Text.Trim();
-            if (string.IsNullOrEmpty(name))
-                throw new NullReferenceException("Name cannot be empty. Please enter a name for the document.");
-
-            // Parse Regular Price
-            var regularPriceValue = ((TextBox)_gvRow.Cells[3].Controls[0]).Text;
-            float regularPrice;
-
-            try
-            {
-                regularPrice = regularPriceValue.TryParsePrice();
-            }
-            catch (FormatException e)
-            {
-                throw new FormatException("Invalid Regular Price", e);
-            }
-
-            // Parse Express Price
-            var expressPriceValue = ((TextBox)_gvRow.Cells[4].Controls[0]).Text;
-            float expressPrice;
-
-            try
-            {
-                expressPrice = expressPriceValue.TryParsePrice();
-            }
-            catch (FormatException e)
-            {
-                throw new FormatException("Invalid Express Price", e);
-            }
-
-            // Parse Weight
-            var weightValue = ((TextBox)_gvRow.Cells[5].Controls[0]).Text;
-            float weight;
-
-            try
-            {
-                weight = weightValue.TryParseFloat();
-            }
-            catch (NullReferenceException e)
-            {
-                throw new NullReferenceException("Weight cannot be empty. Please enter a weight for the document.", e);
-            }
-            catch (FormatException e)
-            {
-                throw new FormatException("Invalid Weight", e);
-            }
-
-            return new Document
-            {
-                Id = id,
-                Name = name,
-                Category = category,
-                RegularPrice = regularPrice,
-                ExpressPrice = expressPrice,
-                Weight = weight
-                //
-            };
+            var docuCookie = new HttpCookie("Order");
+            docuCookie["DocumentId"] = documentId.ToString();
+            Response.Cookies.Add(docuCookie);
+            Response.Redirect("~/View/Order/OrderItem.aspx");
         }
     }
 
-    internal static class FormatParser
-    {
-        public static float TryParsePrice(this string priceValue)
-        {
-            float price;
-            priceValue = priceValue.Trim();
-
-            if (string.IsNullOrEmpty(priceValue))
-                price = 0f;
-            else if (!float.TryParse(priceValue, out price))
-                throw new FormatException();
-
-            return price;
-        }
-
-        public static float TryParseFloat(this string str, bool isRequired = true)
-        {
-            float value;
-            str = str.Trim();
-
-            if (string.IsNullOrEmpty(str) && isRequired)
-                throw new NullReferenceException();
-            if (!float.TryParse(str, out value))
-                throw new FormatException();
-
-            return value;
-        }
-
-        public static int TryParseInt(this string str, bool isRequired = true)
-        {
-            int value;
-            str = str.Trim();
-
-            if (string.IsNullOrEmpty(str) && isRequired)
-                throw new NullReferenceException();
-            if (!int.TryParse(str, out value))
-                throw new FormatException();
-
-            return value;
-        }
-    }
 
 
 

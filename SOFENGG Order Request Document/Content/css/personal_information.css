@@ -5,3 +5,7 @@ table tr:first-child {
 table tr td:first-child {
   height: 28px;
 }
+
+.radio-inline label {
+    margin-left: -40%;
+}

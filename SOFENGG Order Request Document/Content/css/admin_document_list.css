@@ -1,15 +1,43 @@
-.add {
+.jumbotron {
+    margin-bottom: -2%;
+}
+
+#add_document_modal {
+    display: block;
+}
+
+.document_table {
+    border-radius: 5px;
+    padding: 1% 1% 1% 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+tbody tr:first-child, th {
+    text-align: center;
+    background-color: #7FAD82;
+    color: white;
+}
+
+.table-hover>tbody>tr:first-child:hover {
+    background-color: #0094ff;
+    color: white;
+}
+
+table td {
+    text-align: left;
+}
+
+table td:nth-child(4), td:nth-child(5) {
+    text-align: right;
+}
+
+table td:nth-child(10), td:nth-child(11) {
     text-align: center;
 }
 
-.content-main_buttons {
-    margin-top: 3%;
-    float: right;
+#edit_document_modal, #delete_document_modal {
+    border: none;
+    background: none;
+    padding: 0;
 }
-
-.content-scrolling div {
-    
-  background-color: rgb(250, 250, 250);
-}
-
-.hide { display: none; }

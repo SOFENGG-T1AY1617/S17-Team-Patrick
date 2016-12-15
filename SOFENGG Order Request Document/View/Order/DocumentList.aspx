@@ -1,200 +1,85 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="DocumentList.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.DocumentList" %>
+
 <%@ Import Namespace="System.ComponentModel" %>
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model" %>
 <%@ Import Namespace="SOFENGG_Order_Request_Document.Model.Helper" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/document_list.css"/>
+    <link rel="stylesheet" href="/Content/css/document_list.css" />
+    <style type="text/css">
+        .hiddencol {
+            display: none;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <div class="col-xs-3">
-        <h5> Request Flow</h5>
-        <ul>
+
+<div class="container-fluid center-block"  style="width:800px;"> 
+        <ul class="breadcrumb">
+            &nbsp;
+                <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
+
             <li>
-                <a href="personal_information.html">Personal Information</a>
+                <a href="PersonalInformation.aspx">Personal Information</a>
             </li>
             <li>
-                <a href="info_acad_de.html">Academic Information</a>
+                <a href="InfoAcadDe.aspx">Academic Information</a>
             </li>
             <li>
-                <a href="info_mail_de.html">Mailing Information</a>
+                <a href="InfoMailDe.aspx">Mailing Information</a>
             </li>
-            <li>
-                <b>Document List</b>
-            </li>
-            <li>
-                <a href="info_transaction.html">Checkout</a>
-            </li>
+            <li class="active">Document List</li>
         </ul>
-        <div class="content-divider"></div>
-        <h5>User Information</h5>
-        <ul>
-            <li>Name</li>
-            <li>Address</li>
-            <li>ID Number</li>
-        </ul>
-    </div>
-    <div class="col-xs-9">
-        <h5 class="content-header">Document List</h5>
-        <div>
-            <table border="1" class="content-document">
-                <tr>
-                    <td colspan="1" class="content-document-header" >Below is a list of documents that you can request from the OUR. Press the order link to the document you want to order.</td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="content-document-header">Transcript of Records</td>
-                </tr>
-            </table>
-            <asp:GridView ID="gvDocumentList" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
-                <AlternatingRowStyle BackColor="White" />
-                <Columns >
-                    <asp:TemplateField HeaderText="Document">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Regular Price">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Express Price">
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
-                </Columns>
-                <EditRowStyle BackColor="#7C6F57" />
-                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#E3EAEB" />
-                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                <SortedDescendingHeaderStyle BackColor="#15524A" />
-            </asp:GridView>
 
-
-            <table>
-                <tr>
-                    <td colspan="4" class="content-document-header">Certification</td>
-                </tr>
-            </table>
-            <asp:GridView ID="GridView2" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
-                <AlternatingRowStyle BackColor="White" />
-                <Columns >
-                    <asp:TemplateField>
+        
+            <h4 class="content-header">Document List</h4>
+            <div>
+                <blockquote>
+                    <p>
+                        Below is a list of documents that you can request from the OUR.
+                        <br />
+                        Press the order link to the document you want to order.
+                    </p>
+                </blockquote>
+                <div>
+                    <asp:Repeater ID="repDocumentList" runat="server">
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                            <table class="table table-striped" style="width:590px; margin-left: auto; margin-right: auto;">
+                                <tr>
+                                    <td colspan="4" class="content-document-header"><%# Eval("Category") %></td>
+                                </tr>
+                            </table>
+                            <asp:GridView ID="gvList" DataSource='<%# Eval("DocumentList") %>' AutoGenerateColumns="False" runat="server" CssClass="table table-striped" Style="width: 0px; margin-left: auto; margin-right: auto;">
+                                <Columns>
+                                    <asp:BoundField DataField="Id" HeaderText="Header" HeaderStyle-CssClass="hiddencol" ItemStyle-CssClass="hiddencol"></asp:BoundField>
+                                    <asp:TemplateField HeaderText="Document" HeaderStyle-Width="250px">
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Regular Price" HeaderStyle-Width="120px">
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# float.Parse(Eval("RegularPrice").ToString()) == 0f ? "N/A" : float.Parse(Eval("RegularPrice").ToString()).ToString("n2") %>' ID="lbRegularPrice"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Express Price" HeaderStyle-Width="120px">
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" Text='<%# float.Parse(Eval("ExpressPrice").ToString()) == 0f ? "N/A" : float.Parse(Eval("ExpressPrice").ToString()).ToString("n2") %>' ID="lbExpressPrice"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:Button ID="btnOrder" runat="server" CssClass="btn btn-primary" Text="Order" OnClick="btnOrder_OnClick"/>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
                         </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
-                </Columns>
-                <EditRowStyle BackColor="#7C6F57" />
-                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#E3EAEB" />
-                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                <SortedDescendingHeaderStyle BackColor="#15524A" />
-            </asp:GridView>
-
-            <table>
-                <tr>
-                    <td colspan="4" class="content-document-header">Certified True Copy</td>
-                </tr>
-            </table>
-
-            <asp:GridView ID="GridView3" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
-                <AlternatingRowStyle BackColor="White" />
-                <Columns >
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
-                </Columns>
-                <EditRowStyle BackColor="#7C6F57" />
-                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#E3EAEB" />
-                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                <SortedDescendingHeaderStyle BackColor="#15524A" />
-            </asp:GridView>
-
-            <table>
-                <tr>
-                    <td colspan="4" class="content-document-header">Others</td>
-                </tr>
-            </table>
-
-            <asp:GridView ID="GridView4" AutoGenerateColumns="False" runat="server"  CellPadding="4" ForeColor="#333333" GridLines="None">
-                <AlternatingRowStyle BackColor="White" />
-                <Columns >
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="lbName"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("RegularPrice") %>' ID="lbRegularPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("ExpressPrice") %>' ID="lbExpressPrice"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField> 
-                    <asp:HyperLinkField Text="Order" navigateurl="~\details.aspx" />
-                </Columns>
-                <EditRowStyle BackColor="#7C6F57" />
-                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#E3EAEB" />
-                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                <SortedDescendingHeaderStyle BackColor="#15524A" />
-            </asp:GridView>
-
-            
-
-        </div>
+                    </asp:Repeater>
+                </div>
+            </div>
+        
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">

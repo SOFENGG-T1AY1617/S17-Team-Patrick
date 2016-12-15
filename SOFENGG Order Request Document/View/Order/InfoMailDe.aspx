@@ -8,6 +8,7 @@
     <div class="container-fluid center-block" style="width:800px;">
         <ul class="breadcrumb">
                 &nbsp;
+            <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
                 <li><asp:HyperLink id="hlPersonal" 
                         NavigateUrl="PersonalInformation.aspx" 
                         Text="Personal Information" 
@@ -81,7 +82,7 @@
                 <td>
                     <asp:TextBox ID="txtMailingNum" CssClass="form-control" runat="server"></asp:TextBox>
                     <asp:RegularExpressionValidator runat="server" id="rexMailingNum" 
-						controltovalidate="txtMailingNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a mailing number containing 7 to 15 digits!"  Display="Dynamic"/>
+						controltovalidate="txtMailingNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter a mailing number containing 7 to 15 digits!" Display="Dynamic"/>
                     <asp:RequiredFieldValidator id="rfvMailingNum" runat="server"
                             ControlToValidate="txtMailingNum"
                             ErrorMessage="Mailing number is a required field."

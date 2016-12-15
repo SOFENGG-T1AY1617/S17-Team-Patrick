@@ -2,14 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/info_acad_de.css" />
+    <link href="../../Content/css/info_acad_de.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <asp:ScriptManager ID="sm" runat="server"></asp:ScriptManager>
     <div class="container-fluid center-block" style="width: 800px;">
         <ul class="breadcrumb">
             &nbsp;
-                <li><a href="#">Home</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
             <li>
                 <asp:HyperLink ID="hlPersonal"
                     NavigateUrl="PersonalInformation.aspx"
@@ -65,7 +65,7 @@
                                 <asp:DropDownList ID="ddlDegree" runat="server" Width="400px"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvDegree" runat="server"
                                     ControlToValidate="ddlDegree"
-                                    ErrorMessage="Degree is a required field."
+                                    ErrorMessage="Degree is a required field. Please select campus."
                                     ForeColor="Red" Display="Dynamic">
                                 </asp:RequiredFieldValidator>
                             </ContentTemplate>
@@ -78,7 +78,7 @@
                         <asp:TextBox ID="txtStudNo" CssClass="form-control"
                             runat="server" Style="size: 10px;"></asp:TextBox>
                         <asp:RegularExpressionValidator runat="server" ID="rexStudNo"
-                                                        ControlToValidate="txtStudNo" ValidationExpression="^[0-9]{7,8}$" ErrorMessage="Please enter a student number." Display="Dynamic"/>
+                            ControlToValidate="txtStudNo" ValidationExpression="^[0-9]{7,8}$" ErrorMessage="Please enter a student number." ForeColor="Red" Display="Dynamic"/>
                         <asp:RequiredFieldValidator ID="rfvStudNo" runat="server"
                             ControlToValidate="txtStudNo"
                             ErrorMessage="Student No. is a required field."
@@ -89,13 +89,16 @@
                 <tr>
                     <td class="content-form_label">Admitted as</td>
                     <td>
-                        <div class="checkbox checkboxlist col-sm-12">
+                        <div>
                             <asp:RadioButtonList ID="optAdmittedAs" runat="server"
                                 RepeatDirection="Horizontal" RepeatLayout="Flow">
-                                <asp:ListItem class="radio-inline" Text="Regular Student" Value="1"></asp:ListItem>
-                                <asp:ListItem class="radio-inline" Text="Transferee" Value="2"></asp:ListItem>
-                                <asp:ListItem class="radio-inline" Text="Graduate" Value="3"></asp:ListItem>
+                                <asp:ListItem class="radio_separate" Text="Regular Student" Value="1"></asp:ListItem>
+                                <asp:ListItem class="radio_separate" Text="Transferee" Value="2"></asp:ListItem>
+                                <asp:ListItem class="radio_separate" Text="Graduate" Value="3"></asp:ListItem>
                             </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator runat="server" ID="genderRequired" Display="Dynamic"
+                            ControlToValidate="optAdmittedAs" ErrorMessage="Please select one." ForeColor="red"
+                            ></asp:RequiredFieldValidator>
                         </div>
                     </td>
                 </tr>

@@ -9,29 +9,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online Request for Documents</title>
     <link href="/Content/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/Content/css/admin_global.css">
+    <link href="/Content/css/loading.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/Content/css/admin_global.css" />
+    <link href="../../Content/css/admin_navbar.css" rel="stylesheet" />
+    <script src="/Script/jquery.min.js"></script>
+    <script src="/Script/jquery.validate.min.js"></script>  
+    <script src="/Script/bootstrap.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
 <!-- Fixed container as application is not a full page application -->
-<div class="header">
-    <p>Online Request for Documents</p>
-</div>
 
-<form runat="server">
-<div class="container content">
+<div  class="container-fluid">
     <div class="row">
-        <asp:ContentPlaceHolder ID="body" runat="server">
+        <div class="col-md-2">
+            <div class="nav-side-menu">
+                <div class="brand"><img src="../../Content/images/dlsu_logo.png" /></div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                            </a>
+                        </li>
+                        <li data-toggle="collapse" data-target="#order" class="collapsed">
+                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Order List <span class="glyphicon glyphicon-menu-down"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="order">
+                            <li><a href="Main.aspx">&nbsp;View All</a></li>
+                        </ul>
 
-        </asp:ContentPlaceHolder>
+                        <li data-toggle="collapse" data-target="#document" class="collapsed">
+                            <a href="#"><i class="fa fa-car fa-lg"></i> &nbsp;Document List <span class="glyphicon glyphicon-menu-down"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="document">
+                            <li><a href="DocumentList.aspx">&nbsp;View Document List</a></li>
+                        </ul>
+
+                        <li data-toggle="collapse" data-target="#operationaldate" class="collapsed">
+                            <a><i class="fa fa-car fa-lg"></i> &nbsp;Operational Date <span class="glyphicon glyphicon-menu-down"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="operationaldate">
+                            <li><a href="ManageOperationalDate.aspx">&nbsp;Manage Operational Date</a></li>
+                        </ul>
+
+                        <li data-toggle="collapse" data-target="#user" class="collapsed">
+                            <a href="#"><i class="fa fa-car fa-lg"></i>&nbsp;User <span class="glyphicon glyphicon-menu-down"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="user">
+                            <li><a href="#">&nbsp;Logout</a></li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 table-responsive">
+            <div class="row">
+                <div class="col-md-12">
+                    <form ID="formMain" runat="server">
+                            <asp:ContentPlaceHolder ID="body" runat="server">
+
+                            </asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="other" runat="server"></asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="edit" runat="server"></asp:ContentPlaceHolder>
+                        <asp:ContentPlaceHolder ID="delete" runat="server"></asp:ContentPlaceHolder>
+                    </form>    
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<asp:ContentPlaceHolder ID="other" runat="server"></asp:ContentPlaceHolder>
-</form>
 
-<script src="/Script/jquery.min.js"></script>
-<script src="/Script/bootstrap.min.js"></script>
 <asp:ContentPlaceHolder ID="script" runat="server">
 
 </asp:ContentPlaceHolder>

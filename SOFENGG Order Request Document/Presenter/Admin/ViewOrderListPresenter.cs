@@ -45,7 +45,11 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
             var orderInfo = _model.GetOrderInformation(referenceNo);
 
             _view.ActiveOrder = orderInfo;
+        }
 
+        public void SortOrderItemByAddress()
+        {
+            var orderInfo = _view.ActiveOrder;
             var orderItemByMailingAndOrderType = new List<OrderItemGroup>();
             List<OrderItem> orderItem = null;
 
@@ -76,7 +80,7 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
                     orderItem.Add(o);
             }
 
-            if (orderItem != null && o != null)
+            if (orderItem != null)
                 orderItemByMailingAndOrderType.Add(new OrderItemGroup
                 {
                     OrderItemList = orderItem.ToArray(),
@@ -86,8 +90,7 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
                 });
 
 
-            _view.OrderItemGroup = orderItemByMailingAndOrderType.ToArray();
-
+            _view.ActiveOrderItemList = orderItemByMailingAndOrderType.ToArray();
         }
 
         public OrderStatusEnum GetOrderStatus(int referenceNo)
@@ -95,6 +98,21 @@ namespace SOFENGG_Order_Request_Document.Presenter.Admin
             var o = _model.GetOrderList().FirstOrDefault(i => i.ReferenceNo == referenceNo);
 
             return o == null ? default(OrderStatusEnum) : o.OrderStatus;
+        }
+
+        public bool MarkAsPending(int referenceNo, string newDueDate, string reason)
+        {
+            return _model.MarkAsPending(referenceNo, DateTime.Parse(newDueDate), reason);
+        }
+
+        public bool MarkAsProcessing(int referenceNo)
+        {
+            return _model.MarkAsProcessing(referenceNo);
+        }
+
+        public bool MarkAsDone(int referenceNo)
+        {
+            return _model.MarkAsDone(referenceNo);
         }
     }
 }

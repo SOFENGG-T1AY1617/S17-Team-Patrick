@@ -1,15 +1,21 @@
-﻿.main_report {
-    margin-top: 2%;
-    margin-bottom: 3%;
-}
-.main_report div, .main_report div h4, .main_report div h3 {
+﻿.search_bar {
     display: inline;
 }
-.main_report-right {
-    margin-top: -1%;
-    float: right;
+.search_bar input {
+    margin-top: 2%;
+    width: 430px;
+    display: inline;
 }
 
-.top_report {
-    display: inline;
+.main_report table thead {
+    color: white;
+     background-color: #7FAD82;
+}
+
+.table-fluid tbody tr td:last-child {
+    text-align:right;
+}
+
+textarea {
+    resize: none;
 }

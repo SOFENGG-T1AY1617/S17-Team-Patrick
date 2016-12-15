@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="PersonalInformation.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.PersonalInformation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/personal_information.css">
+    <link href="../../Content/css/personal_information.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 <div class = "container-fluid center-block" style="width:800px;">
@@ -49,7 +49,8 @@
 		                    <asp:RadioButtonList ID="optGender" runat="server" 
 		                            RepeatDirection="Horizontal" RepeatLayout="Flow">
 		                            <asp:ListItem class="radio-inline" Text="Male" Value="M"></asp:ListItem>
-		                            <asp:ListItem class="radio-inline" Text="Female" Value="F"></asp:ListItem>
+                                    
+		                            <asp:ListItem class="radio-inline radio_margin" Text="Female" Value="F"></asp:ListItem>
 		                    </asp:RadioButtonList>
 		                    <asp:RequiredFieldValidator id="rfvGender" runat="server"
 		                        ControlToValidate="optGender"
@@ -113,8 +114,9 @@
                     <asp:RegularExpressionValidator runat="server" id="rexPhoneNum" 
 						controltovalidate="txtPhoneNum" validationexpression="^[0-9]{7,15}$" errormessage="Please enter your contact number containing 7 to 15 digits!"  Display="Dynamic"/>
                     <asp:RequiredFieldValidator id="rfvPhoneNum" runat="server"
-                        ControlToValidate="txtPhoneNum" ErrorMessage="Phone number is a required field."
-                            ForeColor="Red" Display="Dynamic">
+                        ControlToValidate="txtPhoneNum" ErrorMessage="Phone number is a required field." 
+                        Display="Dynamic" 
+                            ForeColor="Red">
                     </asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -124,8 +126,8 @@
                     <asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
                     <asp:RegularExpressionValidator
               			runat="server" ErrorMessage="Please enter a valid email address."
-                 		 id="rexEmail" ControlToValidate="txtEmail" ForeColor="Red" Display="Dynamic" 
-                  			ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                 		 id="rexEmail" ControlToValidate="txtEmail" ForeColor="Red"
+                  			ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic">
                   	</asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator id="rfvEmail" runat="server"
                         ControlToValidate="txtEmail"

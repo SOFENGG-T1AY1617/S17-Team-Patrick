@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Order/Order.Master" AutoEventWireup="true" CodeBehind="InfoMailConfirm.aspx.cs" Inherits="SOFENGG_Order_Request_Document.View.Order.InfoMailConfirm" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Always change the css file name to html file name! -->
-    <link rel="stylesheet" href="/Content/css/info_*_confirm.css">
+    <link rel="stylesheet" href="/Content/css/info___confirm.css">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="container-fluid center-block" style="width:800px;">
        <ul class="breadcrumb">
                 &nbsp;
-                <li><a href="#">Home</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-home"></i></a></li>
                 <li><asp:HyperLink ID="hlPersonal" 
                         NavigateUrl="PersonalInformaton.aspx" 
                         Text="Personal Information" 
@@ -84,7 +84,7 @@
 
        </asp:Repeater>
 		
-        <div>
+        <div class="next_buttons">
             <asp:Button runat="server" Text="Add Another Address" class="btn btn-primary" OnClick="AddMailingInfo"/>
             <asp:Button runat="server" Text="Next" class="btn btn-primary" OnClick="GoToDocumentList"/>
         </div>

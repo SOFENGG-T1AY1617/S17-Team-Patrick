@@ -54,6 +54,13 @@ textarea {
   float: right;
   margin-top: -86%;
 }
+
+.btn-primary {
+      color: forestgreen !important;
+
+
+}
+
 .content-header {
   color: rgb(52, 111, 109);
 }

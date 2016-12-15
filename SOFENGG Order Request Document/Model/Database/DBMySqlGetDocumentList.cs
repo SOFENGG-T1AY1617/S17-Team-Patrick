@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOFENGG_Order_Request_Document.Model.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,22 +9,100 @@ namespace SOFENGG_Order_Request_Document.Model.Database
     public class DBMySqlGetDocumentList : DBMySqlSelectConnection
     {
         public Document[] DocumentList;
-        /* private readonly bool _isGraduate;
-         private readonly bool _isUndergraduate;
+        private readonly bool isForGraduate;
+        private readonly bool isForUndergraduate;
+        protected string AdditionalCondition;
+        protected DocumentCategoryEnum Category;
+        protected DegreeLevelEnum Degree;
 
-         public DBMySqlGetDocumentList(bool isGraduate, bool isUndergraduate)
-         {
-             _isGraduate = isGraduate;
-             _isUndergraduate = isUndergraduate;
-         } */
+        public DBMySqlGetDocumentList(int[] degreeIdList)
+        {
+            isForGraduate = false;
+            isForUndergraduate = false;
+
+            for (var i = 0; i < degreeIdList.Length; i++)
+            {
+                if (isForGraduate || isForUndergraduate)
+                    break;
+
+                var db = new DBMySqlGetDegreeList();
+                db.SetQueryGivenDegreeId(degreeIdList[i]);
+
+                if (db.DegreeList == null || db.DegreeList.Length <= 0)
+                    continue;
+
+                var degree = db.DegreeList[0];
+
+                if (!isForUndergraduate && degree.Level == DegreeLevelEnum.Bachelors)
+                    isForUndergraduate = true;
+                else if (!isForGraduate)
+                    isForGraduate = true;
+            }
+
+            if (isForUndergraduate)
+                AdditionalCondition = string.Format(" WHERE {0} = @{0}", Document.ColForUndergraduate);
+
+            if (string.IsNullOrEmpty(AdditionalCondition) && isForGraduate)
+                AdditionalCondition = string.Format(" WHERE {0} = @{0}", Document.ColForGraduate);
+            else if (!string.IsNullOrEmpty(AdditionalCondition) && isForGraduate)
+                AdditionalCondition += string.Format(" AND {0} = @{0}", Document.ColForGraduate);
+
+        }
+
+        public DBMySqlGetDocumentList(DocumentCategoryEnum category,DegreeLevelEnum degree )
+        {
+            if (degree == DegreeLevelEnum.Bachelors)
+            {
+                isForUndergraduate = true;
+                AdditionalCondition = string.Format(" WHERE {0} = @{0} && {1} = {2}", Document.ColCategory, Document.ColForUndergraduate, isForUndergraduate ? 1 : 0);
+                Category = category;
+            }
+            else
+            {
+                isForGraduate = true;
+                AdditionalCondition = string.Format(" WHERE {0} = @{0} && {1} = {2}", Document.ColCategory, Document.ColForUndergraduate, isForGraduate ? 1 : 0);
+                Category = category;
+            }
+
+            /*
+                _isGraduate = isGraduate;
+            _isUndergraduate = isUndergraduate;
+            string var = string.Format("WHERE {0} == @{1} && {2} == @{3}", 
+                Document.ColForGraduate, _isGraduate, Document.ColForUndergraduate, _isUndergraduate);
+                */
+            
+
+        }
+
+        public DBMySqlGetDocumentList(DocumentCategoryEnum category)
+        {
+            AdditionalCondition = string.Format(" WHERE {0} = @{0}", Document.ColCategory);
+            Category = category;
+        }
+
+        public DBMySqlGetDocumentList()
+        {
+        }
 
         protected override void SetQuery()
         {
-            Cmd.CommandText = string.Format("SELECT * FROM {0}", Document.Table);
+            Cmd.CommandText = string.Format("SELECT * FROM {0} {1} ORDER BY {2}", Document.Table, AdditionalCondition, Document.ColCategory);
 
-//            Cmd.Parameters.AddWithValue("@name", "banana");
-            Cmd.Prepare();
+            try
+            {
+                Cmd.Parameters.AddWithValue("@" + Document.ColCategory, (int)Category);
+                Cmd.Parameters.AddWithValue("@" + Document.ColForGraduate, isForGraduate ? 1 : 0);
+                Cmd.Parameters.AddWithValue("@" + Document.ColForUndergraduate, isForUndergraduate ? 1 : 0);
+            }
+            //            Cmd.Parameters.AddWithValue("@name", "banana");
+            finally
+            {
+                Cmd.Prepare();
+                System.Diagnostics.Debug.WriteLine(Cmd.GetPreparedStatementString());
+            }
+            
         }
+
 
         public override void Parse()
         {

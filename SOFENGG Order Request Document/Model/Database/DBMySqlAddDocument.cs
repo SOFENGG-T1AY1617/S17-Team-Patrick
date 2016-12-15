@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
+using SOFENGG_Order_Request_Document.Model.Helper;
 
 namespace SOFENGG_Order_Request_Document.Model.Database
 {
@@ -33,6 +35,8 @@ namespace SOFENGG_Order_Request_Document.Model.Database
                     cmd.Parameters.AddWithValue("@" + Document.ColForUndergraduate, Document.IsForUndergraduate ? 1 : 0);
                     cmd.Parameters.AddWithValue("@" + Document.ColForGraduate, Document.IsForUndergraduate ? 1 : 0);
                     cmd.Prepare();
+
+                    Debug.WriteLine(cmd.GetPreparedStatementString());
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
