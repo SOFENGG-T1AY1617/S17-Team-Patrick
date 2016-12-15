@@ -36,21 +36,23 @@ namespace SOFENGG_Order_Request_Document.View.Order
         private void DisplayAllStudentDegree()
         {
             int studentDegreeNumber = int.Parse(Request.Cookies["StudentInfo"]["StudentDegreeNum"]);
+            var admittedAsCookie = Request.Cookies["AcadInformation"]["AdmittedAs"].Split('|');
+            var idStudentCookie = Request.Cookies["AcadInformation"]["IdStudent"].Split('|');
+            var degreeCookie = Request.Cookies["AcadInformation"]["Degree"].Split('|');
+            var yearAdmittedCookie = Request.Cookies["AcadInformation"]["YearAdmitted"].Split('|');
+            var idCookie = Request.Cookies["AcadInformation"]["Id"].Split('|');
+
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
-            StudentDegree[] studentDegree = presenter.GetStudentDegreeList();
             List<StudentDegree> studentDegreeList = new List<StudentDegree>();
             for (int i = 0; i < studentDegreeNumber; i++)
             {
-                HttpCookie cookie = null;
-                if(Request.Cookies["AcadInformation" + i] == null)
-                    continue;
-                cookie = Request.Cookies["AcadInformation" + i];
+                var cookie = Request.Cookies["AcadInformation"];
                 studentDegreeList.Add(new StudentDegree()
                 {
-                    AdmittedAs = (AdmissionEnum)int.Parse(cookie["AdmittedAs"]),
-                    IdStudent = int.Parse(cookie["IdStudent"]),
-                    Degree = presenter.GetOneDegree(int.Parse(cookie["Degree"])),
-                    YearAdmitted = int.Parse(cookie["YearAdmitted"]),
+                    AdmittedAs = (AdmissionEnum)int.Parse(admittedAsCookie[i]),
+                    IdStudent = int.Parse(idStudentCookie[i]),
+                    Degree = presenter.GetOneDegree(int.Parse(degreeCookie[i])),
+                    YearAdmitted = int.Parse(yearAdmittedCookie[i]),
                     Id = i,
                     StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"])
 
@@ -75,17 +77,23 @@ namespace SOFENGG_Order_Request_Document.View.Order
         protected void DeleteStudentDegree(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            Debug.Write(button.Parent.FindControl("updateBtns"));
             
             var idControl = button.Parent.FindControl("updateBtns") as HiddenField;
-            
-            HttpCookie deletedCookie = Request.Cookies["AcadInformation" + idControl.Value];
-            deletedCookie.Expires = DateTime.Now.AddDays(-1d);
-            Response.Cookies.Add(deletedCookie);
-            
-            Response.Redirect("~/View/Order/InfoAcadConfirm.aspx");
+            var index = int.Parse(idControl.Value);
+
+            InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
+            HttpCookie cookie = presenter.DeleteAcadInfo(Request.Cookies["AcadInformation"], index);
+            Response.Cookies.Add(cookie);
+
+            HttpCookie studentInfoCookie = Request.Cookies["StudentInfo"];
+            studentInfoCookie["StudentDegreeNum"] = (int.Parse(Request.Cookies["StudentInfo"]["StudentDegreeNum"]) - 1) + "";
+            Response.Cookies.Add(studentInfoCookie);
 
             DisplayAllStudentDegree();
+            Response.Redirect("~/View/Order/InfoAcadConfirm.aspx");
+
+            
+            
 
         }
 
@@ -96,7 +104,6 @@ namespace SOFENGG_Order_Request_Document.View.Order
             HttpCookie editCookie = new HttpCookie("EditCookie");
             editCookie["Id"] = idControl.Value;
             Response.Cookies.Add(editCookie);
-            Debug.Write("\n\n" + idControl.Value + "\n\n");
             Response.Redirect("~/View/Order/InfoAcadDe.aspx");
         }
 

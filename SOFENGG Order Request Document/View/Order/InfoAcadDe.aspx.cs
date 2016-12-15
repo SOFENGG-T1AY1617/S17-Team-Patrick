@@ -13,6 +13,14 @@ namespace SOFENGG_Order_Request_Document.View.Order
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // ========== DEBUG MODE. PLEASE ERASE THIS AFTER ============= //
+            if (Request.Cookies["StudentInfo"] == null)
+            {
+                HttpCookie studentInfo = new HttpCookie("StudentInfo");
+                studentInfo["Id"] = "8";
+                studentInfo["StudentDegreeNum"] = 0 + "";
+                Response.Cookies.Add(studentInfo);
+            }
 
             try
             {
@@ -68,18 +76,23 @@ namespace SOFENGG_Order_Request_Document.View.Order
         private void PopulatePreviousInput(int i)
         {
             //can only be accessed when pressed EDIT
-            HttpCookie cookie = Request.Cookies["AcadInformation" + i];
+            var admittedAsCookie = Request.Cookies["AcadInformation"]["AdmittedAs"].Split('|');
+            var idStudentCookie = Request.Cookies["AcadInformation"]["IdStudent"].Split('|');
+            var degreeCookie = Request.Cookies["AcadInformation"]["Degree"].Split('|');
+            var yearAdmittedCookie = Request.Cookies["AcadInformation"]["YearAdmitted"].Split('|');
+            var idCookie = Request.Cookies["AcadInformation"]["Id"].Split('|');
+            
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
             
-            txtStudNo.Text = cookie["IdStudent"];
+            txtStudNo.Text = idStudentCookie[i];
             ddlCampus.SelectedItem.Selected = false;
-            ddlCampus.Items.FindByText(presenter.GetOneDegree(int.Parse(cookie["Degree"])).CampusOffered.ToString()).Selected = true;
+            ddlCampus.Items.FindByText(presenter.GetOneDegree(int.Parse(degreeCookie[i])).CampusOffered.ToString()).Selected = true;
             ddlYearAdmitted.SelectedItem.Selected = false;
-            ddlYearAdmitted.Items.FindByText(cookie["YearAdmitted"]).Selected = true;
+            ddlYearAdmitted.Items.FindByText(yearAdmittedCookie[i]).Selected = true;
             PopulateDegreeDropdown();
             ddlDegree.SelectedItem.Selected = false;
-            ddlDegree.Items.FindByText(presenter.GetOneDegree(int.Parse(cookie["Degree"])).Name).Selected = true;
-            optAdmittedAs.Items.FindByValue(int.Parse(cookie["AdmittedAs"]).ToString()).Selected = true;
+            ddlDegree.Items.FindByText(presenter.GetOneDegree(int.Parse(degreeCookie[i])).Name).Selected = true;
+            optAdmittedAs.Items.FindByValue(int.Parse(admittedAsCookie[i]).ToString()).Selected = true;
         }
 
         protected void SubmitStudentDegree_Click(object sender, EventArgs e)
@@ -87,15 +100,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             if (Request.Cookies["StudentInfo"] == null) return;
             StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]);
-            if (txtStudNo.Text.CompareTo("") != 0)
-            {
-                IdNumber = int.Parse(txtStudNo.Text);
-            }
-            else
-            {
-                IdNumber = 0;
-            }
-            
+            IdNumber = int.Parse(txtStudNo.Text);
             CampusAttended = int.Parse(ddlCampus.SelectedItem.Value);
             YearAdmitted = int.Parse(ddlYearAdmitted.SelectedItem.Text);
             Degree = ddlDegree.SelectedItem.Text;
@@ -119,8 +124,11 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
             
             InfoAcadDePresenter presenter = new InfoAcadDePresenter(this);
-            HttpCookie acadInfoCookie = presenter.AddAcadInfoCookie(int.Parse(Request.Cookies["StudentInfo"]["Id"]),
-                                                                    editInfoId);
+            HttpCookie acadCookie;
+            if (Request.Cookies["AcadInformation"] != null)
+                acadCookie = Request.Cookies["AcadInformation"];
+            else acadCookie = null;
+            HttpCookie acadInfoCookie = presenter.AddAcadInfoCookie(acadCookie, editInfoId);
             Response.Cookies.Add(acadInfoCookie);
             Response.Redirect("~/View/Order/InfoAcadConfirm.aspx");
         }

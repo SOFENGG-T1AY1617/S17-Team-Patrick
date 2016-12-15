@@ -30,22 +30,23 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             int mailingInfoNumber = int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]);
             InfoMailDePresenter presenter = new InfoMailDePresenter(this);
-            MailingInfo[] mailingInfo = presenter.GetMailingInfoList();
+            var contactNoCookie = Request.Cookies["MailInformation"]["ContactNo"].Split('|');
+            var deliveryAreaCookie = Request.Cookies["MailInformation"]["DeliveryArea"].Split('|');
+            var idCookie = Request.Cookies["MailInformation"]["Id"].Split('|');
+            var mailingAddressCookie = Request.Cookies["MailInformation"]["MailingAddress"].Split('|');
+            var zipCodeCookie = Request.Cookies["MailInformation"]["Zipcode"].Split('|');
             List<MailingInfo> mailingInfoList = new List<MailingInfo>();
             for (var i = 0; i < mailingInfoNumber; i++)
             {
-                HttpCookie cookie;
-                if(Request.Cookies["MailInformation" + i] == null)
-                    continue;
-                cookie = Request.Cookies["MailInformation" + i];
+                var cookie = Request.Cookies["MailInformation"];
                 mailingInfoList.Add(new MailingInfo()
                 {
-                    ContactNo = cookie["ContactNo"],
-                    DeliveryArea = presenter.GetOneDeliveryArea(int.Parse(cookie["DeliveryArea"])),
+                    ContactNo = contactNoCookie[i],
+                    DeliveryArea = presenter.GetOneDeliveryArea(int.Parse(deliveryAreaCookie[i])),
                     Id = i,
-                    MailingAddress = cookie["MailingAddress"],
+                    MailingAddress = mailingAddressCookie[i],
                     StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"]),
-                    ZipCode = int.Parse(cookie["Zipcode"]),
+                    ZipCode = int.Parse(zipCodeCookie[i]),
                 });
             }
             rptInfoMailConfirm.DataSource = mailingInfoList;
@@ -77,10 +78,15 @@ namespace SOFENGG_Order_Request_Document.View.Order
         {
             Button button = sender as Button;
             var idControl = button.Parent.FindControl("updateBtns") as HiddenField;
+            var index = int.Parse(idControl.Value);
 
-            HttpCookie deletedCookie = Request.Cookies["MailInformation" + idControl.Value];
-            deletedCookie.Expires = DateTime.Now.AddDays(-1d);
-            Response.Cookies.Add(deletedCookie);
+            InfoMailDePresenter presenter = new InfoMailDePresenter(this);
+            HttpCookie cookie = presenter.DeleteMailInfoCookie(Request.Cookies["AcadInformation"], index);
+            Response.Cookies.Add(cookie);
+
+            HttpCookie studentInfoCookie = Request.Cookies["StudentInfo"];
+            studentInfoCookie["StudentDegreeNum"] = (int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]) - 1) + "";
+            Response.Cookies.Add(studentInfoCookie);
 
             Response.Redirect("~/View/Order/InfoMailConfirm.aspx");
             

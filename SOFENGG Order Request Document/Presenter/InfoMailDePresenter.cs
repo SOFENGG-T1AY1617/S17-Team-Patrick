@@ -19,16 +19,106 @@ namespace SOFENGG_Order_Request_Document.Presenter
             this.view = view;
         }
 
-        public HttpCookie AddMailInfoCookie(int studentInfoId, int MailId)
+        public HttpCookie DeleteMailInfoCookie(HttpCookie mailCookie, int deleteId)
         {
+            var idString = mailCookie["Id"].Split('|');
+            var admittedString = mailCookie["MailingAddress"].Split('|');
+            var degreeString = mailCookie["ContactNo"].Split('|');
+            var idStudentString = mailCookie["DeliveryArea"].Split('|');
+            var yearString = mailCookie["Zipcode"].Split('|');
+
+            mailCookie["Id"] = "";
+            mailCookie["MailingAddress"] = "";
+            mailCookie["ContactNo"] = "";
+            mailCookie["DeliveryArea"] = "";
+            mailCookie["Zipcode"] = "";
+
+            var str = "|";
+
+            for (int i = 0; i < idString.Length; i++)
+            {
+                if (i == idString.Length - 1) str = "";
+                if (i == deleteId) continue;
+                mailCookie["Id"] += idString[i] + str;
+                mailCookie["MailingAddress"] += admittedString[i] + str;
+                mailCookie["ContactNo"] += degreeString[i] + str;
+                mailCookie["DeliveryArea"] += idStudentString[i] + str;
+                mailCookie["Zipcode"] += yearString[i] + str;
+            }
+
+            return mailCookie;
+        }
+
+        public HttpCookie AddMailInfoCookie(HttpCookie mailCookie, int editId)
+        {
+            try
+            {
+                var idString = mailCookie["Id"].Split('|');
+                var admittedString = mailCookie["MailingAddress"].Split('|');
+                var degreeString = mailCookie["ContactNo"].Split('|');
+                var idStudentString = mailCookie["DeliveryArea"].Split('|');
+                var yearString = mailCookie["Zipcode"].Split('|');
+
+                mailCookie["Id"] = "";
+                mailCookie["MailingAddress"] = "";
+                mailCookie["ContactNo"] = "";
+                mailCookie["DeliveryArea"] = "";
+                mailCookie["Zipcode"] = "";
+
+                var str = "|";
+                var mailInfoNum = idString.Length;
+                if (editId == idString.Length)
+                    mailInfoNum += 1;
+
+                for (int i = 0; i < mailInfoNum; i++)
+                {
+                    if (i == mailInfoNum - 1) str = "";
+
+                    if (i != editId)
+                    {
+                        mailCookie["Id"] += idString[i] + str;
+                        mailCookie["MailingAddress"] += admittedString[i] + str;
+                        mailCookie["ContactNo"] += degreeString[i] + str;
+                        mailCookie["DeliveryArea"] += idStudentString[i] + str;
+                        mailCookie["Zipcode"] += yearString[i] + str;
+                    }
+                    else
+                    {
+                        mailCookie["Id"] += i + str;
+                        mailCookie["MailingAddress"] += view.MailingAddress + str;
+                        mailCookie["ContactNo"] += view.MailingContactNo + str;
+                        mailCookie["DeliveryArea"] += model.GetDeliveryArea(view.DeliveryAreaId).Id + str;
+                        mailCookie["Zipcode"] += view.Zipcode + "";
+                    }
+                }
+
+            }
+            catch (NullReferenceException)
+            {
+                mailCookie = new HttpCookie("AcadInformation");
+                mailCookie["Id"] += 0 + "";
+                mailCookie["MailingAddress"] += view.MailingAddress;
+                mailCookie["ContactNo"] += view.MailingContactNo;
+                mailCookie["DeliveryArea"] += model.GetDeliveryArea(view.DeliveryAreaId).Id;
+                mailCookie["Zipcode"] += view.Zipcode + "";
+            }
+
+            return mailCookie;
+        }
+
+
+
+        public HttpCookie AddMailInfoCookie2(int studentInfoId, int mailId)
+        {
+            int id = mailId;
             MailingInfo[] mailInfo = model.GetMailingInfo(studentInfoId);
             HttpCookie cookie;
-            int mailId = MailId;
-            cookie = new HttpCookie("MailInformation" + MailId);
-            cookie["MailingAddress"] = view.MailingAddress;
-            cookie["ContactNo"] = view.MailingContactNo;
-            cookie["DeliveryArea"] = model.GetDeliveryArea(view.DeliveryAreaId).Id + "";
-            cookie["Zipcode"] = view.Zipcode + "";
+            cookie = new HttpCookie("MailInformation");
+            cookie["MailingAddress"] = cookie["MailingAddress"] + "|" + view.MailingAddress;
+            cookie["ContactNo"] = cookie["ContactNo"] + "|" +  view.MailingContactNo;
+            cookie["DeliveryArea"] = cookie["DeliveryArea"] + "|" + model.GetDeliveryArea(view.DeliveryAreaId).Id + "";
+            cookie["Zipcode"] = cookie["Zipcode"] + "|" + view.Zipcode + "";
+            cookie["Id"] = cookie["Id"] + "|" + mailId;
 
             return cookie;
         }

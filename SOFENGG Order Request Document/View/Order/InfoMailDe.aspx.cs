@@ -51,7 +51,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
             catch (NullReferenceException)
             {
-                editInfoId = int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]);
+                editInfoId = int.Parse(Request.Cookies["StudentInfo"]["MailingInfoNum"]) + 1;
                 HttpCookie studentCookie = Request.Cookies["StudentInfo"];
                 int studentDegreeNum = int.Parse(studentCookie["MailingInfoNum"]) + 1;
                 studentCookie["MailingInfoNum"] = studentDegreeNum.ToString();
@@ -59,9 +59,11 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
 
             InfoMailDePresenter presenter = new InfoMailDePresenter(this);
-            HttpCookie mailInfoCookie = presenter.AddMailInfoCookie(int.Parse(Request.Cookies["StudentInfo"]["Id"]),
-                                                                    editInfoId);
-
+            HttpCookie mailCookie;
+            if (Request.Cookies["AcadInformation"] != null)
+                mailCookie = Request.Cookies["AcadInformation"];
+            else mailCookie = null;
+            HttpCookie mailInfoCookie = presenter.AddMailInfoCookie(mailCookie, editInfoId);
             Response.Cookies.Add(mailInfoCookie);
             Response.Redirect("~/View/Order/InfoMailConfirm.aspx");
 
@@ -70,14 +72,18 @@ namespace SOFENGG_Order_Request_Document.View.Order
         private void PopulatePreviousInput(int i)
         {
             //can only be accessed when pressed EDIT
-            HttpCookie cookie = Request.Cookies["MailInformation" + i];
+            var mailingAddressCookie = Request.Cookies["MailInformation"]["MailingAddress"].Split('|');
+            var contactNoCookie = Request.Cookies["MailInformation"]["ContactNo"].Split('|');
+            var zipCodeCookie = Request.Cookies["MailInformation"]["Zipcode"].Split('|');
+            var deliveryAreaCookie = Request.Cookies["MailInformation"]["DeliveryArea"].Split('|');
+            
             InfoMailDePresenter presenter = new InfoMailDePresenter(this);
 
-            txtMailAddress.Text = cookie["MailingAddress"];
-            txtMailingNum.Text = cookie["ContactNo"];
-            txtZipCode.Text = cookie["Zipcode"];
+            txtMailAddress.Text = mailingAddressCookie[i];
+            txtMailingNum.Text = contactNoCookie[i];
+            txtZipCode.Text = zipCodeCookie[i];
             ddlDelivery.SelectedItem.Selected = false;
-            ddlDelivery.Items.FindByValue(cookie["DeliveryArea"]).Selected = true;
+            ddlDelivery.Items.FindByValue(deliveryAreaCookie[i]).Selected = true;
         }
 
         private void PopulateDeliveryDropdown()
