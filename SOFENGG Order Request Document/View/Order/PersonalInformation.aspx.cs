@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Web;
 using System.Web.UI.WebControls;
 using SOFENGG_Order_Request_Document.Model;
@@ -95,11 +96,11 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         private void PopulatePreviousInput()
         {
-            PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
+            var presenter = new PersonalInformationPresenter(this);
             //get StudentInfo from presenter.GetStudentInfo();
             //populate all txtBox etc etc
             //change all StudentInfo 
-            HttpCookie cookie = Request.Cookies["StudentInfo"];
+            var cookie = Request.Cookies["StudentInfo"];
             txtLName.Text = cookie["LastName"];
             txtFName.Text = cookie["FirstName"];
             txtMName.Text = cookie["MiddleName"];
@@ -169,7 +170,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
             var month = Convert.ToDateTime(ddlBirthMonth.SelectedItem.Text + " 01, 1900").Month;
             var year = ddlBirthYear.SelectedItem.Text;
             var day = ddlBirthDay.SelectedItem.Text;
-            BirthDate = Convert.ToDateTime(month + "/" + day + "/" + year).Date;
+            BirthDate = DateTime.ParseExact(day + "/" + month + "/" + year, "d/M/yyyy",
+                                       CultureInfo.InvariantCulture);
             Citizenship = txtCitizen.Text;
             CurrentAddress = txtCurrentAddress.Text;
             PhoneNumber = txtPhoneNum.Text;
@@ -177,8 +179,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
             HighSchoolAttended = txtHSAttended.Text;
             PlaceOfBirth = txtBirthplace.Text;
 
-            PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
-            HttpCookie personalInfoCookie = presenter.AddPersonalInformation();
+            var presenter = new PersonalInformationPresenter(this);
+            var personalInfoCookie = presenter.AddPersonalInformation();
             Response.Cookies.Add(personalInfoCookie);
 
             Response.Redirect("~/View/Order/InfoAcadDe.aspx");
@@ -194,16 +196,14 @@ namespace SOFENGG_Order_Request_Document.View.Order
         private void PopulateDay()
         {
             ddlBirthDay.Items.Clear();
-            ListItem lt = new ListItem();
-            lt.Text = "DD";
-            lt.Value = "0";
-            ddlBirthDay.Items.Add(lt);
-            int days = DateTime.DaysInMonth(this.Year, this.Month);
-            for (int i = 1; i <= days; i++)
+            var days = DateTime.DaysInMonth(this.Year, this.Month);
+            for (var i = 1; i <= days; i++)
             {
-                lt = new ListItem();
-                lt.Text = i.ToString();
-                lt.Value = i.ToString();
+                var lt = new ListItem
+                {
+                    Text = i.ToString(),
+                    Value = i.ToString()
+                };
                 ddlBirthDay.Items.Add(lt);
             }
             ddlBirthDay.Items.FindByValue(DateTime.Now.Day.ToString()).Selected = true;
@@ -212,32 +212,32 @@ namespace SOFENGG_Order_Request_Document.View.Order
         private void PopulateMonth()
         {
             ddlBirthMonth.Items.Clear();
-            ListItem lt = new ListItem();
-            lt.Text = "MM";
-            lt.Value = "0";
-            ddlBirthMonth.Items.Add(lt);
-            for (int i = 1; i <= 12; i++)
+
+            var monthList = DateTimeFormatInfo.CurrentInfo.MonthNames;
+
+            for (var i = 0; i < monthList.Length; i++)
             {
-                lt = new ListItem();
-                lt.Text = Convert.ToDateTime("1/"+ i.ToString()+"/1900").ToString("MMMM");
-                lt.Value = i.ToString();
-                ddlBirthMonth.Items.Add(lt);
+                if (string.IsNullOrEmpty(monthList[i].Trim()))
+                    continue;
+
+                var item = new ListItem(monthList[i], (i + 1) + "");
+                ddlBirthMonth.Items.Add(item);
+                
             }
-            ddlBirthMonth.Items.FindByValue(DateTime.Now.Month.ToString()).Selected = true;
+
+            ddlBirthMonth.SelectedIndex = DateTime.Now.Month - 1;
         }
 
         private void PopulateYear()
         {
             ddlBirthYear.Items.Clear();
-            ListItem lt = new ListItem();
-            lt.Text = "YYYY";
-            lt.Value = "0";
-            ddlBirthYear.Items.Add(lt);
-            for (int i = DateTime.Now.Year; i >= 1950; i--)
+            for (var i = DateTime.Now.Year; i >= 1950; i--)
             {
-                lt = new ListItem();
-                lt.Text = i.ToString();
-                lt.Value = i.ToString();
+                var lt = new ListItem
+                {
+                    Text = i.ToString(),
+                    Value = i.ToString()
+                };
                 ddlBirthYear.Items.Add(lt);
             }
             ddlBirthYear.Items.FindByValue(DateTime.Now.Year.ToString()).Selected = true;
