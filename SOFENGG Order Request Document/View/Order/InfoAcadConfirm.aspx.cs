@@ -53,7 +53,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
                     IdStudent = int.Parse(idStudentCookie[i]),
                     Degree = presenter.GetOneDegree(int.Parse(degreeCookie[i])),
                     YearAdmitted = int.Parse(yearAdmittedCookie[i]),
-                    Id = i,
+                    Id = int.Parse(idCookie[i]),
                     StudentInfoId = int.Parse(Request.Cookies["StudentInfo"]["Id"])
 
                 });

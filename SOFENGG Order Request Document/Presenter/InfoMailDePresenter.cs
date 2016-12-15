@@ -22,10 +22,10 @@ namespace SOFENGG_Order_Request_Document.Presenter
         public HttpCookie DeleteMailInfoCookie(HttpCookie mailCookie, int deleteId)
         {
             var idString = mailCookie["Id"].Split('|');
-            var admittedString = mailCookie["MailingAddress"].Split('|');
-            var degreeString = mailCookie["ContactNo"].Split('|');
-            var idStudentString = mailCookie["DeliveryArea"].Split('|');
-            var yearString = mailCookie["Zipcode"].Split('|');
+            var mailingAddressString = mailCookie["MailingAddress"].Split('|');
+            var contactNoString = mailCookie["ContactNo"].Split('|');
+            var deliveryAreaString = mailCookie["DeliveryArea"].Split('|');
+            var zipcodeString = mailCookie["Zipcode"].Split('|');
 
             mailCookie["Id"] = "";
             mailCookie["MailingAddress"] = "";
@@ -40,10 +40,10 @@ namespace SOFENGG_Order_Request_Document.Presenter
                 if (i == idString.Length - 1) str = "";
                 if (i == deleteId) continue;
                 mailCookie["Id"] += idString[i] + str;
-                mailCookie["MailingAddress"] += admittedString[i] + str;
-                mailCookie["ContactNo"] += degreeString[i] + str;
-                mailCookie["DeliveryArea"] += idStudentString[i] + str;
-                mailCookie["Zipcode"] += yearString[i] + str;
+                mailCookie["MailingAddress"] += mailingAddressString[i] + str;
+                mailCookie["ContactNo"] += contactNoString[i] + str;
+                mailCookie["DeliveryArea"] += deliveryAreaString[i] + str;
+                mailCookie["Zipcode"] += zipcodeString[i] + str;
             }
 
             return mailCookie;
@@ -54,10 +54,10 @@ namespace SOFENGG_Order_Request_Document.Presenter
             try
             {
                 var idString = mailCookie["Id"].Split('|');
-                var admittedString = mailCookie["MailingAddress"].Split('|');
-                var degreeString = mailCookie["ContactNo"].Split('|');
-                var idStudentString = mailCookie["DeliveryArea"].Split('|');
-                var yearString = mailCookie["Zipcode"].Split('|');
+                var mailingAddressString = mailCookie["MailingAddress"].Split('|');
+                var contactNoString = mailCookie["ContactNo"].Split('|');
+                var deliveryAreaString = mailCookie["DeliveryArea"].Split('|');
+                var zipcodeString = mailCookie["Zipcode"].Split('|');
 
                 mailCookie["Id"] = "";
                 mailCookie["MailingAddress"] = "";
@@ -77,10 +77,10 @@ namespace SOFENGG_Order_Request_Document.Presenter
                     if (i != editId)
                     {
                         mailCookie["Id"] += idString[i] + str;
-                        mailCookie["MailingAddress"] += admittedString[i] + str;
-                        mailCookie["ContactNo"] += degreeString[i] + str;
-                        mailCookie["DeliveryArea"] += idStudentString[i] + str;
-                        mailCookie["Zipcode"] += yearString[i] + str;
+                        mailCookie["MailingAddress"] += mailingAddressString[i] + str;
+                        mailCookie["ContactNo"] += contactNoString[i] + str;
+                        mailCookie["DeliveryArea"] += deliveryAreaString[i] + str;
+                        mailCookie["Zipcode"] += zipcodeString[i] + str;
                     }
                     else
                     {
@@ -95,7 +95,7 @@ namespace SOFENGG_Order_Request_Document.Presenter
             }
             catch (NullReferenceException)
             {
-                mailCookie = new HttpCookie("AcadInformation");
+                mailCookie = new HttpCookie("MailInformation");
                 mailCookie["Id"] += 0 + "";
                 mailCookie["MailingAddress"] += view.MailingAddress;
                 mailCookie["ContactNo"] += view.MailingContactNo;
