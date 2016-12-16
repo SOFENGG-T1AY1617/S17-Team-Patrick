@@ -49,6 +49,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
         protected void Page_Load(object sender, EventArgs e)
         {
             var cookie = new HttpCookie("StudentInfo");
+            cookie["Id"] = 2 + "";
             cookie["StudentDegreeNum"] = 2 + "";
             Response.Cookies.Add(cookie);
 

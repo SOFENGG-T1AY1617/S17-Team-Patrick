@@ -17,7 +17,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["StudentInfo"] == null)
+            if (Request.Cookies["StudentInfo"]["MailingInfoNum"] == null)
             {
                 HttpCookie Scookie = new HttpCookie("StudentInfo");
                 Scookie["Id"] = "1";
@@ -37,8 +37,8 @@ namespace SOFENGG_Order_Request_Document.View.Order
 
             if (!IsPostBack)
             {
-                DisplayStudentDegree();
-                DisplayAllMailingInfo();
+                //DisplayStudentDegree();
+                //DisplayAllMailingInfo();
                 DisplayInfo();
             }
 
@@ -289,6 +289,7 @@ namespace SOFENGG_Order_Request_Document.View.Order
             {
                 orderItemCookie = new HttpCookie("orderItem");
                 orderItemCookie["docuId"] = Request.Cookies["Document"]["id"];
+                orderItemCookie["Id"] = 0 + "";
                 if (rbExpress.Checked == true)
                 {
                     
@@ -305,18 +306,27 @@ namespace SOFENGG_Order_Request_Document.View.Order
             }
             else
             {
-                orderItemCookie["docuId"] += ","+ Request.Cookies["Document"]["id"];
-                if (rbExpress.Checked == true)
-                {
-                    
-                    orderItemCookie["orderType"] += "|1";
-                }
-                else
-                    orderItemCookie["orderType"] += "|0";
+                var idString = orderItemCookie["Id"].Split('|');
+                var orderInfonum = idString.Length;
 
-                orderItemCookie["mailingId"] += "|" + ddlAddresses.Text;
-                orderItemCookie["noOfCopies"] += "|" + ddlNoCopy.Text;
-                orderItemCookie["packaging"] += "|" + optInsert.Text;
+                for(int i =0; i < orderInfonum; i++)
+                {
+                    orderItemCookie["Id"] += idString[i] + "";
+                    orderItemCookie["docuId"] += "," + Request.Cookies["Document"]["id"];
+                    if (rbExpress.Checked == true)
+                    {
+
+                        orderItemCookie["orderType"] += "|1";
+                    }
+                    else
+                        orderItemCookie["orderType"] += "|0";
+
+                    orderItemCookie["mailingId"] += "|" + ddlAddresses.Text;
+                    orderItemCookie["noOfCopies"] += "|" + ddlNoCopy.Text;
+                    orderItemCookie["packaging"] += "|" + optInsert.Text;
+
+                }
+                
 
             }
 
