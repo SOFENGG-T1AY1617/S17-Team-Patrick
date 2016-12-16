@@ -80,6 +80,8 @@
     <Content Include="Content\css\loading.css" />
     <Content Include="Script\view_order_information.js" />
     <Content Include="View\Admin\DocumentList.aspx" />
+    <Content Include="View\Admin\LoginService.asmx" />
+    <Content Include="View\Admin\Logout.aspx" />
     <Content Include="View\Admin\MainService.asmx" />
     <Content Include="View\Admin\Main.aspx" />
     <Content Include="View\Admin\MainService2.svc" />
@@ -170,6 +172,10 @@
     <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
     <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
     <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
+    <Compile Include="Model\Database\Login\DBMySqlGetPersonelDetails.cs" />
+    <Compile Include="Model\Database\ManageOperationalDate\DBMySqlAddOfflineDate.cs" />
+    <Compile Include="Model\Database\ManageOperationalDate\DBMySqlDeleteOfflineDate.cs" />
+    <Compile Include="Model\Database\ManageOperationalDate\DBMySqlGetOfflineDates.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsDone.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsProcessing.cs" />
     <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsPending.cs" />
@@ -194,6 +200,7 @@
     <Compile Include="Model\Database\DBMySqlGetDocumentList.cs" />
     <Compile Include="Model\Database\Interface\DBMySqlSelectConnection.cs" />
     <Compile Include="Model\DeliveryArea.cs" />
+    <Compile Include="Model\Helper\CookieHelper.cs" />
     <Compile Include="Model\Helper\DateTimeHelper.cs" />
     <Compile Include="Model\Helper\MySqlQueryHelper.cs" />
     <Compile Include="Model\MailingInfo.cs" />
@@ -208,13 +215,17 @@
     <Compile Include="Model\OrderItemWithDegree.cs" />
     <Compile Include="Model\OrderItemWithTerm.cs" />
     <Compile Include="Model\OrderStatus.cs" />
+    <Compile Include="Model\Offline.cs" />
     <Compile Include="Model\Personel.cs" />
     <Compile Include="Model\Day.cs" />
+    <Compile Include="Model\Security.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\Degree.cs" />
     <Compile Include="Model\StudentDegree.cs" />
     <Compile Include="Model\StudentInfo.cs" />
     <Compile Include="Model\IUserModel.cs" />
+    <Compile Include="Presenter\Admin\ManageOperationalDatePresenter.cs" />
+    <Compile Include="Presenter\Admin\LoginPresenter.cs" />
     <Compile Include="Presenter\Admin\ViewOrderListPresenter2.cs" />
     <Compile Include="Presenter\Admin\ViewOrderListPresenter.cs" />
     <Compile Include="Presenter\PersonalInformationPresenter.cs" />
@@ -241,8 +252,21 @@
     <Compile Include="View\Admin\DocumentList.aspx.designer.cs">
       <DependentUpon>DocumentList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\Interface\IManageOperationalDateView.cs" />
+    <Compile Include="View\Admin\Interface\ILoginView.cs" />
     <Compile Include="View\Admin\Interface\IOrderListView.cs" />
     <Compile Include="View\Admin\Interface\IDocumentListView.cs" />
+    <Compile Include="View\Admin\LoginService.asmx.cs">
+      <DependentUpon>LoginService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\MainService.asmx.cs">
       <DependentUpon>MainService.asmx</DependentUpon>
       <SubType>Component</SubType>

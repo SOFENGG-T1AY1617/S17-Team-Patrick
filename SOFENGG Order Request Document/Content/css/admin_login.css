@@ -4,9 +4,8 @@
 
 .jumbotron {
     top: 50%;
-    transform: translateY(40%);
+    transform: translateY(10%);
     margin-top: 6%;
-    color: white;
 }
 
 .login_image {

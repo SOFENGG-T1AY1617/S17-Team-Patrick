@@ -15,5 +15,9 @@ namespace SOFENGG_Order_Request_Document.Model
         bool MarkAsProcessing(int referenceNo);
         Order GetOrderInformation(int referenceNo);
         Document GetDocument(int documentId);
+        Personel Login(string email, string password);
+        Offline[] GetOfflineDateList();
+        bool AddOfflineDate(Offline offline);
+        bool DeleteOfflineDate(DateTime date);
     }
 }

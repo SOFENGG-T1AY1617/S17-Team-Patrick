@@ -57,7 +57,7 @@
                             <a href="#"><i class="fa fa-car fa-lg"></i>&nbsp;User <span class="glyphicon glyphicon-menu-down"></span></a>
                         </li>
                         <ul class="sub-menu collapse" id="user">
-                            <li><a href="#">&nbsp;Logout</a></li>
+                            <li><a href="<%= ResolveUrl("Logout.aspx") %>">&nbsp;Logout</a></li>
                         </ul>
                     </ul>
                 </div>

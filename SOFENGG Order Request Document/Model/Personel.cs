@@ -11,7 +11,10 @@ namespace SOFENGG_Order_Request_Document.Model
         public const string ColId = "personelId";
         public const string ColLastName = "lastName";
         public const string ColFirstName = "firstName";
+        public const string ColEmail = "email";
+        public const string ColPassword = "password";
 
+        public int Id { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
     }
