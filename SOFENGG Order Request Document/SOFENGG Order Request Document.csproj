@@ -101,7 +101,6 @@
     <Content Include="Script\jquery.min.map" />
     <Content Include="Script\jquery.slim.min.map" />
     <Content Include="View\Admin\ViewOrderInformation.aspx" />
-    <Content Include="View\Order\Order.Master" />
     <Content Include="View\Admin\Admin.Master" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -136,16 +135,7 @@
     <Content Include="Content\images\logo_jcb1.gif" />
     <Content Include="Content\images\logo_master1.gif" />
     <Content Include="Content\images\logo_visa1.gif" />
-    <Content Include="View\Order\DocumentList.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="View\Order\InfoAcadConfirm.aspx" />
-    <Content Include="View\Order\InfoAcadDe.aspx" />
-    <Content Include="View\Order\InfoMailConfirm.aspx" />
-    <Content Include="View\Order\InfoMailDe.aspx" />
-    <Content Include="View\Order\InfoTransaction.aspx" />
-    <Content Include="View\Order\OrderItem.aspx" />
-    <Content Include="View\Order\PersonalInformation.aspx" />
-    <Content Include="View\Order\Rules.aspx" />
     <Content Include="Script\admin_document_list.js" />
     <Content Include="Script\admin_main.js" />
     <Content Include="Script\bootstrap.js" />
@@ -164,80 +154,40 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\AdminModel.cs" />
+    <Compile Include="Model\Campus.cs" />
     <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\CourseDescription.cs" />
-    <Compile Include="Model\Database\DBMySqlAddMailingInfo.cs" />
-    <Compile Include="Model\Database\DBMySqlAddPersonalInformation.cs" />
-    <Compile Include="Model\Database\DBMySqlAddStudentDegree.cs" />
-    <Compile Include="Model\Database\DBMySqlGetDegreeList.cs" />
-    <Compile Include="Model\Database\DBMySqlGetDeliveryArea.cs" />
-    <Compile Include="Model\Database\Login\DBMySqlGetPersonelDetails.cs" />
-    <Compile Include="Model\Database\ManageOperationalDate\DBMySqlAddOfflineDate.cs" />
-    <Compile Include="Model\Database\ManageOperationalDate\DBMySqlDeleteOfflineDate.cs" />
-    <Compile Include="Model\Database\ManageOperationalDate\DBMySqlGetOfflineDates.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsDone.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsProcessing.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlMarkAsPending.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlGetDocument.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlGetStudentInfoId.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlGetStudentInfo.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlGetOrderInformation.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlGetOrderItemList.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlGetMailingInfo.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlGetOrderMailingInfo.cs" />
-    <Compile Include="Model\Database\OrderInformation\DBMySqlGetStudentDegree.cs" />
-    <Compile Include="Model\Database\OrderList\DBMySqlGetDeliveryFee.cs" />
-    <Compile Include="Model\Database\OrderList\DBMySqlGetOrderStatusCount.cs" />
-    <Compile Include="Model\Database\OrderList\DBMySqlGetOrderListPreview.cs" />
-    <Compile Include="Model\Database\DBMySqlGetStudentDegreeList.cs" />
-    <Compile Include="Model\Database\DBMySqlGetMailingInfo.cs" />
+    <Compile Include="Model\Database\Document\DBMySqlAddDocument.cs" />
+    <Compile Include="Model\Database\Document\DBMySqlDeleteDocument.cs" />
+    <Compile Include="Model\Database\Document\DBMySqlEditDocument.cs" />
+    <Compile Include="Model\Database\Document\DBMySqlGetDocumentList.cs" />
     <Compile Include="Model\Database\Interface\DBMySqlConnection.cs" />
-    <Compile Include="Model\Database\DBMySqlGetStudentInfo.cs" />
-    <Compile Include="Model\Database\DBMySqlAddDocument.cs" />
-    <Compile Include="Model\Database\DBMySqlDeleteDocument.cs" />
-    <Compile Include="Model\Database\DBMySqlEditDocument.cs" />
-    <Compile Include="Model\Database\DBMySqlGetDocumentList.cs" />
     <Compile Include="Model\Database\Interface\DBMySqlSelectConnection.cs" />
-    <Compile Include="Model\DeliveryArea.cs" />
-    <Compile Include="Model\Helper\CookieHelper.cs" />
-    <Compile Include="Model\Helper\DateTimeHelper.cs" />
-    <Compile Include="Model\Helper\MySqlQueryHelper.cs" />
-    <Compile Include="Model\MailingInfo.cs" />
-    <Compile Include="Model\Helper\EnumHelper.cs" />
-    <Compile Include="Model\IAdminModel.cs" />
     <Compile Include="Model\Database\Interface\IDBConnection.cs" />
     <Compile Include="Model\Database\Interface\IDBSelectConnection.cs" />
-    <Compile Include="Model\Document.cs" />
-    <Compile Include="Model\IDocumentList.cs" />
-    <Compile Include="Model\Order.cs" />
-    <Compile Include="Model\OrderItem.cs" />
-    <Compile Include="Model\OrderItemWithDegree.cs" />
-    <Compile Include="Model\OrderItemWithTerm.cs" />
-    <Compile Include="Model\OrderStatus.cs" />
-    <Compile Include="Model\Offline.cs" />
-    <Compile Include="Model\Personel.cs" />
-    <Compile Include="Model\Day.cs" />
-    <Compile Include="Model\Security.cs" />
-    <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\Degree.cs" />
-    <Compile Include="Model\StudentDegree.cs" />
-    <Compile Include="Model\StudentInfo.cs" />
-    <Compile Include="Model\IUserModel.cs" />
+    <Compile Include="Model\DegreeOfUser.cs" />
+    <Compile Include="Model\DeliveryRate.cs" />
+    <Compile Include="Model\Document.cs" />
+    <Compile Include="Model\Helper\CookieHelper.cs" />
+    <Compile Include="Model\Helper\DateTimeHelper.cs" />
+    <Compile Include="Model\Helper\EnumHelper.cs" />
+    <Compile Include="Model\Helper\MySqlQueryHelper.cs" />
+    <Compile Include="Model\MailingAddress.cs" />
+    <Compile Include="Model\Offline.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderWithCourseDesc.cs" />
+    <Compile Include="Model\Personel.cs" />
+    <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\TransactionLog.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Presenter\Admin\ManageOperationalDatePresenter.cs" />
     <Compile Include="Presenter\Admin\LoginPresenter.cs" />
     <Compile Include="Presenter\Admin\ViewOrderListPresenter2.cs" />
     <Compile Include="Presenter\Admin\ViewOrderListPresenter.cs" />
-    <Compile Include="Presenter\PersonalInformationPresenter.cs" />
     <Compile Include="Presenter\Admin\DocumentListPresenter.cs" />
-    <Compile Include="Presenter\DocumentListPresenter.cs" />
-    <Compile Include="Model\OrderModel.cs" />
-    <Compile Include="Model\IOrderModel.cs" />
-    <Compile Include="Presenter\Order\OrderDocumentListPresenter.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="Presenter\InfoAcadDePresenter.cs" />
     <Compile Include="View\Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,84 +263,10 @@
     <Compile Include="View\Admin\ViewOrderInformation.aspx.designer.cs">
       <DependentUpon>ViewOrderInformation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\Order\DocumentList.aspx.cs">
-      <DependentUpon>DocumentList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\DocumentList.aspx.designer.cs">
-      <DependentUpon>DocumentList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="View\Order\IDocumentListView.cs" />
-    <Compile Include="View\Order\InfoAcadConfirm.aspx.cs">
-      <DependentUpon>InfoAcadConfirm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\InfoAcadConfirm.aspx.designer.cs">
-      <DependentUpon>InfoAcadConfirm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Order\InfoAcadDe.aspx.cs">
-      <DependentUpon>InfoAcadDe.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\InfoAcadDe.aspx.designer.cs">
-      <DependentUpon>InfoAcadDe.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Order\InfoMailConfirm.aspx.cs">
-      <DependentUpon>InfoMailConfirm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\InfoMailConfirm.aspx.designer.cs">
-      <DependentUpon>InfoMailConfirm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Order\InfoMailDe.aspx.cs">
-      <DependentUpon>InfoMailDe.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\InfoMailDe.aspx.designer.cs">
-      <DependentUpon>InfoMailDe.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Order\InfoTransaction.aspx.cs">
-      <DependentUpon>InfoTransaction.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\InfoTransaction.aspx.designer.cs">
-      <DependentUpon>InfoTransaction.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Order\Interface\IInfoAcadDeView.cs" />
-    <Compile Include="View\Order\Interface\IOrderDocumentListView.cs" />
-    <Compile Include="View\Order\Order.Master.cs">
-      <DependentUpon>Order.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\Order.Master.designer.cs">
-      <DependentUpon>Order.Master</DependentUpon>
-    </Compile>
-    <Compile Include="View\Order\OrderItem.aspx.cs">
-      <DependentUpon>OrderItem.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\OrderItem.aspx.designer.cs">
-      <DependentUpon>OrderItem.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Order\PersonalInformation.aspx.cs">
-      <DependentUpon>PersonalInformation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\PersonalInformation.aspx.designer.cs">
-      <DependentUpon>PersonalInformation.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\Order\Rules.aspx.cs">
-      <DependentUpon>Rules.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Order\Rules.aspx.designer.cs">
-      <DependentUpon>Rules.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Order\Interface\IPersonalInformationView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

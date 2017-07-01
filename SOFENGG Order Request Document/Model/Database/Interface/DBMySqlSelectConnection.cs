@@ -1,12 +1,10 @@
-﻿using System;
-using System.Data;
-using System.Diagnostics;
+﻿using System.Data;
 using System.Linq;
 using MySql.Data.MySqlClient;
 
-namespace SOFENGG_Order_Request_Document.Model.Database
+namespace SOFENGG_Order_Request_Document.Model.Database.Interface
 {
-    public abstract class DBMySqlSelectConnection : DBMySqlConnection, IDBSelectConnection
+    public abstract class DBMySqlSelectConnection : Model.Database.DBMySqlConnection, Model.Database.IDBSelectConnection
     {
         protected MySqlCommand Cmd;
         protected DataRow[] ObjectList { get; private set; }

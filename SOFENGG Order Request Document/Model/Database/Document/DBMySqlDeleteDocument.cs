@@ -1,16 +1,15 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using MySql.Data.MySqlClient;
 
-namespace SOFENGG_Order_Request_Document.Model.Database.ManageOperationalDate
+namespace SOFENGG_Order_Request_Document.Model.Database.Document
 {
-    public class DBMySqlDeleteOfflineDate : DBMySqlConnection
+    public class DBMySqlDeleteDocument : DBMySqlConnection
     {
-        protected DateTime Date;
+        protected Model.Document Document;
 
-        public DBMySqlDeleteOfflineDate(DateTime date)
+        public DBMySqlDeleteDocument(Model.Document document)
         {
-            Date = date;
+            Document = document;
         }
 
         public override bool ExecuteQuery()
@@ -20,13 +19,14 @@ namespace SOFENGG_Order_Request_Document.Model.Database.ManageOperationalDate
                 var query =
                     string.Format(
                         "DELETE FROM {0} WHERE {1}=@{1}",
-                        Offline.Table, Offline.ColDate);
+                        Model.Document.Table, Model.Document.ColId);
                 using (var cmd = new MySqlCommand(query, Conn))
                 {
-                    cmd.Parameters.AddWithValue("@" + Offline.ColDate, string.Format("{0:yyyy-M-d}", Date));
+                    cmd.Parameters.AddWithValue("@" + Model.Document.ColId, Document.Id);
                     cmd.Prepare();
 
                     var result = cmd.ExecuteNonQuery();
+                    Debug.WriteLine(result);
                     return result > 0;
                 }
             }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Web;
 using MySql.Data.MySqlClient;
 
-namespace SOFENGG_Order_Request_Document.Model.Database
+namespace SOFENGG_Order_Request_Document.Model.Database.Interface
 {
     public abstract class DBMySqlConnection : IDBConnection
     {

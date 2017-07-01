@@ -7,12 +7,14 @@ namespace SOFENGG_Order_Request_Document.Model
 {
     public class Course
     {
-        public const string Table = "course";
-        public const string ColId = "courseId";
-        public const string ColCode = "courseAbbrv";
-        public const string ColName = "courseName";
+        public const string Table = "courses";
+        public const string ColId = "courseID";
+        public const string ColName = "name";
+        public const string ColAcronym = "acronym";
 
-        public string Code { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
+        public string Acronym { get; set; }
+        
     }
 }

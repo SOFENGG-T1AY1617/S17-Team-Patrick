@@ -1,36 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace SOFENGG_Order_Request_Document.Model
+﻿namespace SOFENGG_Order_Request_Document.Model
 {
-    public enum DegreeLevelEnum
-    {
-        Bachelors = 'U',
-        Masters = 'M',
-        Doctorate = 'D'
-    }
-    public enum CampusEnum
-    {
-        Taft = 0,
-        STC = 1
-    }
-
     public class Degree
     {
-        public const string Table = "degree";
-        public const string ColDegreeId = "degreeId";
-        public const string ColDegreeAbbrv = "degreeAbbrv";
-        public const string ColCampusOfferedId = "campusOfferedId";
-        public const string ColDegreeName = "degreeName";
-        public const string ColLevel = "level";
+        public const string Table = "degrees";
+        public const string ColId = "id";
+        public const string ColName = "name";
+        public const string ColAcronym = "acronym";
 
         public int Id { get; set; }
-        public string Code { get; set; }
         public string Name { get; set; }
-        public DegreeLevelEnum Level { get; set; }
-        public CampusEnum CampusOffered { get; set; }
-
+        public string Acronym { get; set; }
     }
 }

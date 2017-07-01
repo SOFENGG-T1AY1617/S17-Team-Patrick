@@ -5,17 +5,18 @@ using System.Web;
 
 namespace SOFENGG_Order_Request_Document.Model
 {
-	public class OrderStatus
+    public class TransactionLog
     {
-        public const string Table = "orderstatus";
-        public const string ColId = "orderStatusId";
-        public const string ColReferenceNo = "referenceNo";
+        public const string Table = "transactionlogs";
+        public const string ColId = "logID";
+        public const string ColTransactionId = "transactionID";
         public const string ColDateLogged = "dateLogged";
-        public const string ColPersonelInCharge = "personelInCharge";
+        public const string ColPersonelId = "personelID";
         public const string ColRemarks = "remarks";
 
-        public Personel PersonelInCharge { get; set; }
+        public int Id { get; set; }
         public DateTime DateLogged { get; set; }
+        public Personel Personel { get; set; }
         public string Remarks { get; set; }
     }
 }

@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `ord` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `ord`;
+CREATE DATABASE  IF NOT EXISTS `dlsu_ord` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `dlsu_ord`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
--- Host: localhost    Database: ord
+-- Host: localhost    Database: dlsu_ord
 -- ------------------------------------------------------
 -- Server version	5.7.16-log
 
@@ -25,11 +25,10 @@ DROP TABLE IF EXISTS `campus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `campus` (
-  `campusId` int(11) NOT NULL AUTO_INCREMENT,
-  `campusName` varchar(45) NOT NULL,
-  PRIMARY KEY (`campusId`),
-  UNIQUE KEY `campusId_UNIQUE` (`campusId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `id` int(11) NOT NULL,
+  `campusName` varchar(65) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,118 +42,114 @@ INSERT INTO `campus` VALUES (1,'De La Salle University - Manila'),(2,'De La Sall
 UNLOCK TABLES;
 
 --
--- Table structure for table `course`
+-- Table structure for table `courses`
 --
 
-DROP TABLE IF EXISTS `course`;
+DROP TABLE IF EXISTS `courses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `course` (
-  `courseId` int(11) NOT NULL AUTO_INCREMENT,
-  `courseAbbrv` varchar(10) NOT NULL,
-  `courseName` varchar(100) NOT NULL,
-  PRIMARY KEY (`courseId`),
-  UNIQUE KEY `courseId_UNIQUE` (`courseId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `course`
---
-
-LOCK TABLES `course` WRITE;
-/*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'WEBAPDE','Web App'),(2,'MACLERN','Machine Learning'),(3,'INTESYS','Intelligent System'),(4,'CCSCAL2','Calculus 2'),(5,'GRAPHIX','Graphics'),(6,'SOFENGG','Software Engineering');
-/*!40000 ALTER TABLE `course` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `degree`
---
-
-DROP TABLE IF EXISTS `degree`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `degree` (
-  `degreeid` int(11) NOT NULL AUTO_INCREMENT,
-  `degreeAbbrv` varchar(10) NOT NULL,
-  `campusOfferedId` int(11) NOT NULL,
-  `degreeName` varchar(100) NOT NULL,
-  `level` char(1) NOT NULL,
-  PRIMARY KEY (`degreeid`,`degreeAbbrv`,`campusOfferedId`),
-  UNIQUE KEY `degreeid_UNIQUE` (`degreeid`)
-) ENGINE=InnoDB AUTO_INCREMENT=170 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `degree`
---
-
-LOCK TABLES `degree` WRITE;
-/*!40000 ALTER TABLE `degree` DISABLE KEYS */;
-INSERT INTO `degree` VALUES (1,'BSCS-ST',1,'Bachelor of Science in Computer Science with specialization in Software Technology','U'),(2,'BSCS-NE',1,'Bachelor of Science in Computer Science with specialization in Network Engineering','U'),(3,'BSCS-CSE',1,'Bachelor of Science in Computer Science, Major in Computer Systems Engineering','U'),(4,'BSCS-IST',1,'Bachelor of Science in Computer Science with specialization in Instructional Systems Technology','U'),(5,'BSIS',1,'Bachelor of Science in Information System','U'),(6,'BSIT',1,'Bachelor of Science in Information Technology','U'),(7,'BEED-ECED',1,'Bachelor of Elementary Education Major in Early Childhood Eduction ','U'),(8,'BSED-ENGL',1,'Bachelor of Secondary Education Major in English','U'),(9,'BSED-BIO',1,'Bachelor of Secondary Education Major in Biology ','U'),(10,'BSED-CHY',1,'Bachelor of Secondary Education Major in Chemistry ','U'),(11,'BSED-MTH',1,'Bachelor of Secondary Education Major in Mathematics','U'),(12,'BSED-MTH-C',1,'Bachelor of Secondary Education Major in Mathematics with specialization in Computer Applications','U'),(13,'BSED-PHY',1,'Bachelor of Secondary Education Major in Physics','U'),(14,'BSED-PHYSC',1,'Bachelor of Secondary Education Major in Physical Sciences','U'),(15,'ABBHS-OSSD',1,'Bachelor of Arts in Behavioral Sciences major in Organizational and Social Systems Development','U'),(16,'AB-DVS',1,'Bachelor of Arts in Development Studies','U'),(17,'AB-HIS',1,'Bachelor of Arts in History','U'),(18,'ABIS-AMS',1,'Bachelor of Arts in International Studies Major in American Studies','U'),(19,'ABIS-EUS',1,'Bachelor of Arts in International Studies Major in European Studies','U'),(20,'ABIS-JPS',1,'Bachelor of Arts in International Studies Major in Japanese Studies','U'),(21,'AB-ISC',1,'Bachelor of Arts in International Studies Major in Chinese Studies','U'),(22,'AB-LIT',1,'Bachelor of Arts in Literature','U'),(23,'AB-PHS',1,'Bachelor of Arts in Philippine Studies Major in Filipino in Mass Media','U'),(24,'AB-PLS',1,'Bachelor of Arts in Political Science','U'),(25,'AB-CA',1,'Bachelor of Arts in Communication Arts','U'),(26,'AB-OC',1,'Bachelor of Arts in Organizational Communication','U'),(27,'AB-PHL',1,'Bachelor of Arts Major in Philosophy','U'),(28,'AB-PSY',1,'Bachelor of Arts in Psychology','U'),(29,'BSPSY',1,'Bachelor of Science in Psychology','U'),(30,'AB-SA',1,'Bachelor of Arts in Southeast Asian Studies','U'),(31,'BSADV ',1,'Bachelor of Science in Advertising Management','U'),(32,'BSAPC',1,'Bachelor of Science in Applied Corporate Management','U'),(33,'BSA',1,'Bachelor of Science in Accountancy','U'),(34,'BSFIN',1,'Bachelor of Science in Management of Financial Institutions','U'),(35,'BSLGL',1,'Bachelor of Science in Legal Management','U'),(36,'BSMGT',1,'Bachelor of Science in Business Management','U'),(37,'BSMKT',1,'Bachelor of Science in Marketing Management','U'),(38,'BSBCH',1,'Bachelor of Science in Biochemistry','U'),(39,'BSBIO',1,'Bachelor of Science in Biology','U'),(40,'BSCHY',1,'Bachelor of Science in Human Biology','U'),(41,'BSMTH-BAP',1,'Bachelor of Science in Mathematics with specialization in Business Application','U'),(42,'BSSTT',1,'Bachelor of Science in Statistics Major in Actuarial Science','U'),(43,'BSPHY-MS',1,'Bachelor of Science in Physis with specialization in Materials Science','U'),(44,'BSPHY-MI',1,'Bachelor of Science in Physics with specialization in Medical Instrumentation','U'),(45,'BPMPH',1,'Bachelor of Science in Premed Physics','U'),(46,'BSMTH-CAP',1,'Bachelor of Science in Mathematics with specialization in Computer Application','U'),(47,'BSCHE',1,'Bachelor of Science in Chemical Engineering','U'),(48,'BSCE-CTM',1,'Bachelor of Science in Civil Engineering with specialization in Construction Technology','U'),(49,'BSCE-HWR',1,'Bachelor of Science in Civil Engineering with specialization in Hydraulics and Water Resources','U'),(50,'BSCE-STE',1,'Bachelor of Science in Civil Engineering with specialization in Structural Engineering','U'),(51,'BSCE-TRE',1,'Bachelor of Science in Civil Engineering with specialization in Transporation Engineering','U'),(52,'BSCPE',1,'Bachelor of Science in Computer Engineering','U'),(53,'BSECE',1,'Bachelor of Science in Electronics Engineering','U'),(54,'BSIE',1,'Bachelor of Science in Industrial Engineering','U'),(55,'BSIME-IT',1,'BS in Industrial Management Engineering Minor in Information Technology','U'),(56,'BSIME-SM',1,'BS in Industrial Management Engineering Minor in Service Management','U'),(57,'BSMEM-MRE',1,'BS in Manufacturing Engineering and Management with specialization in Mechatronics and Robotics','U'),(58,'BSMEM-BME',1,'BS in Manufacturing Engineering and Management with specialization in Biomedical Engineering','U'),(59,'BSME',1,'BS in Mechanical Engineering w/ concentration in Mechatronics Engineering ','U'),(60,'BSENT',1,'Bachelor of Science in Entrepreneurship','U'),(61,'BSIBS',1,'Bachelor of Science in Interdisciplinary Business Studies','U'),(62,'BSAEC-IE',1,'BS in Applied Economics Major in Industrial Economics','U'),(63,'BSAE-I/ACC',1,'BS in Applied Economics major in Industrial Economics and BS in Accountancy ','U'),(64,'BSAE-I/ADV',1,'BS in Applied Economics major in Industrial Economics and BS in Advertising Management','U'),(65,'BSAE-I/APC',1,'BS in Applied Economics major in Industrial Economics and BS in Applied Corporate Management','U'),(66,'BSAE-I/MGT',1,'BS in Applied Economics major in Industrial Economics and BS in Business Management','U'),(67,'BSAE-I/LGL',1,'BS in Applied Economics major in Industrial Economics and BS in Legal Management','U'),(68,'BSAE-I/FIN',1,'BS in Applied Economics major in Industrial Economics and BS in Management of Financial Institutions','U'),(69,'BSAE-I/MKT',1,'BS in Applied Economics major in Industrial Economics and BS in Market Management','U'),(70,'BSAE-FE',1,'BS in Applied Economics Major in Financial Economics','U'),(71,'BSAE-F/ACC',1,'BS in Applied Economics Major in Financial Economics and BS in Accountancy','U'),(72,'BSAE-F/ADV',1,'BS in Applied Economics Major in Financial Economics and BS in Advertising Management','U'),(73,'BSAE-F/APC',1,'BS in Applied Economics Major in Financial Economics and BS in Applied Corporate Management','U'),(74,'BSAE-F/MGT',1,'BS in Applied Economics Major in Financial Economics and BS in Business Management','U'),(75,'BSAE-F/LGL',1,'BS in Applied Economics Major in Financial Economics and BS in Legal Management','U'),(76,'BSAE-F/FIN',1,'BS in Applied Economics Major in Financial Economics and BS in Management of Financial Institutions','U'),(77,'BSAE-F/MKT',1,'BS in Applied Economics Major in Financial Economics and BS in Marketing Management','U'),(78,'ABECO',1,'Bachelor of Arts Major in Economics','U'),(79,'AB-ECO/BSA',1,'AB Major in Economics and BS in Accountancy','U'),(80,'AB-ECO/ADV',1,'AB Major in Economics and BS in Advertising Management','U'),(81,'AB-ECO/APC',1,'AB Major in Economics and BS in Applied Corporate Management','U'),(82,'AB-ECO/MGT',1,'AB Major in Economics and BS in Business Management','U'),(83,'AB-ECO/LGL',1,'AB Major in Economics and BS in Legal Management','U'),(84,'AB-ECO/FIN',1,'AB Major in Economics and BS in Management of Financial Institutions','U'),(85,'AB-ECO/MKT',1,'AB Major in Economics and BS in Marketing Management','U'),(86,'BSCS-ST-GD',2,'BS in Computer Science with specialization in Software Technology minor in Game Development','U'),(87,'BSCS-NE',2,'BS in Computer Science with specialiaztion in Network Engineering','U'),(88,'BSCS-CSE',2,'BS in Computer Science Major in Computer Systems Engineering','U'),(89,'BSIS',2,'BS in Information System','U'),(90,'BSIT',2,'BS in Information Technology','U'),(91,'BEED-ECED',2,'Bachelor of Elementary Education Major in Early Childhood Eduction ','U'),(92,'BSED-ENGL',2,'Bachelor of Secondary Education Major in English','U'),(93,'BSED-BIO',2,'Bachelor of Secondary Education Major in Biology ','U'),(94,'BSED-CHY',2,'Bachelor of Secondary Education Major in Chemistry ','U'),(95,'BSED-MTH',2,'Bachelor of Secondary Education Major in Mathematics','U'),(96,'BSED-MTH-C',2,'Bachelor of Secondary Education Major in Mathematics with specialization in Computer Applications','U'),(97,'BSED-PHY',2,'Bachelor of Secondary Education Major in Physics','U'),(98,'BSED-PHYSC',2,'Bachelor of Secondary Education Major in Physical Sciences','U'),(99,'ABBHS-OSSD',2,'Bachelor of Arts in Behavioral Sciences major in Organizational and Social Systems Development','U'),(100,'AB-DVS',2,'Bachelor of Arts in Development Studies','U'),(101,'AB-HIS',2,'Bachelor of Arts in History','U'),(102,'ABIS-AMS',2,'Bachelor of Arts in International Studies Major in American Studies','U'),(103,'ABIS-EUS',2,'Bachelor of Arts in International Studies Major in European Studies','U'),(104,'ABIS-JPS',2,'Bachelor of Arts in International Studies Major in Japanese Studies','U'),(105,'AB-ISC',2,'Bachelor of Arts in International Studies Major in Chinese Studies','U'),(106,'AB-LIT',2,'Bachelor of Arts in Literature','U'),(107,'AB-PHS',2,'Bachelor of Arts in Philippine Studies Major in Filipino in Mass Media','U'),(108,'AB-PLS',2,'Bachelor of Arts in Political Science','U'),(109,'AB-CA',2,'Bachelor of Arts in Communication Arts','U'),(110,'AB-OC',2,'Bachelor of Arts in Organizational Communication','U'),(111,'AB-PHL',2,'Bachelor of Arts Major in Philosophy','U'),(112,'AB-PSY',2,'Bachelor of Arts in Psychology','U'),(113,'BSPSY',2,'Bachelor of Science in Psychology','U'),(114,'AB-SA',2,'Bachelor of Arts in Southeast Asian Studies','U'),(115,'BSADV ',2,'Bachelor of Science in Advertising Management','U'),(116,'BSAPC',2,'Bachelor of Science in Applied Corporate Management','U'),(117,'BSA',2,'Bachelor of Science in Accountancy','U'),(118,'BSFIN',2,'Bachelor of Science in Management of Financial Institutions','U'),(119,'BSLGL',2,'Bachelor of Science in Legal Management','U'),(120,'BSMGT',2,'Bachelor of Science in Business Management','U'),(121,'BSMKT',2,'Bachelor of Science in Marketing Management','U'),(122,'BSBCH',2,'Bachelor of Science in Biochemistry','U'),(123,'BSBIO',2,'Bachelor of Science in Biology','U'),(124,'BSCHY',2,'Bachelor of Science in Human Biology','U'),(125,'BSMTH-BAP',2,'Bachelor of Science in Mathematics with specialization in Business Application','U'),(126,'BSSTT',2,'Bachelor of Science in Statistics Major in Actuarial Science','U'),(127,'BSPHY-MS',2,'Bachelor of Science in Physis with specialization in Materials Science','U'),(128,'BSPHY-MI',2,'Bachelor of Science in Physics with specialization in Medical Instrumentation','U'),(129,'BPMPH',2,'Bachelor of Science in Premed Physics','U'),(130,'BSMTH-CAP',2,'Bachelor of Science in Mathematics with specialization in Computer Application','U'),(131,'BSCHE',2,'Bachelor of Science in Chemical Engineering','U'),(132,'BSCE-CTM',2,'Bachelor of Science in Civil Engineering with specialization in Construction Technology','U'),(133,'BSCE-HWR',2,'Bachelor of Science in Civil Engineering with specialization in Hydraulics and Water Resources','U'),(134,'BSCE-STE',2,'Bachelor of Science in Civil Engineering with specialization in Structural Engineering','U'),(135,'BSCE-TRE',2,'Bachelor of Science in Civil Engineering with specialization in Transporation Engineering','U'),(136,'BSCPE',2,'Bachelor of Science in Computer Engineering','U'),(137,'BSECE',2,'Bachelor of Science in Electronics Engineering','U'),(138,'BSIE',2,'Bachelor of Science in Industrial Engineering','U'),(139,'BSIME-IT',2,'BS in Industrial Management Engineering Minor in Information Technology','U'),(140,'BSIME-SM',2,'BS in Industrial Management Engineering Minor in Service Management','U'),(141,'BSMEM-MRE',2,'BS in Manufacturing Engineering and Management with specialization in Mechatronics and Robotics','U'),(142,'BSMEM-BME',2,'BS in Manufacturing Engineering and Management with specialization in Biomedical Engineering','U'),(143,'BSME',2,'BS in Mechanical Engineering w/ concentration in Mechatronics Engineering ','U'),(144,'BSENT',2,'Bachelor of Science in Entrepreneurship','U'),(145,'BSIBS',2,'Bachelor of Science in Interdisciplinary Business Studies','U'),(146,'BSAEC-IE',2,'BS in Applied Economics Major in Industrial Economics','U'),(147,'BSAE-I/ACC',2,'BS in Applied Economics major in Industrial Economics and BS in Accountancy ','U'),(148,'BSAE-I/ADV',2,'BS in Applied Economics major in Industrial Economics and BS in Advertising Management','U'),(149,'BSAE-I/APC',2,'BS in Applied Economics major in Industrial Economics and BS in Applied Corporate Management','U'),(150,'BSAE-I/MGT',2,'BS in Applied Economics major in Industrial Economics and BS in Business Management','U'),(151,'BSAE-I/LGL',2,'BS in Applied Economics major in Industrial Economics and BS in Legal Management','U'),(152,'BSAE-I/FIN',2,'BS in Applied Economics major in Industrial Economics and BS in Management of Financial Institutions','U'),(153,'BSAE-I/MKT',2,'BS in Applied Economics major in Industrial Economics and BS in Market Management','U'),(154,'BSAE-FE',2,'BS in Applied Economics Major in Financial Economics','U'),(155,'BSAE-F/ACC',2,'BS in Applied Economics Major in Financial Economics and BS in Accountancy','U'),(156,'BSAE-F/ADV',2,'BS in Applied Economics Major in Financial Economics and BS in Advertising Management','U'),(157,'BSAE-F/APC',2,'BS in Applied Economics Major in Financial Economics and BS in Applied Corporate Management','U'),(158,'BSAE-F/MGT',2,'BS in Applied Economics Major in Financial Economics and BS in Business Management','U'),(159,'BSAE-F/LGL',2,'BS in Applied Economics Major in Financial Economics and BS in Legal Management','U'),(160,'BSAE-F/FIN',2,'BS in Applied Economics Major in Financial Economics and BS in Management of Financial Institutions','U'),(161,'BSAE-F/MKT',2,'BS in Applied Economics Major in Financial Economics and BS in Marketing Management','U'),(162,'ABECO',2,'Bachelor of Arts Major in Economics','U'),(163,'AB-ECO/BSA',2,'AB Major in Economics and BS in Accountancy','U'),(164,'AB-ECO/ADV',2,'AB Major in Economics and BS in Advertising Management','U'),(165,'AB-ECO/APC',2,'AB Major in Economics and BS in Applied Corporate Management','U'),(166,'AB-ECO/MGT',2,'AB Major in Economics and BS in Business Management','U'),(167,'AB-ECO/LGL',2,'AB Major in Economics and BS in Legal Management','U'),(168,'AB-ECO/FIN',2,'AB Major in Economics and BS in Management of Financial Institutions','U'),(169,'AB-ECO/MKT',2,'AB Major in Economics and BS in Marketing Management','U');
-/*!40000 ALTER TABLE `degree` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `deliveryarea`
---
-
-DROP TABLE IF EXISTS `deliveryarea`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `deliveryarea` (
-  `deliveryAreaId` int(11) NOT NULL AUTO_INCREMENT,
-  `areaName` varchar(45) NOT NULL,
-  `price` float NOT NULL,
-  `minDaysToDeliver` int(11) NOT NULL,
-  `maxDaysToDeliver` int(11) NOT NULL,
-  PRIMARY KEY (`deliveryAreaId`),
-  UNIQUE KEY `deliveryAreaId_UNIQUE` (`deliveryAreaId`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `deliveryarea`
---
-
-LOCK TABLES `deliveryarea` WRITE;
-/*!40000 ALTER TABLE `deliveryarea` DISABLE KEYS */;
-INSERT INTO `deliveryarea` VALUES (1,'Africa',2544,3,4),(2,'Australia',1400,1,2),(3,'Brunei',1200,1,2),(4,'Canada',1650,1,2),(5,'China',1400,2,3),(6,'Europe',2350,3,4),(7,'Fiji Island',2544,3,4),(8,'Guam',2500,2,3),(9,'Hongkong',950,1,2),(10,'Singapore',950,1,2),(11,'Indonesia',1200,1,2),(12,'Malaysia',1200,1,2),(13,'Taiwan',1200,1,2),(14,'Thailand',1200,1,2),(15,'Japan',1200,1,2),(16,'Luzon',128,1,1),(17,'Metro Manila',128,1,1),(18,'Mexico City',2500,1,2),(19,'Middle East',2400,2,3),(20,'Mindanao',158,1,1),(21,'New Zealand',1400,1,2),(22,'Papua New Guinea',2600,2,3),(23,'Pickup - DLSU Manila',0,1,1),(24,'South America',3178,2,3),(25,'South Korea',1200,2,3),(26,'USA',1650,1,2),(27,'Vietnam',1400,1,1),(28,'Visayas',142,1,1);
-/*!40000 ALTER TABLE `deliveryarea` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `document`
---
-
-DROP TABLE IF EXISTS `document`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `document` (
-  `documentId` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `courses` (
+  `courseID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `categoryId` int(11) NOT NULL,
-  `weight` float NOT NULL,
-  `regularPrice` float DEFAULT NULL,
-  `expressPrice` float DEFAULT NULL,
-  `maxCopy` int(11) NOT NULL,
-  `isAvailable` tinyint(1) NOT NULL DEFAULT '0',
-  `forUndergraduate` tinyint(1) NOT NULL DEFAULT '0',
-  `forGraduate` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`documentId`),
-  UNIQUE KEY `id_UNIQUE` (`documentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+  `acronym` varchar(10) NOT NULL,
+  PRIMARY KEY (`courseID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `document`
+-- Dumping data for table `courses`
 --
 
-LOCK TABLES `document` WRITE;
-/*!40000 ALTER TABLE `document` DISABLE KEYS */;
-INSERT INTO `document` VALUES (1,'TOR for Evalutaion',0,10,150,300,2,0,0,0),(2,'TOR for Employment',1,10,150,123,2,0,1,1),(3,'Course Subject Desciption',2,10,110,NULL,2,1,1,1),(4,'Ranking by Degree Program',2,10,110,200,2,1,1,0),(5,'Transcript of Records',3,10,50,NULL,2,1,1,1),(6,'Form 137',3,10,50,NULL,2,1,1,1),(7,'Ranking by College',2,10,110,220,2,1,1,0),(8,'Trimestral Calendar',2,10,110,220,2,1,1,1),(9,'Completion of Academic Units',2,10,110,87000,2,0,0,1),(10,'Cumulative GPA',2,10,110,220,2,1,1,1),(11,'Deans List',2,10,110,220,2,1,1,0),(12,'Special Credentials',4,10,0,NULL,2,1,1,1),(63,'asd',0,1,123,321,2,0,0,0);
-/*!40000 ALTER TABLE `document` ENABLE KEYS */;
+LOCK TABLES `courses` WRITE;
+/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES (1,'Web Application Development','WEBAPDE'),(2,'Machine Learning','MACLERN'),(3,'Intelligent Systems','INTESYS'),(4,'Calculus 2','CCSCAL2'),(5,'Graphics','GRAPHIX'),(6,'Software Engineering','SOFENGG');
+/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `degrees`
+--
+
+DROP TABLE IF EXISTS `degrees`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `degrees` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `acronym` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `degrees`
+--
+
+LOCK TABLES `degrees` WRITE;
+/*!40000 ALTER TABLE `degrees` DISABLE KEYS */;
+/*!40000 ALTER TABLE `degrees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `degreesofuser`
+--
+
+DROP TABLE IF EXISTS `degreesofuser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `degreesofuser` (
+  `id` int(11) NOT NULL,
+  `degreeID` varchar(100) DEFAULT NULL,
+  `level` varchar(45) DEFAULT NULL,
+  `yearAdmitted` int(4) DEFAULT NULL,
+  `campusID` int(11) DEFAULT NULL,
+  `admittedAs` varchar(1) DEFAULT NULL,
+  `graduated` varchar(45) DEFAULT NULL,
+  `yearLevel` int(11) DEFAULT NULL,
+  `userID` int(11) DEFAULT NULL,
+  `lastSchoolAttended` varchar(100) DEFAULT NULL,
+  `graduatedYear` int(11) DEFAULT NULL,
+  `graduatedMonth` int(11) DEFAULT NULL,
+  `term` int(11) DEFAULT NULL,
+  `academicYear` varchar(9) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `degreesofuser`
+--
+
+LOCK TABLES `degreesofuser` WRITE;
+/*!40000 ALTER TABLE `degreesofuser` DISABLE KEYS */;
+/*!40000 ALTER TABLE `degreesofuser` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `deliveryrates`
+--
+
+DROP TABLE IF EXISTS `deliveryrates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `deliveryrates` (
+  `locationID` int(11) NOT NULL AUTO_INCREMENT,
+  `price` float NOT NULL,
+  `minDelay` int(11) NOT NULL,
+  `maxDelay` int(11) NOT NULL,
+  `location` varchar(45) NOT NULL,
+  PRIMARY KEY (`locationID`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `deliveryrates`
+--
+
+LOCK TABLES `deliveryrates` WRITE;
+/*!40000 ALTER TABLE `deliveryrates` DISABLE KEYS */;
+INSERT INTO `deliveryrates` VALUES (1,1200,2,3,'Brunei'),(2,1650,2,3,'Canada'),(3,1400,3,4,'China'),(4,2350,4,5,'Europe'),(5,2544,4,5,'Fiji Island\n'),(6,2500,3,4,'Guam'),(7,950,2,3,'Hongkong/Singapore'),(8,1200,2,3,'Indonesia/ Malaysia/ Taiwan/ Thailand'),(9,1200,2,3,'Japan'),(10,128,1,2,'Luzon'),(11,128,1,2,'Metro Manila'),(12,2500,2,3,'Mexico City\n'),(13,2400,3,4,'Middle East'),(14,158,1,2,'Mindanao'),(15,1400,2,3,'New Zealand'),(16,2600,3,4,'Papua New Guinea'),(17,0,1,2,'Pickup - DLSU Manila'),(18,3178,3,4,'South America'),(19,1200,2,3,'South Korea'),(20,1650,2,3,'USA'),(21,1400,1,2,'Vietnam'),(22,142,1,2,'Visayas'),(23,2544,4,5,'Africa'),(24,1400,2,3,'Australia');
+/*!40000 ALTER TABLE `deliveryrates` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -165,11 +160,10 @@ DROP TABLE IF EXISTS `documentcategory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `documentcategory` (
-  `categoryId` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`categoryId`),
-  UNIQUE KEY `documentCategoryId_UNIQUE` (`categoryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `categoryId` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`categoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,37 +172,72 @@ CREATE TABLE `documentcategory` (
 
 LOCK TABLES `documentcategory` WRITE;
 /*!40000 ALTER TABLE `documentcategory` DISABLE KEYS */;
-INSERT INTO `documentcategory` VALUES (1,'A'),(2,'B'),(3,'C'),(4,'D'),(5,'E');
+INSERT INTO `documentcategory` VALUES (0,'Others'),(1,'Transcript of Records'),(2,'Certification'),(3,'Certified True Copy');
 /*!40000 ALTER TABLE `documentcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `mailinginfo`
+-- Table structure for table `documents`
 --
 
-DROP TABLE IF EXISTS `mailinginfo`;
+DROP TABLE IF EXISTS `documents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `mailinginfo` (
-  `mailingId` int(11) NOT NULL AUTO_INCREMENT,
-  `studentInfoID` int(11) NOT NULL,
-  `mailingAddress` varchar(200) NOT NULL,
-  `zipCode` int(11) NOT NULL,
-  `deliveryAreaId` int(11) NOT NULL,
-  `contactNo` varchar(20) NOT NULL,
-  PRIMARY KEY (`mailingId`),
-  UNIQUE KEY `mailingId_UNIQUE` (`mailingId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+CREATE TABLE `documents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `docuName` varchar(100) NOT NULL,
+  `regularPrice` float NOT NULL,
+  `expressPrice` float DEFAULT NULL,
+  `category` int(11) NOT NULL DEFAULT '0',
+  `note` varchar(250) DEFAULT NULL,
+  `weight` float NOT NULL,
+  `maxCopy` int(11) NOT NULL DEFAULT '0',
+  `isAvailable` tinyint(1) NOT NULL DEFAULT '1',
+  `forUndergraduate` tinyint(1) NOT NULL,
+  `forGraduate` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `mailinginfo`
+-- Dumping data for table `documents`
 --
 
-LOCK TABLES `mailinginfo` WRITE;
-/*!40000 ALTER TABLE `mailinginfo` DISABLE KEYS */;
-INSERT INTO `mailinginfo` VALUES (1,1,'Blk 22 Lot 22 Corndog',1747,1,'09272707318'),(2,2,'FIEOJ 22. 2oko',1747,2,'9111111'),(3,3,'Tapat ng Ate Rica\'s',1740,3,'8328'),(4,3,'Jollibee',8700,4,'8700');
-/*!40000 ALTER TABLE `mailinginfo` ENABLE KEYS */;
+LOCK TABLES `documents` WRITE;
+/*!40000 ALTER TABLE `documents` DISABLE KEYS */;
+INSERT INTO `documents` VALUES (1,'Official Transcript of Records for Employment (Batch 1980)',150,NULL,1,' *for Students with ID no. 80XXXX (those who entered DLSU-M in 1980) and below',1,0,1,1,1),(2,'Official Transcript of Records for Employment',150,300,1,NULL,2,0,1,1,1),(3,'Official Transcript of Records for Evaluation',150,300,1,NULL,3,0,1,1,1),(4,'Ranking in Degree Program',110,200,2,NULL,4,0,1,1,0),(5,'Ranking by College',110,220,2,NULL,5,0,1,1,0),(6,'Dean\'s List',110,220,2,NULL,6,0,1,1,0),(7,'Completion for Academic Units',110,NULL,2,NULL,7,0,1,0,1),(8,'Trimestral Calendar',110,220,2,NULL,8,0,1,1,1),(9,'Cumulative GPA',110,220,2,NULL,9,0,1,1,1),(10,'Enrollment',110,220,2,NULL,10,0,1,1,1),(11,'Grading System',110,220,2,NULL,11,0,1,1,1),(12,'Graduation / With Honors',110,220,2,NULL,12,0,1,1,1),(13,'Medium of Instruction (English)',110,220,2,NULL,13,0,1,1,1),(14,'Tuition and Miscellaneous Fees Breakdown (Current Term)',40,NULL,2,NULL,14,0,1,1,1),(15,'Tuition and Miscellaneous Fees Breakdown (starting SY2000-01)',110,220,2,NULL,15,0,1,1,1),(16,'Units Earned',110,220,2,NULL,16,0,1,1,1),(17,'Course (Subject) Description',110,NULL,2,' - Max of 5 courses per certification) *IMPORTANT*: Indicate the title of the course in the *Other Instructions*',17,0,1,1,1),(18,'Official Transcript of Records (Previous to DLSU)',50,NULL,3,NULL,18,0,1,1,1),(19,'Form 137 (High School Transcript)',50,NULL,3,NULL,19,0,1,1,1),(20,'Form 138 (High School Card)',50,NULL,3,NULL,20,0,1,1,1),(21,'Espiritu, Paolo Montesa',200,NULL,3,'(CTC TOR-2 and Cert of Grad-2)',21,0,1,1,1),(22,'Special Credentials',0,NULL,0,NULL,22,0,1,1,1),(23,'Special Handling (WES)',150,300,0,NULL,23,0,1,1,1);
+/*!40000 ALTER TABLE `documents` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mailingaddress`
+--
+
+DROP TABLE IF EXISTS `mailingaddress`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mailingaddress` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zipcode` varchar(11) NOT NULL,
+  `streetName` varchar(45) NOT NULL,
+  `city` varchar(45) NOT NULL,
+  `country` varchar(45) NOT NULL,
+  `locationID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `addressline` varchar(200) DEFAULT NULL,
+  `contactperson` varchar(45) NOT NULL,
+  `contactnumber` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mailingaddress`
+--
+
+LOCK TABLES `mailingaddress` WRITE;
+/*!40000 ALTER TABLE `mailingaddress` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mailingaddress` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -220,9 +249,9 @@ DROP TABLE IF EXISTS `offline`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `offline` (
   `date` date NOT NULL,
-  `addedByPersonelId` int(11) NOT NULL,
+  `addedByPersonelID` int(11) NOT NULL,
   PRIMARY KEY (`date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,125 +260,62 @@ CREATE TABLE `offline` (
 
 LOCK TABLES `offline` WRITE;
 /*!40000 ALTER TABLE `offline` DISABLE KEYS */;
-INSERT INTO `offline` VALUES ('2016-01-01',1),('2016-01-02',2),('2016-02-08',3),('2016-02-25',1),('2016-03-16',1),('2016-03-24',1),('2016-12-24',3),('2016-12-26',1),('2016-12-30',1),('2016-12-31',2);
 /*!40000 ALTER TABLE `offline` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `ordercoursedesc`
+-- Table structure for table `ordercoursedescs`
 --
 
-DROP TABLE IF EXISTS `ordercoursedesc`;
+DROP TABLE IF EXISTS `ordercoursedescs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ordercoursedesc` (
-  `orderCourseDescId` int(11) NOT NULL AUTO_INCREMENT,
-  `referenceNo` int(11) NOT NULL,
-  `courseId` int(11) NOT NULL,
-  PRIMARY KEY (`orderCourseDescId`),
-  UNIQUE KEY `orderCourseDescId_UNIQUE` (`orderCourseDescId`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `ordercoursedescs` (
+  `orderCourseDescID` int(11) NOT NULL AUTO_INCREMENT,
+  `orderID` int(11) NOT NULL,
+  `courseID` int(11) NOT NULL,
+  PRIMARY KEY (`orderCourseDescID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ordercoursedesc`
+-- Dumping data for table `ordercoursedescs`
 --
 
-LOCK TABLES `ordercoursedesc` WRITE;
-/*!40000 ALTER TABLE `ordercoursedesc` DISABLE KEYS */;
-INSERT INTO `ordercoursedesc` VALUES (1,1,1),(2,2,2),(3,3,3),(4,4,4),(5,5,5),(6,6,6);
-/*!40000 ALTER TABLE `ordercoursedesc` ENABLE KEYS */;
+LOCK TABLES `ordercoursedescs` WRITE;
+/*!40000 ALTER TABLE `ordercoursedescs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ordercoursedescs` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `orderitem`
+-- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `orderitem`;
+DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orderitem` (
-  `dtsNo` int(11) NOT NULL AUTO_INCREMENT,
-  `referenceNo` int(11) NOT NULL,
-  `documentId` int(11) NOT NULL,
-  `mailingId` int(11) NOT NULL,
-  `noOfCopies` int(11) NOT NULL,
-  `packaging` tinyint(1) NOT NULL,
-  `orderType` tinyint(1) NOT NULL,
-  `specificationTerm` tinyint(1) DEFAULT NULL,
-  `specificationYear` year(4) DEFAULT NULL,
-  `studentDegreeId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`dtsNo`),
-  UNIQUE KEY `dtsNo_UNIQUE` (`dtsNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `transactionID` int(11) NOT NULL,
+  `docuID` int(11) NOT NULL,
+  `mailingID` int(11) NOT NULL,
+  `type` char(1) NOT NULL,
+  `packaging` tinyint(1) NOT NULL DEFAULT '0',
+  `quantity` int(11) NOT NULL,
+  `term` tinyint(1) DEFAULT NULL,
+  `sy` year(4) DEFAULT NULL,
+  PRIMARY KEY (`id`,`transactionID`,`docuID`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `orderitem`
+-- Dumping data for table `orders`
 --
 
-LOCK TABLES `orderitem` WRITE;
-/*!40000 ALTER TABLE `orderitem` DISABLE KEYS */;
-INSERT INTO `orderitem` VALUES (1,1,1,1,1,0,1,1,2016,NULL),(2,4,2,2,1,1,1,2,2015,NULL),(3,5,3,3,2,2,0,3,2014,NULL),(4,2,5,4,10,0,0,1,2017,NULL),(5,3,4,1,999,2,1,1,2014,NULL);
-/*!40000 ALTER TABLE `orderitem` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orderlist`
---
-
-DROP TABLE IF EXISTS `orderlist`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orderlist` (
-  `referenceNo` int(11) NOT NULL AUTO_INCREMENT,
-  `transactionDate` datetime NOT NULL,
-  `dateDue` date NOT NULL,
-  `courierBillNumber` int(11) DEFAULT NULL,
-  `dateReleased` date DEFAULT NULL,
-  `newDateDue` date DEFAULT NULL,
-  `reason` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`referenceNo`),
-  UNIQUE KEY `referenceNo_UNIQUE` (`referenceNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orderlist`
---
-
-LOCK TABLES `orderlist` WRITE;
-/*!40000 ALTER TABLE `orderlist` DISABLE KEYS */;
-INSERT INTO `orderlist` VALUES (1,'2016-11-12 00:00:00','2016-11-15',91111,'2016-11-29','2016-11-29',NULL),(2,'2016-11-10 00:00:00','2016-11-13',91111,'2016-12-14',NULL,NULL),(3,'2016-11-11 00:00:00','2016-11-12',91111,'2016-12-01','2016-11-30','asd'),(4,'2016-11-09 00:00:00','2016-11-15',91111,'2016-11-16','2016-11-20',NULL),(5,'2016-11-12 00:00:00','2016-11-12',8700,'2016-11-12',NULL,NULL);
-/*!40000 ALTER TABLE `orderlist` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orderstatus`
---
-
-DROP TABLE IF EXISTS `orderstatus`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orderstatus` (
-  `orderStatusId` int(11) NOT NULL AUTO_INCREMENT,
-  `referenceNo` int(11) NOT NULL,
-  `dateLogged` datetime NOT NULL,
-  `personelInCharge` int(11) NOT NULL,
-  `remarks` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`orderStatusId`),
-  UNIQUE KEY `orderStatusId_UNIQUE` (`orderStatusId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orderstatus`
---
-
-LOCK TABLES `orderstatus` WRITE;
-/*!40000 ALTER TABLE `orderstatus` DISABLE KEYS */;
-INSERT INTO `orderstatus` VALUES (1,2,'2016-11-12 00:00:00',1,'SIR BRIANE IS LOVE, SIR BRIANE IS TAKING A WHILE.');
-/*!40000 ALTER TABLE `orderstatus` ENABLE KEYS */;
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,3,2,0,'R',0,1,NULL,NULL),(2,2,2,0,'R',1,1,NULL,NULL),(3,3,3,0,'R',1,1,NULL,NULL),(4,4,5,0,'R',0,1,NULL,NULL),(5,5,4,0,'R',1,0,NULL,NULL),(6,6,2,0,'R',1,1,NULL,NULL),(7,6,9,0,'R',0,1,NULL,NULL),(8,6,7,0,'R',1,1,NULL,NULL),(9,6,3,0,'R',1,1,NULL,NULL),(10,6,4,0,'R',0,1,NULL,NULL),(11,6,9,0,'R',2,1,NULL,NULL),(12,10,2,0,'R',0,1,NULL,NULL),(13,11,2,0,'R',1,1,NULL,NULL),(14,12,2,0,'R',0,1,NULL,NULL),(15,13,2,0,'R',1,1,NULL,NULL),(16,14,2,0,'R',1,1,NULL,NULL),(17,15,1,0,'R',1,1,NULL,NULL),(18,15,2,0,'R',2,2,NULL,NULL),(19,16,1,0,'R',1,1,NULL,NULL),(20,16,2,0,'R',2,2,NULL,NULL),(21,17,1,0,'R',1,1,NULL,NULL),(22,17,2,0,'R',2,2,NULL,NULL),(23,18,1,0,'R',1,1,NULL,NULL),(24,18,2,0,'R',2,2,NULL,NULL),(25,19,1,0,'R',1,1,NULL,NULL),(26,19,2,0,'R',2,2,NULL,NULL),(27,20,1,0,'R',1,1,NULL,NULL),(28,20,2,0,'R',2,2,NULL,NULL),(29,21,1,0,'R',1,1,NULL,NULL),(30,21,2,0,'R',2,2,NULL,NULL),(31,22,1,0,'R',1,1,NULL,NULL),(32,22,2,0,'R',2,2,NULL,NULL),(33,23,1,0,'E',1,1,NULL,NULL),(34,23,2,0,'R',2,2,NULL,NULL),(35,24,1,0,'E',1,1,NULL,NULL),(36,24,2,0,'R',2,2,NULL,NULL),(37,25,1,0,'E',1,5,NULL,NULL),(38,25,2,0,'E',1,4,NULL,NULL);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -360,14 +326,13 @@ DROP TABLE IF EXISTS `personel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `personel` (
-  `personelId` int(11) NOT NULL AUTO_INCREMENT,
+  `personelID` int(11) NOT NULL AUTO_INCREMENT,
   `lastName` varchar(100) NOT NULL,
   `firstName` varchar(100) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(32) NOT NULL,
-  PRIMARY KEY (`personelId`,`email`),
-  UNIQUE KEY `personelId_UNIQUE` (`personelId`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`personelID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -376,72 +341,98 @@ CREATE TABLE `personel` (
 
 LOCK TABLES `personel` WRITE;
 /*!40000 ALTER TABLE `personel` DISABLE KEYS */;
-INSERT INTO `personel` VALUES (1,'Samson','Briane','briane.samson@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99'),(2,'Penaranda','Brandon','brandon_penaranda@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99'),(3,'Gan','Patrick','patrickcuagan@gmail.com','5f4dcc3b5aa765d61d8327deb882cf99'),(4,'Reamon','Gelo','david_reamon@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99'),(5,'Nieva','Dyan','dyan_nieva@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99'),(6,'Ang','Nikolai','nikolai_ang@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99'),(7,'Abedejos','Jason','jason_abadejos@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99'),(8,'Venzon','Tyler','justin_venzon@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99'),(9,'Abutog','JJ','jan_abutog@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99'),(10,'Edwardo','Cruz','edwardo_cruz@dlsu.edu.ph','5f4dcc3b5aa765d61d8327deb882cf99');
 /*!40000 ALTER TABLE `personel` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `studentdegree`
+-- Table structure for table `transactionlogs`
 --
 
-DROP TABLE IF EXISTS `studentdegree`;
+DROP TABLE IF EXISTS `transactionlogs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `studentdegree` (
-  `studentDegreeId` int(11) NOT NULL AUTO_INCREMENT,
-  `studentInfoId` int(11) NOT NULL,
-  `idNumber` int(8) NOT NULL,
-  `degreeId` int(11) NOT NULL,
-  `yearAdmitted` year(4) NOT NULL,
-  `admittedAs` char(1) NOT NULL,
-  PRIMARY KEY (`studentDegreeId`,`studentInfoId`,`idNumber`),
-  UNIQUE KEY `studentDegreeId_UNIQUE` (`studentDegreeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE `transactionlogs` (
+  `logID` int(11) NOT NULL AUTO_INCREMENT,
+  `transactionID` int(11) NOT NULL,
+  `dateLogged` datetime NOT NULL,
+  `personelID` int(11) NOT NULL,
+  `remarks` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`logID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `studentdegree`
+-- Dumping data for table `transactionlogs`
 --
 
-LOCK TABLES `studentdegree` WRITE;
-/*!40000 ALTER TABLE `studentdegree` DISABLE KEYS */;
-INSERT INTO `studentdegree` VALUES (1,1,11302968,1,2013,'1'),(2,2,11555555,4,2015,'1'),(3,3,11666666,5,2016,'1');
-/*!40000 ALTER TABLE `studentdegree` ENABLE KEYS */;
+LOCK TABLES `transactionlogs` WRITE;
+/*!40000 ALTER TABLE `transactionlogs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transactionlogs` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `studentinfo`
+-- Table structure for table `transactions`
 --
 
-DROP TABLE IF EXISTS `studentinfo`;
+DROP TABLE IF EXISTS `transactions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `studentinfo` (
-  `studentInfoId` int(8) NOT NULL AUTO_INCREMENT,
-  `lastName` varchar(100) NOT NULL,
-  `firstName` varchar(100) NOT NULL,
-  `middleName` varchar(10) DEFAULT NULL,
-  `gender` char(1) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `birthDate` date NOT NULL,
-  `citizenship` varchar(45) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `phoneNumber` varchar(20) NOT NULL,
-  `highSchoolAttended` varchar(200) NOT NULL,
-  `placeOfBirth` varchar(100) NOT NULL,
-  PRIMARY KEY (`studentInfoId`),
-  UNIQUE KEY `studentInfoId_UNIQUE` (`studentInfoId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int(11) NOT NULL,
+  `dateRequested` datetime NOT NULL,
+  `dateDue` date NOT NULL,
+  `newDateDue` date NOT NULL,
+  `reason` varchar(500) DEFAULT NULL,
+  `courierBillNumber` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`,`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `studentinfo`
+-- Dumping data for table `transactions`
 --
 
-LOCK TABLES `studentinfo` WRITE;
-/*!40000 ALTER TABLE `studentinfo` DISABLE KEYS */;
-INSERT INTO `studentinfo` VALUES (1,'Mouse','Mickey','D','M','mickey@gmail.com','1996-10-02','Filipino','Clubhouse','8700','DIDNEY','Disney'),(2,'Duck','Donald','D','M','ddquackers@gmail.com','1996-12-10','Filipino','Clubhouse','8700','DIDNEY','Disney'),(3,'Bee','Jolli','B','M','jbforevs@gmail.com','1990-01-12','Filipino','CantoPls','8700','Mascot Ph','Quezon ');
-/*!40000 ALTER TABLE `studentinfo` ENABLE KEYS */;
+LOCK TABLES `transactions` WRITE;
+/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idNumber` varchar(45) DEFAULT NULL,
+  `firstname` varchar(100) DEFAULT NULL,
+  `middlename` varchar(100) DEFAULT NULL,
+  `lastname` varchar(100) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `citizenship` varchar(45) DEFAULT NULL,
+  `placeOfBirth` varchar(45) DEFAULT NULL,
+  `currentAddress` varchar(100) DEFAULT NULL,
+  `phoneNo` varchar(45) DEFAULT NULL,
+  `alternatePhoneNo` varchar(45) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `alternateEmail` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `verified` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -453,4 +444,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-16  8:13:07
+-- Dump completed on 2017-05-20 20:05:08
